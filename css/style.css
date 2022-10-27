@@ -1,0 +1,130 @@
+.content{
+	max-width: 1000px;
+	margin: auto;
+	text-align: center;
+	padding: 20px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.homeContent{
+	max-width: 600px;
+	margin: auto;
+}
+.homeProjectDescription {
+	color: #616161;
+}
+.header {
+	font-size: 24px;
+}
+
+.profilePicture {
+	width: 200px;
+	border-radius: 100px;
+	margin: 10px;
+	box-shadow: 3px 3px 20px #888888;
+}
+
+hr {
+	width: 50%;
+	border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #c0c0c0; /* old IE */
+    background-color: #c0c0c0; /* Modern Browsers */
+}
+
+.icon {
+	width: 32px;
+	display: inline-block;
+}
+.socialLink {
+	background-color: #585858;
+	color: white;
+	display: inline-block;
+	width: 18px;
+	padding: 5px 5px;
+	text-align: center;
+	height: 16px;
+	transition: background-color 0.5s ease;
+}
+.socialLink:hover {
+	background-color: #8c8c8c;
+}
+
+
+.section {
+	padding: 16px;
+}
+.sectionHeader {
+	font-size: 20px;
+	padding: 4px;
+}
+.sectionItem {
+	margin: 6px;
+	padding: 10px;
+	display: inline-block;
+	background-color: white;
+	transition: background-color 0.25s ease;
+
+
+	-moz-box-shadow:    0px 2px 5px 3px #c0c0c0;
+   	-webkit-box-shadow: 0px 2px 5px 3px #c0c0c0;
+   	box-shadow:         0px 2px 5px 3px #c0c0c0;
+}
+.sectionItem:hover{
+	background-color: #c0c0c0;
+}
+.sectionItem img {
+	width: 128px;
+	height: 128px;
+}
+.sectionItem,
+.sectionItem:link,
+.sectionItem:visited,
+.sectionItem:hover,
+.sectionItem:active {
+    text-decoration: none;
+    font-weight: normal;
+    color: black;
+}
+
+.spacer {
+	height: 32px;
+}
+
+
+
+.images img {
+	max-height: 256px;
+	margin: 8px;
+	padding: 8px;
+	transition: background-color 0.25s ease;
+
+	-moz-box-shadow:    0px 2px 5px 3px #c0c0c0;
+   	-webkit-box-shadow: 0px 2px 5px 3px #c0c0c0;
+   	box-shadow:         0px 2px 5px 3px #c0c0c0;
+}
+
+.images img:hover{
+	background-color: #c0c0c0;
+}
+.links a,
+.links a:link,
+.links a:visited,
+.links a:hover,
+.links a:active {
+    font-weight: normal;
+    color: black;
+}
+
+body, html {
+	font-family: Arcon-Regular;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: #eaeaea;
+}
+
+.gameIcon{
+        border-radius: 25%;
+}

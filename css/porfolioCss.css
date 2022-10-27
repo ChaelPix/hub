@@ -1,0 +1,53 @@
+body {
+    background-color: #bae1eb;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', serif;
+}
+
+h2 {   
+    margin-left:50px;
+    /* text-align: center; */
+}
+
+.presentation {
+    line-height: .25;
+}
+
+.mctpxLogo {
+    border-radius: 50%;
+    border: 5px solid rgb(170, 170, 170);
+    display: block;
+    margin-left:75px;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.rectangle{
+    width: 350px;
+    height: 1px;
+    background-color: rgba(128, 128, 128, 0.589);
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.description{
+    line-height: 1.2;
+    text-align: left;
+    margin-left: 0;
+    /*text-align: center; */
+}
+
+.descLine{
+    margin-left:5;
+}
+
+.gameIcon{
+    border-radius: 25%;
+}
+
+.gameDesc{
+    color:rgba(59, 59, 59);
+}
+
+.lists{
+    
+}

@@ -14,7 +14,7 @@
 }
 
 .homeProjectDescription {
-	color: #616161;
+	color: #ececec;
 }
 
 .header {
@@ -157,7 +157,7 @@ h2 {
   justify-content: center;
   align-items: stretch;
   margin: 0 auto;
-  margin-left: 50px;
+  margin-left: 35px;
 }
 
 .grid-item {
@@ -170,6 +170,7 @@ h2 {
   overflow: hidden;
   background-color: #f1f1f1;
   border: 1px solid #ccc;
+  box-shadow: 3px 3px 10px #272727;
 }
 
 .grid-item img {
@@ -197,6 +198,7 @@ h2 {
 
 .grid-item img {
   width: 100%; 
+
 }
 
 .grid-item img {
@@ -213,28 +215,34 @@ h2 {
   height: 33.33%;
   background-color: rgba(0, 0, 0, 0.7);
   color: #fff;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s ease-in-out;
   padding: 10px;
   box-sizing: border-box;
   word-wrap: break-word;
 }
 
+.overlay p {
+	color: #ececec;
+}
 
 .overlay img {
   position: absolute;
   top: -80px;
-  right: 10px;
+  right: 0px;
   max-width: 80px;
   max-height: 80px;
   float: right;
 }
 
-
-.grid-item:hover .overlay {
-  opacity: 1;
-}
-
+.grid-item:hover img {
+	transform: scale(1.1); /* Ajoutez cette ligne pour zoomer l'image lors du survol */
+	transition: transform 0.3s ease-in-out; /* Ajoutez cette ligne pour une animation fluide */
+  }
+  .grid-item:hover .overlay {
+	background-color: rgba(0, 0, 0, 0.9); /* Modifiez cette ligne pour changer la couleur de fond lors du survol */
+	transition: background-color 0.3s ease-in-out; /* Ajoutez cette ligne pour une animation fluide */
+  }
 .overlay h3, .overlay p {
   margin: 0;
 }

@@ -7,6 +7,21 @@ body {
     margin: 0;
     flex-direction: column;
 }
+h1 {
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.word-list-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.word-list {
+    display: inline-block;
+    text-align: left;
+}
 
 .card {
     border: 1px solid #ccc;

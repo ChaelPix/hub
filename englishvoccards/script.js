@@ -12,6 +12,24 @@ fetch("words.json")
 
         card.textContent = words[currentCard].definition;
 
+        const wordListContainer = document.getElementById('wordListContainer');
+        const showAllWordsButton = document.getElementById('showAllWordsButton');
+        function showAllWords() {
+            if (wordListContainer.style.display === 'none') {
+                let wordList = '<ul class="word-list">';
+                words.forEach(word => {
+                    wordList += `<li><strong>${word.word}</strong> : ${word.definition}</li>`;
+                });
+                wordList += '</ul>';
+                wordListContainer.innerHTML = wordList;
+                wordListContainer.style.display = 'block';
+                showAllWordsButton.textContent = 'Cacher tous les mots';
+            } else {
+                wordListContainer.style.display = 'none';
+                showAllWordsButton.textContent = 'Afficher tous les mots';
+            }
+        }
+
         function getRandomCardIndex() {
             return Math.floor(Math.random() * words.length);
         }
@@ -23,6 +41,7 @@ fetch("words.json")
                 answerContainer.textContent = "";
                 answerContainer.style.display = "none";
                 answerInput.disabled = true;
+                submitButton.style.display = "none";
                 setTimeout(function () {
                     nextCard();
                 }, 1000);
@@ -33,12 +52,14 @@ fetch("words.json")
                     "La réponse correcte est : " + words[currentCard].word;
                 answerContainer.style.display = "block";
                 answerInput.disabled = true;
+                submitButton.style.display = "none";
             }
             nextButton.style.display = "block";
         }
 
         function nextCard() {
             currentCard = getRandomCardIndex();
+            submitButton.style.display = "block";
             card.classList.remove("incorrect");
             card.classList.remove("correct");
             answerContainer.textContent = "";

@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>English Vocabulary Flashcards</h1>
     <div class="card" id="definition"></div>
     <form>
         <input type="text" id="answer" placeholder="Entrez le mot correspondant">
-        <button type="button" onclick="checkAnswer()">Valider</button>
+        <button type="button" onclick="checkAnswer()" id="submitButton">Valider</button>
         <button type="button" onclick="nextCard()" id="nextButton" style="display: none;">Suivant</button>
     </form>
     <div class="answer-container" id="answerContainer"></div>
+    <button type="button" onclick="showAllWords()" id="showAllWordsButton">Afficher tous les mots</button>
+    <div class="word-list-container" id="wordListContainer" style="display: none;"></div>
     <script src="script.js"></script>
 </body>
 </html>

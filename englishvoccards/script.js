@@ -34,7 +34,7 @@ function checkAnswer() {
     } else {
         card.classList.remove("correct");
         card.classList.add("incorrect");
-        answerContainer.textContent = 'La réponse correcte est : ' + words[currentCard].word;
+        answerContainer.textContent = 'Correct anwser is: ' + words[currentCard].word;
         answerContainer.style.display = 'block';
         submitButton.style.display = "none";
         nextButton.style.display = "block";
@@ -64,10 +64,10 @@ function showAllWords() {
         wordList += '</ul>';
         wordListContainer.innerHTML = wordList;
         wordListContainer.style.display = 'block';
-        showAllWordsButton.textContent = 'Cacher tous les mots';
+        showAllWordsButton.textContent = 'Hide word list';
     } else {
         wordListContainer.style.display = 'none';
-        showAllWordsButton.textContent = 'Afficher tous les mots';
+        showAllWordsButton.textContent = 'Show word list';
     }
 }
 

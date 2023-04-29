@@ -16,7 +16,11 @@ const wordListContainer = document.getElementById('wordListContainer');
 const showAllWordsButton = document.getElementById('showAllWordsButton');
 
 function getRandomCard() {
-    return Math.floor(Math.random() * words.length);
+    let card = currentCard;
+    while (card == currentCard) {
+        card = Math.floor(Math.random() * words.length);
+    }
+    return card;
 }
 
 function checkAnswer() {

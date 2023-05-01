@@ -109,8 +109,8 @@ const irregularVerbs = [
 ["think", "thought", "thought", "penser"],
 ["throw", "threw", "thrown", "lancer (un objet)"],
 ["understand", "understood", "understood", "comprendre"],
-["wake", "woke/waked", "woken", "réveiller"],
-["wear", "wore", "worn", "porter"],
+["wake", "woke", "woken", "réveiller"],
+["wear", "wore", "worn", "porter (un vêtement)"],
 ["win", "won", "won", "gagner"],
 ["write", "wrote", "written", "écrire"]
 ];

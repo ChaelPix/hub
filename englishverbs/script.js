@@ -16,7 +16,7 @@ const irregularVerbs = [
 ["burn", "burnt/burned", "burnt/burned", "brûler"],
 ["burst", "burst", "burst", "éclater"],
 ["buy", "bought", "bought", "acheter"],
-["cast", "cast", "cast", "lancer"],
+["cast", "cast", "cast", "lancer (un sort)"],
 ["catch", "caught", "caught", "attraper"],
 ["choose", "chose", "chosen", "choisir"],
 ["come", "came", "come", "venir"],
@@ -68,7 +68,7 @@ const irregularVerbs = [
 ["pay", "paid", "paid", "payer"],
 ["put", "put", "put", "mettre"],
 ["read", "read", "read", "lire"],
-["ride", "rode", "ridden", "aller à cheval"],
+["ride", "rode", "ridden", "monter (à cheval)"],
 ["ring", "rang", "rung", "sonner"],
 ["rise", "rose", "risen", "s'élever"],
 ["run", "ran", "run", "courir"],
@@ -78,7 +78,7 @@ const irregularVerbs = [
 ["send", "sent", "sent", "envoyer"],
 ["set", "set", "set", "fixer"],
 ["shake", "shook", "shaken", "secouer"],
-["shoot", "shot", "shot", "tirer"],
+["shoot", "shot", "shot", "tirer (à feu)"],
 ["show", "showed", "shown", "montrer"],
 ["shut", "shut", "shut", "fermer"],
 ["sing", "sang", "sung", "chanter"],
@@ -107,7 +107,7 @@ const irregularVerbs = [
 ["tear", "tore", "torn", "déchirer"],
 ["tell", "told", "told", "raconter"],
 ["think", "thought", "thought", "penser"],
-["throw", "threw", "thrown", "lancer"],
+["throw", "threw", "thrown", "lancer (un objet)"],
 ["understand", "understood", "understood", "comprendre"],
 ["wake", "woke/waked", "woken", "réveiller"],
 ["wear", "wore", "worn", "porter"],
@@ -175,34 +175,39 @@ function resetTable() {
     fillTable();
 }
 
-function validate() {
-    const inputs = document.querySelectorAll("input");
-    let correctCount = 0;
-
-    inputs.forEach((input) => {
-        const row = input.parentElement.parentElement;
-        const rowIndex = row.rowIndex - 1;
-        const columnIndex = parseInt(input.dataset.index);
-
-        if (input.value.trim().toLowerCase() === currentVerbs[rowIndex][columnIndex].toLowerCase()) {
-            input.classList.add("correct");
-            correctCount++;
-        } else {
-            input.classList.add("incorrect");
-            const correctAnswer = document.createElement("span");
-            correctAnswer.textContent = currentVerbs[rowIndex][columnIndex];
-            correctAnswer.classList.add("correct-answer");
-            input.parentElement.appendChild(correctAnswer);
-        }
-    });
-
-    const scoreDisplay = document.getElementById("score");
-    scoreDisplay.textContent = `Votre score est de ${correctCount} sur ${inputs.length}.`;
-
-    const actionButton = document.getElementById("actionButton");
-    actionButton.textContent = "Recommencer";
-    isValidation = true;
-}
+function checkAnswer(input, answer) {
+    const mainAnswer = answer.split(" (")[0];
+    return input.toLowerCase() === mainAnswer.toLowerCase();
+  }
+  
+  function validate() {
+      const inputs = document.querySelectorAll("input");
+      let correctCount = 0;
+  
+      inputs.forEach((input) => {
+          const row = input.parentElement.parentElement;
+          const rowIndex = row.rowIndex - 1;
+          const columnIndex = parseInt(input.dataset.index);
+  
+          if (checkAnswer(input.value.trim(), currentVerbs[rowIndex][columnIndex])) {
+              input.classList.add("correct");
+              correctCount++;
+          } else {
+              input.classList.add("incorrect");
+              const correctAnswer = document.createElement("span");
+              correctAnswer.textContent = currentVerbs[rowIndex][columnIndex];
+              correctAnswer.classList.add("correct-answer");
+              input.parentElement.appendChild(correctAnswer);
+          }
+      });
+  
+      const scoreDisplay = document.getElementById("score");
+      scoreDisplay.textContent = `Votre score est de ${correctCount} sur ${inputs.length}.`;
+  
+      const actionButton = document.getElementById("actionButton");
+      actionButton.textContent = "Recommencer";
+      isValidation = true;
+  }
 
 document.getElementById("actionButton").addEventListener("click", () => {
     if (isValidation) {

@@ -78,7 +78,7 @@ const irregularVerbs = [
 ["send", "sent", "sent", "envoyer"],
 ["set", "set", "set", "fixer"],
 ["shake", "shook", "shaken", "secouer"],
-["shoot", "shot", "shot", "tirer (avec une arme)"],
+["shoot", "shot", "shot", "tirer"],
 ["show", "showed", "shown", "montrer"],
 ["shut", "shut", "shut", "fermer"],
 ["sing", "sang", "sung", "chanter"],

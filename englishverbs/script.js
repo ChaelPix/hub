@@ -13,7 +13,7 @@ const irregularVerbs = [
 ["breed", "bred", "bred", "élever"],
 ["bring", "brought", "brought", "apporter"],
 ["build", "built", "built", "bâtir"],
-["burn", "burnt/burned", "burnt/burned", "brûler"],
+["burn", "burnt", "burnt", "brûler"],
 ["burst", "burst", "burst", "éclater"],
 ["buy", "bought", "bought", "acheter"],
 ["cast", "cast", "cast", "lancer (un sort)"],
@@ -25,7 +25,7 @@ const irregularVerbs = [
 ["deal", "dealt", "dealt", "distribuer"],
 ["do", "did", "done", "faire"],
 ["draw", "drew", "drawn", "dessiner/tirer"],
-["dream", "dreamt/dreamed", "dreamt/dreamed", "rêver"],
+["dream", "dreamt", "dreamt", "rêver"],
 ["drink", "drank", "drunk", "boire"],
 ["drive", "drove", "driven", "conduire"],
 ["eat", "ate", "eaten", "manger"],
@@ -34,12 +34,12 @@ const irregularVerbs = [
 ["feel", "felt", "felt", "ressentir"],
 ["fight", "fought", "fought", "combattre"],
 ["find", "found", "found", "trouver"],
-["fly", "flew", "flown", "voler"],
+["fly", "flew", "flown", "voler (dans le ciel)"],
 ["forbid", "forbade", "forbidden", "interdire"],
 ["forget", "forgot", "forgotten", "oublier"],
 ["forgive", "forgave", "forgiven", "pardonner"],
 ["freeze", "froze", "frozen", "geler"],
-["get", "got/gotten", "got/gotten", "obtenir"],
+["get", "got", "got/gotten", "obtenir"],
 ["give", "gave", "given", "donner"],
 ["go", "went", "gone", "aller"],
 ["grow", "grew", "grown", "pousser"],
@@ -55,7 +55,7 @@ const irregularVerbs = [
 ["lay", "laid", "laid", "poser à plat"],
 ["lead", "led", "led", "mener"],
 ["leap", "leapt", "leapt", "sauter"],
-["learn", "learnt/learned", "learnt/learned", "apprendre"],
+["learn", "learnt", "learnt", "apprendre"],
 ["leave", "left", "left", "quitter"],
 ["lend", "lent", "lent", "prêter"],
 ["let", "let", "let", "laisser"],
@@ -89,13 +89,13 @@ const irregularVerbs = [
 ["speak", "spoke", "spoken", "parler"],
 ["spell", "spelt", "spelt", "épeler"],
 ["spend", "spent", "spent", "dépenser"],
-["spill", "spilt/spilled", "spilt/spilled", "renverser"],
+["spill", "spilt", "spilt", "renverser"],
 ["split", "split", "split", "fendre"],
-["spoil", "spoilt/spoiled", "spoilt/spoiled", "gâter"],
+["spoil", "spoilt", "spoilt", "gâter"],
 ["spread", "spread", "spread", "répandre"],
 ["spring", "sprang", "sprung", "bondir"],
 ["stand", "stood", "stood", "être debout"],
-["steal", "stole", "stolen", "voler"],
+["steal", "stole", "stolen", "voler (dérober)"],
 ["stick", "stuck", "stuck", "coller"],
 ["strike", "struck", "struck", "frapper"],
 ["swear", "swore", "sworn", "jurer"],
@@ -175,9 +175,13 @@ function resetTable() {
     fillTable();
 }
 
+function removeAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
 function checkAnswer(input, answer) {
     const mainAnswer = answer.split(" (")[0];
-    return input.toLowerCase() === mainAnswer.toLowerCase();
+    return removeAccents(input.toLowerCase()) === removeAccents(mainAnswer.toLowerCase());
   }
   
   function validate() {

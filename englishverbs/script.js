@@ -42,7 +42,7 @@ const irregularVerbs = [
 ["get", "got", "got/gotten", "obtenir"],
 ["give", "gave", "given", "donner"],
 ["go", "went", "gone", "aller"],
-["grow", "grew", "grown", "pousser"],
+["grow", "grew", "grown", "pousser (croître)"],
 ["have", "had", "had", "avoir"],
 ["hang", "hung", "hung", "pendre"],
 ["hear", "heard", "heard", "entendre"],

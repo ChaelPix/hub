@@ -24,7 +24,7 @@ const irregularVerbs = [
 ["cut", "cut", "cut", "couper"],
 ["deal", "dealt", "dealt", "distribuer"],
 ["do", "did", "done", "faire"],
-["draw", "drew", "drawn", "dessiner/tirer"],
+["draw", "drew", "drawn", "tirer (une carte)"],
 ["dream", "dreamt", "dreamt", "rêver"],
 ["drink", "drank", "drunk", "boire"],
 ["drive", "drove", "driven", "conduire"],

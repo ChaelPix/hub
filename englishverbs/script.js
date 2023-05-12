@@ -181,9 +181,12 @@ function removeAccents(str) {
 
 function checkAnswer(input, answer) {
     const mainAnswer = answer.split(" (")[0];
+    input = input.split(" (")[0];
     return removeAccents(input.toLowerCase()) === removeAccents(mainAnswer.toLowerCase());
   }
   
+
+
   function validate() {
       const inputs = document.querySelectorAll("input");
       let correctCount = 0;

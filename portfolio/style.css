@@ -158,9 +158,9 @@ html {
 	margin: 0;
 	background: #ffffff;
 	margin-bottom: 50px;
-	margin-right: 1px;
 	background-image: linear-gradient(to top, #a5eaff, #ffffff); 
 	background-attachment: fixed;
+	min-height: 100vh;
 }
 
 

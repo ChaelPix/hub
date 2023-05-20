@@ -1,14 +1,28 @@
-const items = document.querySelectorAll('.grid-item, .square-grid-item');
+const items = document.querySelectorAll('.grid-item, .square-grid-item, .project-item');
 
 function showItems() {
-  let delay = 0;
+  let delay = 1000;
   items.forEach(item => {
     setTimeout(() => {
       item.style.opacity = '1';
     }, delay);
-    delay += 50; // Le délai d'affichage en millisecondes entre chaque élément (ici 200 ms)
+    delay += 50; 
   });
 }
 
 showItems();
 
+
+ScrollReveal({
+  duration: 1000, 
+  distance: '1000px', 
+  delay: 200, 
+  easing: 'ease-in-out', 
+  mobile: true, 
+  reset: true 
+});
+
+ScrollReveal().reveal('.content', {duration: 1000, distance: "500px", origin: 'top'}); 
+ScrollReveal().reveal('.project-item', {origin: 'left'}); 
+ScrollReveal().reveal('h2', {duration: 1000, distance: "500px", origin: 'left'});
+ScrollReveal().reveal('hr', {   origin: 'right' }); 

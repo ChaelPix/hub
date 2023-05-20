@@ -1,4 +1,67 @@
-.content {
+.project-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	max-width: 800px;
+	margin: 0 auto;
+  }
+  
+  .project-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	width: calc(50% - 20px); 
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+  }
+  
+  .project-icon {
+	width: 100px;
+	height: 100px;
+	margin-right: 20px;
+	border-radius: 50px;
+	box-shadow: 3px 3px 20px #888888;
+	transition: transform 0.3s;
+  }
+  
+  .project-icon:hover {
+	transform: scale(1.2);
+  }
+  
+  .project-info {
+	flex-grow: 1;
+  }
+  
+  .project-name {
+	margin: 0;
+  }
+  
+  .project-description {
+	margin: 0;
+  }
+  
+  .project-date {
+	font-size: 14px;
+	font-style: italic;
+	margin: 0;
+  }
+  
+  @media (max-width: 767px) { /* Media query pour les écrans de largeur maximale de 767px */
+	.project-item {
+	  width: 100%; /* Un projet par ligne */
+	}
+  }
+  
+  
+  h2 {
+	text-align: center;
+  }
+  
+  
+ /*-------------------*/
+ 
+  .content {
 	max-width: 100%;
 	margin: auto;
 	display: flex;
@@ -56,8 +119,7 @@ hr {
 	width: 50%;
 	border: none;
 	height: 1px;
-	color: #c0c0c0;
-	background-color: #c0c0c0;
+	background-color: #303030;
 }
 
 .icon {
@@ -184,7 +246,7 @@ h2 {
 .grid-item {
   position: relative;
   cursor: pointer;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s ease-in-out;
   aspect-ratio: 9/16;
   float: left;
@@ -290,7 +352,7 @@ h2 {
   .square-grid-item {
 	position: relative;
 	cursor: pointer;
-	opacity: 0;
+	opacity: 1;
 	aspect-ratio: 1/1;
 	transition: opacity 0.2s ease-in-out;
 	float: left;

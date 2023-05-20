@@ -160,7 +160,7 @@ html {
 	margin-bottom: 50px;
 	margin-right: 1px;
 	background-image: linear-gradient(to top, #a5eaff, #ffffff); 
-
+	background-attachment: fixed;
 }
 
 

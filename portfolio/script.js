@@ -16,7 +16,7 @@ showItems();
 ScrollReveal({
   duration: 1000, 
   distance: '1000px', 
-  delay: 200, 
+  delay: 0, 
   easing: 'ease-in-out', 
   mobile: true, 
   reset: true 

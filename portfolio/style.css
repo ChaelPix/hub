@@ -32,7 +32,11 @@ h2 {
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
-
+@media (min-width: 768px) {
+	.project-item {
+		width: calc(50% - 20px);
+	}
+}
 .fade-in {
 	display: flex;
 	flex-direction: row;

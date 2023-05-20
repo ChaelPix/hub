@@ -47,11 +47,11 @@
 	margin: 0;
   }
   
-  @media (max-width: 767px) { /* Media query pour les écrans de largeur maximale de 767px */
+  /* @media (max-width: 767px) { /* Media query pour les écrans de largeur maximale de 767px 
 	.project-item {
-	  width: 100%; /* Un projet par ligne */
+	  width: 100%;
 	}
-  }
+  } */
   
   
   h2 {

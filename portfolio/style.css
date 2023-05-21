@@ -5,6 +5,7 @@ html {
 	background: #ffffff;
 
 /*background-image: url("img/bg.jpg");*/
+zoom:200%;
 
 }
 
@@ -19,11 +20,6 @@ h2 {
 	text-indent: 1em;
 	text-align: center;
 }
-@media (max-width: 600px) {
-	.container {
-	  max-width: 100%;
-	}
-  }
   
 
 /*--------Presentation------------*/

@@ -195,16 +195,22 @@ button:hover, .buttons:hover button.active {
 /*-----Follow----*/
 #follower {
     position: absolute;
-    pointer-events: none; /* Assurez-vous que l'image ne bloque pas d'autres éléments interactifs */
-    display: none; /* Cachez l'image initialement */
-    transition: transform 0.1s ease-out; /* Animation fluide */
+    pointer-events: none; 
+    display: none; 
+    transition: transform 0.1s ease-out; 
+	background-color: #00000028;
 }
 
-#follower img {
-    width: 50px; /* Ajustez la taille selon vos besoins */
+.follow-circle {
+    width: 25px;
+    height: 25px;
+    background-color: #007bff65; 
+    border-radius: 50%; 
+    pointer-events: none; 
+    position: absolute;
+    display: none; 
+    transition: transform 0.1s ease-out;
 }
-
-
 
 /*-----------Responsive---------*/
 @media (max-width: 768px) {

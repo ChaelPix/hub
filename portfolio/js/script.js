@@ -28,18 +28,20 @@ const follower = document.getElementById('follower');
 let mouseX = 0, mouseY = 0, posX = 0, posY = 0;
 
 document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX - follower.offsetWidth / 2;
+    // Ajustez la position pour centrer le cercle par rapport au curseur
+    mouseX = e.clientX -  follower.offsetWidth / 2;
     mouseY = e.clientY - follower.offsetHeight / 2;
-    follower.style.display = 'block'; 
+    follower.style.display = 'block'; // Affichez le cercle lorsque la souris bouge
 });
 
 function animate() {
-  posX += (mouseX - posX) * 0.25;
-  posY += (mouseY - posY) * 0.25;
-  posY -= 35;
-  follower.style.transform = `translate(${posX}px, ${posY}px)`;
+    posX += (mouseX - posX) * 0.25; // 0.05 est le facteur d'inertie, ajustez-le selon vos besoins
+    posY += (mouseY - posY) * 0.25;
+    posY -= 35;
+    
+    follower.style.transform = `translate(${posX}px, ${posY}px)`;
 
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 }
 
 function isTouchDevice() {

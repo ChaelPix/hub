@@ -27,6 +27,15 @@ h1 {
     font-size: calc(2.5rem + 2vw); 
 	margin-bottom: 5px;
 }
+h1 span {
+    transition: transform 0.3s, color 0.3s; 
+    display: inline-block; 
+}
+
+h1 span:hover {
+    transform: scale(1.1); 
+    color: #007BFF; 
+}
 
 hr {
     border: 1;
@@ -40,7 +49,6 @@ hr {
     margin-bottom: 20px;
 	font-size: 1.5rem;
 }
-
 /*--Buttons--*/
 .buttons {
     display: flex;
@@ -170,6 +178,9 @@ button:hover, .buttons:hover button.active {
     max-height: 90%;
 	object-fit: contain;
 	margin: auto 0;
+	transition: transform 0.1s;
+    transform-style: preserve-3d; 
+    perspective: 1000px; 
 }
 
 .left-content, .right-content {
@@ -179,6 +190,20 @@ button:hover, .buttons:hover button.active {
 *, *::before, *::after {
     box-sizing: border-box;
 }
+
+
+/*-----Follow----*/
+#follower {
+    position: absolute;
+    pointer-events: none; /* Assurez-vous que l'image ne bloque pas d'autres éléments interactifs */
+    display: none; /* Cachez l'image initialement */
+    transition: transform 0.1s ease-out; /* Animation fluide */
+}
+
+#follower img {
+    width: 50px; /* Ajustez la taille selon vos besoins */
+}
+
 
 
 /*-----------Responsive---------*/

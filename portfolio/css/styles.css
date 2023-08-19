@@ -160,14 +160,16 @@ button:hover, .buttons:hover button.active {
 .right-content {
     flex: 1; 
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    padding-right: 5%;
+    padding-right: 10%;
 }
 
-img {
+.right-content img {
     max-width: 90%; 
     max-height: 90%;
+	object-fit: contain;
+	margin: auto 0;
 }
 
 .left-content, .right-content {

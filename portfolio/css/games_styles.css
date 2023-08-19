@@ -1,0 +1,126 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 10vh;
+}
+
+.phone {
+    position: relative;
+    width: 20%; 
+    margin-left: 8vh;
+    margin-top: 5vh;
+    z-index: 10;
+}
+
+.phone img {
+    width: 100%;
+}
+
+.game-display {
+    position: absolute;
+    top: 3.5%;
+    left: 3.5%; 
+    width: 93.5%; 
+    height: 92.8%;
+    background-color: rgb(37, 37, 37);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    z-index: -10;
+}
+
+
+/*--------------*/
+
+.games-details {
+    width: calc(80% - 20% - 8vh); /* Espace restant - largeur du téléphone - marge du téléphone */
+    transform: translateX(-150px);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Crée 6 colonnes de taille égale */
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.games-grid button {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25%;
+    background-color: black;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: transparent;
+}
+
+.games-grid button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.games-grid img {
+	width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    cursor: pointer;
+    border-radius: 25%;
+}
+
+.game-details {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+h1 {
+    font-size: calc(1rem + 2vw); 
+	margin-bottom: 15px;
+    text-align: center;
+}
+
+
+
+/* Media Query pour les écrans de taille moyenne (tablette) */
+@media (max-width: 1200px) {
+    .games-details {
+        width: 100%;
+        transform: none;
+        padding: 0 10px; /* Ajout d'un peu d'espace sur les côtés */
+    }
+
+    .phone {
+        margin: 20px auto; /* Centrer le téléphone horizontalement */
+        width: 60%; /* Ajuster la taille du téléphone */
+    }
+}
+
+/* Media Query pour les écrans mobiles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Les éléments sont empilés verticalement */
+        align-items: center; /* Centrer les éléments horizontalement */
+    }
+
+    .games-details {
+        order: 1; /* La grille des boutons vient en premier */
+    }
+
+    .phone {
+        order: 2; /* Le téléphone vient ensuite */
+        margin-top: 20px; /* Espace entre la grille des boutons et le téléphone */
+    }
+
+
+}

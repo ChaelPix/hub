@@ -4,6 +4,7 @@ body, html {
     overflow: hidden;
 }
 
+/*---------------Triangles Anim--------------*/
 .triangle {
     position: absolute;
     width: 0;
@@ -11,6 +12,7 @@ body, html {
     border-style: solid;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
+    z-index: 999;
 }
 
 .triangle-top {
@@ -34,10 +36,26 @@ body, html {
         border-width: 5vw 100vw 0 0;
     }
 }
+@keyframes slideTopClose {
+    from {
+        border-width: 5vw 100vw 0 0;
+    }
+    to {
+        border-width: 100vh 100vw 0 0;
+    }
+}
 
 @keyframes slideBottom {
     to {
         border-width: 0 0 5vw 100vw;
+    }
+}
+@keyframes slideBottomClose {
+    from {
+        border-width: 0 0 5vw 100vw;
+    }
+    to {
+        border-width: 0 0 100vh 100vw;
     }
 }
 
@@ -54,10 +72,25 @@ body, html {
             border-width: 0 0 10vw 100vw; 
         }
     }
+    @keyframes slideTopClose {
+        from {
+            border-width: 10vw 100vw 0 0; 
+        }
+        to {
+            border-width: 100vh 100vw 0 0;
+        }
+    }
+    @keyframes slideBottomClose {
+        from {
+            border-width: 0 0 10vw 100vw; 
+        }
+        to {
+            border-width: 0 0 100vh 100vw;
+        }
+    }
 }
 
 /* fadeIn */
-/* Animation fadeIn */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -67,14 +100,12 @@ body, html {
     }
 }
 
-/* Appliquez l'animation aux éléments */
 .left-content,
 .right-content {
-    opacity: 0; /* Les éléments sont initialement cachés */
-    animation: fadeIn 1s forwards; /* Utilisez l'animation fadeIn */
+    opacity: 0; 
+    animation: fadeIn 1s forwards; 
 }
 
-/* Définissez des délais pour chaque élément */
 .left-content {
     animation-delay: .1s;
 }

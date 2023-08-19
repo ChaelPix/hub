@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/mctpxLogobird.png" type="image/x-icon">
+    <link rel="icon" href="img/icon_mctpx_favicon.png" type="image/x-icon">
     <title>Traïan B.</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -28,30 +29,30 @@
 
             <div class="description">Driven by passion, I'm a French IT student turning ideas into digital realities.</div>
             <div class="buttons">
-                <button>📱Hypercasual MVPs</button>
-                <button>🛠️Projects</button>
-                <button>⏱️Challenges</button>
+                <button data-href="games.html">📱My Hypercasual MVPs</button>
+                <button data-href="games.html">🛠️My Projects</button>
+                <button data-href="games.html">⏱️My Challenges</button>
             </div>
 
             <hr>
             <div class="contact-info">
                 <div class="contact-item">
-                    <a href="mailto:traian.beaujard@gmail.com" target="_blank"><img src="img/mail.png" alt="Icône de mail"></a>
-                    <div class="contact-detail">traian.beaujard@gmail.com</div>
+                    <a href="mailto:traian.beaujard@gmail.com" target="_blank"><img src="img/icon_mail_w.png" alt="Mail Icon"></a>
+                    <div class="contact-detail"><u>Mail:</u>&nbsp;traian.beaujard@gmail.com</div>
                 </div>
                 <div class="contact-item">
-                    <a><img src="img/git.png" alt="Icône Discord">
-                    <div class="contact-detail">pix_tb</div></a>
+                    <a><img src="img/icon_discord_w.png" alt="Discord Icon">
+                    <div class="contact-detail"><u>Discord:</u>&nbsp;pix_tb</div></a>
                 </div>
                 <div class="contact-item">
-                    <a href="https://github.com/ChaelPix" target="_blank"><img src="img/git.png" alt="Icône GitHub">
-                    <div class="contact-detail">ChaelPix</div></a>
+                    <a href="https://github.com/ChaelPix" target="_blank"><img src="img/icon_github_w.png" alt="GitHub Icon">
+                    <div class="contact-detail"><u>GitHub:</u>&nbsp;ChaelPix</div></a>
                 </div>
             </div>
 
         </div>
         <div class="right-content">
-            <img src="img/mctpxLogobird.png" alt="Description de l'image">
+            <img src="img/mctpxlogo.jpg" alt="Description de l'image">
         </div>
         
         <div id="follower" class="follow-circle"></div>
@@ -63,7 +64,10 @@
 
     <div class="triangle triangle-top"></div>
     <div class="triangle triangle-bottom"></div>
-    <script src="js/script.js"></script>
+
+    <script src="js/utilities.js"></script>
+    <script src="js/follower.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

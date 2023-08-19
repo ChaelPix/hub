@@ -10,8 +10,23 @@ document.querySelectorAll('.games-grid button').forEach(button => {
         document.querySelector('.game-title').textContent = gameTitle;
         document.querySelector('.game-genre').textContent = gameGenre;
         document.querySelector('.game-description').textContent = gameDescription;
-        document.querySelector('.playstore-link').href = gameLink;
+
+        var pButton = document.querySelector('.playstore-button');
+        if(gameLink != "")
+        {
+            pButton.href = gameLink;
+            pButton.style.opacity = '1';
+        } else{
+            pButton.style.opacity = '0';
+        }
+        
 
         document.querySelector('.game-details').style.display = 'block';
+
+        const gameDetails = document.querySelector('.game-details');
+        gameDetails.style.animation = 'none'; // Réinitialisation de l'animation
+        setTimeout(() => {
+            gameDetails.style.animation = 'fadeInUp 1s forwards';
+        }, 10);
     });
 });

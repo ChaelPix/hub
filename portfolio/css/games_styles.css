@@ -52,36 +52,54 @@
     align-items: center;
     justify-content: center;
     border-radius: 25%;
-    background-color: black;
-    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: rgba(0, 0, 0, 0);
+   
     color: transparent;
 }
 
-.games-grid button:hover {
+.games-grid img:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .games-grid img {
+    transform: scale(1.1);
 	width: 100%; 
     height: auto; 
     object-fit: cover; 
     cursor: pointer;
     border-radius: 25%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .game-details {
     display: none;
-    padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.1rem;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.5s;
 }
 
 .back-button {
     position: absolute;
     bottom: 20px;
     left: 20px;
+}
+
+.playstore-button {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #3cba54;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.playstore-button:hover {
+    background-color: #2b8a3e;
 }
 
 h1 {
@@ -122,5 +140,19 @@ h1 {
         margin-top: 20px; /* Espace entre la grille des boutons et le téléphone */
     }
 
-
+    .game-details {
+        order: 3;
+    }
 }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

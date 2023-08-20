@@ -39,3 +39,5 @@ document.querySelectorAll('.games-grid button').forEach(button => {
         clearTimeout(hoverTimeout);
     });
 });
+
+

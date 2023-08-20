@@ -5,7 +5,9 @@
     margin-top: 10vh;
     margin-bottom: -10px;
 }
-
+html{
+    overflow-x: hidden;
+    }
 .phone {
     position: relative;
     width: 20%; 
@@ -81,6 +83,7 @@
     font-size: 1.1rem;
     opacity: 0;
     animation: fadeInUp 1s forwards 0.5s;
+    margin-bottom: -100px;
 }
 
 .back-button {
@@ -103,6 +106,8 @@ hr {
     background-color: #000;
     margin-bottom: 20px;
     margin: 20px auto;
+    display: block;
+
 }
 .link-button {
     position: relative; 
@@ -112,7 +117,7 @@ hr {
 
 .link-button img {
     height: 50px;
-    width: 50px;
+    aspect-ratio: 1 / 1;
     object-fit: cover; 
     cursor: pointer;
     padding: 10px;
@@ -133,6 +138,7 @@ hr {
 .home-button button{
     transition: transform 0.3s; 
     border-radius: 50%;
+    aspect-ratio: 1 / 1;
     background-color: #007BFF; 
 }
 .home-button button:hover{
@@ -142,6 +148,7 @@ hr {
 .home-button img{
     height: 25px;
     width: 25px;
+    aspect-ratio: 1 / 1;
     object-fit: cover; 
     cursor: pointer;
     padding: 10px;
@@ -165,23 +172,24 @@ hr {
     .container {
         flex-direction: column; 
         align-items: center; 
+        margin-top: 1vh;
     }
 
-    body {
-        overflow-y: auto;
+    hr {
+        width: 80%;
     }
-    
+
     .games-details {
         order: 1;
     }
 
     .phone {
-        order: 2;
+        order: 3;
         margin-top: 20px;
     }
 
     .game-details {
-        order: 3;
+        order: 2;
     }
 
     .games-grid img {

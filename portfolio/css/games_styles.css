@@ -35,13 +35,13 @@
 /*--------------*/
 
 .games-details {
-    width: calc(80% - 20% - 8vh); /* Espace restant - largeur du téléphone - marge du téléphone */
+    width: calc(80% - 20% - 8vh); 
     transform: translateX(-150px);
 }
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Crée 6 colonnes de taille égale */
+    grid-template-columns: repeat(7, 1fr); 
     gap: 10px;
     margin-bottom: 50px;
 }
@@ -96,6 +96,14 @@ h1 {
     text-align: center;
 }
 
+hr {
+    border: 1;
+    height: 2px;
+	width: 500px;
+    background-color: #000;
+    margin-bottom: 20px;
+    margin: 20px auto;
+}
 .link-button {
     position: relative; 
     text-align: center;
@@ -140,34 +148,36 @@ h1 {
 }
 
 
-/* Media Query pour les écrans de taille moyenne (tablette) */
 @media (max-width: 1200px) {
     .games-details {
         width: 100%;
         transform: none;
-        padding: 0 10px; /* Ajout d'un peu d'espace sur les côtés */
+        padding: 0 10px; 
     }
 
     .phone {
-        margin: 20px auto; /* Centrer le téléphone horizontalement */
-        width: 60%; /* Ajuster la taille du téléphone */
+        margin: 20px auto; 
+        width: 60%; 
     }
 }
 
-/* Media Query pour les écrans mobiles */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Les éléments sont empilés verticalement */
-        align-items: center; /* Centrer les éléments horizontalement */
+        flex-direction: column; 
+        align-items: center; 
     }
 
+    body {
+        overflow-y: auto;
+    }
+    
     .games-details {
-        order: 1; /* La grille des boutons vient en premier */
+        order: 1;
     }
 
     .phone {
-        order: 2; /* Le téléphone vient ensuite */
-        margin-top: 20px; /* Espace entre la grille des boutons et le téléphone */
+        order: 2;
+        margin-top: 20px;
     }
 
     .game-details {

@@ -37,9 +37,10 @@ document.querySelectorAll('.buttons button').forEach(button => {
       triangleTop.style.animationDuration = "1.5s";
       triangleBottom.style.animationDuration = "1.5s";
 
+      const delayTransition = window.innerWidth > 768 ? 500 : 1250;
       setTimeout(() => {
           window.location.href = button.getAttribute('data-href');
-      }, 500);
+      }, delayTransition);
   });
 });
 

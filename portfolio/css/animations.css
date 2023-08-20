@@ -33,6 +33,9 @@ body, html {
 }
 
 @keyframes slideTop {
+    from {
+        border-width: 100vw 100vw 0 0;
+    }
     to {
         border-width: 5vw 100vw 0 0;
     }
@@ -47,6 +50,9 @@ body, html {
 }
 
 @keyframes slideBottom {
+    from {
+        border-width: 0 0 100vw 100vw;
+    }
     to {
         border-width: 0 0 5vw 100vw;
     }
@@ -63,12 +69,18 @@ body, html {
 /*----Mobile----*/
 @media (max-width: 768px) {
     @keyframes slideTop {
+        from {
+            border-width: 100vw 100vw 0 0;
+        }
         to {
             border-width: 10vw 100vw 0 0; 
         }
     }
 
     @keyframes slideBottom {
+        from {
+            border-width: 0 0 100vw 100vw;
+        }
         to {
             border-width: 0 0 10vw 100vw; 
         }

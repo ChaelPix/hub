@@ -34,10 +34,10 @@ document.querySelectorAll('.buttons button').forEach(button => {
 
       triangleBottom.style.animationName = 'slideBottomClose';
       triangleTop.style.animationName = 'slideTopClose';
-      triangleTop.style.animationDuration = "1.5s";
-      triangleBottom.style.animationDuration = "1.5s";
+      triangleTop.style.animationDuration = "1s";
+      triangleBottom.style.animationDuration = "1s";
 
-      const delayTransition = window.innerWidth > 768 ? 500 : 1250;
+      const delayTransition = window.innerWidth > 768 ? 1000 : 1250;
       setTimeout(() => {
           window.location.href = button.getAttribute('data-href');
       }, delayTransition);

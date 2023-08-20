@@ -39,7 +39,7 @@ document.querySelectorAll('.buttons button').forEach(button => {
 
       setTimeout(() => {
           window.location.href = button.getAttribute('data-href');
-      }, 1500);
+      }, 500);
   });
 });
 

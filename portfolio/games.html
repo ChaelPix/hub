@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/games_styles.css">
+
     <link rel="stylesheet" href="css/animations.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,15 +20,20 @@
 </head>
 
 <body>
+    <div id="follower" class="follow-circle"></div>
+
 
     <div class="container">
-        <!-- Partie téléphone -->
+
+        <!-- Left Side -->
         <div class="phone">
+         
             <img src="img/phone.png" alt="Phone">
             <div class="game-display"></div>
+  
         </div>
-
-        <!-- Partie jeux et détails -->
+        
+        <!-- Right Side -->
         <div class="games-details">
             <h1>
                 <span>My</span>
@@ -35,60 +41,35 @@
                 <span>MVPs</span>
                 <span>:</span>
             </h1>
-            <!-- Grille des jeux -->
+            <!-- Games GRID -->
             <div class="games-grid">
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
+                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="" data-yt ="">
                     <img src="img/dc_icon.jpg" alt="Game 1 Logo">
                 </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="playstore-link-for-game1">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-                <button data-game="game1" data-img="img/dc_screen.jpg" data-title="Game 1" data-genre="Action/Idle" data-description="Description for Game 1" data-link="">
-                    <img src="img/dc_icon.jpg" alt="Game 1 Logo">
-                </button>
-
-                <!-- Ajoutez d'autres boutons pour d'autres jeux de la même manière -->
             </div>
 
-            <!-- Détails du jeu -->
+            <!-- Games Description -->
             <div class="game-details">
                 <h2 class="game-title"></h2>
-                <p class="game-genre"></p>
+                <i><p class="game-genre"></p></i>
                 <p class="game-description"></p>
-                <a href="#" class="playstore-button">Play on PlayStore</a>
+                <a href="#" target="blank" class="playstore-button link-button"><img src="img/playstore.png"></a>
+                <a href="#" target="blank" class="youtube-button link-button"><img src="img/youtube.png"></a>
+                
             </div>
         </div>
+        
     </div>
 
-    <!-- Bouton de retour à la page d'accueil -->
-    <a href="index.html" class="back-button">Retour à la page d'accueil</a>
-
+    <div class="buttons home-button">
+        <button data-href="index.html"><img src="img/icon_home_w.png"></button>
+    </div>
 
     <div class="triangle triangle-top"></div>
     <div class="triangle triangle-bottom"></div>
 
     <script src="js/utilities.js"></script>
+    <script src="js/follower.js"></script>
     <script src="js/games.js"></script>
     
 </body>

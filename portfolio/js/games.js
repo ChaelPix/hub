@@ -1,32 +1,41 @@
+const gameDisplay = document.querySelector('.game-display');
+const gameDetails = document.querySelector('.game-details');
+const playstoreButton = document.querySelector('.playstore-button');
+const youtubeButton = document.querySelector('.youtube-button');
+
 document.querySelectorAll('.games-grid button').forEach(button => {
-    button.addEventListener('click', function() {
-        const gameImg = this.getAttribute('data-img');
-        const gameTitle = this.getAttribute('data-title');
-        const gameGenre = this.getAttribute('data-genre');
-        const gameDescription = this.getAttribute('data-description');
-        const gameLink = this.getAttribute('data-link');
+    let hoverTimeout;
 
-        document.querySelector('.game-display').style.backgroundImage = `url(${gameImg})`;
-        document.querySelector('.game-title').textContent = gameTitle;
-        document.querySelector('.game-genre').textContent = gameGenre;
-        document.querySelector('.game-description').textContent = gameDescription;
+    button.addEventListener('mouseover', function() {
+        clearTimeout(hoverTimeout); 
 
-        var pButton = document.querySelector('.playstore-button');
-        if(gameLink != "")
-        {
-            pButton.href = gameLink;
-            pButton.style.opacity = '1';
-        } else{
-            pButton.style.opacity = '0';
-        }
-        
+        hoverTimeout = setTimeout(() => {
+            gameDisplay.style.animation = 'none';
+            setTimeout(() => {
+                gameDisplay.style.animation = 'fillPhone .9s forwards';
+            }, 10);
 
-        document.querySelector('.game-details').style.display = 'block';
+            gameDisplay.style.backgroundImage = `url(${this.dataset.img})`;
+            gameDetails.querySelector('.game-title').textContent = this.dataset.title;
+            gameDetails.querySelector('.game-genre').textContent = this.dataset.genre;
+            gameDetails.querySelector('.game-description').textContent = this.dataset.description;
 
-        const gameDetails = document.querySelector('.game-details');
-        gameDetails.style.animation = 'none'; // Réinitialisation de l'animation
-        setTimeout(() => {
-            gameDetails.style.animation = 'fadeInUp 1s forwards';
-        }, 10);
+            playstoreButton.href = this.dataset.link || '#';
+            playstoreButton.style.opacity = this.dataset.link ? '1' : '0';
+
+            youtubeButton.href = this.dataset.yt || '#';
+            youtubeButton.style.opacity = this.dataset.yt ? '1' : '0';
+
+            gameDetails.style.animation = 'none';
+            setTimeout(() => {
+                gameDetails.style.animation = 'fadeInUp 1s forwards';
+            }, 125);
+
+            gameDetails.style.display = 'block';
+        }, 350);
+    });
+
+    button.addEventListener('mouseout', function() {
+        clearTimeout(hoverTimeout);
     });
 });

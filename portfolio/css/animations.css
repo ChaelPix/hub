@@ -13,12 +13,13 @@ body, html {
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
     z-index: 999;
+    pointer-events: none;
 }
 
 .triangle-top {
     top: 0;
     left: 0;
-    border-width: 100vh 100vw 0 0;
+    border-width: 100vw 100vw 0 0;
     border-color: rgb(14, 0, 63) transparent transparent transparent;
     animation-name: slideTop;
 }
@@ -26,7 +27,7 @@ body, html {
 .triangle-bottom {
     bottom: 0;
     left: 0;
-    border-width: 0 0 100vh 100vw;
+    border-width: 0 0 100vw 100vw;
     border-color: transparent transparent rgb(14, 0, 63) transparent;
     animation-name: slideBottom;
 }
@@ -41,7 +42,7 @@ body, html {
         border-width: 5vw 100vw 0 0;
     }
     to {
-        border-width: 100vh 100vw 0 0;
+        border-width: 100vw 100vw 0 0;
     }
 }
 
@@ -55,7 +56,7 @@ body, html {
         border-width: 0 0 5vw 100vw;
     }
     to {
-        border-width: 0 0 100vh 100vw;
+        border-width: 0 0 100vw 100vw;
     }
 }
 

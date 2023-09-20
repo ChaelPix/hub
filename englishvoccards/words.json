@@ -4,7 +4,11 @@
     "definition": "les loisirs"
   },
   {
-    "word": "a pastime /a hobby",
+    "word": "a hobby",
+    "definition": "un passe-temps"
+  },
+  {
+    "word": "a pastime",
     "definition": "un passe-temps"
   },
   {
@@ -13,7 +17,7 @@
   },
   {
     "word": "entertainment",
-    "definition": "les divertissements (TV, cinéma, etc)"
+    "definition": "les divertissements"
   },
   {
     "word": "to entertain friends",
@@ -21,14 +25,18 @@
   },
   {
     "word": "to enjoy oneself",
-    "definition": "se divertir, s'amuser"
+    "definition": "se divertir"
   },
   {
     "word": "to have a good time",
     "definition": "passer un bon moment"
   },
   {
-    "word": "spare time/free time",
+    "word": "spare time",
+    "definition": "le temps libre"
+  },
+  {
+    "word": "free time",
     "definition": "le temps libre"
   },
   {
@@ -40,7 +48,11 @@
     "definition": "avoir du temps devant soi"
   },
   {
-    "word": "recreation/relaxation",
+    "word": "recreation",
+    "definition": "la détente"
+  },
+  {
+    "word": "relaxation",
     "definition": "la détente"
   },
   {
@@ -57,26 +69,34 @@
   },
   {
     "word": "to take time out",
-    "definition": "prendre un congé, interrompre ses activités"
+    "definition": "prendre un congé"
   },
   {
     "word": "to take a break",
-    "definition": "faire une pause, se reposer un peu"
+    "definition": "faire une pause"
   },
   {
-    "word": "to be /to go on holiday (GB)/ to go on vacation (US)",
-    "definition": "être, partir en vacances"
+    "word": "to go on holiday (GB)",
+    "definition": "partir en vacances"
   },
   {
-    "word": "to holiday (GB)/to vacation (US)",
-    "definition": "être en vacances"
+    "word": "to go on vacation (US)",
+    "definition": "partir en vacances"
   },
   {
-    "word": "paid holiday/paid vacation",
+    "word": "paid holiday",
     "definition": "les congés payés"
   },
   {
-    "word": "to have/to take a holiday",
+    "word": "paid vacation",
+    "definition": "les congés payés"
+  },
+  {
+    "word": "to have a holiday",
+    "definition": "prendre des vacances"
+  },
+  {
+    "word": "to take a holiday",
     "definition": "prendre des vacances"
   },
   {
@@ -88,8 +108,12 @@
     "definition": "un jour férié"
   },
   {
-    "word": "the Christmas/Easter holidays",
-    "definition": "les vacances de Noël, de Pâques"
+    "word": "the Christmas holidays",
+    "definition": "les vacances de Noël"
+  },
+  {
+    "word": "Easter holidays",
+    "definition": "les vacances de Pâques"
   },
   {
     "word": "a holiday maker (GB)/a vacationer (US)",
@@ -97,7 +121,7 @@
   },
   {
     "word": "a holiday resort",
-    "definition": "un lieu de vacances, une villégiature"
+    "definition": "un lieu de vacances"
   },
   {
     "word": "a seaside resort",
@@ -105,7 +129,7 @@
   },
   {
     "word": "to sunbathe",
-    "definition": "prendre un bain de soleil, se dorer au soleil"
+    "definition": "prendre un bain de soleil"
   },
   {
     "word": "a winter resort",
@@ -117,7 +141,7 @@
   },
   {
     "word": "a camper",
-    "definition": "un campeur, faire du camping"
+    "definition": "un campeur"
   },
   {
     "word": "to go camping",
@@ -172,24 +196,32 @@
     "definition": "partir en voyage"
   },
   {
-    "word": "a business/school trip",
-    "definition": "un voyage d'affaires/scolaire"
+    "word": "a school trip",
+    "definition": "un voyage scolaire"
+  },
+  {
+    "word": "a business trip",
+    "definition": "un voyage d'affaires"
   },
   {
     "word": "the outward journey",
     "definition": "le voyage aller"
   },
   {
-    "word": "the return journey/the return trip",
+    "word": "the return journey",
+    "definition": "le voyage retour"
+  },
+  {
+    "word": "the return trip",
     "definition": "le voyage retour"
   },
   {
     "word": "a crossing",
-    "definition": "une traversée (maritime)"
+    "definition": "une traversée maritime"
   },
   {
     "word": "a flight",
-    "definition": "un voyage (en avion)"
+    "definition": "un voyage en avion"
   },
   {
     "word": "to be jet-lagged",
@@ -200,7 +232,11 @@
     "definition": "un voyage, un périple"
   },
   {
-    "word": "a world tour/a round-the-world trip",
+    "word": "a world tour",
+    "definition": "un tour du monde"
+  },
+  {
+    "word": "a round-the-world trip",
     "definition": "un tour du monde"
   },
   {
@@ -216,7 +252,7 @@
     "definition": "faire une croisière"
   },
   {
-    "word": "a travel agency/a travel bureau",
+    "word": "a travel agency",
     "definition": "une agence de voyages"
   },
   {
@@ -232,7 +268,7 @@
     "definition": "réserver une place"
   },
   {
-    "word": "to hire/to rent a car",
+    "word": "to rent a car",
     "definition": "louer une voiture"
   },
   {
@@ -260,7 +296,7 @@
     "definition": "des bagages"
   },
   {
-    "word": "a case a suitcase",
+    "word": "a case, a suitcase",
     "definition": "une valise"
   },
   {
@@ -272,8 +308,8 @@
     "definition": "faire du tourisme"
   },
   {
-    "word": "a tourist centre/destination",
-    "definition": "un centre/destination touristique"
+    "word": "a tourist destination",
+    "definition": "une destination touristique"
   },
   {
     "word": "a tourist attraction",
@@ -294,7 +330,347 @@
   {
     "word": "to stay at /in a hotel",
     "definition": "séjourner dans un hôtel"
+  },
+  //--------------------------------------------------------------
+
+  {
+    "word": "les loisirs",
+    "definition": "leisure"
+  },
+  {
+    "word": "un passe-temps",
+    "definition": "a hobby"
+  },
+  {
+    "word": "un passe-temps",
+    "definition": "a pastime"
+  },
+  {
+    "word": "l'industrie des loisirs",
+    "definition": "the leisure industry"
+  },
+  {
+    "word": "les divertissements",
+    "definition": "entertainment"
+  },
+  {
+    "word": "recevoir des amis",
+    "definition": "to entertain friends"
+  },
+  {
+    "word": "se divertir",
+    "definition": "to enjoy oneself"
+  },
+  {
+    "word": "passer un bon moment",
+    "definition": "to have a good time"
+  },
+  {
+    "word": "le temps libre",
+    "definition": "spare time"
+  },
+  {
+    "word": "le temps libre",
+    "definition": "free time"
+  },
+  {
+    "word": "avoir du temps de libre",
+    "definition": "to have some time to spare"
+  },
+  {
+    "word": "avoir du temps devant soi",
+    "definition": "to have time on one's hands"
+  },
+  {
+    "word": "la détente",
+    "definition": "recreation"
+  },
+  {
+    "word": "la détente",
+    "definition": "relaxation"
+  },
+  {
+    "word": "se détendre",
+    "definition": "to relax"
+  },
+  {
+    "word": "ne pas s'énerver",
+    "definition": "to take it easy"
+  },
+  {
+    "word": "se la couler douce",
+    "definition": "to have a cushy time"
+  },
+  {
+    "word": "prendre un congé, interrompre ses activités",
+    "definition": "to take time out"
+  },
+  {
+    "word": "faire une pause, se reposer un peu",
+    "definition": "to take a break"
+  },
+  {
+    "word": "partir en vacances (GB)",
+    "definition": "to go on holiday"
+  },
+  {
+    "word": "partir en vacances (US)",
+    "definition": "to go on vacation"
+  },
+  {
+    "word": "les congés payés",
+    "definition": "paid holiday"
+  },
+  {
+    "word": "les congés payés",
+    "definition": "paid vacation"
+  },
+  {
+    "word": "prendre des vacances",
+    "definition": "to have a holiday"
+  },
+  {
+    "word": "prendre des vacances",
+    "definition": "to take a holiday"
+  },
+  {
+    "word": "pendant les vacances",
+    "definition": "during the holidays"
+  },
+  {
+    "word": "un jour férié",
+    "definition": "a bank holiday"
+  },
+  {
+    "word": "les vacances de Noël",
+    "definition": "Christmas holidays"
+  },
+  {
+    "word": "les vacances de Pâques",
+    "definition": "Easter holidays"
+  },
+  {
+    "word": "un vacancier (US)",
+    "definition": "a vacationer"
+  },
+  {
+    "word": "un lieu de vacances",
+    "definition": "a holiday resort"
+  },
+  {
+    "word": "une station balnéaire",
+    "definition": "a seaside resort"
+  },
+  {
+    "word": "prendre un bain de soleil",
+    "definition": "to sunbathe"
+  },
+  {
+    "word": "une station de sports d'hiver",
+    "definition": "a winter resort"
+  },
+  {
+    "word": "un camping (GB)",
+    "definition": "a campsite"
+  },
+  {
+    "word": "un campeur",
+    "definition": "a camper"
+  },
+  {
+    "word": "faire du camping",
+    "definition": "to go camping"
+  },
+  {
+    "word": "faire du camping sauvage",
+    "definition": "to camp rough"
+  },
+  {
+    "word": "dormir à la belle étoile",
+    "definition": "to sleep under the stars"
+  },
+  {
+    "word": "une caravane (GB)",
+    "definition": "a caravan"
+  },
+  {
+    "word": "une caravane (US)",
+    "definition": "a trailer"
+  },
+  {
+    "word": "un camping car",
+    "definition": "a motor home"
+  },
+  {
+    "word": "voyager",
+    "definition": "to travel"
+  },
+  {
+    "word": "voyager avec peu de bagages",
+    "definition": "to travel light"
+  },
+  {
+    "word": "un voyageur",
+    "definition": "a traveller"
+  },
+  {
+    "word": "un passager",
+    "definition": "a passenger"
+  },
+  {
+    "word": "un voyage",
+    "definition": "a journey"
+  },
+  {
+    "word": "partir en voyage",
+    "definition": "to go on a journey"
+  },
+  {
+    "word": "une excursion d'une journée",
+    "definition": "a day trip"
+  },
+  {
+    "word": "partir en voyage",
+    "definition": "to take a trip"
+  },
+  {
+    "word": "un voyage scolaire",
+    "definition": "a school trip"
+  },
+  {
+    "word": "un voyage d'affaires",
+    "definition": "a business trip"
+  },
+  {
+    "word": "le voyage aller",
+    "definition": "the outward journey"
+  },
+  {
+    "word": "le voyage retour",
+    "definition": "the return journey"
+  },
+  {
+    "word": "le voyage retour",
+    "definition": "the return trip"
+  },
+  {
+    "word": "une traversée maritime",
+    "definition": "a crossing"
+  },
+  {
+    "word": "un voyage en avion",
+    "definition": "a flight"
+  },
+  {
+    "word": "souffrir du décalage horaire",
+    "definition": "to be jet-lagged"
+  },
+  {
+    "word": "un voyage, un périple",
+    "definition": "a tour"
+  },
+  {
+    "word": "un tour du monde",
+    "definition": "a world tour"
+  },
+  {
+    "word": "un tour du monde",
+    "definition": "a round-the-world trip"
+  },
+  {
+    "word": "visiter un pays",
+    "definition": "to tour a country"
+  },
+  {
+    "word": "un voyage organisé",
+    "definition": "a package tour"
+  },
+  {
+    "word": "faire une croisière",
+    "definition": "to go on a cruise"
+  },
+  {
+    "word": "une agence de voyages",
+    "definition": "a travel agency"
+  },
+  {
+    "word": "un voyagiste",
+    "definition": "a tour operator"
+  },
+  {
+    "word": "une brochure",
+    "definition": "a brochure"
+  },
+  {
+    "word": "réserver une place",
+    "definition": "to book a seat"
+  },
+  {
+    "word": "louer une voiture",
+    "definition": "to rent a car"
+  },
+  {
+    "word": "avoir le mal des transports",
+    "definition": "to be travel-sick"
+  },
+  {
+    "word": "avoir le mal de mer",
+    "definition": "to be seasick"
+  },
+  {
+    "word": "faire de l'auto-stop",
+    "definition": "to hitchhike"
+  },
+  {
+    "word": "un passeport",
+    "definition": "a passport"
+  },
+  {
+    "word": "une carte d'identité",
+    "definition": "an identity card"
+  },
+  {
+    "word": "des bagages (GB)",
+    "definition": "luggage / baggage (US)"
+  },
+  {
+    "word": "des bagages (US)",
+    "definition": "baggage"
+  },
+  {
+    "word": "une valise",
+    "definition": "a case a suitcase"
+  },
+  {
+    "word": "faire ses valises",
+    "definition": "to pack up"
+  },
+  {
+    "word": "faire du tourisme",
+    "definition": "to go sightseeing"
+  },
+  {
+    "word": "une destination touristique",
+    "definition": "a tourist destination"
+  },
+  {
+    "word": "un site touristique",
+    "definition": "a tourist attraction"
+  },
+  {
+    "word": "l'industrie du tourisme",
+    "definition": "the tourist industry"
+  },
+  {
+    "word": "le syndicat d'initiative",
+    "definition": "the tourist office"
+  },
+  {
+    "word": "un panier repas",
+    "definition": "a packed lunch"
+  },
+  {
+    "word": "séjourner dans un hôtel",
+    "definition": "to stay at a hotel"
   }
-
-
-]
+] 

@@ -242,7 +242,7 @@ const irregularVerbs = [
             resetTable();
             document.getElementById("score").textContent = "";
             document.getElementById("actionButton").textContent = "Valider";
-            document.getElementById("actionButton").textContent = window.location.reload();
+            //document.getElementById("actionButton").textContent = window.location.reload();
             isValidation = false;
         } else {
             validate();

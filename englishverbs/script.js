@@ -250,7 +250,4 @@ const irregularVerbs = [
     });
     
     fillTable();
-
-   
-        }
-        frameLooper();
+    frameLooper();

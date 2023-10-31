@@ -151,6 +151,28 @@ function validate() {
     const actionButton = document.getElementById("actionButton");
     actionButton.textContent = "Recommencer";
     isValidation = true;
+
+    correctCount = (correctCount / 30 * 20);
+
+    const correctCountSpan = document.createElement("span");
+    correctCountSpan.style.color = "red";
+
+    if (correctCount % 1 === 0) {
+        correctCountSpan.textContent = correctCount.toFixed(0);
+    } else {
+        correctCountSpan.textContent = correctCount.toFixed(1);
+    }
+
+    const outOfSpan = document.createElement("span");
+    outOfSpan.textContent = "/20.";
+    outOfSpan.style.color = "red";
+
+    scoreDisplay.textContent = "Vous avez reçu la note de ";
+    scoreDisplay.appendChild(correctCountSpan);
+    scoreDisplay.appendChild(outOfSpan);
+
+    actionButton.textContent = "Recommencer";
+    isValidation = true;
 }
 
 document.getElementById("actionButton").addEventListener("click", () => {

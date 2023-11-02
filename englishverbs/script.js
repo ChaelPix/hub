@@ -1,6 +1,6 @@
 const irregularVerbs = [
     ["be", "was/were", "been", "être"],
-    ["bear", "bore", "born(e)", "porter"],
+    ["bear", "bore", "born", "porter"],
     ["beat", "beat", "beaten", "battre"],
     ["become", "became", "become", "devenir"],
     ["begin", "began", "begun", "commencer"],

@@ -11,13 +11,9 @@ jobs:
     permissions:
       contents: read
       pages: write
-
+      id-token: write
     steps:
       - uses: actions/checkout@v4
-
-      # Pas besoin de setup Python ou d'installer des dépendances puisque nous ne faisons pas de build
-
-      # Copier le contenu de /pixx_doc/html vers un dossier 'public' si nécessaire ou ajuster le chemin ci-dessous si différent
       - name: Prepare docs
         run: |
           mkdir -p public

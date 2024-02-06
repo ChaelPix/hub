@@ -85,6 +85,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          target_branch: 'main' 
           keep_files: true 
-          single_commit: true 

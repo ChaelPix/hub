@@ -1,13 +1,12 @@
 ====
 Pixx
 ====
-
-.. contents:: Sommaire
-    :depth: 4
-
 .. danger::
 
     En cours de construction
+
+.. contents:: Sommaire
+    :depth: 4
 
 Environnement
 #############
@@ -32,6 +31,9 @@ pixx_drive
 
 pixx_odom
 *********
+
+pixx_nav2_config
+****************
 
 pixx_behavior_trees
 *******************

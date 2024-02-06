@@ -1,86 +1,29 @@
-# This is our worflow to build and deploy to GitHub Pages our Sphinx website
+name: Deploy existing Sphinx docs to GitHub Pages
 
-name: Build and deploy Sphinx docs website to GitHub Pages
-
-# Control when the workflow will run
 on:
-  # Run on push on main branch
   push:
     branches: [main]
-  
-  # Allow to also run it manually
   workflow_dispatch:
 
-# A workflow is made of different jobs that can be run sequentially or in parallel
-# A job is a set of actions (basically commands) following each other
-# We have two jobs: one that build and package the doc, and another that deploy our website to GitHub Pages
 jobs:
-
-  # Our only job to build and package the doc
-  build:
-
-    # The type of runner that the job will run on
-    # A runner is a OS that will run our commands
-    # It is typically a VM or a docker image
+  deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-
-      # Checks-out your repository, so your job can access it
       - uses: actions/checkout@v4
 
-      # Set up Python on our Ubuntu
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+      # Pas besoin de setup Python ou d'installer des dépendances puisque nous ne faisons pas de build
 
-      # Install Python libraries using a simple command
-      - name: Install Python dependencies (Sphinx, etc.)
+      # Copier le contenu de /pixx_doc/html vers un dossier 'public' si nécessaire ou ajuster le chemin ci-dessous si différent
+      - name: Prepare docs
         run: |
-          python3.10 -m pip install --upgrade pip
-          python3.10 -m pip install -r requirements.txt 
-
-      # Build Sphinx doc
-      - name: Build Sphinx doc
-        run: |
-          cd docs/
-          make clean html
-
-      # Package the doc and upload it as an artifact
-      # Artifact are output file of the job so that you can retrieve what has been done by your
-      # job. It will also be available on GitHub
-      # On the other job, we will use this package and deploy it to GitHub Pages
-      - name: Package doc
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: docs/build/html/
-
-  # Deploy the doc saved as an artifact to GitHub Pages
-  deploy:
-
-    # Tell Actions that 'build' job need to be run before
-    needs: build
-
-    # The following is from the repo of 'deploy-pages' action
-    # https://github.com/actions/deploy-pages
-
-   # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-    permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
-
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Specify runner
-    runs-on: ubuntu-latest
-
-    # Deployment step
-    steps:
+          mkdir -p public
+          cp -r pixx_doc/html/* public/
+          
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
+        with:
+          path: public

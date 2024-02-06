@@ -1,9 +1,0 @@
-============
-Organisation
-============
-
-.. toctree::
-   :maxdepth: 1
-
-   repos
-   github

@@ -1,9 +1,0 @@
-===
-ROS
-===
-
-.. toctree::
-   :maxdepth: 2
-
-   navigation
-   behavior_tree

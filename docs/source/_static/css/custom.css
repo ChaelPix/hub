@@ -6,3 +6,6 @@
 .wy-table-responsive table td, .wy-table-responsive table th {
     white-space: inherit;
 }
+.wy-side-nav-search, .wy-nav-top {
+    background: #ee9003;
+}

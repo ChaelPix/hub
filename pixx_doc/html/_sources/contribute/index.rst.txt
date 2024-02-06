@@ -1,0 +1,23 @@
+==========
+Contribuer
+==========
+
+Vous trouverez ici une aide sur comment contribuer à cette documentation avec des explications sur
+le fonctionnement du site, son architecture et les technologies utilisées.
+
+Sur la page :doc:`/contribute/website`, vous trouverez des explications sur :
+
+- la technologie utilisée
+- comment la build en local
+- le déploiement sur GitHub
+- son architecture
+- comment contribuer
+
+Sur la page :doc:`/contribute/rest`, vous trouverez des informations utiles sur le
+``reStructuredText``, le langage utilisé pour écrire le code source de ce site.
+
+.. toctree::
+   :maxdepth: 1
+
+   website
+   rest

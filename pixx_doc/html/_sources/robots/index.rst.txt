@@ -1,0 +1,12 @@
+======
+Robots
+======
+
+Ici vous pouvez retrouver des explications sur l'ensemble des robots différents que l'on a
+développé.
+
+.. toctree::
+   :maxdepth: 1
+
+   flo
+   pixx

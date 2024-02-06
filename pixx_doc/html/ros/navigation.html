@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation &mdash; Documentation WSFR Mobile Robotic Team </title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=bd5b14eb" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d1a510d7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=d99ca74e"></script>
+        <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Behavior Tree" href="behavior_tree.html" />
+    <link rel="prev" title="ROS" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            WSFR Mobile Robotic Team
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../orga/index.html">Organisation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ROS</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Navigation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concepts-generaux">Concepts généraux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#costmap">« Costmap »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inflation">Inflation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#planner">« Planner »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controller">« Controller »</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#concepts-navigation2">Concepts Navigation2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lifecyle-node">« Lifecyle Node »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lifecycle-manager">« Lifecycle Manager »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tfs">TFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server">« Server »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layers">« Layers »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#global-costmap">« Global Costmap »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#local-costmap">« Local Costmap »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#behavior-tree">« Behavior Tree »</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#amcl">AMCL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#nodes">Nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><em>amcl</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controller-server"><em>controller_server</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#planner-server"><em>planner_server</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gloabal-costmap"><em>gloabal_costmap</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="behavior_tree.html">Behavior Tree</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../robots/index.html">Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribuer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WSFR Mobile Robotic Team</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ROS</a></li>
+      <li class="breadcrumb-item active">Navigation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ros/navigation.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="navigation">
+<h1><a class="toc-backref" href="#id3" role="doc-backlink">Navigation</a><a class="headerlink" href="#navigation" title="Link to this heading"></a></h1>
+<p>La navigation est l’un des points les plus importants de la robotique mobile. Elle comprend de
+nombreux principes comme le calcul de trajectoire, le suivi de trajectoire, etc.</p>
+<p>Ici sera expliqué le projet de navigation sur ROS2, Navigation2, grâce à notre expérience dessus. Ce
+projet est un stack de navigation (i.e. un regroupement de packages / librairies) dont voici la
+<a class="reference external" href="https://navigation.ros.org/">documentation</a>.</p>
+<p>D’autres projets existent, comme par exemple MoveIt, mais nous n’avons pas encore d’expérience
+dessus. Vous pouvez retrouver plus d’informations ainsi que la documentation de ce projet
+<a class="reference external" href="https://moveit.ros.org/">ici</a>.</p>
+<nav class="contents" id="sommaire">
+<p class="topic-title">Sommaire</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#navigation" id="id3">Navigation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#concepts-generaux" id="id4">Concepts généraux</a></p>
+<ul>
+<li><p><a class="reference internal" href="#costmap" id="id5">« Costmap »</a></p></li>
+<li><p><a class="reference internal" href="#inflation" id="id6">Inflation</a></p></li>
+<li><p><a class="reference internal" href="#planner" id="id7">« Planner »</a></p></li>
+<li><p><a class="reference internal" href="#controller" id="id8">« Controller »</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#concepts-navigation2" id="id9">Concepts Navigation2</a></p>
+<ul>
+<li><p><a class="reference internal" href="#lifecyle-node" id="id10">« Lifecyle Node »</a></p>
+<ul>
+<li><p><a class="reference internal" href="#ros2-natif" id="id11">ROS2 natif</a></p></li>
+<li><p><a class="reference internal" href="#navigation2" id="id12">Navigation2</a></p></li>
+<li><p><a class="reference internal" href="#exemple" id="id13">Exemple</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#lifecycle-manager" id="id14">« Lifecycle Manager »</a></p></li>
+<li><p><a class="reference internal" href="#tfs" id="id15">TFs</a></p></li>
+<li><p><a class="reference internal" href="#server" id="id16">« Server »</a></p></li>
+<li><p><a class="reference internal" href="#layers" id="id17">« Layers »</a></p></li>
+<li><p><a class="reference internal" href="#global-costmap" id="id18">« Global Costmap »</a></p></li>
+<li><p><a class="reference internal" href="#local-costmap" id="id19">« Local Costmap »</a></p></li>
+<li><p><a class="reference internal" href="#behavior-tree" id="id20">« Behavior Tree »</a></p></li>
+<li><p><a class="reference internal" href="#amcl" id="id21">AMCL</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#nodes" id="id22">Nodes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id23"><em>amcl</em></a></p></li>
+<li><p><a class="reference internal" href="#controller-server" id="id24"><em>controller_server</em></a></p>
+<ul>
+<li><p><a class="reference internal" href="#parametres" id="id25">Paramètres</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#planner-server" id="id26"><em>planner_server</em></a></p>
+<ul>
+<li><p><a class="reference internal" href="#id2" id="id27">Paramètres</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#gloabal-costmap" id="id28"><em>gloabal_costmap</em></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="concepts-generaux">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Concepts généraux</a><a class="headerlink" href="#concepts-generaux" title="Link to this heading"></a></h2>
+<p>Navigation2 repose sur plusieurs concepts, qui ne sont pas forcément propres à ce projet mais
+communs à d’autres projets de navigation.</p>
+<section id="costmap">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">« Costmap »</a><a class="headerlink" href="#costmap" title="Link to this heading"></a></h3>
+<p>Une map est souvent initialement une image en 2D. Pour les algorithmes ayant besoin d’une map pour
+travailler, il faut à partir de cette map créer une représentation qui peut être dynamique et
+évoluer en fonction de l’environnement du robot.</p>
+<p>Ainsi, les maps sont représentées par des costmaps, c’est-à-dire des « maps de coût ». Cela permet de
+connaître et représenter des informations présentes dans l’environnement du robot.</p>
+<p>Premièrement, une map est discrétisée en cellules à une certaine échelle. Par exemple, pour une map
+qui fait 2m x 2m, une discrétisation à une échelle de 1mm créera une costmap de 2000 * 2000
+cellules. Ensuite, chaque cellule possède une valeur qui représente la dangerosité d’avoir un robot
+placé dans cette cellule. Par exemple, dans Navigation2, une cellule peut avoir une valeur de 0 à
+255, 0 étant un endroit libre, 255 étant une cellule léthale, c’est-à-dire que le robot ne peut pas
+être placé dans cet endroit (par exemple un mur). Les cellules peuvent avoir toutes les valeurs
+possibles entre 0 et 255.</p>
+<p>AJOUTER IMAGE</p>
+</section>
+<section id="inflation">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Inflation</a><a class="headerlink" href="#inflation" title="Link to this heading"></a></h3>
+<p>L’inflation est un concept totalement lié aux costmaps. C’est le fait qu’une cellule considérée
+comme occupée (i.e. léthale : mur, obstacle, etc.) impacte, en augmantant, le coût des cellules
+voisines. Cela permet de représenter qu’il est possible au robot d’être proche d’un mur mais que
+cela a un coût fort et donc une certaine dangerosité.</p>
+<p>L’impact qu’a une cellule léthale sur ses voisines peut-être définie de plein de façons
+différentes : décroissance linéaire, exponentielle décroissante, etc.</p>
+<p>AJOUTER IMAGE</p>
+</section>
+<section id="planner">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">« Planner »</a><a class="headerlink" href="#planner" title="Link to this heading"></a></h3>
+<p>Un « planner » (planificateur en français) est un algorithme de planification de chemin. Il prend un
+point de départ et un point d’arrivée et trouve un chemin entre les deux. Il existe de nombreux
+algorithmes différents pour correspondre à tous types de robots mais aussi de comportements : robot
+ackermann (i.e. voiture), robot holonomique (peut tourner sur lui-même), capacité de reculer,
+caractéristiques des courbes, etc.</p>
+<p>Pour choisir le chemin, un planner utilise des costmaps : en effet, le planner va utiliser le coût
+des cellules pour savoir où il peut passer, les zones à éviter, les passages à favoriser, etc.</p>
+<p>AJOUTER IMAGE</p>
+</section>
+<section id="controller">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">« Controller »</a><a class="headerlink" href="#controller" title="Link to this heading"></a></h3>
+<p>Un controller (contrôleur en français) est un algorithme de suivi de chemin. Il prend en entrée un
+chemin à suivre (produit par un planner) et génère des commandes de vélocité que le robot va suivre.
+Il existe de nombreux algorithmes différents qui sont paramètrables mais implémentent des
+comportments très différents les uns des autres pour s’adpater aux capacités physiques des robots (
+ackermann, holonomique).</p>
+</section>
+</section>
+<section id="concepts-navigation2">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Concepts Navigation2</a><a class="headerlink" href="#concepts-navigation2" title="Link to this heading"></a></h2>
+<p>Certains concepts sont propes au stack Navigation2 et utilisent les concepts généraux mentionnés
+ci-dessus.</p>
+<section id="lifecyle-node">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">« Lifecyle Node »</a><a class="headerlink" href="#lifecyle-node" title="Link to this heading"></a></h3>
+<section id="ros2-natif">
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">ROS2 natif</a><a class="headerlink" href="#ros2-natif" title="Link to this heading"></a></h4>
+<p>Les Lifecycle Nodes sont une fonctionnalité de ROS2. Ce sont des nodes classiques mais qui ont un
+état interne en plus afin de suivre où elles en sont dans leur éxécution. Les états possibles sont
+les suivants :</p>
+<ul class="simple">
+<li><p>Unconfigured : la node vient d’être créée.</p></li>
+<li><p>Inactive : la node est configurée (elle a récupéré ses paramètres, démarré ses subscribers et
+publishers, etc.), elle est prête à fonctionner correctement.</p></li>
+<li><p>Active : la node est en cours de fonctionnement (elle échange sur ses topics, etc.).</p></li>
+<li><p>Finalized : la node a fini de fonctionner, elle a subi une erreur ou il lui a été indiquée de
+s’arrêter.</p></li>
+</ul>
+<p>Des transitions existent entre tous ces états et il est possible d’implémenter des méthodes dans la
+node qui seront éxécutées lors de la transition pour faire ce que votre node a à faire avant
+d’arriver dans un état.</p>
+<p>L’intérêt de ces nodes est d’avoir un bien plus grand contrôle sur ce qu’elles font. Les différentes
+phases de transition permettent d’isoler du code et de contrôler son éxecution. Les états offrent un
+plus grand contrôle sur ce qu’il se passe et ce qu’il s’est passé dans la node (erreur par exemple).</p>
+</section>
+<section id="navigation2">
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Navigation2</a><a class="headerlink" href="#navigation2" title="Link to this heading"></a></h4>
+<p>Le stack Navigation2 implémente une extension des lifefycle nodes qui simplifie leur utilisation
+mais ne rajoute pas spécialement de réelle fonctionnalités.</p>
+</section>
+<section id="exemple">
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Exemple</a><a class="headerlink" href="#exemple" title="Link to this heading"></a></h4>
+<p>Voici un exemple de méthode implémentée dans la node qui est éxécutée lors d’une transition :</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Méthode éxécutée lorsque que la node va se configurer (passe de l&#39;état Unconfigured à Inactive)</span>
+<span class="n">nav2_util</span><span class="o">::</span><span class="n">CallbackReturn</span><span class="w"> </span><span class="nf">MyNodeClass::on_configure</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">rclcpp_lifecycle</span><span class="o">::</span><span class="n">State</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="cm">/*state*/</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Pour que la node soit considérée comme Inactive (c&#39;est-à-dire configurée et prête à être</span>
+<span class="w">    </span><span class="c1">// utilisé) on démarre nos publishers et subscribers</span>
+<span class="w">    </span><span class="n">my_pub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Float32</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;my_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">my_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Int32</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;my_other_topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyNodeClass</span><span class="o">::</span><span class="n">call_back</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="lifecycle-manager">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">« Lifecycle Manager »</a><a class="headerlink" href="#lifecycle-manager" title="Link to this heading"></a></h3>
+<p>Node implémenté par le stack Navigation2. Elle prend en configuration des noms de lyfecycle nodes et
+peut les faire transitionner et connaître leur état.</p>
+</section>
+<section id="tfs">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">TFs</a><a class="headerlink" href="#tfs" title="Link to this heading"></a></h3>
+<p>Dans le stack Navigation2 (et plus généralement dans ROS, voir le
+<a class="reference external" href="https://www.ros.org/reps/rep-0105.html">REP-105</a>), il y a une convention pour le nom des frames
+et leur lien. Par convention la frame originelle se nomme <em>map</em> et est l’origine de la map de la
+navigation.</p>
+<p>Ensuite, il existe une première tf entre <em>map</em> et la frame <em>odom</em>. Cette frame est l’origine du
+robot et c’est par rapport à celle-ci que le robot se déplace.</p>
+<p>Il existe ensuite une tf entre <em>odom</em> et <em>base_link</em> qui représente très souvent la valeur de
+l’odométrie du robot. C’est dans la frame <em>base_link</em> que tous les élements du robot sont définis.
+Cela peut-être les élements fixes (capteurs, etc.) ou bien les élements mobiles (roues).</p>
+<p>Il existe aussi une tf entre <em>base_link</em> et <em>base_footprint</em>. Cette frame est la projection de
+<em>base_link</em> sur le sol. Elle n’est pas forcément nécessaire pour le stack Navigation2.</p>
+<p>AJOUTER IMAGE</p>
+</section>
+<section id="server">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">« Server »</a><a class="headerlink" href="#server" title="Link to this heading"></a></h3>
+<p>Dans le stack Navigation2, certaines nodes sont qualifiées de « servers ». (<cite>controller_server</cite>,
+<cite>planner_server</cite>, etc). La notion peut sembler peu claire au premier abord. Le terme « server » est
+ici employé au sens des serveurs d’action ROS. C’est donc une node qui implémente le code qui sera
+exécuté lors de l’appel d’une action.</p>
+<p>Dans le stack, chaque node considérée comme un serveur englobe une système (le controller pour le
+<cite>controller_server</cite> par exemple) et implémente des actions pour que le reste du stack puisse
+utiliser son système. Le système englobé par chaque node est configurable (controller configurable
+pour le <cite>controller_server</cite>, planner configurable pour le <cite>planner_server</cite>, etc.). Elle permet ainsi
+d’asbtraire le système pour le reste du stack et le stack pour le système. Par exemple, le
+controller peut être changé dans la config, le <cite>controller_server</cite> charge dynamiquement le
+controller au lancement mais pour le reste du stack, rien n’a changé : les actions implémentées par
+le <cite>controller_server</cite> sont toujours présentes et c’est ce dernier qui se charge de rediriger
+l’appel des actions vers le controller.</p>
+<p>En plus du système principale qui est configurable, un serveur est généralement configurable par des
+plugins prévus par Navigation2 qui permettent de lui rajouter des fonctionnalités.</p>
+<p>Les différents serveurs existants dans le stack sont :</p>
+<ul class="simple">
+<li><p><cite>controller_server</cite> : implémente les controllers</p></li>
+<li><p><cite>planner_server</cite> : implémente les planners</p></li>
+<li><p><cite>map_server</cite> : charge et enregistre les maps</p></li>
+<li><p><cite>behavior_server</cite> (anciennement recoveries_server): implémente des « behaviors » (actions pour les
+recoveries et autre)</p></li>
+<li><p><cite>smoother_server</cite> : implémente des smoothers pour lisser les chemins générés par le planner</p></li>
+</ul>
+</section>
+<section id="layers">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">« Layers »</a><a class="headerlink" href="#layers" title="Link to this heading"></a></h3>
+<p>Dans le Navigation2, les layers sont des plugins qui se rajoutent sur une costmap et permettent de
+prendre en compte de nouveaux éléments pour mettre à jour les coûts dans la costmap. Par exemple,
+pour prendre en compte l’inflation des obstacles et mur sur une costmap, il faut que le plugin
+<cite>inflation_layer</cite> soit présent. Il existe de nombreuses sources qui peuvent affecter les costmaps,
+il y a donc tout autant de layers et donc de plugins :</p>
+<ul class="simple">
+<li><p><cite>voxel_layer</cite> : Crée une costmap 3D (voxel) à partir d’informations de profondeurs et de scans
+laser</p></li>
+<li><p><cite>range_layer</cite> : Crée des obstacles à partir de mesure de distance (capteurs ultrason, infrarouge)</p></li>
+<li><p><cite>static_layer</cite> : Charge une map</p></li>
+<li><p><cite>inflation_layer</cite> : Crée une zone autour des obstacles de la map</p></li>
+<li><p><cite>obstacle_layer</cite> : Crée des obstacles à partir d’un scan laser</p></li>
+<li><p><cite>spatio_temporal_voxel_layer</cite> : Crée une costmap 3D (voxel) à partir de scans laser, les voxels
+disparaissent à partir de paramètres temporels et spatiaux</p></li>
+<li><p><cite>non_persisten_voxel_layer</cite> : Crée une costmap 3D (voxel) non-persistente (qui se reset à chaque
+scan) à partir de scans laser</p></li>
+<li><p><cite>denoise_layer</cite> : Filtre les obstacles isolés ou les petits groupes d’obstacles induits par le
+bruit</p></li>
+</ul>
+</section>
+<section id="global-costmap">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">« Global Costmap »</a><a class="headerlink" href="#global-costmap" title="Link to this heading"></a></h3>
+<p>La global costmap est un concept très important de Navigation2. C’est une costamp de la map entière
+qui est utilisée par le <strong>planner</strong> pour générer un chemin. Comme expliqué juste au-dessus, elle
+peut avoir différents layers.</p>
+<p>Elle possède une frame en tant que repère, on prend donc classiquement la frame <em>map</em>.</p>
+</section>
+<section id="local-costmap">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">« Local Costmap »</a><a class="headerlink" href="#local-costmap" title="Link to this heading"></a></h3>
+<p>La local costmap est un concept aussi très important de Navigation2. C’est la costmap utilisée par
+le <strong>controller</strong> pour déplacer le robot, elle est donc relative au robot et se place classiquement
+dans la frame <em>odom</em>. Elle est plus petite que la frame et est donc glissante dans la global
+costmap.</p>
+</section>
+<section id="behavior-tree">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">« Behavior Tree »</a><a class="headerlink" href="#behavior-tree" title="Link to this heading"></a></h3>
+<p>Vous pouvez avoir plus d’information sur le principe de Behavior Tree sur cette page de la
+<a class="reference internal" href="behavior_tree.html"><span class="doc">documentation</span></a>.</p>
+<p>Le stack Navigation2 implémente la librarie <a class="reference external" href="https://www.behaviortree.dev/">BehaviorTree.CPP</a>
+pour ROS2. Cette implémentation permet d’intégrer des actions et services ROS2 dans les behavior
+trees. De plus, l’implémentation ajoute des nodes (de behavior trees, pas de ROS) utiles à la
+navigation.</p>
+<p>De plus, le stack implémente une node <cite>BT Navigator</cite> qui possède deux actions, <cite>NavigateToPose</cite>
+and <cite>NavigateThroughPoses</cite>. Ces actions, lorsqu’elles sont appelées, utilisent un behavior tree
+chargé par <cite>BT Navigator</cite> pour implémenter le comportement voulu.</p>
+</section>
+<section id="amcl">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">AMCL</a><a class="headerlink" href="#amcl" title="Link to this heading"></a></h3>
+<p>Le stack implémente un algorithme de localisation utilisant un LiDAR : AMCL (Adaptive Monte Carlo
+Localization). C’est un algorithme probabiliste de localisation utilisant un système de filtre à
+particules qui va converger vers la position du robot. Il utilise au moins un laser scan et peut
+aussi prendre en compte l’odométrie pour avoir un résultat encore plus précis. Il est hautement
+configurable.</p>
+</section>
+</section>
+<section id="nodes">
+<h2><a class="toc-backref" href="#id22" role="doc-backlink">Nodes</a><a class="headerlink" href="#nodes" title="Link to this heading"></a></h2>
+<p>Avec tous les concepts évoqués précédemment, le stack implémente de nombreuses nodes pour son
+fonctionnement global.</p>
+<p>Dans le package <cite>nav2_bringup</cite>, un launch file nommé <cite>bringup_launch.py</cite> permet de lancer
+l’entièreté du stack. Ce launch est décomposé en 3 autres launchs</p>
+<p>Voici la liste des nodes qui constitue le stack :</p>
+<section id="id1">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink"><em>amcl</em></a><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Une node amcl est disponible de base et implémente l’algorithme d’AMCL. N’ayant pas de LiDAR pour
+les internationales 2022, nous n’avons que très peu expérimenté avec cette node.</p>
+</section>
+<section id="controller-server">
+<h3><a class="toc-backref" href="#id24" role="doc-backlink"><em>controller_server</em></a><a class="headerlink" href="#controller-server" title="Link to this heading"></a></h3>
+<p>Le controller_server est, comme évoqué précédemment, la node qui implémente l’algorithme de
+controller. Elle implémente en plus, deux fonctionnalités : une pour connaître la progression du
+robot et une autre pour vérifier si l’objectif est atteint.</p>
+<p>Vous pouvez trouver plus d’infos sur cette node et ses paramètres sur la pagé dédiée de la
+<a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-controller-server.html">documentation</a>.</p>
+<section id="parametres">
+<h4><a class="toc-backref" href="#id25" role="doc-backlink">Paramètres</a><a class="headerlink" href="#parametres" title="Link to this heading"></a></h4>
+<p>Voici des recommandations à propos de certains paramètres de cette node. La liste <strong>n’est pas
+exhaustive</strong>.</p>
+<dl class="simple">
+<dt><strong>use_sim_time</strong></dt><dd><p><em>True</em> pour utilisé un temps simulé (par Gazebo), <em>False</em> pour utiliser le temps réel.</p>
+</dd>
+<dt><strong>odom_topic</strong></dt><dd><p>Topic sur lequel récupérer la vitesse instantané du robot.</p>
+</dd>
+<dt><strong>controller_frequency</strong></dt><dd><p>Fréquence de calcul du controller, 20 est un peu lourd pour un Rasperry Pi avec l’ensemble du
+stack qui tourne, 10 est un peu plus approprié.</p>
+</dd>
+<dt><strong>min_x_velocity_threshold</strong></dt><dd><p>Valeur minimum de vitesse en x (avance du robot) afin que le controller la prenne en compte, une
+valeur en-dessous sera considérée comme 0.0. La valeur de base est de 0.0001 m/s, on l’avait
+mise à 0.001 m/s car c’était la résolution de la map.</p>
+</dd>
+<dt><strong>min_y_velocity_threshold</strong></dt><dd><p>Valeur minimum de vitesse en y afin que le controller la prenne en compte, une valeu en-dessous
+sera considérée comme 0.0. La valeur de base est de 0.0001 m/s, on l’avait mise à 0.001 m/s car
+c’était la résolution de la map. C’est un paramètre à définir absolument quand le robot est
+<strong>holonomique</strong>.</p>
+</dd>
+<dt><strong>min_theta_velocity_threshold</strong></dt><dd><p>Valeur minimum de vitesse de rotation afin que le controller la prenne en compte, une valeur
+en-dessous sera considérée comme 0.0.</p>
+</dd>
+<dt><strong>failure_tolerance</strong></dt><dd><p>Temps de calcul avant que l’action de calculer une commande de vélocité soit considérée en
+erreur. Le mettre à -1 définit le temps comme infini, le mettre à 0 le désactive (quelle est la
+différence entre les deux ?).</p>
+</dd>
+<dt><strong>progress_checker</strong></dt><dd><p>Plugin qui calcule la progression du robot vers son objectif. Les paramètres du plugin sont
+souvent des valeurs minimums afin de considérer que le robot est en progression vers son
+objectif. Ce progrès est potentiellement utilisé par certains controllers.</p>
+</dd>
+<dt><strong>general_goal_checker</strong></dt><dd><p>Plugin qui estime si le robot a atteint son objectif. Les paramètres du plugin sont généralement
+des intervalles (de distance et d’angle) : si la distance (position et angle) entre le robot et
+son objectif est dans cette intervalle, l’objectif est considéré comme atteint.</p>
+</dd>
+<dt><strong>controller_plugins</strong></dt><dd><p>Paramètre où tous les paramètres du controller sont définis (dont celui utilisé avec <em>plugin</em>),
+voir l’exemple en-dessous pour mieux comprendre. De base, le nom de ce paramètre est
+« FollowPath ».</p>
+</dd>
+</dl>
+<p>Voici un exemple de configuration (celle utilisée sur le robot Flo) :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">controller_server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">        </span><span class="nt">controller_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="w">        </span><span class="nt">min_x_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+<span class="w">        </span><span class="nt">min_y_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w"> </span><span class="c1"># Holonomic Parameter</span>
+<span class="w">        </span><span class="nt">min_theta_velocity_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+<span class="w">        </span><span class="c1"># Maximum time to allow to compute velocity command</span>
+<span class="w">        </span><span class="c1"># 0 to disable</span>
+<span class="w">        </span><span class="c1"># -1 to make it infinite (what&#39;s the difference with disabled?)</span>
+<span class="w">        </span><span class="nt">failure_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">        </span><span class="nt">progress_checker_plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;progress_checker&quot;</span>
+<span class="w">        </span><span class="nt">goal_checker_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;general_goal_checker&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">controller_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">odom_topic</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/odometry/filtered&quot;</span>
+
+<span class="w">        </span><span class="c1"># Progress checker parameters</span>
+<span class="w">        </span><span class="nt">progress_checker</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
+<span class="w">            </span><span class="nt">required_movement_radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+
+<span class="w">        </span><span class="c1"># Goal checker parameters</span>
+<span class="w">        </span><span class="nt">general_goal_checker</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">stateful</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">            </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
+<span class="w">            </span><span class="nt">xy_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="w">            </span><span class="nt">yaw_goal_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.03</span>
+
+<span class="w">        </span><span class="c1"># CustomRegulatedPurePursuitController, modified RegulatedPurePursuitController build by</span>
+<span class="w">        </span><span class="c1"># ourself, not native to nav2</span>
+<span class="w">        </span><span class="nt">FollowPath</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_regulated_pure_pursuit_controller::CustomRegulatedPurePursuitController&quot;</span>
+<span class="w">            </span><span class="nt">desired_linear_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.30</span>
+<span class="w">            </span><span class="nt">max_linear_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">            </span><span class="nt">lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.30</span>
+<span class="w">            </span><span class="nt">min_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.3</span>
+<span class="w">            </span><span class="nt">max_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.35</span>
+<span class="w">            </span><span class="nt">lookahead_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span>
+<span class="w">            </span><span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.55</span>
+<span class="w">            </span><span class="c1"># Higher values seem to limit the &quot;Control loop missed its desired rate&quot; for some reasons</span>
+<span class="w">            </span><span class="nt">transform_tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">            </span><span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">min_approach_linear_velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.15</span>
+<span class="w">            </span><span class="nt">use_approach_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">max_allowed_time_to_collision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">            </span><span class="c1">#max_allowed_time_to_collision_up_to_carrot: 1.0</span>
+<span class="w">            </span><span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="c1">#regulated_linear_scaling_min_radius: 0.6</span>
+<span class="w">            </span><span class="c1">#regulated_linear_scaling_min_speed: 0.05</span>
+<span class="w">            </span><span class="nt">use_rotate_to_heading</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">allow_reversing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">rotate_to_heading_min_angle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6</span>
+<span class="w">            </span><span class="nt">max_angular_accel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0</span>
+<span class="w">            </span><span class="c1">#max_robot_pose_search_dist: 10.0</span>
+<span class="w">            </span><span class="nt">use_interpolation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="planner-server">
+<h3><a class="toc-backref" href="#id26" role="doc-backlink"><em>planner_server</em></a><a class="headerlink" href="#planner-server" title="Link to this heading"></a></h3>
+<p>Le planner_server est la node qui implémente l’algorithme de planner.</p>
+<p>Vous pouvez trouver plus d’infos sur cette node et ses paramètres sur la pagé dédiée de la
+<a class="reference external" href="https://navigation.ros.org/configuration/packages/configuring-planner-server.html">documentation</a>.</p>
+<section id="id2">
+<h4><a class="toc-backref" href="#id27" role="doc-backlink">Paramètres</a><a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p>Voici des recommandations à propos de certains paramètres de cette node. La liste <strong>n’est pas
+exhaustive</strong>.</p>
+<dl class="simple">
+<dt><strong>use_sim_time</strong></dt><dd><p><em>True</em> pour utilisé un temps simulé (par Gazebo), <em>False</em> pour utiliser le temps réel.</p>
+</dd>
+<dt><strong>expected_planner_frequency</strong></dt><dd><p>Fréquence voulue du planner. C’est uniquement indicatif et ne provoquera qu’un log si la
+fréquence n’est pas suffisante.</p>
+</dd>
+<dt><strong>planner_plugins</strong></dt><dd><p>Paramètre où tous les paramètres du planner sont définis (dont celui utilisé avec <em>plugin</em>),
+voir l’exemple en-dessous pour mieux comprendre. De base, le nom de ce paramètre est
+« GridBased ».</p>
+</dd>
+</dl>
+<p>Voici un exemple de configuration (celle utilisée sur le robot Flo) :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">planner_server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ros__parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">expected_planner_frequency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w">  </span><span class="c1"># Does not have any impact, just log if planner is too slow</span>
+<span class="w">        </span><span class="nt">use_sim_time</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">        </span><span class="nt">planner_plugins</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">GridBased</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">plugin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nav2_navfn_planner/NavfnPlanner&quot;</span>
+<span class="w">            </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="w">            </span><span class="nt">use_astar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">            </span><span class="nt">allow_unknown</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="gloabal-costmap">
+<h3><a class="toc-backref" href="#id28" role="doc-backlink"><em>gloabal_costmap</em></a><a class="headerlink" href="#gloabal-costmap" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>always_send_full_costmap</strong></dt><dd><p><em>True</em> pour envoyer la costmap entière, <em>False</em> pour envoyer uniquement les modifications de la
+costmap. Mettre à <em>False</em> réduit probablement la consommation de ressources.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="index.html" class="btn btn-neutral float-left" title="ROS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="behavior_tree.html" class="btn btn-neutral float-right" title="Behavior Tree" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2023, Florent CHRETIEN, Mélanie LELAURE, Lucas SI LARBI, Antoine GROS.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

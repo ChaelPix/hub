@@ -1,0 +1,197 @@
+===
+Flo
+===
+
+"Flo" est le robot créé pour les internationales 2022 (Special Edition, Shanghai puis finalement
+Bordeaux). Il est nommé en l'honneur du notre cher expert international Florent (qui était expert
+national, européen et international à l'époque).
+
+.. contents:: Sommaire
+    :depth: 4
+
+Start Flo - Simulation odom parfaite
+####################################
+
+Introduction
+************
+
+Dans cette partie, nous allons vous expliquer comment démarrer une simulation pour Flo avec une
+odométrie parfaite.
+
+Pour cela, nous allons cloner et build tous les packets nécessaires et les démarrer.
+
+Avec cette simulation vous pouvez créer un environnement pour le Robot et vérifier que les
+algorithmes de décision fonctionnent au moins sur le principe.
+
+Cela permet de donner une bonne idee de la facon dont le robot est désigné.
+
+Cloner tous les repositories nécessaires
+****************************************
+
+Pour cela, voici la liste des repos et la branche à utiliser sous la forme d'un fichier ``.repos`` :
+
+.. code-block:: console
+
+    repositories:
+        flo_basic_localization:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_basic_localization.git
+            version: main
+        flo_behavior_tree:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_behavior_tree.git
+            version: feature/new_ideas
+        flo_bringup:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_bringup.git
+            version: feature/new_idea
+        flo_description:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_description.git
+            version: main
+        flo_drive:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_drive.git
+            version: cpp_version
+        flo_gripping_system:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_gripping_system.git
+            version: feature/new_idea
+        flo_local_controller:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_local_controller.git
+            version: main
+        flo_msgs:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_msgs.git
+            version: main
+        flo_tasks_manager:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_tasks_manager.git
+            version: feature/new_idea
+        flo_utils:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/flo_utils.git
+            version: main
+        floviz:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/floviz.git
+            version: main
+        maps:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/maps.git
+            version: main
+        navigation2:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/navigation2.git
+            version: galactic-humble-hybrid
+        ros_tutorials:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/ros_tutorials.git
+            version: galactic-devel
+        tasks_detection:
+            type: git
+            url: git@github.com:Worldskills-France-Mobile-Robotics/tasks_detection.git
+            version: feature/new_idea
+
+Pour cloner tous les repos d'un seul coup, je vous conseille la méthode suivante :
+
+.. code-block:: bash
+
+    mkdir -p ~/workspace/flo_ws/src
+    nano ~/workspace/flo_ws/flo_ws.humble.repos
+    # copier le contenu précedent dans le fichier et sauvegarder : ctrl-o enter ctrl-x
+    cd ~/workspace/flo_ws/
+    vcs-import --input flo_ws.humble.repos --recursive src  # Cela va cloner tous les repos, attention ca peut durer un moment
+    # Si la commande vcs-import n'est pas installée, vous pouvez l'installer via pip :
+    pip install vcstool
+    # Ne perdez pas patience pour le téléchargement des repos :)
+
+Installer les dépendances
+*************************
+
+Pour être sûr de notre coup, nous devons désinstaller certains packets :
+
+.. code-block:: bash
+
+    sudo apt remove ros-humble-slam-toolbox ros-humble-nav2-util ros-humble-turtlesim -y
+
+Soyez bien sûr d'être dans le dossier du workspace
+
+.. code-block:: bash
+
+    rosdep update
+    rosdep install -q -y --from-paths src --ignore-src
+
+Compiler le workspace
+*********************
+
+Soyez bien sûr d'être dans le dossier du workspace
+
+.. code-block:: bash
+
+    colcon build --symlink-install --packages-up-to flo_bringup
+
+    # cela compile 46 packages chez moi, du coup ca va durer quelques minutes
+
+Démarrer le tout
+****************
+
+Soyez bien sûr d'être dans le dossier du workspace
+
+Terminal 1
+==========
+
+Démarrer le launch du bringup
+
+.. code-block:: bash
+
+    . install/local_setup.bash
+    ros2 launch flo_bringup turtle_flo_launch.py layout:=src/flo_bringup/config/hospital_layout_C1_Hardcoded.yaml
+
+Terminal 2
+==========
+
+Démarrer Floviz
+
+.. code-block:: bash
+
+    . install/local_setup.bash
+    python3 src/floviz/floviz/interface.py
+
+Terminal 3
+==========
+
+Démarrer le robot
+
+.. code-block:: bash
+
+    . install/local_setup.bash
+    ros2 action send_goal /start_robot flo_msgs/action/StartRobot {}\ 
+
+Soyez sûr que l'action est correctement envoyée.
+
+Ca doit ressembler à ça :
+
+.. code-block:: bash
+
+    $ ros2 action send_goal /start_robot flo_msgs/action/StartRobot {}\ 
+    Waiting for an action server to become available...
+    Sending goal:
+        {}
+
+Cela ne doit pas ressembler à ça :
+
+.. code-block:: bash
+
+    $ ros2 action send_goal /start_robot flo_msgs/action/StartRobot {}\ 
+    >
+
+Dans ce cas, il vous manque un espace à la fin de la commande.
+
+Le robot devrait bouger :)
+
+Voici une vidéo du lancement de la simulation puis du démarrage du robot.
+
+.. video:: ../_static/videos/first_start_simulation.webm
+  :width: 695

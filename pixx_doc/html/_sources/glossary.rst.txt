@@ -1,0 +1,137 @@
+=========
+Glossaire
+=========
+
+Vous retrouverez ici un glossaire avec tout le vocabulaire de ROS, de la robotique et plus.
+
+.. glossary::
+    :sorted:
+
+    Ackermann
+        Géométrie de direction d'un robot à 4 roues : les 2 roues avant sont orientables
+        contrairement aux roues arrières. De plus, l'angle de braquage des roues est légèrement
+        différents, ce qui permet d'éviter le phénomène de glissement de la roue extérieure. C'est
+        le même mode de direcion qu'une voiture à la différence que l'angle de braquage est le même
+        sur une voiture et donc, que le phénomène de glissement est compensé par le différentiel.
+
+    AMCL
+        Adaptive Monte Carlo Localization. Algorithme probabiliste de localisation utilisant un
+        système de filtre à particules. Utilise au moins un laser scan et peut aussi prendre en
+        compte une odométrie.
+
+    *base_link*
+        Par convention, frame du robot dans laquelle sont définies tous les éléments du robot,
+        qu'ils soient fixes (capteurs) ou bien mobiles (roues).
+
+    *cmd_vel*
+        Par convention, nom d'un topic transmettant un message `geometry_msgs/Twist` (vecteur
+        vitesse et vecteur rotation) représentant les commandes de vélocité du robot produites par
+        un controlleur, à destination du driver qui les transforme en commande moteurs.
+
+    *Controller* / Controleur
+        Algorithme qui prend un chemin un suivre en entrée et génère des commandes de vélocité pour
+        respecter la trajectoire. Il existe de nombreux algorithmes ayant des comportements
+        différents.
+
+    Cross-compilation
+        La cross-compilation est le fait de compiler un SW sur une architecture a destination d'une autre architecture
+
+    Flo
+        Désigne à la fois notre cher expert international mais aussi le robot des internationales
+        2022 (Special Edition, Shanghai puis Bordeaux).
+
+    Holonome
+        Utilisé pour caractériser soit un robot qui peut se déplacer dans le plan et tourner sur
+        lui-même indépendamment des autres mouvements, soit une roue qui permet à un robot d'être
+        holonome.
+
+        AJOUTER IMAGE
+
+    Holonomique
+        Terme mathématique signifiant qu'un objet a autant de degrés de contrôle que de degrés de
+        liberté. Utilisé en robotique pour parler des robots qui ont des roues holonomes, ce qui
+        leurs permet de se déplacer dans le plan de manière libre ainsi que de tourner sur
+        eux-mêmes.
+
+    *laser scan*
+        Type de message ros généré par les LiDARs. Il représente les distances mesurés sur une
+        rotation de LiDAR.
+
+    *launch file*
+        Fichier qui automatise le lancement de nodes (et plus) en ROS. Fichier XML en ROS1, Python
+        en ROS2.
+
+    *map*
+        Par convention, la frame d'origine des tf, située à l'origine de la map.
+
+    Mecanum
+        Roue holonome mais dont les galets sont orientés à 45°. Elles sont généralement 4 sur un
+        robot.
+
+        AJOUTER IMAGE
+
+    *merge*
+        Se traduit par "fusionner" en français, fait très probablement référence au fait de
+        fusionner une branche avec une autre dans un :term:`repo` git.
+
+    Nav / Navigation
+        Evoque généralement le stack de navigation utilisé.
+
+    Node
+        Noeud en français. Base de ROS, entité qui peut échanger avec d'autres nodes.
+
+    *odom*
+        Raccourci pour dire "odométrie" ou bien, par convention la frame dans laquelle est définie
+        les déplacements du robot. C'est très souvent l'origine du robot et il existe souvent une tf
+        entre *base_link* et *odom* représentant la valeur de l'odométrie du robot. 
+
+    Omnidirectionnel
+        Equivalent à :term:`Holonome`.
+
+    *Planner* / Plannificateur
+        Algortihme qui prend un point de départ et un point d'arrivée sur une map donnée et génère
+        un chemin entre les deux. Il existe des algorithmes avec des comportements différents qui
+        permettent d'avoir des chemins s'adaptant aux possibilités physiques des robots (tourner sur
+        soi-même, reculer, etc.).
+
+    *Publisher*
+        Base de ROS, :term:`Node` qui publie sur un :term:`topic <Topic>`.
+
+    *Pull Request*
+        Demande de :term:`merge` d'une branche dans une autre sur GitHub. Appelée "Merge Request"
+        sur GitLab.
+
+    *PR*
+        Initiales de :term:`Pull Request`
+
+    *readme*
+        Par convention, un fichier qui accompagne un projet, un logiciel, une archive, etc. qui
+        donne des informations sur ce qu'il accompagne. Dans notre contexte, fait très probablement
+        référence au fichier *readme.md* qui se trouve très souvent à la racine d'un repo pour
+        expliquer son contenu, les instructions pour build, etc.
+
+    *repo*
+        Raccourci pour *repository*, se traduit par dépôt en français, est un endroit pour déposer
+        des ressources de toute sorte (code source, builds, librairies). Dans notre contexte,
+        fait très probablement référence à un repo sur GitHub, qui contient majoritairement du code
+        source.
+
+    *RPi*
+        Raspberry Pi n'est rien d'autre qu'un ordinateur réduit à sa plus simple expression : une unique carte à processeur ARM un poil plus grande qu'une carte de crédit.
+
+    *RTC*
+        Une horloge temps réel ou HTR (en anglais, real-time clock ou RTC) est une horloge permettant un décompte très précis du temps (par exemple en nanosecondes) pour un système électronique, en vue de dater ou déclencher des évènements selon l'heure.
+    
+    *Stack*
+        Regroupement de librairies / technologies pour répondre à une tâche. Par exemple le stack de
+        navigation "Navigation2" est un regroupement de packages ROS2.
+
+    *Subscriber*
+        Base de ROS, :term:`Node` qui écoute un :term:`topic <Topic>`.
+
+    *Topic*
+        Base de ROS, bus d'échange entre des :term:`nodes <Node>` pour s'échanger des messages.
+
+    *use_sim_time*
+        Paramètre classique des nodes indiquant si la node doit utiliser un temps simulé (par Gazebo
+        par exemple) ou le temps réel.

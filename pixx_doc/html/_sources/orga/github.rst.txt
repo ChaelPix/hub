@@ -1,0 +1,308 @@
+==============
+Worflow GitHub
+==============
+
+Sur cette page, nous expliquerons notre façon de travailler avec GitHub : repos, branches, commits,
+etc.
+
+.. contents:: Sommaire
+    :depth: 4
+
+Repos
+#####
+
+En ROS, les projets fonctionnent par package. Un package ROS représente souvent une fonctionnalité,
+plus ou moins importante, d'un robot. Pour l'instant, nous avons suivi la convention de créer un
+repo par package ROS. De plus, nous nommons un repo avec comme préfixe, le nom du robot auquel il
+est lié ("flo" par exemple pour le robot des internationales 2022).
+
+Il est toujours intéressant d'avoir un readme clair sur un repo, pour indiquer le contenu du repo et
+donner des instructions nécessaires (et non-intuitives) sur le repo (comment le build, etc).
+
+Commits
+#######
+
+Si vous n'avez pas besoin de rappels sur comment faire des commits via le terminal et git, vous
+pouvez passer directement aux recommandations.
+
+Rappels
+*******
+
+git fonctionne sur des différences entre deux états d'un fichier. En effet, lorsqu'un fichier est
+modifié, git n'enregistre pas le contenu complet du fichier mais uniquement la différence entre le
+précédent état du fichier et l'état après modification. Cela permet un traçage dans le temps des
+différentes modifications et de revenir facilement sur une modification faite dans le passé.
+
+Un "commit" est un moyen d'enregistrer des modification sur un ou plusieurs fichiers. Il représente
+ainsi la différence d'état avant et après la modification d'un ou plusieurs fichiers. Lorsqu'une
+modification "n'est pas commit", c'est qu'elle n'est présente que localement sur votre ordinateur,
+et donc que GitHub n'a aucune connaissance de cette modification. Voici les étapes afin de commits
+vos modifications sur GitHub.
+
+Premièrement, la commande `git status` vous permet de voir les modifications. Voici un exemple de
+retour de cette commande, exemple tiré de quand j'écris la documentation :).
+
+.. code-block:: console
+
+    git status
+
+.. code-block:: console
+
+    Changes not staged for commit:
+    (use "git add <file>..." to update what will be committed)
+    (use "git restore <file>..." to discard changes in working directory)
+            modified:   source/glossary.rst
+            modified:   source/index.rst
+            modified:   source/ros/navigation.rst
+
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+            source/orga/index.rst
+            source/orga/wf_github.rst
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+On peut voir la ligne `Changes not staged for commit`. Lorsqu'un fichier est "staged", c'est que
+l'état actuel de modification du fichier a été enregistré localement et pourra ensuite être commit.
+On peut aussi voir "Untracked files". Ce sont des nouveaux fichiers qui eux-aussi, n'ont pas été
+commit et dont GitHub n'a aucune connaissance car ils sont nouveaux.
+
+Pour ajouter les changements que vous voulez commit, et rendre les fichiers "staged" il faut
+utiliser `git add votre_fichier`. 
+
+.. code-block:: console
+
+    git add
+
+Vous pouvez ensuite commit vos modifications avec une petite explication de celles-ci avec la
+commande `git commit -m "Mon message de commit"`. Vous trouverez juste en dessous des
+recommandations par rapport aux commits. 
+
+.. code-block:: console
+
+    git commit
+
+Recommandations
+***************
+
+Nous essayons de garder nos commits "atomiques", cela signifie qu'un commit correspond à une
+modification. Elle peut-être plus ou moins grosse et concernée un ou plusieurs fichiers. Il faut
+simplement garder en tête que les commits servent à garder un historique de ce qui est fait : en
+faisant des commits atomiques, on peut revenir en arrière simplement sur une fonctionnalité, une
+modification, etc.
+
+.. note::
+    Par exemple, si un commit supprime du code et ajoute une autre fonctionnalité qui
+    n'a rien à voir, il sera difficile de revenir en arrière sur cette fonctionnalité sans affecter
+    le reste du code.
+
+Pour ce qui est des messages de commit, il faut les garder courts mais consis (officiellement moins
+de 50 caractères, mais il est possible de faire plus). Il est souvent intuitif de commencer le
+message par un verbe et de décrire ensuite le(s) fichier(s) affecté(s) ou ce qui a été touché dans
+le code. Le mieux est de combiner les deux, afin de comprendre rapidement ce qui a été fait dans un
+commit. En effet, des messages de commit clairs permettent de comprendre rapidement ce qui a été
+fait sans aller voir les détails du commit.
+
+.. note::
+    Par exemple, un message de commit qui modifie le fichier `readme.md` peut ressembler à "Update
+    readme", mais le mieux est aussi de mentionner ce qui a été mis à jour dans le readme. Un
+    message de commit plus complet serait "Update readme about build instructions".
+
+Il est possible de détailler un commit en y mettant plusieurs messages. Ils seront affichés de
+manière différente sur GitHub. Le premier a pour but de décrire l'action globale et le deuxième peut
+rajouter du détail.
+
+.. code-block:: console
+
+    git commit -m "Update readme" -m "Explain how to build the package"
+
+*Squash*
+********
+
+"Squash" des commits est l'action de les rassembler en un seul. Elle est souvent utilisée lors d'un
+merge.
+
+Lorsqu'une branche est merge sans squash les commits, ils se retrouvent dans la branche cible comme
+s'ils avaient été initialement faits dans celle-ci. Sur la figure juste en-dessous, les commits sont
+représentés par des cercles et l'historique se lit de gauche à droite. Une branche est dérivée de la
+branche nommée "main" et des commits sont faits dedans. Lorsque la branche est merge (dernier commit
+bleu clair), les commits de la branche violette apparaissent dans la branche main (commits en
+transparence).
+
+.. figure:: images/no_squash.png
+    :align: center
+
+    Merge sans squash
+
+Lorsqu'une branche est merge en squashant les commits, ils ne se retrouvent pas dans la branche
+cible. Le seul commit présent est celui informant du merge. La figure ci-dessous fonctionne comme la
+précédente, cependant, on peut voir qu'aucun autre commit venant de la branche violette n'est
+présent dans la main, excepté celui indiquant le merge (dernier commit bleu clair).
+
+.. figure:: images/squash.png
+    :align: center
+
+    Merge avec squash
+
+Les merges de branch étant souvent fait sur l'interface de GitHub, c'est celle-ci qui permet de
+choisir si les commits sont squash, ou non, lors d'un merge. De manière générale, il n'est pas
+recommandé de squash les commits car l'historique des modifications est perdue et il est difficile
+de revenir sur un changement précis.
+
+Branches
+########
+
+Les branches permettent de travailler indépendamment, que ce soit à plusieurs ou même tout seul.
+Elles permettent d'isoler des modifications du reste du code sur le repo, par exemple pour rajouter
+une fonctionnalité ou même avoir une toute autre version du repo.
+
+Recommandations
+***************
+
+La branche créée par défaut par GitHub est nommée "main" (anciennement, "master"). C'est la branche
+principale du repo, le but étant de la garder dans un état fonctionnel. Pour cela, il est recommandé
+de travailler sur d'autres branches pour modifier du code et implémeter des nouveautés.
+
+Notre organisation
+==================
+
+Les branches pour modifier le repo peuvent directement hériter de la main. Nous tentons de respecter
+une convention de nommage des branches afin de mieux comprendre leur rôle. Le nom de la branche
+commence par un préfix puis par ce que la branche concerne. Les suffixes peuvent être les suivants
+(liste non-exhaustive, et modifiable au bon vouloir de chacun, rien n'est obligé) :
+
+- feature/... : pour rajouter une fonctionnalité au repo
+- fix/... : pour résoudre un problème / bug sur le repo
+- test/... : pour tester du code sur le repo
+
+.. note::
+    Par exemple, pour rajouter une fonctionnalité de détection de couleurs à un repo de vision par
+    ordinateur, la branche pourrait se nommer "feature/color_detection".
+
+Une fois le travail sur la branche terminé, on réalise une pull request sur GitHub pour merge la
+branche dans la main.
+
+Sur l'image d'illustration suivante, les commits sont représentés par des cercles et la temporalité
+se déroule de gauche à droite. Les commits de la branche main sont en bleur clair. Premièrement, une
+branche dérivée de la main est créée et possède deux commits. Elle est ensuite merge dans la main
+par un commit, les deux commits en transparence étant ceux de la branche qui sont présents sur la
+main s'ils n'ont pas été squash. Une autre branche a ensuite été dérivée à partir du dernier commit
+de la main.
+
+.. figure:: images/main_feature.png
+    :align: center
+
+    Workflow avec une unique branche main
+
+Organisation plus professionnelle
+=================================
+
+Une organisation plus professionnelle consiste à garder la main dans une version avec des
+fonctionnalités et caractéristiques connues (par exemple, la version x d'un projet). Pour cela,
+cette branche est très peu touchée et c'est une branche, souvent nommée "develop" (ou "dev"), sur
+laquelle le travail est réalisé la majeure partie du temps. C'est donc de cette branche que partent
+les branches pour rajouter des fonctionnalités, modifier le code, etc. Quand il est estimé que la
+branche "develop" a atteint un avancement suffisant, elle est merge dans la brache "main". Le projet
+est donc dans une nouvelle version. Ainsi, les seuls commits présents sur la main sont les commits
+de merge de la branche "develop".
+
+Si un problème assez important pour ne pas attendre une nouvelle version est détecté, il est courant
+de directement créer une branche héritant de la main avec comme nom "hotfix/<problème_à_régler>" et
+de la merge une fois le problème fixé.
+
+De même que pour la première illustration, les commits sont représentés par des cercles et le temps
+s'écoule de gauche à droite. La main est toujours représentée par du bleu clair et la branche
+"develop" est introduite, en vert. On voit maintenant que la branche quelconque est dérivée de la
+dev, possède quelques commits et est mergée dans la dev. Les commits en transparence sont ceux de la
+branche quelconque, qui peuvent apparaître dans la dev s'ils ne sont pas squash. La dev est ensuite
+merge dans la main, en squashant les commits afin de n'avoir qu'un seul commit, celui du merge (à
+noter que ce n'est pas obligatoire de squash les commits, cela permet juste de garder la main
+parfaitement propre). Le travail est ensuite continué sur la dev, avec une branche quelconque qui en
+est dérivée.
+
+.. figure:: images/main_dev_feature.png
+    :align: center
+
+    Workflow avec des branche main et dev
+
+Branche en retard
+=================
+
+Il arrive parfois de travailler sur une branche et la branche dont elle hérite possède de nouveaux
+commits dont on a besoin.
+
+.. figure:: images/feature_retard.png
+    :align: center
+
+    Branche en retard sur la main
+
+Pour résoudre ce problème, il y a deux cas dfférents en fonction de l'état de la branche : est-elle
+uniquement locale ou est-elle commit sur GitHub ?
+
+Vous pouvez trouver plus d'informations sur ce problème et sur les méthodes pour le résoudre sur
+cette `page <https://www.atlassian.com/git/tutorials/merging-vs-rebasing>`__, dont les schémas ont
+inspiré ceux de cette page ;).
+
+Voici une explication résumée.
+
+Branche locale
+--------------
+
+Si votre branche est uniquement locale, c'est-à-dire qu'elle n'est pas commit sur GitHub, il est
+préférable d'utiliser la fonction `rebase` de git. Cette fonction redéfinit le commit d'origine
+d'une branche.
+
+.. figure:: images/rebase.png
+    :align: center
+
+    Branches après un rebase
+
+Premièrement, il faut se placer sur la branche locale :
+
+.. code-block:: console
+
+    git checkout ma_branche_locale
+
+Et secondement, il faut utiliser la fonctionnalité de `rebase` avec la branche qui a avancé (ici,
+main) :
+
+.. code-block:: console
+
+    git rebase main
+
+Normalement, votre branche a maintenant comme commit d'origine le dernier commit de la main et vous
+avez récupéré ses dernières modifications.
+
+Branche déjà commit
+-------------------
+
+Si votre branche est déjà commit sur GitHub, il est possible d'utiliser la fonctionnalité de
+`rebase` mais ce n'est pas recommandé : l'entièreté de votre historique de commits sur cette branche
+sera réecrit et des conflits peuvent apparaître. Il est donc recommandé de simplement merge la
+branche en avance dans la branche  en retard pour récupérer ses commits.
+
+.. figure:: images/merge.png
+    :align: center
+
+    Branches après un merge
+
+Premièrement, n'oubliez pas de récupérer les derniers commits de la branche en avance (ici, main) :
+
+.. code-block:: console
+
+    git pull main
+
+Ensuite, il faut se placer dans votre branche :
+
+.. code-block:: console
+
+    git checkout ma_branche
+
+Dernièrement, il faut utiliser la fonction `merge` avec la branche en avance (ici, main) :
+
+.. code-block:: console
+
+    git merge main
+
+Cette méthode permet de récupérer les changements sur la branche en retard et ne place qu'un seul
+commit dans votre branche, celui du merge.

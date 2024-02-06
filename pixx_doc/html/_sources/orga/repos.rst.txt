@@ -1,0 +1,165 @@
+=====
+Repos
+=====
+
+L'organisation GitHub comporte de nombreux repos. Voici une liste dans l'ordre alphabétique avec
+leur nom et une description de leur rôle.
+
+Une convention que l'on tente de respecter est de nommer un repo avec comme préfixe le nom du robot
+auquel il est lié. Par exemple, "flo" pour le robot des 46e internationales (Bordeaux 2022).
+
+..
+    C'est une façon étrange d'écrire un commentaire mais peu importe
+    Le tableau suivant aurait pu fonctionner sans le ".. table::" mais pour que le tableau s'affiche
+    correctement sur la page, il faut rajouter du CSS visible dans custom.css. SAUF que ce CSS
+    détruit l'adaptation de largeur des colonnes. Après moulte recherche, la solution trouvée est
+    d'hardcoder la taille des colonnes grâce au "widths". Actuellement la taille est définie pour
+    afficher correctement le plus grand nom de repo c'est-à-dire "docker_ros_cross_compiler"
+
+.. table::
+    :widths: 30, 70
+
+    +-----------------------------+----------------------------------------------------------------+
+    | Nom                         | Descritpion                                                    |
+    +=============================+================================================================+
+    |`cross_compile`_             | Fork de `ros-tooling/cross_compile`. Outil qui permet de       |
+    |                             | compiler du ROS (1 et 2) pour différentes architectures (armhf,|
+    |                             | aarch64, x86_64) et pour différents OS (Ubuntu, Debian).       |
+    +-----------------------------+----------------------------------------------------------------+
+    |`docker_ros_cross_compiler`_ | Compile un workspace ROS pour architecture aarch64 grâce à une |
+    |                             | image docker.                                                  |
+    +-----------------------------+----------------------------------------------------------------+
+    | `docs-website`_             | Code source du site que vous êtes en train de lire :)          |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_basic_localization`_   | Node ROS2 en Python implémentant un algorithme pour localiser  |
+    |                             | un robot dans une map en utilisant l'odométrie et 3 mesures de |
+    |                             | distance. Equivalent d'un AMCl mais à 3 points.                |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_behavior_tree`_        | Implémente le behavior tree du robot Flo avec les launchs et   |
+    |                             | configs liés.                                                  |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_bringup`_              | Bringup du robot Flo, contient les différents launchs, la      |
+    |                             | config de la navigation, une config de rviz pour la navigation.|
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_description`_          | Implémente l'URDF du robot Flo, contient un launch de l'URDF,  |
+    |                             | et un launch pour la visualisation du robot sur rviz.          |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_drive`_                | Implémente le driver du robot FLo ainsi que les launchs et     |
+    |                             | configs liés. Contient aussi la config et le launch de l'EKF   |
+    |                             | (Extended Kalman Filter, fusion de l'odométrie et de l'IMU).   |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_gripping_system`_      | Implémente la gestion de la pince du robot Flo, ainsi que les  |
+    |                             | configs et launchs liés.                                       |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_local_controller`_     | Implémente un controller pour le robot Flo qui prend en entrée |
+    |                             | un cmd_vel, une direction et un angle à respecter.             |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_msgs`_                 | Implémente les messages, services et actions du robot Flo.     |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_tasks_manager`_        | Implémente l'algorithme de prévisions de tâches du robot Flo   |
+    |                             | ainsi que les launchs et configs liés.                         |
+    +-----------------------------+----------------------------------------------------------------+
+    | `flo_utils`_                | Implémente des utilitaires pour le robot Flo.                  |
+    +-----------------------------+----------------------------------------------------------------+
+    | `floviz`_                   | Software de visualisation (à la rviz) adapté au robot Flo,     |
+    |                             | visualisation de map, commande et visualisation de la          |
+    |                             | navigation, récupération de positions, etc.                    |
+    +-----------------------------+----------------------------------------------------------------+
+    | `fred_navigation`_          | Premier test de la navigation sous ROS2 pour la navigation     |
+    |                             | (plus utilisé).                                                |
+    +-----------------------------+----------------------------------------------------------------+
+    | `gz_ruediger2_control`_     | Intégration dans Gazebo de Ruediger2.                          |
+    +-----------------------------+----------------------------------------------------------------+
+    | `Makeblock-Libraries`_      | Fork de `Makeblock-official/Makeblock-Libraries`. Modification |
+    |                             | des librairies de base Makeblock (pour MegaPi) pour l'adapter  |
+    |                             | Ruediger2. Contient aussi un exemple de code à mettre sur      |
+    |                             | MegaPi.                                                        |
+    +-----------------------------+----------------------------------------------------------------+
+    | `maps`_                     | Contient toutes les maps qu'on utilise. Pour chaque map,       |
+    |                             | contient:                                                      |
+    |                             |                                                                |
+    |                             | - le plan sous forme d'image (.png)                            |
+    |                             | - le projet Gimp de cette image (.xcf)                         |
+    |                             | - le plan vectorisé (.dxf)                                     |
+    |                             | - le fichier yaml pour la navigation and rviz (.yaml)          |
+    |                             | - le modèle 3D pour Gazebo (.dae)                              |
+    |                             | - le fichier de configuration pour Gazebo (.sdf)               |
+    +-----------------------------+----------------------------------------------------------------+
+    | `navigation2`_              | Fork de `ros-planning/navigation2`. Modifie le controlleur     |
+    |                             | `RegulatedPurePursuit`_(`regulated_pure_pursuit_controller`)   |
+    |                             | pour y ajouter une limite à la vitesse angulaire et une        |
+    |                             | acceleration linéaire maximake.                                |
+    +-----------------------------+----------------------------------------------------------------+
+    | `notebooks`_                | Contient des notebooks du stage de 2ème année de Lucas et      |
+    |                             | Antoine à propos de leurs tests avec l'OptiTrack pour améliorer|
+    |                             | l'odométrie du robot Flo.                                      |
+    +-----------------------------+----------------------------------------------------------------+
+    | `pixy_codebar_reader`_      | Contient une node ROS1 pour lire des QR codes avec une caméra  |
+    |                             | Pixy1.                                                         |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ros_tutorials`_            | Fork de `ros/ros_tutorials`. Utilisé pour de la simulation dans|
+    |                             | floviz.                                                        |
+    | `ros2_megapi`_              | Implémente une interface entre ROS2 et une MegaPi: commande des|
+    |                             | actionneurs de la MegaPi par des topics et récupérations des   |
+    |                             | capteurs de la MegaPi par des topics.                          |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ros2_vmxpi`_               | Implémente une interface entre ROS2 et un VMX-pi: commande des |
+    |                             | actionneurs (Titan et servos) du VMX-pi par des topics et      |
+    |                             | récupérations des capteurs par des topics.                     |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ros2-docker`_              | Permet de build une image docker avec ROS2, de la navigation,  |
+    |                             | de la simulation et du contôle par manette.                    |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ruediger_navigation`_      | Package ROS1 de navigation pour le robot Ruediger.             |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ruediger2_bringup`_        | Bringup du robot Ruediger2, contient les launch files.         |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ruediger2_control`_        | Contrôle du robot Ruediger2 à l'aide ros_control.              |
+    +-----------------------------+----------------------------------------------------------------+
+    | `ruediger2_navigation`_     | Configs et launchs de la naviation pour le robot Ruediger2     |
+    +-----------------------------+----------------------------------------------------------------+
+    | `stage1-selection`_         | Template de repos pour la formation des médaillés de 2023.     |
+    +-----------------------------+----------------------------------------------------------------+
+    | `stan2_bringup_example`_    | Bringup du robot Stan2 avec configs et launchs.                |
+    +-----------------------------+----------------------------------------------------------------+
+    | `stan2_drive`_              | Driver du robot Stan2 avec configs (dont l'Extended Kalman     |
+    |                             | Filter, fusion de l'odométrie et de l'IMU) et launchs.         |
+    +-----------------------------+----------------------------------------------------------------+
+    | `tasks_detection`_          | Implémente des algorithmes de vision par ordinateur pour le    |
+    |                             | robot Flo (détection du tableau de tâches, détection des cube  |
+    |                             | d'une étagère, détection de l'état d'une chambre).             |
+    +-----------------------------+----------------------------------------------------------------+
+
+.. _cross_compile: https://github.com/Worldskills-France-Mobile-Robotics/cross_compile
+.. _docker_ros_cross_compiler: https://github.com/Worldskills-France-Mobile-Robotics/docker_ros_cross_compiler
+.. _docs-website: https://github.com/Worldskills-France-Mobile-Robotics/docs-website
+.. _flo_basic_localization: https://github.com/Worldskills-France-Mobile-Robotics/flo_basic_localization
+.. _flo_behavior_tree: https://github.com/Worldskills-France-Mobile-Robotics/flo_behavior_tree
+.. _flo_bringup: https://github.com/Worldskills-France-Mobile-Robotics/flo_bringup
+.. _flo_description: https://github.com/Worldskills-France-Mobile-Robotics/flo_description
+.. _flo_drive: https://github.com/Worldskills-France-Mobile-Robotics/flo_drive
+.. _flo_gripping_system: https://github.com/Worldskills-France-Mobile-Robotics/flo_gripping_system
+.. _flo_local_controller: https://github.com/Worldskills-France-Mobile-Robotics/flo_local_controller
+.. _flo_msgs: https://github.com/Worldskills-France-Mobile-Robotics/flo_msgs
+.. _flo_tasks_manager: https://github.com/Worldskills-France-Mobile-Robotics/flo_tasks_manager
+.. _flo_utils: https://github.com/Worldskills-France-Mobile-Robotics/flo_utils
+.. _floviz: https://github.com/Worldskills-France-Mobile-Robotics/floviz
+.. _fred_navigation: https://github.com/Worldskills-France-Mobile-Robotics/fred_navigation
+.. _gz_ruediger2_control: https://github.com/Worldskills-France-Mobile-Robotics/gz_ruediger2_control
+.. _Makeblock-Libraries: https://github.com/Worldskills-France-Mobile-Robotics/Makeblock-Libraries
+.. _maps: https://github.com/Worldskills-France-Mobile-Robotics/maps
+.. _navigation2: https://github.com/Worldskills-France-Mobile-Robotics/navigation2
+.. _notebooks: https://github.com/Worldskills-France-Mobile-Robotics/notebooks
+.. _pixy_codebar_reader: https://github.com/Worldskills-France-Mobile-Robotics/pixy_codebar_reader
+.. _ros_tutorials: https://github.com/Worldskills-France-Mobile-Robotics/ros_tutorials
+.. _ros2_megapi: https://github.com/Worldskills-France-Mobile-Robotics/ros2_megapi
+.. _ros2_vmxpi: https://github.com/Worldskills-France-Mobile-Robotics/ros2_vmxpi
+.. _ros2-docker: https://github.com/Worldskills-France-Mobile-Robotics/ros2-docker
+.. _ruediger_navigation: https://github.com/Worldskills-France-Mobile-Robotics/ruediger_navigation
+.. _ruediger2_bringup: https://github.com/Worldskills-France-Mobile-Robotics/ruediger2_bringup
+.. _ruediger2_control: https://github.com/Worldskills-France-Mobile-Robotics/ruediger2_control
+.. _ruediger2_navigation: https://github.com/Worldskills-France-Mobile-Robotics/ruediger2_navigation
+.. _stage1-selection: https://github.com/Worldskills-France-Mobile-Robotics/stage1-selection
+.. _stan2_bringup_example: https://github.com/Worldskills-France-Mobile-Robotics/stan2_bringup_example
+.. _stan2_drive: https://github.com/Worldskills-France-Mobile-Robotics/stan2_drive
+.. _tasks_detection: https://github.com/Worldskills-France-Mobile-Robotics/tasks_detection

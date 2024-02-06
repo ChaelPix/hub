@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation &mdash; Documentation WSFR Mobile Robotic Team </title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=bd5b14eb" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d1a510d7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=d99ca74e"></script>
+        <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="reStructuredText" href="rest.html" />
+    <link rel="prev" title="Contribuer" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            WSFR Mobile Robotic Team
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../orga/index.html">Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ros/index.html">ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robots/index.html">Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossaire</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contribuer</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sphinx">Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build">Build</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local">Local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#github">GitHub</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conf-py">conf.py</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-rst">index.rst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#static-css-custom-css">_static/css/custom.css</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pages">Pages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arborescence">Arborescence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theme">Thème</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extensions">Extensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vs-code">VS Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#coloration-syntaxique">Coloration syntaxique</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#correction-syntaxique">Correction syntaxique</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html">reStructuredText</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WSFR Mobile Robotic Team</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contribuer</a></li>
+      <li class="breadcrumb-item active">Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/contribute/website.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentation">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Documentation</a><a class="headerlink" href="#documentation" title="Link to this heading"></a></h1>
+<p>Vous trouverez ici des explications sur ce site de documentation : comment il est build, organisé,
+déployé, etc. et comment contribuer.</p>
+<nav class="contents" id="sommaire">
+<p class="topic-title">Sommaire</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#documentation" id="id2">Documentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#sphinx" id="id3">Sphinx</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id4">Build</a></p>
+<ul>
+<li><p><a class="reference internal" href="#local" id="id5">Local</a></p></li>
+<li><p><a class="reference internal" href="#github" id="id6">GitHub</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#architecture" id="id7">Architecture</a></p>
+<ul>
+<li><p><a class="reference internal" href="#conf-py" id="id8">conf.py</a></p></li>
+<li><p><a class="reference internal" href="#index-rst" id="id9">index.rst</a></p></li>
+<li><p><a class="reference internal" href="#static-css-custom-css" id="id10">_static/css/custom.css</a></p></li>
+<li><p><a class="reference internal" href="#pages" id="id11">Pages</a></p></li>
+<li><p><a class="reference internal" href="#arborescence" id="id12">Arborescence</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#theme" id="id13">Thème</a></p></li>
+<li><p><a class="reference internal" href="#extensions" id="id14">Extensions</a></p></li>
+<li><p><a class="reference internal" href="#vs-code" id="id15">VS Code</a></p>
+<ul>
+<li><p><a class="reference internal" href="#coloration-syntaxique" id="id16">Coloration syntaxique</a></p></li>
+<li><p><a class="reference internal" href="#correction-syntaxique" id="id17">Correction syntaxique</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="sphinx">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Sphinx</a><a class="headerlink" href="#sphinx" title="Link to this heading"></a></h2>
+<p>Le site est build à l’aide de Sphinx, une librairie Python qui permet de convertir des fichiers
+écrits en reStructuredText (reST, fichier .rst) en HTML et en PDF. La librairie permet de créer un
+site de documentation très rapidement en se chargeant de réaliser la plupart du travail à notre
+place, nous n’avons qu’à écrire le texte source.</p>
+<p>De plus, Sphinx est un projet open source et de nombreuses extensions permettent de rajouter
+rapidement des fonctionnalités au site. Par exemple, le fait de pouvoir lire des vidéos sur notre
+documentation vient d’une extension.</p>
+</section>
+<section id="build">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Build</a><a class="headerlink" href="#build" title="Link to this heading"></a></h2>
+<p>Afin de contribuer à la documentation, il est probable que vous vouliez tester à quoi ressemblent
+vos modifications en local sur votre navigateur. Vous trouverez aussi plus bas une explication de
+comment la documentation est build et le site mis en ligne automatiquement sur GitHub.</p>
+<section id="local">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Local</a><a class="headerlink" href="#local" title="Link to this heading"></a></h3>
+<p>Vous pouvez cloner le repo de la documentation via :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:Worldskills-France-Mobile-Robotics/docs-website.git
+</pre></div>
+</div>
+<p>Il est conseillé de faire vos modifications sur une branche, ainsi nous pourrons review les
+modifications avant de les avoir sur le site :)</p>
+<p>Les librairies nécessaires pour utiliser la documentation localement sont spécifiées dans le
+dossier <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>. Si ça ne vous dérange pas de les installer sur votre machine, vous
+pouvez utiliser la commande suivante :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Si vous préférez ne pas les installer sur votre machine, il est possible d’utiliser une
+fonctionnalité de Python : les environnements virtuels (abrégés en « venv »). Ils permettent d’avoir
+une installation de Python locale dans un projet, qui ne pollue donc pas l’installation sur votre
+machine.</p>
+<p>À la racine du repo, utilisez la commande suivante pour créer un environnement virtuel (la commande
+<code class="docutils literal notranslate"><span class="pre">python</span></code> peut varier en fonction de votre installation, ça peut être <code class="docutils literal notranslate"><span class="pre">python3</span></code> par exemple) :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+</pre></div>
+</div>
+<p>Il se peut que la librairie <code class="docutils literal notranslate"><span class="pre">venv</span></code> ne soit pas installée. Dans ce cas, une erreur doit vous
+indiquer comment l’installer. Installez la librairie <code class="docutils literal notranslate"><span class="pre">venv</span></code> et recommencez la création du venv.</p>
+<p>Une fois la commande réussie, vous devriez avoir un dossier « venv » qui a été crée à la racine du
+repo. Ce dossier contient l’installation locale de Python.</p>
+<p>Vous pouvez activer l’environnement virtuel avec la commande suivante :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+<p>Vous devriez maintenant avoir un <code class="docutils literal notranslate"><span class="pre">(venv)</span></code> au début de la ligne de votre terminal. Cela signifie
+que vous utilisez l’installation de Python présente dans l’environnement virtuel.</p>
+<p>Vous pouvez maintenant installer les dépendances, qui ne seront donc installées que dans ce dossier
+<code class="docutils literal notranslate"><span class="pre">venv</span></code> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<p>Vous pouvez rester dans cet environnement pour travailler et build la documentation.</p>
+<p>Pour désactiver l’environnement virtuel, il suffit d’entrer la commande <code class="docutils literal notranslate"><span class="pre">deactivate</span></code> n’importe où
+:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deactivate
+</pre></div>
+</div>
+<p>Une fois vos modifications réalisées, placez-vous dans le dossier de la documentation :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+</pre></div>
+</div>
+<p>Pour build la documentation en HTML, il suffit d’utiliser la commande <code class="docutils literal notranslate"><span class="pre">make</span></code> prévue à cet effet.
+De base, seulement les fichiers sources qui ont été changés sont build : cela permet d’être plus
+rapide sur le build. Cependant, il peut arriver qu’il y ait des modifications non prises en compte
+et que le build soit un peu buggué. Ce problème peut être résolu en rajoutant l’argument <code class="docutils literal notranslate"><span class="pre">clean</span></code> à
+la commande make pour rebuild l’entièreté de la documentation. C’est un peu plus long, mais reste
+très rapide (de l’ordre de quelques secondes à peine).</p>
+<p>Build les dernières modifications :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>html
+</pre></div>
+</div>
+<p>Build l’entièreté de la documentation :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean<span class="w"> </span>html
+</pre></div>
+</div>
+<p>Ensuite, pour visualiser la documentation, il faut ouvrir le document <code class="docutils literal notranslate"><span class="pre">index.html</span></code> se situant dans
+<code class="docutils literal notranslate"><span class="pre">build/html/</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+  └─ build/
+       └─ html/
+            ├─ ...
+            ├─ index.html
+            └─ ...
+</pre></div>
+</div>
+<p>Vous pouvez y naviguer via votre explorateur de fichiers et l’ouvrir avec un navigateur internet. Il
+est possible de le faire directement par commande, avec par exemple ici Firefox (toujours en étant
+placé dans <code class="docutils literal notranslate"><span class="pre">docs</span></code>) :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firefox<span class="w"> </span>build/html/index.html
+</pre></div>
+</div>
+<p>La page d’accueil du site devrait s’ouvrir sur votre navigateur internet.</p>
+</section>
+<section id="github">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">GitHub</a><a class="headerlink" href="#github" title="Link to this heading"></a></h3>
+<p>Le déploiement du site sur internet se fait directement via GitHub avec la fonctionnalité des GitHub
+Pages. Elle permet d’héberger des pages HTML statiques directement sur GitHub. De plus,
+l’automatisation de la mise en ligne se fait aussi grâce à GitHub et la fonctionnalité des GitHub
+Actions. C’est la fonctionnalité de Continuous Integration / Continuous Delivery (CI/CD, i.e. de
+l’automatisation de développement et de livraison) de GitHub.</p>
+<section id="github-actions">
+<h4>GitHub Actions<a class="headerlink" href="#github-actions" title="Link to this heading"></a></h4>
+<p>Sur GitHub, les tâches d’automatisation sont définies par des <code class="docutils literal notranslate"><span class="pre">workflows</span></code> qui se trouvent dans le
+dossier <code class="docutils literal notranslate"><span class="pre">.github/workflows/</span></code> à la racine du repo. Un workflow contient les éléments suivants :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">steps</span></code> : un <code class="docutils literal notranslate"><span class="pre">step</span></code> est une séquence de commandes. Plus précisément, cela peut être une simple
+commande, plusieurs commandes ou une action venant du marketplace GitHub qui peut réaliser toutes
+sortes de tâches différentes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jobs</span></code> : un <code class="docutils literal notranslate"><span class="pre">job</span></code> est un enchainement de <code class="docutils literal notranslate"><span class="pre">step</span></code>.</p></li>
+</ul>
+</section>
+<section id="notre-workflow">
+<h4>Notre workflow<a class="headerlink" href="#notre-workflow" title="Link to this heading"></a></h4>
+<p>Notre workflow pour build et déployer notre documentation en tant que site est écrit dans
+<code class="docutils literal notranslate"><span class="pre">.github/workflows/website.yml</span></code>. Il contient de nombreux commentaires pour expliquer son
+fonctionnement, mais il sera aussi expliqué ici :)</p>
+<section id="job-build">
+<h5>Job <code class="docutils literal notranslate"><span class="pre">build</span></code><a class="headerlink" href="#job-build" title="Link to this heading"></a></h5>
+<p>Le job <code class="docutils literal notranslate"><span class="pre">build</span></code> sert à build la documentation avec Sphinx et la « packager ». « Packager » la
+documentation revient à produire une archive téléchargeable directement sur GitHub. Une action de
+GitHub prendra cette archive et la déploiera en tant que site. Voici l’intégralité du job :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">build</span><span class="p">:</span>
+
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.10</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python dependencies (Sphinx, etc.)</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                </span><span class="no">python3.10 -m pip install --upgrade pip</span>
+<span class="w">                </span><span class="no">python3.10 -m pip install -r requirements.txt</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build Sphinx doc</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                </span><span class="no">cd docs/</span>
+<span class="w">                </span><span class="no">make clean html</span>
+
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Package doc</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-pages-artifact@v2</span>
+<span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span>
+<span class="w">                </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/build/html/</span>
+</pre></div>
+</div>
+<p>Le job tourne sur une VM ou un conteneur, spécifié par la ligne suivante. Ici, notre job tournera
+sur un conteneur de la dernière version d’Ubuntu.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+</pre></div>
+</div>
+<p>Ensuite, les steps du job sont définis. Le premier step consiste à check out dans le repo sur la VM
+ou le conteneur (pas 100% sûr).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+</pre></div>
+</div>
+<p>Le job installe ensuite Python sur l’Ubuntu en utilisant une action pré-faite par GitHub, seulement
+la version de Python a besoin d’être spécifiée.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.10</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v4</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.10&quot;</span>
+</pre></div>
+</div>
+<p>Ensuite, pip est installé ainsi que les librairies Python nécessaires avec les commandes classiques
+Python.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python dependencies (Sphinx, etc.)</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">python3.10 -m pip install --upgrade pip</span>
+<span class="w">    </span><span class="no">python3.10 -m pip install -r requirements.txt</span>
+</pre></div>
+</div>
+<p>Ensuite, la documentation est build avec la commande classique de Sphinx.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build Sphinx doc</span>
+<span class="w">  </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">cd docs/</span>
+<span class="w">    </span><span class="no">make clean html</span>
+</pre></div>
+</div>
+<p>Pour finir, l’HTML statique généré par Sphinx est packagé en utilisant l’action faite par GitHub. Il
+suffit de spécifier ce qui doit être archivé.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Package doc</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-pages-artifact@v2</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docs/build/html/</span>
+</pre></div>
+</div>
+</section>
+<section id="job-deploy">
+<h5>Job <code class="docutils literal notranslate"><span class="pre">deploy</span></code><a class="headerlink" href="#job-deploy" title="Link to this heading"></a></h5>
+<p>Maintenant que notre documentation a été build et packagée, il faut la déployer en tant que GitHub
+Pages. Une action faite par GitHub est utilisée, permettant de prendre un package et de le déployer
+en tant que GitHub Pages. Le job est grossièrement une copie de ce qui se trouve sur le readme de
+l’action. Vous trouverez plus d’informations <a class="reference external" href="https://github.com/actions/deploy-pages">ici</a>. Voici
+le job en entier :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">    </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-pages</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.deployment.outputs.page_url }}</span>
+
+<span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v2</span>
+</pre></div>
+</div>
+<p>Premièrement, le job doit être exécuté après le précédent. Ceci est précisé grâce à cette ligne :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+</pre></div>
+</div>
+<p>Des permissions doivent être accordées au job pour qu’il puisse déployer sur les GitHub Pages.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span><span class="w">      </span><span class="c1"># to deploy to Pages</span>
+<span class="w">  </span><span class="nt">id-token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span><span class="w">   </span><span class="c1"># to verify the deployment originates from an appropriate source</span>
+</pre></div>
+</div>
+<p>Un environnement est ensuite défini. Un environnement est une machine, une VM, un conteneur qui est
+la cible du déploiement : il représente où le produit doit être déployé. Par exemple, pour un site
+internet, l’environnement de <code class="docutils literal notranslate"><span class="pre">production</span></code> est celui auquel les utilisateurs ont accès. Un
+environnement <code class="docutils literal notranslate"><span class="pre">development</span></code> pourrait exister et serait un site de test, accessible uniquement aux
+développeurs pour tester du nouveau code.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-pages</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.deployment.outputs.page_url }}</span>
+</pre></div>
+</div>
+<p>Ce job tourne aussi sur la dernière version d’Ubuntu.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+</pre></div>
+</div>
+<p>Le job n’a qu’un seul step, celui du déploiement du package sur les GitHub Pages. Une action faite
+par GitHub est utilisée pour réaliser le déploiement. Un id est attribué au step afin de permettre à
+l’environnement défini plus haut d’accéder à l’URL produite par le step.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<span class="w">    </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deployment</span>
+<span class="w">    </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/deploy-pages@v2</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="architecture">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Architecture</a><a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<p>Quasiment tout ce qui est lié à la documentation se trouve dans le dossier <code class="docutils literal notranslate"><span class="pre">docs/</span></code> du repo. On y
+retrouve le contenu suivant :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>docs/
+  ├─ source/
+  ├─ make.bat
+  └─ Makefile
+</pre></div>
+</div>
+<p>Les fichiers <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> et <code class="docutils literal notranslate"><span class="pre">make.bat</span></code> servent à build le site. Le <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> est plutôt
+destiné à Linux et le fichier <code class="docutils literal notranslate"><span class="pre">make.bat</span></code> est destiné à Windows.</p>
+<p>Le dossier <code class="docutils literal notranslate"><span class="pre">source/</span></code> contient tout le texte source du site ainsi que son organisation. Les
+éléments basiques de ce dossier sont les suivants :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source/
+  ├─ ...
+  ├─ conf.py
+  └─ index.rst
+</pre></div>
+</div>
+<section id="conf-py">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">conf.py</a><a class="headerlink" href="#conf-py" title="Link to this heading"></a></h3>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> est le fichier qui spécifie la configuration de Sphinx pour construire notre
+site. Il est peu probable que vous ayez à toucher à ce fichier sauf peut-être pour y ajouter des
+extensions. Elles sont spécifiées dans le tableau Python <code class="docutils literal notranslate"><span class="pre">extensions</span></code>.</p>
+<p>Pour rajouter une extension, il suffit de la rajouter dans la liste des extensions :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinx_copybutton&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sphinxcontrib&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;une_autre_extension&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Cependant, il faut aussi rajouter le nom de la librairie Python (le nom utilisé quand vous
+l’installez avec pip) à la suite des autres dans les dépendances du site : le fichier
+<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">copybutton</span>
+<span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">video</span>
+<span class="n">une_autre_librairie</span>
+</pre></div>
+</div>
+</section>
+<section id="index-rst">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">index.rst</a><a class="headerlink" href="#index-rst" title="Link to this heading"></a></h3>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> est le point d’entrée du site. C’est le contenu de la page d’accueil ainsi
+que la définition de l’arborescence du site. Pour cela, le fichier contient un <code class="docutils literal notranslate"><span class="pre">toctree</span></code> : c’est
+une « directive » qui permet de définir la table des matières d’une page. Cependant, celle-ci a un
+rôle spécial, elle définit la table des matières du site entier. Vous pouvez trouver plus
+d’informations sur les <code class="docutils literal notranslate"><span class="pre">toctree</span></code> <a class="reference internal" href="rest.html#toctree"><span class="std std-ref">ici</span></a> et sur les directives <a class="reference internal" href="rest.html#directive"><span class="std std-ref">ici</span></a>.</p>
+</section>
+<section id="static-css-custom-css">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">_static/css/custom.css</a><a class="headerlink" href="#static-css-custom-css" title="Link to this heading"></a></h3>
+<p>Le fichier <code class="docutils literal notranslate"><span class="pre">custom.css</span></code> permet de définir du CSS custom pour modifier certains aspects de notre
+thème. La configuration permet de spécifier où se trouve les fichiers de CSS custom :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_static_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_static&#39;</span><span class="p">]</span>
+
+<span class="n">html_css_files</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;css/custom.css&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Si vous avez besoin de rajouter du contenu dans ce fichier, n’hésitez pas à expliquer pourquoi vous
+le rajoutez, quel problème il règle, etc.</p>
+</section>
+<section id="pages">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Pages</a><a class="headerlink" href="#pages" title="Link to this heading"></a></h3>
+<p>Actuellement, dans l’architecture du site (visible à gauche), il y a cinque groupes de pages
+(« Organisation », « ROS », « Robots », « Tooling » et « Contribuer ») et une page seule (« Glossaire »).</p>
+<p>Le groupe <code class="docutils literal notranslate"><span class="pre">Organisation</span></code> a pour but de regrouper des pages sur l’organisation GitHub : les
+différents repos, nos pratiques, etc.</p>
+<p>Le groupe <code class="docutils literal notranslate"><span class="pre">ROS</span></code> regroupe nos connaissances acquises sur ROS.</p>
+<p>Le groupe <code class="docutils literal notranslate"><span class="pre">Robots</span></code> regroupe les informations sur nos robots existants : comment les démarrer, leur
+fonctionnement interne, etc.</p>
+<p>Le groupe <code class="docutils literal notranslate"><span class="pre">Tooling</span></code> regroupe des informations sur les outils que nous avons développés (ou non) et
+utilisons pour développer nos robots.</p>
+<p>La page <code class="docutils literal notranslate"><span class="pre">Glossaire</span></code> est un glossaire regroupant les termes propres à notre travail et nos
+connaissances.</p>
+<p>Pour finir, le groupe <code class="docutils literal notranslate"><span class="pre">Contribuer</span></code> regroupe les informations globales sur la documentation :
+outils, contribuer, etc.</p>
+</section>
+<section id="arborescence">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Arborescence</a><a class="headerlink" href="#arborescence" title="Link to this heading"></a></h3>
+<p>L’arborescence du site se définit à l’aide de différentes toctrees. La toctree originale peut à la
+fois pointer vers des pages normales, mais peut aussi pointer vers d’autres fichiers contenant une
+autre toctree. Ces toctrees peuvent à leur tour pointer vers des pages, mais aussi d’autres
+toctrees, etc.</p>
+<p>Généralement, outre la toctree originale, chaque toctree se trouve dans un fichier <code class="docutils literal notranslate"><span class="pre">index.rst</span></code>
+qui a pour but d’être la page d’accueil d’une section de la documentation contenant d’autres pages
+ayant un rapport entre elles.</p>
+<p>Voici l’arborescence actuelle de notre documentation :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source/
+  ├─ contribute/
+  │    ├─ index.rst          # toctree de la section &quot;Contribuer&quot;
+  │    ├─ rest.rst
+  │    └─ website.rst
+  ├─ orga/
+  │    ├─ index.rst          # toctree de la section &quot;Organisation&quot;
+  │    ├─ github.rst
+  │    └─ repos.rst
+  ├─ robots/
+  │    ├─ index.rst          # toctree de la section &quot;Robots&quot;
+  │    └─ flo.rst
+  ├─ ros/
+  │    ├─ index.rst          # toctree de la section &quot;ROS&quot;
+  │    ├─ behavior_tree.rst
+  │    └─ navigation.rst
+  ├─ tooling/
+  │    ├─ index.rst          # toctree de la section &quot;Tooling&quot;
+  │    ├─ cross-compile.rst
+  │    ├─ dfu-flash.rst
+  │    └─ generate-iso.rst
+  ├─ index.rst
+  ├─ glossary.rst
+  └─ conf.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="theme">
+<span id="id1"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">Thème</a><a class="headerlink" href="#theme" title="Link to this heading"></a></h2>
+<p>Avec Sphinx, il est possible de changer le thème utilisé pour le rendu de la documentation. Il en
+existe énormément, faits par la communauté. Nous utilisons le thème <code class="docutils literal notranslate"><span class="pre">ReadTheDocs</span></code>. Le thème est
+initialement prévu pour les projets utilisant ReadTheDocs, un service de documentation plus ou moins
+payant utilisé par de nombreux projets (les documentations ROS et Nav2 par exemple). Le service
+utilisant aussi Sphinx, le thème est compatible avec les projets Sphinx classiques.</p>
+<p>Le lien de la documentation du thème est ici : <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/">https://sphinx-rtd-theme.readthedocs.io/en/stable/</a>.
+Le thème se présente sous forme d’une extension Sphinx, c’est donc une librairie Python nommée
+<code class="docutils literal notranslate"><span class="pre">sphinx_rdt_theme</span></code> qui est présente à la fois dans le fichier <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> et dans la
+configuration de Sphinx, le tableau <code class="docutils literal notranslate"><span class="pre">extensions</span></code> de <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>. Pour spécifier un thème, il faut
+utiliser la ligne <code class="docutils literal notranslate"><span class="pre">html_theme</span></code> de la configuration <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_rtd_theme&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="extensions">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Extensions</a><a class="headerlink" href="#extensions" title="Link to this heading"></a></h2>
+<p>La liste des extensions que nous utilisons actuellement avec un lien vers leur documentation :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Extension</p></th>
+<th class="head"><p>Descritpion</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html">sphinx-rtd-theme</a></p></td>
+<td><p>Thème ReadTheDocs utilisé sur le site</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://sphinx-copybutton.readthedocs.io/en/latest/">sphinx-copybutton</a></p></td>
+<td><p>Ajoute un bouton de copie aux blocs de code</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinxcontrib-video.readthedocs.io/en/latest/index.html">sphinxcontrib-video</a></p></td>
+<td><p>Permet l’ajout de vidéo sur le site</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vs-code">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">VS Code</a><a class="headerlink" href="#vs-code" title="Link to this heading"></a></h2>
+<p>Afin de contribuer au mieux à la documentation, il est conseillé d’installer deux extensions VS
+Code.</p>
+<section id="coloration-syntaxique">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Coloration syntaxique</a><a class="headerlink" href="#coloration-syntaxique" title="Link to this heading"></a></h3>
+<p>La première se nomme <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=trond-snekvik.simple-rst">reStructuredText Syntax highlighting</a>.
+Elle permet d’ajouter de la coloration syntaxique dans les fichiers en reStructuredText. L’extension
+fonctionne d’elle-même, vous n’avez rien à configurer.</p>
+</section>
+<section id="correction-syntaxique">
+<h3><a class="toc-backref" href="#id17" role="doc-backlink">Correction syntaxique</a><a class="headerlink" href="#correction-syntaxique" title="Link to this heading"></a></h3>
+<p>La deuxième se nomme <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex">LTeX - LanguageTool grammar/spell checking</a>.
+Elle permet d’ajouter de la correction syntaxique dans les fichiers LaTeX, MarkDown,
+reStructuredText, etc. Une fois l’extension installée, il faut la paramétrer en français :</p>
+<ul class="simple">
+<li><p>Aller dans les settings de VS Code (<code class="docutils literal notranslate"><span class="pre">Ctrl+,</span></code>)</p></li>
+<li><p>Tapez <code class="docutils literal notranslate"><span class="pre">ltex.language</span></code> dans la barre de recherche</p></li>
+<li><p>Dans le paramètre <code class="docutils literal notranslate"><span class="pre">Ltex:</span> <span class="pre">Language</span></code>, sélectionnez « fr »</p></li>
+</ul>
+<p>Maintenant, lorsque vous irez sur une page écrite en reST, l’extension scannera la page et
+soulignera les fautes qu’elle trouve. Elle est capable de détecter les fautes de grammaire,
+d’orthographe et de conjugaison.</p>
+<p>L’extension propose une correction accessible en passant votre souris sur une faute ou en plaçant
+votre curseur sur le mot erroné et en utilisant le raccourci <code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+;</span></code>. Vous pouvez ensuite
+vous déplacer dans le menu des propositions avec les flèches directionnelles : cela permet de
+corriger les fautes en utilisant uniquement le clavier.</p>
+<p>L’extension propose des corrections de la faute, d’ajouter le mot au dictionnaire (pour un mot
+qu’elle ne connaîtrait pas, un mot anglais que vous voulez utiliser, etc.) ou de considérer la faute
+comme un faux-positif.</p>
+<p>N’hésitez pas à désactiver l’extension (bouton <code class="docutils literal notranslate"><span class="pre">Disable</span></code> dans l’onglet des extensions de VS Code)
+lorsque vous ne voulez plus l’utiliser ou que vous travaillez sur un autre projet. Sans ça, elle
+scannera tous les fichiers avec lesquels elle est compatible, ce qui est probablement inutile et
+consomme de la RAM.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="index.html" class="btn btn-neutral float-left" title="Contribuer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="rest.html" class="btn btn-neutral float-right" title="reStructuredText" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2023, Florent CHRETIEN, Mélanie LELAURE, Lucas SI LARBI, Antoine GROS.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

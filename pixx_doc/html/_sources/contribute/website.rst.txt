@@ -1,0 +1,556 @@
+=============
+Documentation
+=============
+
+Vous trouverez ici des explications sur ce site de documentation : comment il est build, organisé,
+déployé, etc. et comment contribuer.
+
+.. contents:: Sommaire
+    :depth: 3
+
+Sphinx
+######
+
+Le site est build à l'aide de Sphinx, une librairie Python qui permet de convertir des fichiers
+écrits en reStructuredText (reST, fichier .rst) en HTML et en PDF. La librairie permet de créer un
+site de documentation très rapidement en se chargeant de réaliser la plupart du travail à notre
+place, nous n'avons qu'à écrire le texte source.
+
+De plus, Sphinx est un projet open source et de nombreuses extensions permettent de rajouter
+rapidement des fonctionnalités au site. Par exemple, le fait de pouvoir lire des vidéos sur notre
+documentation vient d'une extension.
+
+Build
+#####
+
+Afin de contribuer à la documentation, il est probable que vous vouliez tester à quoi ressemblent
+vos modifications en local sur votre navigateur. Vous trouverez aussi plus bas une explication de
+comment la documentation est build et le site mis en ligne automatiquement sur GitHub.
+
+Local
+*****
+
+Vous pouvez cloner le repo de la documentation via :
+
+.. code-block:: bash
+
+    git clone git@github.com:Worldskills-France-Mobile-Robotics/docs-website.git
+
+Il est conseillé de faire vos modifications sur une branche, ainsi nous pourrons review les
+modifications avant de les avoir sur le site :)
+
+Les librairies nécessaires pour utiliser la documentation localement sont spécifiées dans le
+dossier ``requirements.txt``. Si ça ne vous dérange pas de les installer sur votre machine, vous
+pouvez utiliser la commande suivante :
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+Si vous préférez ne pas les installer sur votre machine, il est possible d'utiliser une
+fonctionnalité de Python : les environnements virtuels (abrégés en "venv"). Ils permettent d'avoir
+une installation de Python locale dans un projet, qui ne pollue donc pas l'installation sur votre
+machine.
+
+À la racine du repo, utilisez la commande suivante pour créer un environnement virtuel (la commande
+``python`` peut varier en fonction de votre installation, ça peut être ``python3`` par exemple) :
+
+.. code-block:: bash
+
+    python -m venv venv
+
+Il se peut que la librairie ``venv`` ne soit pas installée. Dans ce cas, une erreur doit vous
+indiquer comment l'installer. Installez la librairie ``venv`` et recommencez la création du venv.
+
+Une fois la commande réussie, vous devriez avoir un dossier "venv" qui a été crée à la racine du
+repo. Ce dossier contient l'installation locale de Python.
+
+Vous pouvez activer l'environnement virtuel avec la commande suivante :
+
+.. code-block:: bash
+
+    source venv/bin/activate
+
+Vous devriez maintenant avoir un ``(venv)`` au début de la ligne de votre terminal. Cela signifie
+que vous utilisez l'installation de Python présente dans l'environnement virtuel.
+
+Vous pouvez maintenant installer les dépendances, qui ne seront donc installées que dans ce dossier
+``venv`` :
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+Vous pouvez rester dans cet environnement pour travailler et build la documentation.
+
+Pour désactiver l'environnement virtuel, il suffit d'entrer la commande ``deactivate`` n'importe où
+:
+
+.. code-block:: bash
+
+    deactivate
+
+Une fois vos modifications réalisées, placez-vous dans le dossier de la documentation :
+
+.. code-block:: bash
+
+    cd docs
+
+Pour build la documentation en HTML, il suffit d'utiliser la commande ``make`` prévue à cet effet.
+De base, seulement les fichiers sources qui ont été changés sont build : cela permet d'être plus
+rapide sur le build. Cependant, il peut arriver qu'il y ait des modifications non prises en compte
+et que le build soit un peu buggué. Ce problème peut être résolu en rajoutant l'argument ``clean`` à
+la commande make pour rebuild l'entièreté de la documentation. C'est un peu plus long, mais reste
+très rapide (de l'ordre de quelques secondes à peine).
+
+Build les dernières modifications :
+
+.. code-block:: bash
+
+    make html
+
+Build l'entièreté de la documentation :
+
+.. code-block:: bash
+
+    make clean html
+
+Ensuite, pour visualiser la documentation, il faut ouvrir le document ``index.html`` se situant dans
+``build/html/``.
+
+.. code-block::
+
+    docs/
+      └─ build/
+           └─ html/
+                ├─ ...
+                ├─ index.html
+                └─ ...
+
+Vous pouvez y naviguer via votre explorateur de fichiers et l'ouvrir avec un navigateur internet. Il
+est possible de le faire directement par commande, avec par exemple ici Firefox (toujours en étant
+placé dans ``docs``) :
+
+.. code-block:: bash
+
+    firefox build/html/index.html
+
+La page d'accueil du site devrait s'ouvrir sur votre navigateur internet.
+
+GitHub
+******
+
+Le déploiement du site sur internet se fait directement via GitHub avec la fonctionnalité des GitHub
+Pages. Elle permet d'héberger des pages HTML statiques directement sur GitHub. De plus,
+l'automatisation de la mise en ligne se fait aussi grâce à GitHub et la fonctionnalité des GitHub
+Actions. C'est la fonctionnalité de Continuous Integration / Continuous Delivery (CI/CD, i.e. de
+l'automatisation de développement et de livraison) de GitHub.
+
+GitHub Actions
+==============
+
+Sur GitHub, les tâches d'automatisation sont définies par des ``workflows`` qui se trouvent dans le
+dossier ``.github/workflows/`` à la racine du repo. Un workflow contient les éléments suivants :
+
+- ``steps`` : un ``step`` est une séquence de commandes. Plus précisément, cela peut être une simple
+  commande, plusieurs commandes ou une action venant du marketplace GitHub qui peut réaliser toutes
+  sortes de tâches différentes.
+- ``jobs`` : un ``job`` est un enchainement de ``step``.
+
+Notre workflow
+==============
+
+Notre workflow pour build et déployer notre documentation en tant que site est écrit dans
+``.github/workflows/website.yml``. Il contient de nombreux commentaires pour expliquer son
+fonctionnement, mais il sera aussi expliqué ici :)
+
+Job ``build``
+-------------
+
+Le job ``build`` sert à build la documentation avec Sphinx et la "packager". "Packager" la
+documentation revient à produire une archive téléchargeable directement sur GitHub. Une action de
+GitHub prendra cette archive et la déploiera en tant que site. Voici l'intégralité du job :
+
+.. code-block:: yaml
+
+    build:
+
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - uses: actions/checkout@v4
+
+            - name: Set up Python 3.10
+                uses: actions/setup-python@v4
+                with:
+                    python-version: "3.10"
+
+            - name: Install Python dependencies (Sphinx, etc.)
+                run: |
+                    python3.10 -m pip install --upgrade pip
+                    python3.10 -m pip install -r requirements.txt 
+
+            - name: Build Sphinx doc
+                run: |
+                    cd docs/
+                    make clean html
+
+            - name: Package doc
+                uses: actions/upload-pages-artifact@v2
+                with:
+                    path: docs/build/html/
+
+Le job tourne sur une VM ou un conteneur, spécifié par la ligne suivante. Ici, notre job tournera
+sur un conteneur de la dernière version d'Ubuntu.
+
+.. code-block:: yaml
+
+    runs-on: ubuntu-latest
+
+Ensuite, les steps du job sont définis. Le premier step consiste à check out dans le repo sur la VM
+ou le conteneur (pas 100% sûr).
+
+.. code-block:: yaml
+
+    - uses: actions/checkout@v4
+
+Le job installe ensuite Python sur l'Ubuntu en utilisant une action pré-faite par GitHub, seulement
+la version de Python a besoin d'être spécifiée.
+
+.. code-block:: yaml
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+Ensuite, pip est installé ainsi que les librairies Python nécessaires avec les commandes classiques
+Python.
+
+.. code-block:: yaml
+
+    - name: Install Python dependencies (Sphinx, etc.)
+      run: |
+        python3.10 -m pip install --upgrade pip
+        python3.10 -m pip install -r requirements.txt 
+
+Ensuite, la documentation est build avec la commande classique de Sphinx.
+
+.. code-block:: yaml
+
+    - name: Build Sphinx doc
+      run: |
+        cd docs/
+        make clean html
+
+Pour finir, l'HTML statique généré par Sphinx est packagé en utilisant l'action faite par GitHub. Il
+suffit de spécifier ce qui doit être archivé.
+
+.. code-block:: yaml
+
+    - name: Package doc
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: docs/build/html/
+
+Job ``deploy``
+--------------
+
+Maintenant que notre documentation a été build et packagée, il faut la déployer en tant que GitHub
+Pages. Une action faite par GitHub est utilisée, permettant de prendre un package et de le déployer
+en tant que GitHub Pages. Le job est grossièrement une copie de ce qui se trouve sur le readme de
+l'action. Vous trouverez plus d'informations `ici <https://github.com/actions/deploy-pages>`_. Voici
+le job en entier :
+
+.. code-block:: yaml
+
+    needs: build
+    permissions:
+        pages: write
+        id-token: write
+
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v2
+
+Premièrement, le job doit être exécuté après le précédent. Ceci est précisé grâce à cette ligne :
+
+.. code-block:: yaml
+
+    needs: build
+
+Des permissions doivent être accordées au job pour qu'il puisse déployer sur les GitHub Pages.
+
+.. code-block:: yaml
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+Un environnement est ensuite défini. Un environnement est une machine, une VM, un conteneur qui est
+la cible du déploiement : il représente où le produit doit être déployé. Par exemple, pour un site
+internet, l'environnement de ``production`` est celui auquel les utilisateurs ont accès. Un
+environnement ``development`` pourrait exister et serait un site de test, accessible uniquement aux
+développeurs pour tester du nouveau code.
+
+.. code-block:: yaml
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+Ce job tourne aussi sur la dernière version d'Ubuntu.
+
+.. code-block:: yaml
+
+    runs-on: ubuntu-latest
+
+Le job n'a qu'un seul step, celui du déploiement du package sur les GitHub Pages. Une action faite
+par GitHub est utilisée pour réaliser le déploiement. Un id est attribué au step afin de permettre à
+l'environnement défini plus haut d'accéder à l'URL produite par le step.
+
+.. code-block:: yaml
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+Architecture
+############
+
+Quasiment tout ce qui est lié à la documentation se trouve dans le dossier ``docs/`` du repo. On y
+retrouve le contenu suivant :
+
+.. code-block::
+
+    docs/
+      ├─ source/
+      ├─ make.bat
+      └─ Makefile
+
+Les fichiers ``Makefile`` et ``make.bat`` servent à build le site. Le ``Makefile`` est plutôt
+destiné à Linux et le fichier ``make.bat`` est destiné à Windows.
+
+Le dossier ``source/`` contient tout le texte source du site ainsi que son organisation. Les
+éléments basiques de ce dossier sont les suivants :
+
+.. code-block::
+
+    source/
+      ├─ ...
+      ├─ conf.py
+      └─ index.rst
+
+conf.py
+*******
+
+Le fichier ``conf.py`` est le fichier qui spécifie la configuration de Sphinx pour construire notre
+site. Il est peu probable que vous ayez à toucher à ce fichier sauf peut-être pour y ajouter des
+extensions. Elles sont spécifiées dans le tableau Python ``extensions``.
+
+Pour rajouter une extension, il suffit de la rajouter dans la liste des extensions :
+
+.. code-block:: python
+
+    extensions = [
+        'sphinx_rtd_theme',
+        'sphinx_copybutton',
+        'sphinxcontrib',
+        'une_autre_extension']
+
+Cependant, il faut aussi rajouter le nom de la librairie Python (le nom utilisé quand vous
+l'installez avec pip) à la suite des autres dans les dépendances du site : le fichier
+``requirements.txt``.
+
+.. code-block::
+
+    sphinx
+    sphinx-rtd-theme
+    sphinx-copybutton
+    sphinxcontrib-video
+    une_autre_librairie
+
+index.rst
+*********
+
+Le fichier ``index.rst`` est le point d'entrée du site. C'est le contenu de la page d'accueil ainsi
+que la définition de l'arborescence du site. Pour cela, le fichier contient un ``toctree`` : c'est
+une "directive" qui permet de définir la table des matières d'une page. Cependant, celle-ci a un
+rôle spécial, elle définit la table des matières du site entier. Vous pouvez trouver plus
+d'informations sur les ``toctree`` :ref:`ici <toctree>` et sur les directives :ref:`ici
+<directive>`.
+
+
+_static/css/custom.css
+**********************
+
+Le fichier ``custom.css`` permet de définir du CSS custom pour modifier certains aspects de notre
+thème. La configuration permet de spécifier où se trouve les fichiers de CSS custom :
+
+.. code-block:: python
+
+    html_static_path = ['_static']
+
+    html_css_files = [
+        'css/custom.css',
+    ]
+
+Si vous avez besoin de rajouter du contenu dans ce fichier, n'hésitez pas à expliquer pourquoi vous
+le rajoutez, quel problème il règle, etc.
+
+Pages
+*****
+
+Actuellement, dans l'architecture du site (visible à gauche), il y a cinque groupes de pages
+("Organisation", "ROS", "Robots", "Tooling" et "Contribuer") et une page seule ("Glossaire"). 
+
+Le groupe ``Organisation`` a pour but de regrouper des pages sur l'organisation GitHub : les
+différents repos, nos pratiques, etc.
+
+Le groupe ``ROS`` regroupe nos connaissances acquises sur ROS.
+
+Le groupe ``Robots`` regroupe les informations sur nos robots existants : comment les démarrer, leur
+fonctionnement interne, etc.
+
+Le groupe ``Tooling`` regroupe des informations sur les outils que nous avons développés (ou non) et
+utilisons pour développer nos robots.
+
+La page ``Glossaire`` est un glossaire regroupant les termes propres à notre travail et nos
+connaissances.
+
+Pour finir, le groupe ``Contribuer`` regroupe les informations globales sur la documentation :
+outils, contribuer, etc.
+
+Arborescence
+************
+
+L'arborescence du site se définit à l'aide de différentes toctrees. La toctree originale peut à la
+fois pointer vers des pages normales, mais peut aussi pointer vers d'autres fichiers contenant une
+autre toctree. Ces toctrees peuvent à leur tour pointer vers des pages, mais aussi d'autres
+toctrees, etc.
+
+Généralement, outre la toctree originale, chaque toctree se trouve dans un fichier ``index.rst``
+qui a pour but d'être la page d'accueil d'une section de la documentation contenant d'autres pages
+ayant un rapport entre elles.
+
+Voici l'arborescence actuelle de notre documentation :
+
+.. code-block::
+
+    source/
+      ├─ contribute/
+      │    ├─ index.rst          # toctree de la section "Contribuer"
+      │    ├─ rest.rst
+      │    └─ website.rst
+      ├─ orga/
+      │    ├─ index.rst          # toctree de la section "Organisation"
+      │    ├─ github.rst
+      │    └─ repos.rst
+      ├─ robots/
+      │    ├─ index.rst          # toctree de la section "Robots"
+      │    └─ flo.rst
+      ├─ ros/
+      │    ├─ index.rst          # toctree de la section "ROS"
+      │    ├─ behavior_tree.rst
+      │    └─ navigation.rst
+      ├─ tooling/
+      │    ├─ index.rst          # toctree de la section "Tooling"
+      │    ├─ cross-compile.rst
+      │    ├─ dfu-flash.rst
+      │    └─ generate-iso.rst
+      ├─ index.rst
+      ├─ glossary.rst
+      └─ conf.py
+
+.. _theme:
+
+Thème
+#####
+
+Avec Sphinx, il est possible de changer le thème utilisé pour le rendu de la documentation. Il en
+existe énormément, faits par la communauté. Nous utilisons le thème ``ReadTheDocs``. Le thème est
+initialement prévu pour les projets utilisant ReadTheDocs, un service de documentation plus ou moins
+payant utilisé par de nombreux projets (les documentations ROS et Nav2 par exemple). Le service
+utilisant aussi Sphinx, le thème est compatible avec les projets Sphinx classiques.
+
+Le lien de la documentation du thème est ici : https://sphinx-rtd-theme.readthedocs.io/en/stable/.
+Le thème se présente sous forme d'une extension Sphinx, c'est donc une librairie Python nommée
+``sphinx_rdt_theme`` qui est présente à la fois dans le fichier ``requirements.txt`` et dans la
+configuration de Sphinx, le tableau ``extensions`` de ``conf.py``. Pour spécifier un thème, il faut
+utiliser la ligne ``html_theme`` de la configuration ``conf.py``.
+
+.. code-block:: python
+
+    html_theme = 'sphinx_rtd_theme'
+
+Extensions
+##########
+
+La liste des extensions que nous utilisons actuellement avec un lien vers leur documentation :
+
++------------------------+--------------------------------------------------------------+
+| Extension              | Descritpion                                                  |
++========================+==============================================================+
+| `sphinx-rtd-theme`_    | Thème ReadTheDocs utilisé sur le site                        |
++------------------------+--------------------------------------------------------------+
+| `sphinx-copybutton`_   | Ajoute un bouton de copie aux blocs de code                  |
++------------------------+--------------------------------------------------------------+
+| `sphinxcontrib-video`_ | Permet l'ajout de vidéo sur le site                          |
++------------------------+--------------------------------------------------------------+
+
+.. _sphinx-rtd-theme: https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html
+.. _sphinx-copybutton: https://sphinx-copybutton.readthedocs.io/en/latest/
+.. _sphinxcontrib-video: https://sphinxcontrib-video.readthedocs.io/en/latest/index.html
+
+VS Code
+#######
+
+Afin de contribuer au mieux à la documentation, il est conseillé d'installer deux extensions VS
+Code.
+
+Coloration syntaxique
+*********************
+
+La première se nomme `reStructuredText Syntax highlighting
+<https://marketplace.visualstudio.com/items?itemName=trond-snekvik.simple-rst>`_.
+Elle permet d'ajouter de la coloration syntaxique dans les fichiers en reStructuredText. L'extension
+fonctionne d'elle-même, vous n'avez rien à configurer.
+
+Correction syntaxique
+*********************
+
+La deuxième se nomme `LTeX - LanguageTool grammar/spell checking
+<https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex>`_.
+Elle permet d'ajouter de la correction syntaxique dans les fichiers LaTeX, MarkDown,
+reStructuredText, etc. Une fois l'extension installée, il faut la paramétrer en français :
+
+- Aller dans les settings de VS Code (``Ctrl+,``)
+- Tapez ``ltex.language`` dans la barre de recherche
+- Dans le paramètre ``Ltex: Language``, sélectionnez "fr"
+
+Maintenant, lorsque vous irez sur une page écrite en reST, l'extension scannera la page et
+soulignera les fautes qu'elle trouve. Elle est capable de détecter les fautes de grammaire,
+d'orthographe et de conjugaison.
+
+L'extension propose une correction accessible en passant votre souris sur une faute ou en plaçant
+votre curseur sur le mot erroné et en utilisant le raccourci ``Ctrl+Shift+;``. Vous pouvez ensuite
+vous déplacer dans le menu des propositions avec les flèches directionnelles : cela permet de
+corriger les fautes en utilisant uniquement le clavier.
+
+L'extension propose des corrections de la faute, d'ajouter le mot au dictionnaire (pour un mot
+qu'elle ne connaîtrait pas, un mot anglais que vous voulez utiliser, etc.) ou de considérer la faute
+comme un faux-positif.
+
+N'hésitez pas à désactiver l'extension (bouton ``Disable`` dans l'onglet des extensions de VS Code)
+lorsque vous ne voulez plus l'utiliser ou que vous travaillez sur un autre projet. Sans ça, elle
+scannera tous les fichiers avec lesquels elle est compatible, ce qui est probablement inutile et
+consomme de la RAM.

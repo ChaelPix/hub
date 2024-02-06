@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flo &mdash; Documentation WSFR Mobile Robotic Team </title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=bd5b14eb" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d1a510d7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=d99ca74e"></script>
+        <script src="../_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="next" title="Pixx" href="pixx.html" />
+    <link rel="prev" title="Robots" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            WSFR Mobile Robotic Team
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../orga/index.html">Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ros/index.html">ROS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Robots</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Flo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-flo-simulation-odom-parfaite">Start Flo - Simulation odom parfaite</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cloner-tous-les-repositories-necessaires">Cloner tous les repositories nécessaires</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installer-les-dependances">Installer les dépendances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiler-le-workspace">Compiler le workspace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demarrer-le-tout">Démarrer le tout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pixx.html">Pixx</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tooling/index.html">Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribuer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">WSFR Mobile Robotic Team</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Robots</a></li>
+      <li class="breadcrumb-item active">Flo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/robots/flo.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="flo">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Flo</a><a class="headerlink" href="#flo" title="Link to this heading"></a></h1>
+<p>« Flo » est le robot créé pour les internationales 2022 (Special Edition, Shanghai puis finalement
+Bordeaux). Il est nommé en l’honneur du notre cher expert international Florent (qui était expert
+national, européen et international à l’époque).</p>
+<nav class="contents" id="sommaire">
+<p class="topic-title">Sommaire</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#flo" id="id1">Flo</a></p>
+<ul>
+<li><p><a class="reference internal" href="#start-flo-simulation-odom-parfaite" id="id2">Start Flo - Simulation odom parfaite</a></p>
+<ul>
+<li><p><a class="reference internal" href="#introduction" id="id3">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#cloner-tous-les-repositories-necessaires" id="id4">Cloner tous les repositories nécessaires</a></p></li>
+<li><p><a class="reference internal" href="#installer-les-dependances" id="id5">Installer les dépendances</a></p></li>
+<li><p><a class="reference internal" href="#compiler-le-workspace" id="id6">Compiler le workspace</a></p></li>
+<li><p><a class="reference internal" href="#demarrer-le-tout" id="id7">Démarrer le tout</a></p>
+<ul>
+<li><p><a class="reference internal" href="#terminal-1" id="id8">Terminal 1</a></p></li>
+<li><p><a class="reference internal" href="#terminal-2" id="id9">Terminal 2</a></p></li>
+<li><p><a class="reference internal" href="#terminal-3" id="id10">Terminal 3</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="start-flo-simulation-odom-parfaite">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Start Flo - Simulation odom parfaite</a><a class="headerlink" href="#start-flo-simulation-odom-parfaite" title="Link to this heading"></a></h2>
+<section id="introduction">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading"></a></h3>
+<p>Dans cette partie, nous allons vous expliquer comment démarrer une simulation pour Flo avec une
+odométrie parfaite.</p>
+<p>Pour cela, nous allons cloner et build tous les packets nécessaires et les démarrer.</p>
+<p>Avec cette simulation vous pouvez créer un environnement pour le Robot et vérifier que les
+algorithmes de décision fonctionnent au moins sur le principe.</p>
+<p>Cela permet de donner une bonne idee de la facon dont le robot est désigné.</p>
+</section>
+<section id="cloner-tous-les-repositories-necessaires">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Cloner tous les repositories nécessaires</a><a class="headerlink" href="#cloner-tous-les-repositories-necessaires" title="Link to this heading"></a></h3>
+<p>Pour cela, voici la liste des repos et la branche à utiliser sous la forme d’un fichier <code class="docutils literal notranslate"><span class="pre">.repos</span></code> :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">repositories:</span>
+<span class="go">    flo_basic_localization:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_basic_localization.git</span>
+<span class="go">        version: main</span>
+<span class="go">    flo_behavior_tree:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_behavior_tree.git</span>
+<span class="go">        version: feature/new_ideas</span>
+<span class="go">    flo_bringup:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_bringup.git</span>
+<span class="go">        version: feature/new_idea</span>
+<span class="go">    flo_description:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_description.git</span>
+<span class="go">        version: main</span>
+<span class="go">    flo_drive:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_drive.git</span>
+<span class="go">        version: cpp_version</span>
+<span class="go">    flo_gripping_system:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_gripping_system.git</span>
+<span class="go">        version: feature/new_idea</span>
+<span class="go">    flo_local_controller:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_local_controller.git</span>
+<span class="go">        version: main</span>
+<span class="go">    flo_msgs:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_msgs.git</span>
+<span class="go">        version: main</span>
+<span class="go">    flo_tasks_manager:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_tasks_manager.git</span>
+<span class="go">        version: feature/new_idea</span>
+<span class="go">    flo_utils:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/flo_utils.git</span>
+<span class="go">        version: main</span>
+<span class="go">    floviz:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/floviz.git</span>
+<span class="go">        version: main</span>
+<span class="go">    maps:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/maps.git</span>
+<span class="go">        version: main</span>
+<span class="go">    navigation2:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/navigation2.git</span>
+<span class="go">        version: galactic-humble-hybrid</span>
+<span class="go">    ros_tutorials:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/ros_tutorials.git</span>
+<span class="go">        version: galactic-devel</span>
+<span class="go">    tasks_detection:</span>
+<span class="go">        type: git</span>
+<span class="go">        url: git@github.com:Worldskills-France-Mobile-Robotics/tasks_detection.git</span>
+<span class="go">        version: feature/new_idea</span>
+</pre></div>
+</div>
+<p>Pour cloner tous les repos d’un seul coup, je vous conseille la méthode suivante :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workspace/flo_ws/src
+nano<span class="w"> </span>~/workspace/flo_ws/flo_ws.humble.repos
+<span class="c1"># copier le contenu précedent dans le fichier et sauvegarder : ctrl-o enter ctrl-x</span>
+<span class="nb">cd</span><span class="w"> </span>~/workspace/flo_ws/
+vcs-import<span class="w"> </span>--input<span class="w"> </span>flo_ws.humble.repos<span class="w"> </span>--recursive<span class="w"> </span>src<span class="w">  </span><span class="c1"># Cela va cloner tous les repos, attention ca peut durer un moment</span>
+<span class="c1"># Si la commande vcs-import n&#39;est pas installée, vous pouvez l&#39;installer via pip :</span>
+pip<span class="w"> </span>install<span class="w"> </span>vcstool
+<span class="c1"># Ne perdez pas patience pour le téléchargement des repos :)</span>
+</pre></div>
+</div>
+</section>
+<section id="installer-les-dependances">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Installer les dépendances</a><a class="headerlink" href="#installer-les-dependances" title="Link to this heading"></a></h3>
+<p>Pour être sûr de notre coup, nous devons désinstaller certains packets :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>ros-humble-slam-toolbox<span class="w"> </span>ros-humble-nav2-util<span class="w"> </span>ros-humble-turtlesim<span class="w"> </span>-y
+</pre></div>
+</div>
+<p>Soyez bien sûr d’être dans le dossier du workspace</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosdep<span class="w"> </span>update
+rosdep<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>-y<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src
+</pre></div>
+</div>
+</section>
+<section id="compiler-le-workspace">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Compiler le workspace</a><a class="headerlink" href="#compiler-le-workspace" title="Link to this heading"></a></h3>
+<p>Soyez bien sûr d’être dans le dossier du workspace</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--symlink-install<span class="w"> </span>--packages-up-to<span class="w"> </span>flo_bringup
+
+<span class="c1"># cela compile 46 packages chez moi, du coup ca va durer quelques minutes</span>
+</pre></div>
+</div>
+</section>
+<section id="demarrer-le-tout">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Démarrer le tout</a><a class="headerlink" href="#demarrer-le-tout" title="Link to this heading"></a></h3>
+<p>Soyez bien sûr d’être dans le dossier du workspace</p>
+<section id="terminal-1">
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Terminal 1</a><a class="headerlink" href="#terminal-1" title="Link to this heading"></a></h4>
+<p>Démarrer le launch du bringup</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>install/local_setup.bash
+ros2<span class="w"> </span>launch<span class="w"> </span>flo_bringup<span class="w"> </span>turtle_flo_launch.py<span class="w"> </span>layout:<span class="o">=</span>src/flo_bringup/config/hospital_layout_C1_Hardcoded.yaml
+</pre></div>
+</div>
+</section>
+<section id="terminal-2">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Terminal 2</a><a class="headerlink" href="#terminal-2" title="Link to this heading"></a></h4>
+<p>Démarrer Floviz</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>install/local_setup.bash
+python3<span class="w"> </span>src/floviz/floviz/interface.py
+</pre></div>
+</div>
+</section>
+<section id="terminal-3">
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Terminal 3</a><a class="headerlink" href="#terminal-3" title="Link to this heading"></a></h4>
+<p>Démarrer le robot</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.<span class="w"> </span>install/local_setup.bash
+ros2<span class="w"> </span>action<span class="w"> </span>send_goal<span class="w"> </span>/start_robot<span class="w"> </span>flo_msgs/action/StartRobot<span class="w"> </span><span class="o">{}</span><span class="se">\</span>
+</pre></div>
+</div>
+<p>Soyez sûr que l’action est correctement envoyée.</p>
+<p>Ca doit ressembler à ça :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>action<span class="w"> </span>send_goal<span class="w"> </span>/start_robot<span class="w"> </span>flo_msgs/action/StartRobot<span class="w"> </span><span class="o">{}</span><span class="se">\</span>
+Waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>an<span class="w"> </span>action<span class="w"> </span>server<span class="w"> </span>to<span class="w"> </span>become<span class="w"> </span>available...
+Sending<span class="w"> </span>goal:
+<span class="w">    </span><span class="o">{}</span>
+</pre></div>
+</div>
+<p>Cela ne doit pas ressembler à ça :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ros2<span class="w"> </span>action<span class="w"> </span>send_goal<span class="w"> </span>/start_robot<span class="w"> </span>flo_msgs/action/StartRobot<span class="w"> </span><span class="o">{}</span><span class="se">\</span>
+&gt;
+</pre></div>
+</div>
+<p>Dans ce cas, il vous manque un espace à la fin de la commande.</p>
+<p>Le robot devrait bouger :)</p>
+<p>Voici une vidéo du lancement de la simulation puis du démarrage du robot.</p>
+<video controls="True" preload="auto" width="695"><source src="../_static/videos/first_start_simulation.webm" type="video/webm"></video></section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="index.html" class="btn btn-neutral float-left" title="Robots" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="pixx.html" class="btn btn-neutral float-right" title="Pixx" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2023, Florent CHRETIEN, Mélanie LELAURE, Lucas SI LARBI, Antoine GROS.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

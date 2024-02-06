@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossaire &mdash; Documentation WSFR Mobile Robotic Team </title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=bd5b14eb" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d1a510d7"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script src="_static/translations.js?v=d99ca74e"></script>
+        <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Contribuer" href="contribute/index.html" />
+    <link rel="prev" title="Flash Titan DFU via Linux" href="tooling/dfu-flash.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            WSFR Mobile Robotic Team
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="orga/index.html">Organisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ros/index.html">ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robots/index.html">Robots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tooling/index.html">Tooling</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossaire</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/index.html">Contribuer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">WSFR Mobile Robotic Team</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Glossaire</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/glossary.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="glossaire">
+<h1>Glossaire<a class="headerlink" href="#glossaire" title="Link to this heading"></a></h1>
+<p>Vous retrouverez ici un glossaire avec tout le vocabulaire de ROS, de la robotique et plus.</p>
+<dl class="glossary">
+<dt id="term-Ackermann">Ackermann<a class="headerlink" href="#term-Ackermann" title="Link to this term"></a></dt><dd><p>Géométrie de direction d’un robot à 4 roues : les 2 roues avant sont orientables
+contrairement aux roues arrières. De plus, l’angle de braquage des roues est légèrement
+différents, ce qui permet d’éviter le phénomène de glissement de la roue extérieure. C’est
+le même mode de direcion qu’une voiture à la différence que l’angle de braquage est le même
+sur une voiture et donc, que le phénomène de glissement est compensé par le différentiel.</p>
+</dd>
+<dt id="term-AMCL">AMCL<a class="headerlink" href="#term-AMCL" title="Link to this term"></a></dt><dd><p>Adaptive Monte Carlo Localization. Algorithme probabiliste de localisation utilisant un
+système de filtre à particules. Utilise au moins un laser scan et peut aussi prendre en
+compte une odométrie.</p>
+</dd>
+<dt id="term-base_link"><em>base_link</em><a class="headerlink" href="#term-base_link" title="Link to this term"></a></dt><dd><p>Par convention, frame du robot dans laquelle sont définies tous les éléments du robot,
+qu’ils soient fixes (capteurs) ou bien mobiles (roues).</p>
+</dd>
+<dt id="term-cmd_vel"><em>cmd_vel</em><a class="headerlink" href="#term-cmd_vel" title="Link to this term"></a></dt><dd><p>Par convention, nom d’un topic transmettant un message <cite>geometry_msgs/Twist</cite> (vecteur
+vitesse et vecteur rotation) représentant les commandes de vélocité du robot produites par
+un controlleur, à destination du driver qui les transforme en commande moteurs.</p>
+</dd>
+<dt id="term-Controller-Controleur"><em>Controller</em> / Controleur<a class="headerlink" href="#term-Controller-Controleur" title="Link to this term"></a></dt><dd><p>Algorithme qui prend un chemin un suivre en entrée et génère des commandes de vélocité pour
+respecter la trajectoire. Il existe de nombreux algorithmes ayant des comportements
+différents.</p>
+</dd>
+<dt id="term-Cross-compilation">Cross-compilation<a class="headerlink" href="#term-Cross-compilation" title="Link to this term"></a></dt><dd><p>La cross-compilation est le fait de compiler un SW sur une architecture a destination d’une autre architecture</p>
+</dd>
+<dt id="term-Flo">Flo<a class="headerlink" href="#term-Flo" title="Link to this term"></a></dt><dd><p>Désigne à la fois notre cher expert international mais aussi le robot des internationales
+2022 (Special Edition, Shanghai puis Bordeaux).</p>
+</dd>
+<dt id="term-Holonome">Holonome<a class="headerlink" href="#term-Holonome" title="Link to this term"></a></dt><dd><p>Utilisé pour caractériser soit un robot qui peut se déplacer dans le plan et tourner sur
+lui-même indépendamment des autres mouvements, soit une roue qui permet à un robot d’être
+holonome.</p>
+<p>AJOUTER IMAGE</p>
+</dd>
+<dt id="term-Holonomique">Holonomique<a class="headerlink" href="#term-Holonomique" title="Link to this term"></a></dt><dd><p>Terme mathématique signifiant qu’un objet a autant de degrés de contrôle que de degrés de
+liberté. Utilisé en robotique pour parler des robots qui ont des roues holonomes, ce qui
+leurs permet de se déplacer dans le plan de manière libre ainsi que de tourner sur
+eux-mêmes.</p>
+</dd>
+<dt id="term-laser-scan"><em>laser scan</em><a class="headerlink" href="#term-laser-scan" title="Link to this term"></a></dt><dd><p>Type de message ros généré par les LiDARs. Il représente les distances mesurés sur une
+rotation de LiDAR.</p>
+</dd>
+<dt id="term-launch-file"><em>launch file</em><a class="headerlink" href="#term-launch-file" title="Link to this term"></a></dt><dd><p>Fichier qui automatise le lancement de nodes (et plus) en ROS. Fichier XML en ROS1, Python
+en ROS2.</p>
+</dd>
+<dt id="term-map"><em>map</em><a class="headerlink" href="#term-map" title="Link to this term"></a></dt><dd><p>Par convention, la frame d’origine des tf, située à l’origine de la map.</p>
+</dd>
+<dt id="term-Mecanum">Mecanum<a class="headerlink" href="#term-Mecanum" title="Link to this term"></a></dt><dd><p>Roue holonome mais dont les galets sont orientés à 45°. Elles sont généralement 4 sur un
+robot.</p>
+<p>AJOUTER IMAGE</p>
+</dd>
+<dt id="term-merge"><em>merge</em><a class="headerlink" href="#term-merge" title="Link to this term"></a></dt><dd><p>Se traduit par « fusionner » en français, fait très probablement référence au fait de
+fusionner une branche avec une autre dans un <a class="reference internal" href="#term-repo"><span class="xref std std-term">repo</span></a> git.</p>
+</dd>
+<dt id="term-Nav-Navigation">Nav / Navigation<a class="headerlink" href="#term-Nav-Navigation" title="Link to this term"></a></dt><dd><p>Evoque généralement le stack de navigation utilisé.</p>
+</dd>
+<dt id="term-Node">Node<a class="headerlink" href="#term-Node" title="Link to this term"></a></dt><dd><p>Noeud en français. Base de ROS, entité qui peut échanger avec d’autres nodes.</p>
+</dd>
+<dt id="term-odom"><em>odom</em><a class="headerlink" href="#term-odom" title="Link to this term"></a></dt><dd><p>Raccourci pour dire « odométrie » ou bien, par convention la frame dans laquelle est définie
+les déplacements du robot. C’est très souvent l’origine du robot et il existe souvent une tf
+entre <em>base_link</em> et <em>odom</em> représentant la valeur de l’odométrie du robot.</p>
+</dd>
+<dt id="term-Omnidirectionnel">Omnidirectionnel<a class="headerlink" href="#term-Omnidirectionnel" title="Link to this term"></a></dt><dd><p>Equivalent à <a class="reference internal" href="#term-Holonome"><span class="xref std std-term">Holonome</span></a>.</p>
+</dd>
+<dt id="term-Planner-Plannificateur"><em>Planner</em> / Plannificateur<a class="headerlink" href="#term-Planner-Plannificateur" title="Link to this term"></a></dt><dd><p>Algortihme qui prend un point de départ et un point d’arrivée sur une map donnée et génère
+un chemin entre les deux. Il existe des algorithmes avec des comportements différents qui
+permettent d’avoir des chemins s’adaptant aux possibilités physiques des robots (tourner sur
+soi-même, reculer, etc.).</p>
+</dd>
+<dt id="term-PR"><em>PR</em><a class="headerlink" href="#term-PR" title="Link to this term"></a></dt><dd><p>Initiales de <a class="reference internal" href="#term-Pull-Request"><span class="xref std std-term">Pull Request</span></a></p>
+</dd>
+<dt id="term-Publisher"><em>Publisher</em><a class="headerlink" href="#term-Publisher" title="Link to this term"></a></dt><dd><p>Base de ROS, <a class="reference internal" href="#term-Node"><span class="xref std std-term">Node</span></a> qui publie sur un <a class="reference internal" href="#term-Topic"><span class="xref std std-term">topic</span></a>.</p>
+</dd>
+<dt id="term-Pull-Request"><em>Pull Request</em><a class="headerlink" href="#term-Pull-Request" title="Link to this term"></a></dt><dd><p>Demande de <a class="reference internal" href="#term-merge"><span class="xref std std-term">merge</span></a> d’une branche dans une autre sur GitHub. Appelée « Merge Request »
+sur GitLab.</p>
+</dd>
+<dt id="term-readme"><em>readme</em><a class="headerlink" href="#term-readme" title="Link to this term"></a></dt><dd><p>Par convention, un fichier qui accompagne un projet, un logiciel, une archive, etc. qui
+donne des informations sur ce qu’il accompagne. Dans notre contexte, fait très probablement
+référence au fichier <em>readme.md</em> qui se trouve très souvent à la racine d’un repo pour
+expliquer son contenu, les instructions pour build, etc.</p>
+</dd>
+<dt id="term-repo"><em>repo</em><a class="headerlink" href="#term-repo" title="Link to this term"></a></dt><dd><p>Raccourci pour <em>repository</em>, se traduit par dépôt en français, est un endroit pour déposer
+des ressources de toute sorte (code source, builds, librairies). Dans notre contexte,
+fait très probablement référence à un repo sur GitHub, qui contient majoritairement du code
+source.</p>
+</dd>
+<dt id="term-RPi"><em>RPi</em><a class="headerlink" href="#term-RPi" title="Link to this term"></a></dt><dd><p>Raspberry Pi n’est rien d’autre qu’un ordinateur réduit à sa plus simple expression : une unique carte à processeur ARM un poil plus grande qu’une carte de crédit.</p>
+</dd>
+<dt id="term-RTC"><em>RTC</em><a class="headerlink" href="#term-RTC" title="Link to this term"></a></dt><dd><p>Une horloge temps réel ou HTR (en anglais, real-time clock ou RTC) est une horloge permettant un décompte très précis du temps (par exemple en nanosecondes) pour un système électronique, en vue de dater ou déclencher des évènements selon l’heure.</p>
+</dd>
+<dt id="term-Stack"><em>Stack</em><a class="headerlink" href="#term-Stack" title="Link to this term"></a></dt><dd><p>Regroupement de librairies / technologies pour répondre à une tâche. Par exemple le stack de
+navigation « Navigation2 » est un regroupement de packages ROS2.</p>
+</dd>
+<dt id="term-Subscriber"><em>Subscriber</em><a class="headerlink" href="#term-Subscriber" title="Link to this term"></a></dt><dd><p>Base de ROS, <a class="reference internal" href="#term-Node"><span class="xref std std-term">Node</span></a> qui écoute un <a class="reference internal" href="#term-Topic"><span class="xref std std-term">topic</span></a>.</p>
+</dd>
+<dt id="term-Topic"><em>Topic</em><a class="headerlink" href="#term-Topic" title="Link to this term"></a></dt><dd><p>Base de ROS, bus d’échange entre des <a class="reference internal" href="#term-Node"><span class="xref std std-term">nodes</span></a> pour s’échanger des messages.</p>
+</dd>
+<dt id="term-use_sim_time"><em>use_sim_time</em><a class="headerlink" href="#term-use_sim_time" title="Link to this term"></a></dt><dd><p>Paramètre classique des nodes indiquant si la node doit utiliser un temps simulé (par Gazebo
+par exemple) ou le temps réel.</p>
+</dd>
+</dl>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="tooling/dfu-flash.html" class="btn btn-neutral float-left" title="Flash Titan DFU via Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="contribute/index.html" class="btn btn-neutral float-right" title="Contribuer" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2023, Florent CHRETIEN, Mélanie LELAURE, Lucas SI LARBI, Antoine GROS.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

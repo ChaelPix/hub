@@ -1,6 +1,5 @@
 sphinx
 sphinx-rtd-theme
-sphinx_rtd_dark_mode
 sphinx-copybutton
 sphinxcontrib-video
 

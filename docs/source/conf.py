@@ -31,12 +31,8 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx_copybutton',
     'sphinxcontrib.video',
-    "sphinx_rtd_dark_mode"
 ]
 
-html_context = {
-   "default_mode": "light"
-}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

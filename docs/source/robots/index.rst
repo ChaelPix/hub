@@ -6,3 +6,4 @@ Robots
    :maxdepth: 1
 
    pixx
+   glupixx

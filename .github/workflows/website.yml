@@ -47,11 +47,6 @@ jobs:
         run: |
           cd docs/
           make clean html
-
-      - name: Move Sphinx build to a subfolder
-        run: |
-          mkdir -p docs/build/html/doc
-          mv docs/build/html/* docs/build/html/doc/
           
       - name: Copy other sites to the Sphinx build directory
         run: |

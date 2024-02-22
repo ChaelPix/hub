@@ -58,6 +58,10 @@ Paramétrer les réseaux
 Changer de réseau
 -----------------
 
+Synchro Heure
+-------------
+sudo chronyc -a makestep
+
 Docker
 ------
 
@@ -69,12 +73,15 @@ pixx_drive
 
 pixx_odom
 *********
+https://github.com/MAPIRlab/rf2o_laser_odometry
 
 pixx_slam
 *********
 
 pixx_ydlidar
-*********
+************
+custom ydlidar :
+https://github.com/lghrainbow/ydlidar_ros2_driver/tree/humble-devel
 
 pixx_nav2_config
 ****************

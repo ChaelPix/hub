@@ -49,14 +49,6 @@ Le script va :
     - Activation de ssh argent
 - Installer Driver Graphiques
 
-Changer rapidement de réseau sans fil
-*************************
-
-Paramétrer les réseaux
-----------------------
-
-Changer de réseau
------------------
 
 Synchro Heure
 -------------
@@ -77,6 +69,14 @@ https://github.com/MAPIRlab/rf2o_laser_odometry
 
 pixx_slam
 *********
+
+pixx_gui_dashboard
+**************
+- Voir état robot (on/off)
+- Synchroniser les dates (chronyc)
+- Changer wifi Robot - Maison
+- Eteindre Robot
+- Fichier Paramètres
 
 pixx_ydlidar
 ************

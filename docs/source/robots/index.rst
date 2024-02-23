@@ -7,3 +7,4 @@ Robots
 
    pixx
    glupixx
+   TEST/index

@@ -17,7 +17,3 @@ Présentation du projet
 Etude du projet (diagrammes)
 ----------------------------
 
-Packages
-########
-
-

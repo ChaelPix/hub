@@ -5,6 +5,5 @@ Robots
 .. toctree::
    :maxdepth: 1
 
-   pixx
+   pixx/index
    glupixx
-   TEST/index

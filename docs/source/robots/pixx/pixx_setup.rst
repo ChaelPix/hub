@@ -1,6 +1,7 @@
-====
-Pixx
-====
+=====
+Setup
+=====
+
 .. danger::
 
     En cours de construction
@@ -14,7 +15,7 @@ Environnement
 #############
 
 Installation Ros2 et Outils utiles (Ordinateur)
-********************************************
+***********************************************
 
 Pour faciliter l'installation de ros2 et de d'autres outils, vous pouvez utiliser le repos `SetupUbuntu22 <https://github.com/ChaelPix/Setup-Ubuntu22>`_. Il contient un fichier setup.sh permettant d'automatiser l'installation.
 
@@ -54,40 +55,6 @@ Synchro Heure
 -------------
 sudo chronyc -a makestep
 
-Docker
-------
-
-Packages
-########
-
-pixx_drive
-**********
-
-pixx_odom
-*********
-https://github.com/MAPIRlab/rf2o_laser_odometry
-
-pixx_slam
-*********
-
-pixx_gui_dashboard
-**************
-- Voir état robot (on/off)
-- Synchroniser les dates (chronyc)
-- Changer wifi Robot - Maison
-- Eteindre Robot
-- Fichier Paramètres
-
-pixx_ydlidar
-************
-custom ydlidar :
-https://github.com/lghrainbow/ydlidar_ros2_driver/tree/humble-devel
-
-pixx_nav2_config
-****************
-
-pixx_behavior_trees
-*******************
 
 Lancer pixx
 ###########

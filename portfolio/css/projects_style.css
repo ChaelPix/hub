@@ -1,3 +1,10 @@
+
+
+.home-button2 {
+    transform: translateX(85%);
+}
+
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -39,6 +46,7 @@ html{
 .games-details {
     width: calc(80% - 20% - 8vh); 
     transform: translateX(-150px);
+    transform: translateX(45%);
 }
 
 
@@ -84,7 +92,7 @@ html{
     font-size: 1.1rem;
     opacity: 0;
     animation: fadeInUp 1s forwards 0.5s;
-    margin-bottom: -100px;
+    margin-bottom: 000px;
 }
 
 .back-button {
@@ -228,3 +236,4 @@ hr {
         opacity: 1;
     }
 }
+

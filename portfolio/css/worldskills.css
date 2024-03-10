@@ -1,0 +1,106 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-page {
+    min-width: 100%; 
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center; 
+    opacity: 1; 
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-images {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-images img {
+    max-width: calc(33.333% - 40px); 
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 0 20px; 
+    object-fit: cover;
+}
+
+.carousel-description {
+    margin-top: 20px;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    width: 50px; 
+    height: 50px; 
+    line-height: 50px; 
+    font-size: 30px; 
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.carousel-page.active {
+    opacity: 1; 
+}
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-page h2,
+.carousel-page .carousel-images img,
+.carousel-page .carousel-description {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.home-button {
+    width: 50px;
+    margin-left: 25px;
+    margin-top: -10px;
+}
+.home-button button{
+    transition: transform 0.3s; 
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    background-color: #007BFF; 
+}
+.home-button button:hover{
+    transform: scale(.8) rotate(15deg); 
+    background-color:  #05e923;
+}
+.home-button img{
+    height: 50px;
+    width: 50px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover; 
+    cursor: pointer;
+    padding: 10px;
+    margin-left: -10px;
+    margin-top: -10px;
+}

@@ -4,6 +4,11 @@ body, html {
     overflow-x: hidden;
 }
 
+h2 {
+    font-size: calc(1rem + 2vw); 
+	margin-bottom: 5px;
+}
+
 .carousel {
     position: relative;
     width: 100%;
@@ -35,6 +40,7 @@ body, html {
     aspect-ratio: 16 / 9;
     margin: 0 20px; 
     object-fit: cover;
+    border-radius: 5%;
 }
 
 .carousel-description {
@@ -73,10 +79,14 @@ body, html {
 }
 
 .carousel-page h2,
+.carousel-page p,
 .carousel-page .carousel-images img,
 .carousel-page .carousel-description {
     opacity: 0;
     transition: opacity 1s ease-in-out;
+}
+.carousel-text p {
+    text-align: justify;
 }
 
 .home-button {

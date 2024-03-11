@@ -12,6 +12,16 @@ h1 span:hover {
     color: #007BFF; 
 }
 
+
+h2 span {
+    transition: transform 0.3s, color 0.3s; 
+    display: inline-block; 
+}
+
+h2 span:hover {
+    transform: scale(1.1); 
+    color: #007BFF; 
+}
 /*-----Follow----*/
 #follower {
     position: fixed;

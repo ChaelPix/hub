@@ -57,3 +57,4 @@ function changePage(n) {
 document.addEventListener("DOMContentLoaded", () => {
     fadeInElements(pages[currentIndex]);
 });
+

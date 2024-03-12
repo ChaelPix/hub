@@ -1,7 +1,7 @@
-const gameDisplay = document.querySelector('.game-display');
 const gameDetails = document.querySelector('.game-details');
 const playstoreButton = document.querySelector('.playstore-button');
-const youtubeButton = document.querySelector('.youtube-button');
+const githubButton = document.querySelector('.github-button');
+const itchButton = document.querySelector('.itch-button');
 let actualTitle = "";
 
 document.querySelectorAll('.games-grid button').forEach(button => {
@@ -21,9 +21,12 @@ document.querySelectorAll('.games-grid button').forEach(button => {
                 playstoreButton.href = this.dataset.link || '#';
                 playstoreButton.style.opacity = this.dataset.link ? '1' : '0';
     
-                youtubeButton.href = this.dataset.yt || '#';
-                youtubeButton.style.opacity = this.dataset.yt ? '1' : '0';
+                githubButton.href = this.dataset.gt || '#';
+                githubButton.style.opacity = this.dataset.gt ? '1' : '0';
     
+                itchButton.href = this.dataset.itch || '#';
+                itchButton.style.opacity = this.dataset.itch ? '1' : '0';
+
                 gameDetails.style.animation = 'none';
                 setTimeout(() => {
                     gameDetails.style.animation = 'fadeInUp 1s forwards';

@@ -53,7 +53,7 @@ jobs:
           cp -r englishverbs/ docs/build/html/englishverbs/
           cp -r englishvoccards/ docs/build/html/englishvoccards/
           cp -r portfolio/ docs/build/html/portfolio/
-	  cp -r astralEvasion/ docs/build/html/astralEvasion/
+          cp -r astralEvasion/ docs/build/html/astralEvasion/
 
 
       # Package the doc and upload it as an artifact

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révision Œuvres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        td {
+            border-bottom: 1px solid #eee;
+        }
+        td:last-child {
+            border-bottom: 0;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin: 4px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .incorrect {
+            background-color: #ffdddd;
+        }
+        .correct {
+            background-color: #ddffdd;
+        }
+        .solution {
+            display: block;
+            margin-top: 4px;
+            color: #888;
+            font-size: 0.9em;
+        }
+        button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            border: none;
+            background-color: #27ae60;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218c53;
+        }
+    </style>
+</head>
+<body>
+    <h1>Révision des Œuvres</h1>
+    <form id="revisionForm">
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+        <button type="button" onclick="valider()">Valider</button>
+    </form>
+
+    <script>
+        const oeuvres = [
+            {titre: "Le tourisme, seul étranger désormais désirable ?", auteur: "Michel Foessel", date: "2014", type: "Tribune de journal"},
+            {titre: "La vie rêvée de Walter Mitty", auteur: "Ben Stiller", date: "2013", type: "Film"},
+            {titre: "L’auberge Espagnole", auteur: "Cedric Klapish", date: "2002", type: "Film"},
+            {titre: "Ma Bohème", auteur: "Arthur Rimbaud", date: "1870", type: "Poème"},
+            {titre: "Into The Wild", auteur: "Sean Penn", date: "2007", type: "Film"},
+            {titre: "Le passeur", auteur: "Jean Gustave le Clézio", date: "1982", type: "Nouvelle"},
+            {titre: "Au cœur des ténèbres", auteur: "Joseph Conrad", date: "1899", type: "Roman"},
+            {titre: "Regardez-les", auteur: "Laurent Gaudé", date: "2015", type: "Poème"},
+            {titre: "Rêves d’or", auteur: "Diego Quemada-Diez", date: "2013", type: "Film"},
+            {titre: "Emile ou de l’éducation", auteur: "Jean Jacques Rousseau", date: "1762", type: "Roman"},
+            {titre: "Souvenirs, impressions, pensées et paysages, pendant un voyage en Orient", auteur: "Alphonse de Lamartine", date: "1856", type: "Roman"},
+            {titre: "Romes, Naples et Florence", auteur: "Stendhal", date: "1817", type: "Roman"},
+            {titre: "Impression Soleil Levant", auteur: "Claude Monet", date: "1872", type: "Peinture"},
+            {titre: "Le fabuleux destin d’Amélie Poulain", auteur: "Jean Pierre Jeunet", date: "2001", type: "Film"},
+            {titre: "Paris brûle-t-il ?", auteur: "René Clément", date: "1966", type: "Film"},
+            {titre: "La liberté guidant le peuple", auteur: "Eugène Delacroix", date: "1830", type: "Peinture"},
+            {titre: "Le père Goriot", auteur: "Balzac", date: "1835", type: "Roman"},
+            {titre: "Bel Ami", auteur: "Guy de Maupassant", date: "1885", type: "Roman"},
+            {titre: "Minuit à Paris", auteur: "Woody Allen", date: "2010", type: "Film"},
+            {titre: "Les comptes d’Haussmann", auteur: "Laurent Fléchaire", date: "6 mars 2001", type: "Article de journal"},
+            {titre: "Emily in Paris", auteur: "Darren Star", date: "décembre 2021", type: "Série"},
+            {titre: "Le pont des Arts dans Lieux Emblématiques de Paris", auteur: "francebleu", date: "11 février 2019", type: "Article internet"}
+        ];
+    
+        
+    function getRandomElements(arr, num) {
+        const shuffled = [...arr].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, num);
+    }
+
+    let randomOeuvres = [];
+
+    function generateTable() {
+        const tableBody = document.getElementById('tableBody');
+        tableBody.innerHTML = '';
+
+        randomOeuvres = getRandomElements(oeuvres, 8);
+
+        for (let i = 0; i < randomOeuvres.length; i++) {
+            const randomChoice = Math.random() > 0.5 ? 'titre' : 'auteur';
+            const row = document.createElement('tr');
+            
+            if (randomChoice === 'titre') {
+                row.innerHTML = `
+                    <td>${randomOeuvres[i].titre}</td>
+                    <td>
+                        <input type="text" name="auteur${i + 1}">
+                        <span class="solution" id="auteurSolution${i + 1}"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="date${i + 1}">
+                        <span class="solution" id="dateSolution${i + 1}"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="type${i + 1}">
+                        <span class="solution" id="typeSolution${i + 1}"></span>
+                    </td>
+                `;
+            } else {
+                row.innerHTML = `
+                    <td>
+                        <input type="text" name="titre${i + 1}">
+                        <span class="solution" id="titreSolution${i + 1}"></span>
+                    </td>
+                    <td>${randomOeuvres[i].auteur}</td>
+                    <td>
+                        <input type="text" name="date${i + 1}">
+                        <span class="solution" id="dateSolution${i + 1}"></span>
+                    </td>
+                    <td>
+                        <input type="text" name="type${i + 1}">
+                        <span class="solution" id="typeSolution${i + 1}"></span>
+                    </td>
+                `;
+            }
+            
+            tableBody.appendChild(row);
+        }
+    }
+
+    function valider() {
+        const form = document.forms['revisionForm'];
+        const inputs = form.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.classList.remove('incorrect');
+            input.classList.remove('correct');
+        });
+
+        for (let i = 0; i < randomOeuvres.length; i++) {
+            const titreInput = form[`titre${i + 1}`];
+            const auteurInput = form[`auteur${i + 1}`];
+            const dateInput = form[`date${i + 1}`];
+            const typeInput = form[`type${i + 1}`];
+            
+            const titre = titreInput?.value || "";
+            const auteur = auteurInput?.value || "";
+            const date = dateInput?.value;
+            const type = typeInput?.value;
+
+            let correct = true;
+
+            if (titreInput && (titreInput.value === '' || titre !== randomOeuvres[i].titre)) {
+                titreInput.classList.add('incorrect');
+                correct = false;
+                document.getElementById(`titreSolution${i + 1}`).textContent = ` (${randomOeuvres[i].titre})`;
+            } else if (titreInput) {
+                titreInput.classList.add('correct');
+                document.getElementById(`titreSolution${i + 1}`).textContent = '';
+            }
+
+            if (auteurInput && (auteurInput.value === '' || auteur !== randomOeuvres[i].auteur)) {
+                auteurInput.classList.add('incorrect');
+                correct = false;
+                document.getElementById(`auteurSolution${i + 1}`).textContent = ` (${randomOeuvres[i].auteur})`;
+            } else if (auteurInput) {
+                auteurInput.classList.add('correct');
+                document.getElementById(`auteurSolution${i + 1}`).textContent = '';
+            }
+
+            if (dateInput.value === '' || date !== randomOeuvres[i].date) {
+                dateInput.classList.add('incorrect');
+                correct = false;
+                document.getElementById(`dateSolution${i + 1}`).textContent = ` (${randomOeuvres[i].date})`;
+            } else {
+                dateInput.classList.add('correct');
+                document.getElementById(`dateSolution${i + 1}`).textContent = '';
+            }
+
+            if (typeInput.value === '' || type !== randomOeuvres[i].type) {
+                typeInput.classList.add('incorrect');
+                correct = false;
+                document.getElementById(`typeSolution${i + 1}`).textContent = ` (${randomOeuvres[i].type})`;
+            } else {
+                typeInput.classList.add('correct');
+                document.getElementById(`typeSolution${i + 1}`).textContent = '';
+            }
+        }
+    }
+
+    document.querySelector('button').addEventListener('click', function() {
+        if (this.dataset.clicked === 'true') {
+            window.location.reload();
+        } else {
+            this.dataset.clicked = 'true';
+        }
+    });
+
+    window.onload = generateTable;
+</script>
+    
+</body>
+</html>

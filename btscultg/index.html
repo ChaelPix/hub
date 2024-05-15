@@ -10,12 +10,16 @@
             background-color: #f7f7f7;
             color: #333;
             margin: 0;
-            padding: 0px;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
         h1 {
-            text-align: center;
             color: #2c3e50;
-            margin-bottom: 20px;
         }
         table {
             width: 100%;
@@ -62,12 +66,9 @@
             font-size: 0.9em;
         }
         button {
-            display: block;
-            width: 100px;
-            margin: 20px auto;
             padding: 10px;
             border: none;
-            background-color: #27ae60;
+            background-color: #3498db;
             color: #fff;
             font-size: 16px;
             border-radius: 4px;
@@ -75,12 +76,21 @@
             transition: background-color 0.3s ease;
         }
         button:hover {
+            background-color: #2980b9;
+        }
+        .validate-btn {
+            background-color: #27ae60;
+        }
+        .validate-btn:hover {
             background-color: #218c53;
         }
     </style>
 </head>
 <body>
-    <h1>Révision des Œuvres</h1>
+    <div class="header">
+        <h1>CULT G</h1>
+        <button type="button" onclick="afficherToutesOeuvres()">Afficher œuvres</button>
+    </div>
     <form id="revisionForm">
         <table>
             <thead>
@@ -92,12 +102,61 @@
                 </tr>
             </thead>
             <tbody id="tableBody">
+                <!-- Les lignes seront ajoutées dynamiquement ici -->
             </tbody>
         </table>
-        <button type="button" onclick="valider()">Valider</button>
+        <button type="button" class="validate-btn" onclick="valider()">Valider</button>
     </form>
 
     <script>
+        function afficherToutesOeuvres() {
+    let newWindow = window.open('', '_blank', 'width=800,height=600');
+    let allOeuvresTable = `
+        <html>
+        <head>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { padding: 10px; border: 1px solid #ddd; }
+                th { background-color: #2c3e50; color: white; }
+            </style>
+        </head>
+        <body>
+            <h1>Liste Complète des Œuvres</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    oeuvres.forEach(oeuvre => {
+        allOeuvresTable += `
+            <tr>
+                <td>${oeuvre.titre}</td>
+                <td>${oeuvre.auteur}</td>
+                <td>${oeuvre.date}</td>
+                <td>${oeuvre.type}</td>
+            </tr>
+        `;
+    });
+
+    allOeuvresTable += `
+                </tbody>
+            </table>
+        </body>
+        </html>
+    `;
+
+    newWindow.document.write(allOeuvresTable);
+    newWindow.document.close();
+}
+
         const oeuvres = [
             {titre: "Le tourisme, seul étranger désormais désirable ?", auteur: "Michel Foessel", date: "2014", type: "Tribune de journal"},
             {titre: "La vie rêvée de Walter Mitty", auteur: "Ben Stiller", date: "2013", type: "Film"},

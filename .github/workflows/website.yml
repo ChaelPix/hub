@@ -55,10 +55,6 @@ jobs:
           cp -r portfolio/ docs/build/html/portfolio/
           cp -r supernovaSprint/ docs/build/html/supernovaSprint/
           cp -r btscultg/ docs/build/html/btscultg/
-          cp -r test_web_a/ docs/build/html/test_web/
-          cp -r test_web_b/ docs/build/html/test_web_b/
-          cp -r test_web_c/ docs/build/html/test_web_c/
-          cp -r test_web_d/ docs/build/html/test_web_d/
 
       # Package the doc and upload it as an artifact
       # Artifact are output file of the job so that you can retrieve what has been done by your

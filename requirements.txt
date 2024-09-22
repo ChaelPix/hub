@@ -2,4 +2,4 @@ sphinx
 sphinx-rtd-theme
 sphinx-copybutton
 sphinxcontrib-video
-
+python3-sphinx

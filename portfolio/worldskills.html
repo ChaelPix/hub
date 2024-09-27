@@ -4,128 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/icon_mctpx_favicon.png" type="image/x-icon">
-    <title>Traïan B.</title>
-
+    <title>WorldSkills - Traïan B.</title>
     <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/worldskills.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Police Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-
 </head>
 
 <body>
-    <div id="follower" class="follow-circle"></div>
-
-    <div class="carousel">
-        <div class="carousel-container">
-            <hr>
-            <!-- PAGE 1 -->
-            <div class="carousel-page">
-                <hr>
-                <h2><span>Regional</span> <span>Competition</span><span>🥈</span></h2>
-                <div class="carousel-images">
-                    <img src="img/worldskills/worldskills_reg.jpg" alt="reg">
-                    <div class="carousel-text">
-                        <b><h4>I'm a Worlskills Competitor in Autonomous Mobile Robotics selected for the French Team for the WORLDS 2024.</h4></b>
-                        <p>
-                        All begins with the regional competition, in teams of 2. We had 4 trials:
-                        <br><br> - A sand course where we were forbidden to use caterpillar tracks on the robot.
-                        <br> - a little maze without external walls.
-                        <br> - a sloppy ramp.
-                        <br> - completing the 3 courses in a row.
-                        <br><br> For each trial, the robot had a water cup to deliver to a random colored cup located at the end of the track with a claw.
-                        </p>
-                        <div class="carousel-images">
-                        <img src="img/worldskills/robot_reg.jpg" alt="reg">
-                        <img src="img/worldskills/robot_sand.jpg" alt="reg">
-                    </div>
-                    </div>
-                </div>
-                <div class="carousel-images">
-                    <div class="carousel-text">
-                        <p>The competition lasts 3 days. We built 2 robots, one for the sand course and the other one for the other courses.
-                        <br> I programmed the robots with C++ for Arduino.
-                        </p>
-                        <p>
-                        <br> I wasn't expected to participate to this competition. Indeed, I was originally a volunteer to help to present the skill
-                        <br> of mobile robotics. But, in the morning of the competition, a competitor abandoned and didn't come. 
-                        I had the opportunity to replace him. 
-                        <br> <br> So, I had a go, and learnt everything during the 3 days of competition, then won a Silver Medal!
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-            <!-- PAGE ... -->
-            <div class="carousel-page">
-                <hr>
-                <h2><span>National</span> <span>Competition</span><span>🥈</span></h2>
-                <div class="carousel-images">
-                    <div class="carousel-text">
-                        <p>The competition was about a storage factory simulation.
-                            <br>
-                            <br> In a 4*2m area with walls. The robot has to navigate on the board to stamp boxes identified by QR code.
-                            <br> For this competition, I didn't use Arduino, but I had to learn ROS1 (robot operating system) by myself. Indeed, this operating system 
-                            <br> is optimised for controlling robots and helped me use the Lidar for the localization of the robot on 
-                            <br> the board. It's a powerful tool with a big community.
-                            <br>
-                            <br> Despite some unexpected hardware issues, we finished 2nd with a silver medal.
-                            <br>
-                            <br> However, since we had already learnt ROS1 and showed that we're very passionate, motivated, and had more potential than gold 
-                            <br> medal winners, we had been chosen for the <u><b>French Team</b> for the <b>Worlds</b>! </u>
-                        </p>
-                    </div>
-                    <img src="img/worldskills/robot_fnat.jpg" alt="nat">
-                </div>
-            </div>
-            <!-- -->
-            <div class="carousel-page">
-                <hr>
-                <h2><span>Austria</span> <span>Competition</span> <span>🏆</span></h2>
-                <div class="carousel-images">
-                    <img src="img/worldskills/robot_austria.jpg" alt="nat">
-                    <div class="carousel-text">
-                        <p> A few weeks after having been picked for the French Team, we had the opportunity to
-                        <br> participate as a country guest in Austria's national competition.
-                        <br> 
-                        <br> For this competition and the worlds' one, we have to use a new robot kit from Studica.
-                        <br> So we had to learn how to use the studica's libraries and migrate our knowledge about ROS1 to ROS2.
-                        <br>
-                        <br> The competition was about localization and picking objects.
-                        <br>
-                        <br> In a 4*2m area with walls. The robot has to navigate on the board only with ultrasonic and InfraRed sensors.
-                        <br> This competition was an opportunity to test our new tools, like our Docker, our programme systems, and so on.
-                        <br>
-                        <br> We had 3 intense days where we learnt a lot of things that will help us in our Worlds' competition preparation.
-                        </p>
-                        <img src="img/worldskills/austriaskills.jpg" alt="nat">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-prev">&#10094;</button>
-        <button class="carousel-next">&#10095;</button>
-    </div>
-
-    <div class="buttons home-button">
-        <button data-href="index.html"><img src="img/icon_home_w.png"></button>
-    </div>
-
-    <div class="centered-rectangle"></div>
-    </div>
-
+    <!-- Triangles -->
     <div class="triangle triangle-top"></div>
     <div class="triangle triangle-bottom"></div>
 
-    <script src="js/utilities.js"></script>
-    <script src="js/follower.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/carousel.js"></script>
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Mes Compétitions WorldSkills</h1>
+
+        <!-- Cercles des compétitions -->
+        <div class="circles-container">
+            <div class="circle" data-index="0">
+                <img src="img/worldskills/competition1.jpg" alt="Compétition 1">
+            </div>
+            <div class="circle" data-index="1">
+                <img src="img/worldskills/competition2.jpg" alt="Compétition 2">
+            </div>
+            <div class="circle" data-index="2">
+                <img src="img/worldskills/competition3.jpg" alt="Compétition 3">
+            </div>
+            <div class="circle" data-index="3">
+                <img src="img/worldskills/competition4.jpg" alt="Compétition 4">
+            </div>
+        </div>
+
+        <!-- Contenu des compétitions -->
+        <div class="info-container">
+            <div class="info-box" data-index="0">
+                <h2>Compétition Régionale</h2>
+                <p>Description de la compétition régionale...</p>
+                <!-- Images et vidéos -->
+                <!-- Exemples d'images -->
+                <div class="media">
+                    <img src="img/worldskills/regionale1.jpg" alt="Image Régionale 1">
+                    <img src="img/worldskills/regionale2.jpg" alt="Image Régionale 2">
+                </div>
+                <!-- Exemple de vidéo -->
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/votre_video_id" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <!-- Répétez pour les autres compétitions -->
+            <div class="info-box" data-index="1">
+                <h2>Compétition Nationale</h2>
+                <p>Description de la compétition nationale...</p>
+                <div class="media">
+                    <img src="img/worldskills/nationale1.jpg" alt="Image Nationale 1">
+                    <img src="img/worldskills/nationale2.jpg" alt="Image Nationale 2">
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/votre_video_id" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="info-box" data-index="2">
+                <h2>Compétition Internationale</h2>
+                <p>Description de la compétition internationale...</p>
+                <div class="media">
+                    <img src="img/worldskills/internationale1.jpg" alt="Image Internationale 1">
+                    <img src="img/worldskills/internationale2.jpg" alt="Image Internationale 2">
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/votre_video_id" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="info-box" data-index="3">
+                <h2>Compétition Mondiale</h2>
+                <p>Description de la compétition mondiale...</p>
+                <div class="media">
+                    <img src="img/worldskills/mondiale1.jpg" alt="Image Mondiale 1">
+                    <img src="img/worldskills/mondiale2.jpg" alt="Image Mondiale 2">
+                </div>
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/votre_video_id" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton retour -->
+        <div class="buttons">
+            <button onclick="window.location.href='index.html'">Retour à l'index</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/worldskills.js"></script>
 </body>
 
 </html>

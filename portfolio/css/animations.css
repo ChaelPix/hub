@@ -11,26 +11,39 @@ body, html {
     height: 0;
     border-style: solid;
     animation-duration: 1.5s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: both;
     z-index: 999;
     pointer-events: none;
 }
 
 .triangle-top {
+    position: absolute;
     top: 0;
     left: 0;
     border-width: 100vw 100vw 0 0;
+    border-style: solid;
     border-color: rgb(14, 0, 63) transparent transparent transparent;
     animation-name: slideTop;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    z-index: 999;
+    pointer-events: none;
 }
 
 .triangle-bottom {
+    position: absolute;
     bottom: 0;
     left: 0;
     border-width: 0 0 100vw 100vw;
+    border-style: solid;
     border-color: transparent transparent rgb(14, 0, 63) transparent;
     animation-name: slideBottom;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    z-index: 999;
+    pointer-events: none;
 }
+
 
 @keyframes slideTop {
     from {

@@ -1,6 +1,6 @@
-=====
-IT4AB
-=====
+====
+IT4A
+====
 
 .. toctree::
    :maxdepth: 1

@@ -6,3 +6,7 @@ SY41
    :maxdepth: 1
 
    algebre_boole/index
+   conversions_binaires/index
+   memoires_binaires/index
+   tp_additionneurs/index
+   tp_cross_dev/index

@@ -4,6 +4,8 @@ body, html {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
+    /* Autoriser le scroll vertical */
+    overflow-y: auto;
 }
 
 .container {
@@ -17,6 +19,40 @@ h1 {
     margin-bottom: 40px;
 }
 
+/* Bouton retour */
+.back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 900; /* Doit être inférieur aux triangles */
+}
+
+.back-button button {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button button:hover {
+    transform: scale(1.2) rotate(-15deg); 
+    background-color:  #05e923;
+}
+
+.back-button img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
 /* Cercles des compétitions */
 .circles-container {
     display: flex;
@@ -27,8 +63,8 @@ h1 {
 }
 
 .circle {
-    width: 150px;
-    height: 150px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -78,18 +114,22 @@ h1 {
 }
 
 .media {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
     gap: 10px;
+    justify-content: center; /* Centre la grille dans le conteneur */
+    align-items: start; /* Aligne les éléments au début verticalement */
 }
 
 .media img {
-    width: 300px;
+    width: 100%;
+    max-width: 250px; /* Limite la largeur maximale des images */
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    object-fit: cover;
 }
+
+
 
 .video {
     margin-top: 20px;
@@ -101,29 +141,29 @@ h1 {
     max-width: 100%;
 }
 
-/* Bouton retour */
-.buttons {
-    margin-top: 40px;
+/* Triangles */
+.triangle {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 999;
+    pointer-events: none;
 }
 
-.buttons button {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    cursor: pointer;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 50px;
-    transition: background-color 0.3s, transform 0.3s;
+.triangle-top {
+    top: 0;
+    left: 0;
+    border-width: 100vw 100vw 0 0;
+    border-color: rgb(14, 0, 63) transparent transparent transparent;
 }
 
-.buttons button:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
+.triangle-bottom {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 100vw 100vw;
+    border-color: transparent transparent rgb(14, 0, 63) transparent;
 }
-
-/* Triangles (conservation des styles existants) */
-/* ... vos styles pour les triangles ... */
 
 /* Responsivité */
 @media (max-width: 1200px) {
@@ -169,6 +209,20 @@ h1 {
     .video iframe {
         width: 100%;
         height: auto;
+    }
+
+    /* Centrer le contenu sur mobile */
+    .container {
+        padding: 10px;
+    }
+
+    .info-box p {
+        text-align: center;
+    }
+
+    .back-button button {
+        font-size: 0.9em;
+        padding: 8px 16px;
     }
 }
 

@@ -8,71 +8,156 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/worldskills.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Police Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Triangles -->
+    <!-- triangles -->
     <div class="triangle triangle-top"></div>
     <div class="triangle triangle-bottom"></div>
 
+    <!-- home button -->
     <div class="back-button">
-        <button onclick="window.location.href='index.html'">
+        <button id="back-button">
             <img src="img/icon_home_w.png" alt="Accueil">
         </button>
     </div>
 
-    <!-- Contenu principal -->
+    <!-- main container -->
     <div class="container">
+
+        <!-- intro -->
         <h1>
             <span>My</span>
             <span>WorldSkills</span>
             <span>Journey</span>
         </h1>
 
-        <!-- Cercles des compétitions -->
+        <div class="media">
+            <p>
+                <br> <br>
+                I enrolled in <a href="https://worldskills2024.com/en/home-page/" target="_blank">WorldSkills</a> from October 2022 to September 2024. <br> <br>
+                I participated in <a href="https://www.worldskills-france.org/metiers/robotique-mobile-competition-nationale-des-metiers/" target="_blank">Autonomous Mobiles Robotics skill</a>. <br> <br>
+                I had to create and program autonomous robots with <a href="https://docs.ros.org/en/humble/index.html">ROS</a>. <br> <br>
+            </p>
+            <img src="img/worldskills/medals.jpg" alt="ws 2024">
+        </div>
+        <hr>
+
+        <!-- competitions selector -->
         <div class="circles-container">
             <div class="circle" data-index="0">
-                <img src="img/worldskills/competition1.jpg" alt="Compétition 1">
+                <img src="img/worldskills/ws_lyon24.jpg" alt="lyon24">
             </div>
             <div class="circle" data-index="1">
-                <img src="img/worldskills/competition2.jpg" alt="Compétition 2">
+                <img src="img/worldskills/ws_austria23.jpg" alt="austria23">
             </div>
             <div class="circle" data-index="2">
-                <img src="img/worldskills/competition3.jpg" alt="Compétition 3">
+                <img src="img/worldskills/ws_fr23.jpg" alt="fr23">
             </div>
             <div class="circle" data-index="3">
-                <img src="img/worldskills/competition4.jpg" alt="Compétition 4">
+                <img src="img/worldskills/ws_na22.jpg" alt="naq22">
             </div>
         </div>
 
-        <!-- Contenu des compétitions -->
         <div class="info-container">
-            <!-- Info-boxes mises à jour avec du contenu d'exemple -->
+            <!-- Lyon2024 -->
             <div class="info-box" data-index="0">
-                <h2>Compétition Régionale</h2>
-                <p>Description de la compétition régionale...</p>
+                <div class="media">
+                    <img src="img/worldskills/pict_me_24.png">
+                    <img src="img/worldskills/pic_medal.png">
+                </div>
+                <p>
+                    Lyon2024 is the 5-days Worlds final competition. I competited against 21 other countries. <br> <br>
+                    The robot was programmed with <b>ROS2 Humble using C++ and Python</b>. Tasks were:
+                </p>
+                <ul>
+                    <strong>Navigation with Lidar:</strong> Used <a href="https://github.com/ros-perception/slam_toolbox" target="_blank">SLAM</a>, <a href="https://docs.ros.org/en/humble/api/amcl/index.html" target="_blank">AMCL</a>, and <a href="https://navigation.ros.org/" target="_blank">Nav2</a>. <br>
+                    <strong>Object Detection:</strong> Used a DeepSense camera with <a href="https://github.com/ultralytics/ultralytics" target="_blank">YOLOv8</a> for detection and <a href="https://github.com/ros/geometry2" target="_blank">TF transformations</a> to convert image position to robot-relative position.  <br>
+                    <strong>Object Manipulation:</strong> Built a 3-segmented arm and used <a href="http://wiki.ros.org/track_ik" target="_blank">Track_IK</a> for inverse kinematics.  <br>
+                    <strong>Sowing: </strong> Hopper system using a servo-motor.
+                </ul>
+                <p>
+                    Additionally, I developed a real simulation in Unity using C# that interfaces with ROS2. <br> <br>
+                    Here is a hardware presentation of the robot. Software videos are coming soon...
+                </p>
                 <div class="video">
-                    <iframe src="https://www.youtube.com/embed/votre_video_id" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="https://youtu.be/AhZSpFj_UJo" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="media">
-                    <img src="img/worldskills/robot_austria.jpg" alt="Image Régionale 1">
-                    <img src="img/worldskills/robot_reg.jpg" alt="Image Régionale 2">
-                    <img src="img/worldskills/robot_austria.jpg" alt="Image Régionale 1">
-
-                    <img src="img/worldskills/robot_austria.jpg" alt="Image Régionale 1">
+                    <img src="img/worldskills/pict_pixx_profil.jpg">
+                    <img src="img/worldskills/pict_pixx_1.jpg">
+                    <img src="img/worldskills/pict_pixx_3.jpg">
 
                 </div>
             </div>
-            <!-- Répétez pour les autres compétitions -->
-            <!-- ... -->
+
+             
+            <!-- Austria -->
+             <div class="info-box" data-index="0">
+                <div class="media">
+                    <img src="img/worldskills/austriaskills.jpg">
+                </div>
+                <p>
+                    SkillsAustria is the 3-days national competition of Austria at Salzburg where I was invited to participate as part of my training after being selected for the French WorldSkills Team. <br> <br>
+                    The robot was programmed with <b>ROS2 Humble using C++</b>. Tasks were:
+                </p>
+                <ul>
+                    <strong>Navigation with IR and Ultrasonics sensors:</strong> Used <a href="https://github.com/ros-perception/slam_toolbox" target="_blank">SLAM</a>, <a href="https://docs.ros.org/en/humble/api/amcl/index.html" target="_blank">AMCL</a>, and <a href="https://navigation.ros.org/" target="_blank">Nav2</a>. <br>
+                    <strong>QR code reader:</strong> Used a raspberry camera with <a href="https://opencv.org/" target="_blank">OpenCV</a>.  <br>
+                </ul>
+
+                <div class="media">
+                    <img src="img/worldskills/robot_austria.jpg">
+                </div>
+            </div>
+
+            <!-- FNAT -->
+            <div class="info-box" data-index="0">
+                <div class="media">
+                    <img src="img/worldskills/picture_me_fnat.jpg">
+                    <img src="img/worldskills/pic_medal_2.png">
+                </div>
+                <p>
+                    This was the 4-days national final competition at Lyon. I had the 2nd place because of some robot hardware issues. <br> <br>
+                    The robot was programmed with <b>ROS1 Noetic using C++</b>. Tasks were:
+                </p>
+                <ul>
+                    <strong>Navigation:</strong> Used a Lidar with <a href="https://wiki.ros.org/hector_slam" target="_blank">Hector SLAM</a>. <br>
+                    <strong>QR code reader:</strong> Used a Pixi2 camera with <a href="https://opencv.org/" target="_blank">OpenCV</a>.  <br>
+                </ul>
+
+                <div class="media">
+                    <img src="img/worldskills/robot_fnat.jpg">
+                </div>
+            </div>
+
+            <!-- REG -->
+            <div class="info-box" data-index="0">
+                <div class="media">
+                    <img src="img/worldskills/worldskills_reg.jpg">
+                    <img src="img/worldskills/pic_medal_3.png">
+                </div>
+                <p>
+                    This was the 3-day regional competition in Nouvelle-Aquitaine. I enrolled in the competition on the morning it started. I learned everything during the nights. <br> <br>
+                    The robot was programmed with <b>Arduino C++</b>. The tasks were:
+                </p>
+                <ul>
+                    <strong>Navigation</strong> on sand without tank tracks. <br>
+                    <strong>Navigation</strong> in a small maze. <br>
+                    <strong>Color follower:</strong> Used a Pixy2 camera. <br>
+                </ul>                
+
+                <div class="media">
+                    <img src="img/worldskills/robot_reg.jpg">
+                    <img src="img/worldskills/robot_sand.jpg">
+                </div>
+            </div>
         </div>
 
     </div>
 
-    <!-- Scripts -->
     <script src="js/worldskills.js"></script>
 </body>
 

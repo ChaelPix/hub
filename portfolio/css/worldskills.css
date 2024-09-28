@@ -108,6 +108,7 @@ h1 {
 
 .media {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px; 
     align-items: flex-start;
     justify-content: center;
@@ -235,6 +236,19 @@ h1 {
     .back-button button {
         font-size: 0.9em;
         padding: 8px 16px;
+    }
+}
+@media (max-width: 768px) {
+    .media img {
+        width: 60%;
+        max-width: 80%; 
+        margin: 0 auto;
+    }
+
+    .media p {
+        width: 100%;
+        text-align: center; 
+        margin-top: 20px; 
     }
 }
 

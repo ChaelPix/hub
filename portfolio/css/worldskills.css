@@ -157,7 +157,28 @@ h1 {
     max-width: 100%;
 }
 
+.triangle {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 999;
+    pointer-events: none;
+}
 
+.triangle-top {
+    top: 0;
+    left: 0;
+    border-width: 100vw 100vw 0 0;
+    border-color: rgb(14, 0, 63) transparent transparent transparent;
+}
+
+.triangle-bottom {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 100vw 100vw;
+    border-color: transparent transparent rgb(14, 0, 63) transparent;
+}
 
 @media (max-width: 1200px) {
     h1 {

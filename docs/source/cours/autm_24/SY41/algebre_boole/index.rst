@@ -2,189 +2,153 @@
 Algèbre de Boole
 ================
 
-.. contents::
-   :local:
-   :depth: 2
+.. toctree::
+  :maxdepth: 1
 
-Introduction
-------------
+  td/index
 
-L'algèbre de Boole est un système mathématique qui manipule des variables logiques prenant deux valeurs possibles : **0** (faux) ou **1** (vrai). Elle est fondamentale en informatique pour le développement de circuits logiques et la programmation.
+Introduction à l'algèbre de Boole
+---------------------------------
+L'algèbre de Boole repose sur des variables prenant des valeurs binaires (0 ou 1). Ces variables peuvent être combinées
+à l'aide de portes logiques pour créer des fonctions booléennes.
 
-Variables Booléennes
---------------------
+Portes logiques de base :
 
-Une **variable booléenne** est une variable qui ne peut prendre que les valeurs 0 ou 1.
+- AND : le produit logique (noté :math:`\cdot`)
 
-Symboles et Notations
----------------------
+- OR : la somme logique (noté :math:`+`)
 
-En algèbre de Boole, différentes notations sont utilisées pour représenter les opérations logiques. Il est essentiel de comprendre ces symboles pour manipuler correctement les expressions booléennes.
+- NOT : la négation (noté :math:`\overline{A}`)
 
-Correspondance des Symboles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- XOR : l'exclusive OR (noté :math:`\oplus`)
 
-- **Addition (+)** : Correspond à l'opérateur **OU logique** (∨).
+Tables de vérité
+----------------
+Une table de vérité permet de définir les sorties d'une fonction logique pour toutes les combinaisons possibles
+des entrées. 
 
-  **Exemple** :
+**Méthode** : Listez toutes les combinaisons binaires possibles des entrées, puis déduisez les sorties en fonction 
+de l'expression booléenne.
 
-  .. math::
+Exemple de table de vérité pour un demi-additionneur (addition de 2 bits) :
 
-     A + B \equiv A \lor B
+.. list-table:: Table de vérité pour un demi-additionneur
+   :header-rows: 1
+   :widths: 10 10 10 15
 
-- **Multiplication (absence de symbole ou ·)** : Correspond à l'opérateur **ET logique** (∧).
+   * - A
+     - B
+     - S (Somme)
+     - Cout (Retenue)
+   * - 0
+     - 0
+     - 0
+     - 0
+   * - 0
+     - 1
+     - 1
+     - 0
+   * - 1
+     - 0
+     - 1
+     - 0
+   * - 1
+     - 1
+     - 0
+     - 1
 
-  **Exemple** :
-
-  .. math::
-
-     AB \text{ ou } A \cdot B \equiv A \land B
-
-- **Négation (¬ ou barre au-dessus de la variable ou apostrophe ('))** : Correspond à l'opérateur **NON logique**.
-
-  **Exemple** :
-
-  - Si :math:`A = 1`, alors :math:`\lnot A = 0`
-  - Si :math:`A = 0`, alors :math:`\lnot A = 1`
-
-Opérateurs Logiques
--------------------
-
-NON (¬)
-~~~~~~~~
-
-Inverse la valeur de la variable.
-
-+-----+-----+
-|  A  | ¬A  |
-+=====+=====+
-|  0  |  1  |
-+-----+-----+
-|  1  |  0  |
-+-----+-----+
-
-ET (∧)
-~~~~~~
-
-Le résultat est 1 si **toutes** les variables sont à 1.
-
-+-----+-----+-------+
-|  A  |  B  | A ∧ B |
-+=====+=====+=======+
-|  0  |  0  |   0   |
-+-----+-----+-------+
-|  0  |  1  |   0   |
-+-----+-----+-------+
-|  1  |  0  |   0   |
-+-----+-----+-------+
-|  1  |  1  |   1   |
-+-----+-----+-------+
-
-OU (∨)
-~~~~~~
-
-Le résultat est 1 si **au moins** une variable est à 1.
-
-+-----+-----+-------+
-|  A  |  B  | A ∨ B |
-+=====+=====+=======+
-|  0  |  0  |   0   |
-+-----+-----+-------+
-|  0  |  1  |   1   |
-+-----+-----+-------+
-|  1  |  0  |   1   |
-+-----+-----+-------+
-|  1  |  1  |   1   |
-+-----+-----+-------+
-
-Formes Canoniques
+Formes canoniques
 -----------------
+Les formes canoniques permettent de représenter une fonction booléenne sous la forme d'une somme de mintermes ou 
+de produits de maxtermes.
 
-Les **formes canoniques** sont des représentations standardisées des fonctions booléennes. Elles sont particulièrement utiles pour la simplification et la réalisation pratique des circuits logiques.
+- **Somme des produits (SOP)** : on identifie les mintermes où la sortie vaut 1.
+- **Produit des sommes (POS)** : on identifie les maxtermes où la sortie vaut 0.
 
-Forme Canonique de Somme (Sum of Products - SOP)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Exemple** :
+Si vous avez la table suivante :
 
-- **Définition** : Une expression est sous forme canonique de somme si elle est écrite comme une somme (**OU logique**) de produits (**ET logique**) de variables ou de leurs compléments.
+.. list-table:: Exemple de table avec X
+   :header-rows: 1
+   :widths: 10 10 10 10
 
-- **Exemple** :
+   * - A
+     - B
+     - C
+     - S
+   * - 0
+     - 0
+     - 0
+     - 1
+   * - 0
+     - 1
+     - 0
+     - X
+   * - 1
+     - 0
+     - 1
+     - 1
 
-  .. math::
+L'expression sous forme de SOP est :math:`S = \overline{A} \overline{B} \overline{C} + A \overline{B} C`.
 
-     F(A, B, C) = A'B'C + AB'C' + ABC
+Simplification d'expressions booléennes
+---------------------------------------
+Pour simplifier une fonction booléenne, vous pouvez appliquer des règles algébriques. 
 
-- **Utilisation** : Cette forme facilite la mise en place de circuits utilisant des portes **OU** de plusieurs entrées suivies de portes **ET**.
+**Règles courantes** :
+- Distributivité : :math:`A + (B \cdot C) = (A + B) \cdot (A + C)`
+- Absorption : :math:`A + A \cdot B = A`
+- Involution : :math:`\overline{\overline{A}} = A`
 
-Forme Canonique de Produit (Product of Sums - POS)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Exemple** :
+Soit l'expression : :math:`S = A \cdot B + A \cdot \overline{B}`
 
-- **Définition** : Une expression est sous forme canonique de produit si elle est écrite comme un produit (**ET logique**) de sommes (**OU logique**) de variables ou de leurs compléments.
+Vous pouvez la simplifier en :math:`S = A`.
 
-- **Exemple** :
+Utilisation des opérateurs complets
+-----------------------------------
+Les portes NAND et NOR sont des opérateurs complets, ce qui signifie qu'elles peuvent être utilisées pour réaliser 
+toute fonction logique.
 
-  .. math::
+**Exemple avec des portes NAND** :
+Pour réaliser l'expression : :math:`S = A \cdot B`, vous pouvez utiliser des portes NAND comme suit :
+1. :math:`S = \overline{\overline{(A \cdot B)}}` (en utilisant deux NAND en série)
 
-     F(A, B, C) = (A + B + C')(A' + B + C)(A + B' + C)
+Transcodeur 4B/5B
+-----------------
+Un transcodeur 4B/5B est utilisé pour convertir des signaux de 4 bits en 5 bits pour éviter des séquences longues 
+de 0 et de 1 dans les communications Ethernet.
 
-- **Utilisation** : Cette forme est utile pour la réalisation de circuits utilisant des portes **ET** de plusieurs entrées suivies de portes **OU**.
+**Exemple de codage** :
+Si l'entrée est :math:`E[3:0] = 0000`, la sortie sera :math:`S[4:0] = 11110`.
 
-Mintermes et Maxtermes
-~~~~~~~~~~~~~~~~~~~~~~
+Gestion des états indifférents (X)
+----------------------------------
+Les états indifférents (X) dans une table de vérité peuvent être traités pour simplifier les équations. Les X 
+représentent des conditions pour lesquelles l'état de la sortie n'a pas d'importance (1 ou 0). 
 
-- **Minterme** : Un produit (**ET logique**) de toutes les variables, où chaque variable peut être normale ou complémentée. Un minterme est égal à 1 pour une seule combinaison des variables.
+**Exemple** :
+Si une table de vérité contient un X, vous pouvez choisir l'état qui permet de simplifier l'expression.
 
-  **Exemple** : Pour \( A = 1, B = 0, C = 1 \), le minterme est \( A B' C \).
+Table avec X :
 
-- **Maxterme** : Une somme (**OU logique**) de toutes les variables, où chaque variable peut être normale ou complémentée. Un maxterme est égal à 0 pour une seule combinaison des variables.
+.. list-table:: Exemple de table avec X
+   :header-rows: 1
+   :widths: 10 10 10 10
 
-  **Exemple** : Pour \( A = 1, B = 0, C = 1 \), le maxterme est \( A + B' + C \).
-
-Lois de l'Algèbre de Boole
---------------------------
-
-Identité
-~~~~~~~~
-
-- :math:`A \lor 0 = A`
-- :math:`A \land 1 = A`
-
-Domination
-~~~~~~~~~~
-
-- :math:`A \lor 1 = 1`
-- :math:`A \land 0 = 0`
-
-Idempotence
-~~~~~~~~~~~
-
-- :math:`A \lor A = A`
-- :math:`A \land A = A`
-
-Commutativité
-~~~~~~~~~~~~~
-
-- :math:`A \lor B = B \lor A`
-- :math:`A \land B = B \land A`
-
-Associativité
-~~~~~~~~~~~~~
-
-- :math:`(A \lor B) \lor C = A \lor (B \lor C)`
-- :math:`(A \land B) \land C = A \land (B \land C)`
-
-Distributivité
-~~~~~~~~~~~~~~
-
-- :math:`A \lor (B \land C) = (A \lor B) \land (A \lor C)`
-- :math:`A \land (B \lor C) = (A \land B) \lor (A \land C)`
-
-Double Négation
-~~~~~~~~~~~~~~~
-
-- :math:`\lnot (\lnot A) = A`
-
-Lois de De Morgan
-~~~~~~~~~~~~~~~~~
-
-- :math:`\lnot (A \lor B) = \lnot A \land \lnot B`
-- :math:`\lnot (A \land B) = \lnot A \lor \lnot B`
+   * - A
+     - B
+     - C
+     - S
+   * - 0
+     - 0
+     - 0
+     - 1
+   * - 0
+     - 1
+     - 0
+     - X
+   * - 1
+     - 0
+     - 0
+     - 1

@@ -9,3 +9,4 @@ SY41
    conversions_binaires/index
    memoires_binaires/index
    tp_cross_dev/index
+   manipulation_bits/index

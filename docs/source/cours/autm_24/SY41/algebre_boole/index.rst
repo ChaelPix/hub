@@ -7,6 +7,13 @@ Algèbre de Boole
 
   td/index
 
+---
+
+.. contents::
+   :depth: 2
+   :local:
+
+
 Introduction à l'algèbre de Boole
 ---------------------------------
 L'algèbre de Boole repose sur des variables prenant des valeurs binaires (0 ou 1). Ces variables peuvent être combinées

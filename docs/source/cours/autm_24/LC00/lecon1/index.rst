@@ -1,5 +1,5 @@
 =======
-Lecon 1
+Leçon 1
 =======
 
 ### Leçon de Révision : Caractères Chinois Essentiels

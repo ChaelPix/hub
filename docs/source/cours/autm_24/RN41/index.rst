@@ -3,4 +3,7 @@ RN41
 ====
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
+
+   matrices/index
+   arithmetiques/index

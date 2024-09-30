@@ -12,3 +12,4 @@ Arithmetique
    pgcd/index
    test_primal/index
    resume/index
+   td/index

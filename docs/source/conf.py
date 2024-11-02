@@ -31,6 +31,7 @@ extensions = [
     'sphinx_rtd_theme',
     'sphinx_copybutton',
     'sphinxcontrib.video',
+    'myst_parser',
 ]
 
 
@@ -66,3 +67,9 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}

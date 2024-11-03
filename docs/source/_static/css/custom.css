@@ -9,3 +9,19 @@
 .wy-side-nav-search, .wy-nav-top {
     background: #1a0d55;
 }
+
+.wy-nav-content {
+    max-width: 100%;
+}
+
+.main-content {
+    padding: 0 2rem;
+}
+
+.wy-table-responsive {
+    overflow-x: visible; 
+}
+
+.wy-content {
+    max-width: 100%;
+}

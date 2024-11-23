@@ -14,11 +14,18 @@ make clean html
 firefox build/html/index.html
 ```
 
-Install NPM & Tailwind with DaisyUI:
+Install NPM, NodeJs, & Tailwind with DaisyUI:
 
 ```sh
-sudo apt install nodejs npm -y
+sudo apt install npm -y
 npm init -y
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+source ~/.bashrc
+nvm install --lts
+
+nvm use --lts
+nvm alias default lts
 ```
 
 ```sh

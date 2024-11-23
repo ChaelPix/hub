@@ -50,11 +50,7 @@ jobs:
           
       - name: Copy other sites to the Sphinx build directory
         run: |
-          cp -r englishverbs/ docs/build/html/englishverbs/
-          cp -r englishvoccards/ docs/build/html/englishvoccards/
           cp -r portfolio/ docs/build/html/portfolio/
-          cp -r supernovaSprint/ docs/build/html/supernovaSprint/
-          cp -r btscultg/ docs/build/html/btscultg/
 
       # Package the doc and upload it as an artifact
       # Artifact are output file of the job so that you can retrieve what has been done by your

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<html data-theme="cupcake">
+<html data-theme="cmyk">
 
 </html>
 
@@ -9,13 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traïan B. Portfolio</title>
     <link href="output.css" rel="stylesheet">
-
+    <script src="js/projects.js" defer></script>
 </head>
 
 
 <body class="bg-white-100 text-black-900">
 
-    <div class="absolute inset-0 overflow-hidden">
+    <div class="relative min-h-screen overflow-y-auto">
 
         <div class="wrapper">
             <div class="box">
@@ -42,7 +42,7 @@
 
                 <div class="w-full -mt-16">
                     <!-- pdp -->
-                    <img class="relative w-32 h-32 aspect-square rounded-full border-4 border-white hover:scale-110 transition duration-300
+                    <img class="relative w-32 h-32 aspect-square rounded-full border-4 border-white transform hover:scale-110 transition duration-300
                             left-1/2 -translate-x-16
                             sm:left-0 sm:translate-x-4" src="img/pdp/pdp.jpg" alt="Profil" />
 
@@ -54,15 +54,15 @@
                         <div
                             class="flex justify-center lg:justify-end items-center space-x-4 mt-4 lg:mt-0 lg:-translate-y-16">
                             <a href="https://github.com/chaelpix"
-                                class="w-12 h-12 bg-black rounded-3xl shadow-lg flex justify-center items-center hover:bg-gray-700 hover:scale-110 transition duration-300">
+                                class="w-12 h-12 bg-black rounded-3xl shadow-lg flex justify-center items-center hover:bg-gray-700 transform hover:scale-110 transition duration-300">
                                 <img src="img/icons/icon_github_w.png" alt="Portfolio" class="w-10 h-10">
                             </a>
                             <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/"
-                                class="w-12 h-12 bg-gray-200 rounded-lg shadow-lg flex justify-center items-center hover:bg-blue-200  hover:scale-110 transition duration-300">
+                                class="w-12 h-12 bg-gray-100 rounded-lg shadow-lg flex justify-center items-center hover:bg-blue-200  transform hover:scale-110 transition duration-300">
                                 <img src="img/icons/icon_linkedin.png" alt="LinkedIn" class="w-10 h-10">
                             </a>
                             <a href="mailto:traian.beaujard@gmail.com"
-                                class="w-12 h-12 bg-gray-200 rounded-lg shadow-lg flex justify-center items-center hover:bg-red-300 hover:scale-110 transition duration-300">
+                                class="w-12 h-12 bg-gray-100 rounded-lg shadow-lg flex justify-center items-center hover:bg-red-300 transform hover:scale-110 transition duration-300">
                                 <img src="img/icons/icon_gmail.png" alt="Gmail" class="w-10 h-10">
                             </a>
                         </div>
@@ -77,9 +77,19 @@
                     </div>
                 </div>
             </div>
-    <div class="divider divider-secondary">Education</div>
+            <div class="delay-1000 animate-fade-in w-full sm:mx-auto p-4">
+                <div id="tags-container" class="flex flex-wrap gap-2">
+                    <!-- <div class="cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300">Web Development</div> -->
+                </div>
+            </div>
+
+            <div id="projects-container"
+                class="delay-1000 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
+            </div>
+
 
         </div>
+
 
 </body>
 

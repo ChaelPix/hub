@@ -1,73 +1,96 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="img/icon_mctpx_favicon.png" type="image/x-icon">
-    <title>Traïan B.</title>
-
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-
-
+    <title>Traïan B. Portfolio</title>
+    <link href="output.css" rel="stylesheet">
+    <script src="js/projects.js" defer></script>
 </head>
 
-<body>
-    <div class="triangle triangle-top"></div>
-    <div class="triangle triangle-bottom"></div>
-    
-    <div id="follower" class="follow-circle"></div>
-    <div class="container">
-        <div class="left-content">
-            <h1>
-                <span>Traïan</span>
-                <span>BEAUJARD's</span>
-                <span>Portfolio</span>
-            </h1>
-            
 
-            <div class="description">Driven by passion, I'm a French IT student turning ideas into digital realities.</div>
-            <div class="buttons">
-                <button data-href="worldskills.html">🏆WorldSkills Champion</button>
-                <button data-href="projects.html">🛠️[Coming soon..]</button>
-                <button data-href="games.html">📱My android MVPs [WIP..]</button>
+<body class="bg-white-100 text-black-900">
+
+    <div class="relative min-h-screen overflow-y-auto">
+
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- top -->
+        <div class="w-full sm:w-1/2 sm:mx-auto border border-gray-300 rounded-lg shadow-lg ">
+            <!-- banner -->
+            <div class="relative animate-slide-in-down">
+                <img class="w-full aspect-video h-48 object-cover" src="img/pdp/banner.jpg" alt="Bannière" />
+
+                <!-- BIO -->
+
+                <div class="w-full -mt-16">
+                    <!-- pdp -->
+                    <img class="relative w-32 h-32 aspect-square rounded-full border-4 border-white transform hover:scale-110 transition duration-300
+                            left-1/2 -translate-x-16
+                            sm:left-0 sm:translate-x-4" src="img/pdp/pdp.jpg" alt="Profil" />
+
+                    <!-- name -->
+                    <div class="relative text-center sm:text-left mx-2">
+                        <h1 class="text-2xl whitespace-nowrap">BEAUJARD Traïan</h1>
+
+                        <!-- buttons -->
+                        <div
+                            class="flex justify-center lg:justify-end items-center space-x-4 mt-4 lg:mt-0 lg:-translate-y-16">
+                            <a href="https://github.com/chaelpix"
+                                class="w-12 h-12 bg-black rounded-3xl shadow-lg flex justify-center items-center hover:bg-gray-700 transform hover:scale-110 transition duration-300">
+                                <img src="img/icons/icon_github_w.png" alt="Portfolio" class="w-10 h-10">
+                            </a>
+                            <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/"
+                                class="w-12 h-12 bg-gray-100 rounded-lg shadow-lg flex justify-center items-center hover:bg-blue-200  transform hover:scale-110 transition duration-300">
+                                <img src="img/icons/icon_linkedin.png" alt="LinkedIn" class="w-10 h-10">
+                            </a>
+                            <a href="mailto:traian.beaujard@gmail.com"
+                                class="w-12 h-12 bg-gray-100 rounded-lg shadow-lg flex justify-center items-center hover:bg-red-300 transform hover:scale-110 transition duration-300">
+                                <img src="img/icons/icon_gmail.png" alt="Gmail" class="w-10 h-10">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative -mt-0 lg:-mt-12 sm:translate-y-0 left-0">
+                        <p class="p-2 w-full text-center sm:text-left">
+                            ► Wordskills 2024 Champion in Autonomous Mobile Robotics🔥& Best of Nation🏅<br>► Student at
+                            <a class="link link-primary"
+                                href="https://www.utbm.fr/formations/ingenieur/informatique/">UTBM.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="delay-1000 animate-fade-in w-full sm:mx-auto p-4">
+                <div id="tags-container" class="flex flex-wrap gap-2">
+                    <!-- <div class="cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300">Web Development</div> -->
+                </div>
             </div>
 
-            <hr>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <a href="mailto:traian.beaujard@gmail.com" target="_blank"><img src="img/icon_mail_w.png" alt="Mail Icon"></a>
-                    <div class="contact-detail"><u>Mail:</u>&nbsp;traian.beaujard@gmail.com</div>
-                </div>
-                <div class="contact-item">
-                    <a href="https://github.com/ChaelPix" target="_blank"><img src="img/icon_github_w.png" alt="GitHub Icon">
-                    <div class="contact-detail"><u>GitHub:</u>&nbsp;ChaelPix</div></a>
-                </div>
-                <div class="contact-item">
-                    <a><img src="img/icon_discord_w.png" alt="Discord Icon">
-                    <div class="contact-detail"><u>Discord:</u>&nbsp;pix_tb</div></a>
-                </div>
+            <div id="projects-container"
+                class="delay-1000 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 w-full">
             </div>
 
-        </div>
-        <div class="right-content">
-            <img src="img/logo_chaelPix.png" alt="Description de l'image">
-        </div>
-        
-      
-        
-    </div>
-    <div class="centered-rectangle"></div>
-    </div>
 
-    <script src="js/utilities.js"></script>
-    <script src="js/follower.js"></script>
-    <script src="js/index.js"></script>
+        </div>
+
+
 </body>
 
 </html>

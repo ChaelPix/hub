@@ -4,17 +4,24 @@ function generateCards(filteredProjects) {
     const container = document.getElementById('projects-container');
     container.innerHTML = ''; // clear container
 
-    // prioritize "Highlights" projects
-    const sortedProjects = (filteredProjects || projects).sort((a, b) => {
-        const isHighlightA = a.tags.includes("Highlights") ? 1 : 0;
-        const isHighlightB = b.tags.includes("Highlights") ? 1 : 0;
-        return isHighlightB - isHighlightA; // "Highlights" projects first
-    });
+    // prioritize "Highlights" projects and sort by date
+    const sortedProjects = (filteredProjects || projects)
+        .sort((a, b) => {
+            const dateA = extractDateValue(a.date);
+            const dateB = extractDateValue(b.date);
+
+            // highlights still prioritized
+            const isHighlightA = a.tags.includes("Highlights") ? 1 : 0;
+            const isHighlightB = b.tags.includes("Highlights") ? 1 : 0;
+
+            // sort by highlights first, then by date
+            return isHighlightB - isHighlightA || dateB - dateA;
+        });
 
     sortedProjects.forEach((project, index) => {
         // create card
         const card = document.createElement('div');
-        card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in hidden`;
+        card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in `;
 
         // add halo effect for "Highlights" tag
         if (project.tags.includes("Highlights")) {
@@ -36,10 +43,6 @@ function generateCards(filteredProjects) {
             </div>
         `;
 
-        setTimeout(() => {
-            card.classList.remove('hidden');
-        }, index * 200);
-
         // add click event to open the popup
         card.onclick = () => {
             openPopup(project.id);
@@ -48,6 +51,31 @@ function generateCards(filteredProjects) {
         container.appendChild(card);
     });
 }
+
+// helper function to extract a numerical value from the date
+function extractDateValue(date) {
+    if (!date) return -Infinity; // invalid or missing dates are treated as oldest
+
+    // handle date ranges
+    if (date.includes('-')) {
+        const endDate = date.split('-')[1].trim(); // use the end date for sorting
+        return parseDate(endDate);
+    }
+
+    // handle single dates
+    return parseDate(date);
+}
+
+// helper function to convert "Month Year" into a sortable value
+function parseDate(date) {
+    const [month, year] = date.split(' '); // split into components
+    const months = {
+        January: 1, February: 2, March: 3, April: 4, May: 5, June: 6,
+        July: 7, August: 8, September: 9, October: 10, November: 11, December: 12
+    };
+    return parseInt(year) * 12 + (months[month] || 0); // convert to a sortable numeric value
+}
+
 
 
 

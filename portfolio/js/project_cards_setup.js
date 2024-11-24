@@ -4,7 +4,14 @@ function generateCards(filteredProjects) {
     const container = document.getElementById('projects-container');
     container.innerHTML = ''; // clear container
 
-    (filteredProjects || projects).forEach((project, index) => {
+    // prioritize "Highlights" projects
+    const sortedProjects = (filteredProjects || projects).sort((a, b) => {
+        const isHighlightA = a.tags.includes("Highlights") ? 1 : 0;
+        const isHighlightB = b.tags.includes("Highlights") ? 1 : 0;
+        return isHighlightB - isHighlightA; // "Highlights" projects first
+    });
+
+    sortedProjects.forEach((project, index) => {
         // create card
         const card = document.createElement('div');
         card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in hidden`;
@@ -21,7 +28,7 @@ function generateCards(filteredProjects) {
             </figure>
             <div class="card-body hover:scale-105 duration-300">
                 <h2 class="card-title text-base-content">${project.title}</h2>
-                <p class="text-sm text-gray-500">${project.date}</p>
+                <p class="text-sm text-gray-500">${project.date || ''}</p>
                 <p class="text-base-content">${project.description}</p>
                 <div class="card-actions justify-end">
                     ${project.tags.map(tag => `<div class="text-base-content badge badge-outline hover:scale-105 duration-300">${tag}</div>`).join('')}
@@ -31,8 +38,8 @@ function generateCards(filteredProjects) {
 
         setTimeout(() => {
             card.classList.remove('hidden');
-        },  index * 200);
-        
+        }, index * 200);
+
         // add click event to open the popup
         card.onclick = () => {
             openPopup(project.id);
@@ -41,6 +48,7 @@ function generateCards(filteredProjects) {
         container.appendChild(card);
     });
 }
+
 
 
 function generateTags() {

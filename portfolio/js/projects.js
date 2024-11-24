@@ -11,7 +11,7 @@ export const projects = [
         "title": "MxrpiOn",
         "description": "I made a tic-tac-toe game where user can play against IA.",
         "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["IA", "C++/CLI", "Game"],
+        "tags": ["AI", "C++/CLI", "Game"],
         "id": "mxrpion",
         "date": "December 2022"
     },
@@ -123,15 +123,15 @@ export const projects = [
         "title": "AIssenger",
         "description": "I made an autonomous messaging app using local LLM and Stable Diffusion.",
         "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["IA", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Unity"],
+        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Unity"],
         "id": "aissenger",
-        "date": "April 2024"
+        "date": "November 2024"
     },
     {
         "title": "IAstagram",
         "description": "I made an autonomous social media app using local LLM and Stable Diffusion.",
         "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["IA", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
+        "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
         "id": "iastagram",
         "date": "October 2024"
     },
@@ -189,7 +189,7 @@ export const projects = [
         "description": "I programmed a robot to complete the different courses.",
         "image": "img/worldskills/reg/robot_sand.jpg",
         "tags": ["Robotics", "C++", "Arduino"],
-        "id": "reg",
+        "id": "ws_reg",
         "date": "October 2022"
     }
 ];

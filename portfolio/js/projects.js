@@ -155,7 +155,7 @@ export const projects = [
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
         "description": "I built for the <b>international competition</b> of Worldskills a robot ables to navigate and interract with environnement by using his arm.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
-        "tags": ["Highlights", "Robotics", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
+        "tags": ["Competition", "Highlights", "Robotics", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
         "category": "worldskills",
         "id": "worldskills-lyon24",
         "date": "December 2023 - September 2024"
@@ -172,23 +172,23 @@ export const projects = [
         "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
         "description": "I built for the Worldskills Austria national competition a little robot ables to navigate autonomously",
         "image": "img/worldskills/austria/robot_austria.jpg",
-        "tags": ["Robotics", "Linux", "ROS2", "C++"],
-        "id": "austria-skills23",
+        "tags": ["Competition", "Robotics", "Linux", "ROS2", "C++"],
+        "id": "ws_austria-skills23",
         "date": "October 2023 - November 2023"
     },
     {
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
         "description": "I built for the the <b>national competition</b> of Worldskills a little robot ables to navigate autonomously",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
-        "tags": ["Robotics", "Linux", "ROS1", "C++", "OpenCV"],
-        "id": "fnat23",
+        "tags": ["Competition", "Robotics", "Linux", "ROS1", "C++", "OpenCV"],
+        "id": "ws_fnat23",
         "date": "January 2023 - September 2023"
     },
     {
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
         "description": "I programmed a robot to complete the different courses.",
         "image": "img/worldskills/reg/robot_sand.jpg",
-        "tags": ["Robotics", "C++", "Arduino"],
+        "tags": ["Competition", "Robotics", "C++", "Arduino"],
         "id": "ws_reg",
         "date": "October 2022"
     }

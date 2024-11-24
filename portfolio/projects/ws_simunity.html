@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="output.css" rel="stylesheet">
+    <script src="js/theme.js" defer></script>
+</head>
+
+
+<body class="bg-white-100 text-black-900">
+    <!-- background -->
+    <div class="relative min-h-screen overflow-y-auto">
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Project Window -->
+        <div class="flex flex-col gap-1.25 justify-center items-center">
+            <p class="mt-4 font-bold">I set up a simulation on Unity using my Ros2 Stack to help with my robot
+                preparation by using ros2-for-unity.</p>
+            <div class="divider "></div>
+ 
+            <img src="img/worldskills/unity/robot_unity.png"
+                class="w-1/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            <p class="italic text-center">URDF loaded on Unity 3D Scene</p>
+
+            <p class="mt-4 mb-4">► I translated our robot URDF on Unity with URDF Importer. Therefore I could have the
+                robot Transforms and easily edit our robot. Then I use Unity Physics to create a /cmd_vel topic to move
+                the robot.</p>
+
+            <img src="img/worldskills/unity/tfs.png"
+                class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            <p class="italic text-center">Visible Tfs on RVIZ2</p>
+
+            <p class="mt-4 mb-4">► Then I create a simulated LIDAR matching our YdLidar x2 with same specs and noise
+                that publishes on the /scan topic as a real Lidar.</p>
+            <img src="img/worldskills/unity/lidar.gif"
+                class="w-1/3 rounded-2xl object-cover aspect-square hover:scale-110 duration-300" />
+            <p class="italic text-center">Visible Lidar raycasts on Unity</p>
+
+            <p class="mt-4 mb-4">► The advantadge is that we can debug each raycast in order to have a better
+                understanding. For example, a module asked us to create an algorithm from scratch in C++. I could use
+                the simulation to debug every steps of the process</p>
+
+            <div class="w-full object-cover aspect-video bg-black ">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/lB7ceUKhDY4" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <p class="italic text-center">Custom Algorithm where robot move to the most empty front space</p>
+
+            <p class="mt-4 mb-4">► Now with /scan, I can get the data from Unity's Scene to use it with my ROS2 Nav
+                Stack and publishes the result on /cmd_vel.</p>
+            <img src="img/worldskills/unity/slam.gif"
+                class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            <p class="italic text-center">Robot moving with SLAM</p>
+            <img src="img/worldskills/unity/nav_2.gif"
+                class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            <p class="italic text-center">Robot moving with Nav2. (I got some fun with the scenary).</p>
+
+            <div class="divider "></div>
+
+            <p class="mt-4 mb-4">► I also link a camera with a /color/rgb/image_raw topic to use my YOLO stack for object detection.</p>
+            <div class="flex gap-5 justify-center overflow-hidden">
+                <img src="img/worldskills/unity/yolo_1.png" class="w-1/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+                <img src="img/worldskills/unity/yolo_2.png" class="w-1/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            </div>
+
+            <p class="mt-4 mb-4">► I started to integrate our Arm system to the Simulation.</p>
+            <img src="img/worldskills/unity/arm.gif"
+                class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300 overflow-hidden" />
+            <p class="italic text-center">A position is published to /point, the Inverse Kinematics Stack does the maths for arm link positions, then publishes the joints.</p>
+            
+            <div class="divider "></div>
+            <p class="mt-4 mb-4">► The simulation allowed us to train on the example board from the subject directly on our computer.</p>
+            <div class="flex gap-5 justify-center overflow-hidden">
+                <img src="img/worldskills/unity/board_2.png" class="w-1/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+                <img src="img/worldskills/unity/board_1.png" class="w-1/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+            </div>
+            <p class="italic text-center">Example board from Subject into 3d model in Unity</p>
+        </div>
+    </div>
+
+    </div>
+
+</body>
+
+</html>

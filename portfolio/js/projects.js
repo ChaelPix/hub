@@ -157,7 +157,7 @@ export const projects = [
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "tags": ["Competition", "Highlights", "Robotics", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
         "category": "worldskills",
-        "id": "worldskills-lyon24",
+        "id": "ws_lyon24",
         "date": "December 2023 - September 2024"
     },
     {
@@ -165,7 +165,7 @@ export const projects = [
         "description": "I set up a simulation for robots using my ROS2 stack in Unity",
         "image": "img/worldskills/lyon24/simu.png",
         "tags": ["Highlights", "Robotics", "Linux", "ROS2", "C++", "C#", "Unity"],
-        "id": "worldskills-lyon24",
+        "id": "ws_simunity",
         "date": "December 2023 - September 2024"
     },
     {

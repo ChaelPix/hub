@@ -159,6 +159,9 @@ function openPopup(projectId) {
     const popup = document.getElementById('popup');
     popup.classList.remove('hidden');
 
+    // block main page scroll
+    document.body.classList.add('no-scroll');
+
     // update the project title in the toolbar
     const projectUrl = document.getElementById('project-url');
     projectUrl.textContent = project.title;
@@ -186,6 +189,8 @@ window.closePopup = function () {
     const popup = document.getElementById('popup');
     popup.classList.add('hidden');
     document.getElementById('popup-content').innerHTML = ''; // clear popup content
+
+    document.body.classList.remove('no-scroll');
 };
 
 

@@ -122,7 +122,7 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      "dracula",
+      "night",
       "cmyk",
     ],
   },

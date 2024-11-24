@@ -111,7 +111,7 @@ function generateTags() {
 function resetTagStyles() {
     const allTags = document.querySelectorAll('#tags-container .badge:not(.badge-secondary)');
     allTags.forEach(tag => {
-        if (tag.textContent === "Highlights") {
+        if (tag.textContent.includes("Highlights")) {
             tag.className = 'cursor-pointer badge badge-accent badge-outline transform hover:scale-110 duration-300';
         } else {
             tag.className = 'cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300';

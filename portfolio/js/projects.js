@@ -47,11 +47,11 @@ function generateCards(filteredProjects) {
                 <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110 cursor-pointer" />
             </figure>
             <div class="card-body hover:scale-105 duration-300">
-                <h2 class="card-title">${project.title}</h2>
+                <h2 class="card-title text-base-content">${project.title}</h2>
                 <p class="text-sm text-gray-500">${project.date}</p>
-                <p>${project.description}</p>
+                <p class="text-base-content">${project.description}</p>
                 <div class="card-actions justify-end">
-                    ${project.tags.map(tag => `<div class="badge badge-outline hover:scale-105 duration-300">${tag}</div>`).join('')}
+                    ${project.tags.map(tag => `<div class="text-base-content badge badge-outline hover:scale-105 duration-300">${tag}</div>`).join('')}
                 </div>
             </div>
         `;

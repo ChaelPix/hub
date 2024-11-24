@@ -3,7 +3,7 @@ export const projects = [
         "title": "My portfolio",
         "description": "I made this portfolio that you are currently viewing.",
         "image": "img/projects/web/portfolio.png",
-        "tags": ["Web", "Tailwind CSS", "Js"],
+        "tags": ["Web", "Tailwind CSS", "Javascript"],
         "id": "portfolio",
         "date": "November 2024"
     },

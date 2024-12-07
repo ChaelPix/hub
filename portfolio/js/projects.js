@@ -8,14 +8,6 @@ export const projects = [
         "date": "December 2022"
     },
     {
-        "title": "MxrpiOn",
-        "description": "I made a tic-tac-toe game where user can play against IA.",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["AI", "C++/CLI", "Game"],
-        "id": "mxrpion",
-        "date": "December 2022"
-    },
-    {
         "title": "Falling It",
         "description": "I made a Live-Casual Puzzle Android game integrating GooglePlay Features (IAP, Cloud...).",
         "image": "https://imageplaceholder.net/1920x720",
@@ -130,7 +122,7 @@ export const projects = [
     {
         "title": "IAstagram",
         "description": "I made an autonomous social media app using local LLM and Stable Diffusion.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/iastagram/iastagram_card2.jpg",
         "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
         "id": "iastagram",
         "date": "October 2024"
@@ -144,12 +136,12 @@ export const projects = [
         "date": "November 2024"
     },
     {
-        "title": "IQ Puzzler Pro Solver",
+        "title": "[WIP] IQ Puzzler Pro Solver",
         "description": "I made with a teammate an algorithm able to resolve any IQ Puzzler Pro game puzzles for IA41 UTBM project.",
         "image": "img/projects/iqpuzzle/iqpuzzlesolver.png",
         "tags": ["AI", "Python", "Prolog"],
         "id": "iq-puzzler",
-        "date": "October 2024"
+        "date": "December 2024"
     },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",

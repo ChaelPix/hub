@@ -1,13 +1,5 @@
 export const projects = [
     {
-        "title": "Multiplayer TCP Rock Paper Scissors",
-        "description": "I made a multiplayer Rock Paper Scissors game.",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["Networking", "C++", "Game"],
-        "id": "tcprps",
-        "date": "December 2022"
-    },
-    {
         "title": "Falling It",
         "description": "I made a Live-Casual Puzzle Android game integrating GooglePlay Features (IAP, Cloud...).",
         "image": "https://imageplaceholder.net/1920x720",
@@ -28,7 +20,7 @@ export const projects = [
         "description": "I made an Idle Android MVP hypercasual game.",
         "image": "https://imageplaceholder.net/1920x720",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "dragonkillstack",
+        "id": "mvp_dragonkillstack",
         "date": "June 2022"
     },
     {
@@ -36,47 +28,47 @@ export const projects = [
         "description": "I made a Runner Android MVP hypercasual game.",
         "image": "https://imageplaceholder.net/1920x720",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "planerfligh",
+        "id": "mvp_planicfligh",
         "date": "June 2022"
     },
     {
         "title": "Ladders & Snakes",
         "description": "I made a Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/laddersnakes/mvp_laddersSnakes.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "ladders",
+        "id": "mvp_laddersnakes",
         "date": "July 2022"
     },
     {
         "title": "Destrucubes Dynamite",
         "description": "I made a Puzzle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/destrucubes/mvp_destrucubes.jpg",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "destrucubes",
+        "id": "mvp_destrucubes",
         "date": "August 2022"
     },
     {
         "title": "Eating Blob Crush",
         "description": "I made an Incremental Idle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/blobcrush/mvp_EatingBlobCrush.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "blobcrush",
+        "id": "mvp_blobcrush",
         "date": "August 2022"
     },
     {
         "title": "Sticky Ball",
         "description": "I made a Stack Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/stickyball/mvp_stickyball.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "stickyball",
+        "id": "mvp_stickyball",
         "date": "September 2022"
     },
     {
         "title": "Balance Master",
         "description": "I made a Puzzle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/balancemaster/mvp_balanceMaster.jpg",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "balancemaster",
+        "id": "mvp_balancemaster",
         "date": "November 2022"
     },
     {

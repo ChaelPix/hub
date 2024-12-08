@@ -98,7 +98,7 @@ export const projects = [
     {
         "title": "Valiant",
         "description": "I made with a partner a multiplayer game from scratch with only SFML/C++ in 3 weeks.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/valiant/valiant_1.png",
         "tags": ["C++", "Networking", "Game", "Linux", "PHP", "SQL"],
         "id": "valiant",
         "date": "December 2023"
@@ -114,7 +114,7 @@ export const projects = [
     {
         "title": "AIssenger",
         "description": "I made an autonomous messaging app using local LLM and Stable Diffusion.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/aissenger/aissenger_card.jpg",
         "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
         "id": "aissenger",
         "date": "November 2024"

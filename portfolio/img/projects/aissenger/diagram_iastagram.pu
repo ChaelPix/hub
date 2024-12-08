@@ -1,0 +1,41 @@
+@startuml
+actor Client
+
+==AutomaticContentGeneration==
+loop RegularCycle
+    Server -> Server : Check if new AI Users or Posts need to be generated
+    alt CreateAIUser
+        Server -> LLama : Generate a JSON with AI User data
+        LLama -> LLama : Process request
+        LLama --> Server : Return JSON data
+        Server -> StableDiffusion : Generate profile picture
+        StableDiffusion --> Server : Return generated image
+        Server -> SQLServer : Save AI User data and profile picture
+    end
+    alt CreatePost
+        Server -> LLama : Generate a JSON with Post data (description, tags, etc.)
+        LLama -> LLama : Process request
+        LLama --> Server : Return JSON data
+        Server -> StableDiffusion : Generate image for the post
+        StableDiffusion --> Server : Return generated image
+        Server -> Server : Simulate likes, followers, and interactions
+        Server -> SQLServer : Save Post data and image
+    end
+end
+
+==UserInteraction==
+Client -> Server : Request data (posts, users)
+Server -> SQLServer : Fetch requested data
+SQLServer --> Server : Return data
+Server --> Client : Send data (posts, users)
+
+alt LikePost
+    Client -> Server : Like a post
+    Server -> SQLServer : Update post data (likes)
+end
+
+alt FollowUser
+    Client -> Server : Follow a user
+    Server -> SQLServer : Update user data (followers)
+end
+@enduml

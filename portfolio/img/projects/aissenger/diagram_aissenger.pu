@@ -1,0 +1,81 @@
+@startuml
+actor Client
+participant Server
+participant SQLServer
+participant StableDiffusion
+participant LLama
+
+==AI Users Generation==
+alt Manual Trigger
+    Server -> Server: Generate a JSON with AI User data using random lists
+    activate Server
+    Server -> StableDiffusion: Generate profile picture
+    activate StableDiffusion
+    StableDiffusion --> Server: Return generated image
+    deactivate StableDiffusion
+    Server -> SQLServer: Save AI User data and profile picture
+    activate SQLServer
+    SQLServer --> Server: Data saved
+    deactivate SQLServer
+    deactivate Server
+end
+
+==User App==
+Client -> Server: Request data (posts, users)
+activate Server
+Server -> SQLServer: Fetch requested data
+activate SQLServer
+SQLServer --> Server: Return data
+deactivate SQLServer
+Server --> Client: Send data (users)
+deactivate Server
+
+==Messaging System==
+loop app
+activate Client
+Client -> Client: Wait user input
+alt Message No picture request
+Client -> LLama: Request message
+    activate LLama
+    LLama --> Client: Return AI-generated response
+    deactivate LLama
+    Client -> Client: Display message
+    
+else includes picture request
+    Client -> Client: Build prompt and message history with the last x messages and history summary
+    Server -> LLama: Ask if AI agrees to send a picture
+    activate LLama
+    LLama -> Server: AI response (Yes/No)
+    deactivate LLama
+    alt Response is "Yes"
+        Client -> LLama: Request JSON with message and image prompt keywords
+        activate LLama
+        LLama -> Client: Return JSON with message and keywords
+        deactivate LLama
+        Client -> Client: Build image prompt from JSON
+        Client -> StableDiffusion: Generate image using built prompt
+        activate StableDiffusion
+        StableDiffusion --> Client: Return generated image
+        deactivate StableDiffusion
+        Client -> Client: Display message and generated image
+    else Response is "No"
+        Client -> LLama: Ask AI to explain why it won't send the requested image
+        activate LLama
+        LLama --> Client: Return explanation message
+        deactivate LLama
+        Client -> Client: Display explanation
+    end
+end
+Client -> Client: Save message history
+
+
+alt Messages exceed token threshold
+    Client -> LLama: Request conversation summary of the last x messages and last summary
+    activate LLama
+    LLama --> Client: Return AI-generated summary
+    deactivate LLama
+    Client -> Client: Save summary
+end
+deactivate Client
+end
+@enduml

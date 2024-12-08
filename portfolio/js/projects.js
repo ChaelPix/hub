@@ -82,7 +82,7 @@ export const projects = [
     {
         "title": "Inverse Kinematics Solver",
         "description": "I made a C++ simulation to understand inverse kinematics.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/iksolver/iksolver.png",
         "tags": ["AI", "C++"],
         "id": "iksolver",
         "date": "June 2024"
@@ -104,9 +104,9 @@ export const projects = [
         "date": "December 2023"
     },
     {
-        "title": "SupernoveSprint",
-        "description": "I made with a partner a web game for class in 24h.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "title": "SupernovaSprint",
+        "description": "We made a web game with a class-mate as extra-project for a class in 24h.",
+        "image": "img/projects/supernovasprint/SNS3.png",
         "tags": ["Web", "Game", "C#", "SQL", "PHP", "Unity"],
         "id": "supernovasprint",
         "date": "November 2024"
@@ -115,7 +115,7 @@ export const projects = [
         "title": "AIssenger",
         "description": "I made an autonomous messaging app using local LLM and Stable Diffusion.",
         "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Unity"],
+        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
         "id": "aissenger",
         "date": "November 2024"
     },

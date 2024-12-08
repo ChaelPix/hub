@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="output.css" rel="stylesheet">
+    <script src="js/theme.js" defer></script>
+</head>
+
+
+<body class="bg-white-100 text-black-900">
+    <!-- background -->
+    <div class="relative min-h-screen overflow-y-auto">
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Project Window -->
+        <div class="flex flex-col gap-1.25 justify-center items-center">
+          <p class="mt-4">
+            For my robot, I have to understand Inverse Kinematics to grab objects in a 3d space.
+          </p>
+          <div class="divider "></div>
+          <p class="mt-4">
+            So I developed with C++ an algorithm to solve the inverse kinematics problem for a chain of segments using a geometric approach based on circle intersections. This algorithm allows the robot to accurately position its end effector at a desired location within its workspace.
+          </p>
+          <div class="divider "></div>
+          <div class="p-6 rounded-lgd">
+            <p class="mt-4 leading-relaxed">
+                The algorithm solves the inverse kinematics problem for a chain of segments using a geometric approach based on circle intersections:
+            </p>
+            <ul class="list-disc list-inside  mt-4 space-y-2">
+                <li>
+                    <strong>Distance and Validity Check:</strong> The end effector's position is checked to ensure it lies within the chain's maximum reach. If it exceeds the limit, the target is scaled to the maximum reachable distance.
+                </li>
+                <li>
+                    <strong>Intersection of Circles:</strong> Each segment is modeled as a circle with its radius equal to the segment length. The algorithm computes intersection points between these circles by:
+                    <ul class="list-decimal list-inside ml-6 mt-2 space-y-1">
+                        <li>Using the law of cosines to determine the overlap distance.</li>
+                        <li>Calculating a perpendicular vector for the height of the triangle formed by the centers.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Triangle Validation:</strong> A helper function ensures that the lengths of the triangle sides formed by the segment being solved and its neighbors respect the triangle inequality, ensuring physically valid configurations.
+                </li>
+                <li>
+                    <strong>Iterative Backward Resolution:</strong> Starting from the end effector, the algorithm calculates each joint's position backward toward the base by resolving circle intersections.
+                </li>
+                <li>
+                    <strong>Pole Constraint:</strong> The algorithm stabilizes the chain by choosing the intersection point closer to a pole, which acts as an external constraint. This ensures smoother and predictable movement.
+                </li>
+                <li>
+                    <strong>Real-Time Interaction:</strong> The algorithm dynamically updates the chain configuration in response to user input, such as moving the end effector or adjusting the pole position with the mouse.
+                </li>
+            </ul>
+
+        </div>
+        
+          <p class="mt-4">
+            Here is a 2d Demo with 3 joints :
+          </p>
+          <div class="relative aspect-videorounded-3xl">
+            <video class="h-full w-full aspect-video rounded-2xl" controls autoplay>
+              <source
+                src="img/projects/iksolver/iksolver_3.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <p class="mt-4">
+            Here is a 2d Demo with more joints :
+          </p>
+          <div class="relative aspect-videorounded-3xl">
+            <video class="h-full w-full aspect-video rounded-2xl" controls autoplay>
+              <source
+                src="img/projects/iksolver/iksolver_9.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        
+    </div>
+
+    </div>
+
+</body>
+
+</html>

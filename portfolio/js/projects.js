@@ -18,7 +18,7 @@ export const projects = [
     {
         "title": "Dragon Kill Stack",
         "description": "I made an Idle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/dragonkillstack/mvp_dragonDestruction.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_dragonkillstack",
         "date": "June 2022"
@@ -26,9 +26,9 @@ export const projects = [
     {
         "title": "Panic Plane Flight",
         "description": "I made a Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/panicplaneflight/mvp_panicPlaneFlight.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_planicfligh",
+        "id": "mvp_panicplaneflight",
         "date": "June 2022"
     },
     {
@@ -82,9 +82,9 @@ export const projects = [
     {
         "title": "Dices of Fishes Raid",
         "description": "I made a window game for a 48h Unity GameJam.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/dicesfishraids/fish_0.png",
         "tags": ["C#", "Unity", "Game"],
-        "id": "dices",
+        "id": "dicesoffraid",
         "date": "April 2022"
     },
     {

@@ -161,7 +161,7 @@ function openPopup(projectId) {
 
     // block main page scroll
     document.body.classList.add('no-scroll');
-
+    history.pushState(null, null, `#${projectId}`);
     // update the project title in the toolbar
     const projectUrl = document.getElementById('project-url');
     projectUrl.textContent = project.title;
@@ -179,21 +179,32 @@ function openPopup(projectId) {
             contentContainer.innerHTML = html; // insert loaded HTML into popup
         })
         .catch(error => {
-            contentContainer.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+            contentContainer.innerHTML = `<p class="text-red-500">Erreur : ${error.message}</p>`;
         });
 }
 
-
+function checkForProjectIdInUrl() {
+    const hash = location.hash;
+    if (hash) {
+        const projectId = hash.substring(1);
+        openPopup(projectId);
+    }
+}
 // close popup
 window.closePopup = function () {
     const popup = document.getElementById('popup');
     popup.classList.add('hidden');
-    document.getElementById('popup-content').innerHTML = ''; // clear popup content
-
+    document.getElementById('popup-content').innerHTML = '';
     document.body.classList.remove('no-scroll');
+
+    history.pushState(null, null, ' ');
 };
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    generateTags();
+    generateCards();
+    checkForProjectIdInUrl();
+});
 
 generateTags();
 generateCards();

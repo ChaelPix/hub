@@ -1,21 +1,5 @@
 export const projects = [
     {
-        "title": "Multiplayer TCP Rock Paper Scissors",
-        "description": "I made a multiplayer Rock Paper Scissors game.",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["Networking", "C++", "Game"],
-        "id": "tcprps",
-        "date": "December 2022"
-    },
-    {
-        "title": "MxrpiOn",
-        "description": "I made a tic-tac-toe game where user can play against IA.",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["AI", "C++/CLI", "Game"],
-        "id": "mxrpion",
-        "date": "December 2022"
-    },
-    {
         "title": "Falling It",
         "description": "I made a Live-Casual Puzzle Android game integrating GooglePlay Features (IAP, Cloud...).",
         "image": "https://imageplaceholder.net/1920x720",
@@ -34,63 +18,63 @@ export const projects = [
     {
         "title": "Dragon Kill Stack",
         "description": "I made an Idle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/dragonkillstack/mvp_dragonDestruction.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "dragonkillstack",
+        "id": "mvp_dragonkillstack",
         "date": "June 2022"
     },
     {
         "title": "Panic Plane Flight",
         "description": "I made a Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/panicplaneflight/mvp_panicPlaneFlight.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "planerfligh",
+        "id": "mvp_panicplaneflight",
         "date": "June 2022"
     },
     {
         "title": "Ladders & Snakes",
         "description": "I made a Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/laddersnakes/mvp_laddersSnakes.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "ladders",
+        "id": "mvp_laddersnakes",
         "date": "July 2022"
     },
     {
         "title": "Destrucubes Dynamite",
         "description": "I made a Puzzle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/destrucubes/mvp_destrucubes.jpg",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "destrucubes",
+        "id": "mvp_destrucubes",
         "date": "August 2022"
     },
     {
         "title": "Eating Blob Crush",
         "description": "I made an Incremental Idle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/blobcrush/mvp_EatingBlobCrush.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "blobcrush",
+        "id": "mvp_blobcrush",
         "date": "August 2022"
     },
     {
         "title": "Sticky Ball",
         "description": "I made a Stack Runner Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/stickyball/mvp_stickyball.png",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "stickyball",
+        "id": "mvp_stickyball",
         "date": "September 2022"
     },
     {
         "title": "Balance Master",
         "description": "I made a Puzzle Android MVP hypercasual game.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/mvps/balancemaster/mvp_balanceMaster.jpg",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
-        "id": "balancemaster",
+        "id": "mvp_balancemaster",
         "date": "November 2022"
     },
     {
         "title": "Inverse Kinematics Solver",
         "description": "I made a C++ simulation to understand inverse kinematics.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/iksolver/iksolver.png",
         "tags": ["AI", "C++"],
         "id": "iksolver",
         "date": "June 2024"
@@ -98,23 +82,23 @@ export const projects = [
     {
         "title": "Dices of Fishes Raid",
         "description": "I made a window game for a 48h Unity GameJam.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/dicesfishraids/fish_0.png",
         "tags": ["C#", "Unity", "Game"],
-        "id": "dices",
+        "id": "dicesoffraid",
         "date": "April 2022"
     },
     {
         "title": "Valiant",
         "description": "I made with a partner a multiplayer game from scratch with only SFML/C++ in 3 weeks.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/valiant/valiant_1.png",
         "tags": ["C++", "Networking", "Game", "Linux", "PHP", "SQL"],
         "id": "valiant",
         "date": "December 2023"
     },
     {
-        "title": "SupernoveSprint",
-        "description": "I made with a partner a web game for class in 24h.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "title": "SupernovaSprint",
+        "description": "We made a web game with a class-mate as extra-project for a class in 24h.",
+        "image": "img/projects/supernovasprint/SNS3.png",
         "tags": ["Web", "Game", "C#", "SQL", "PHP", "Unity"],
         "id": "supernovasprint",
         "date": "November 2024"
@@ -122,15 +106,15 @@ export const projects = [
     {
         "title": "AIssenger",
         "description": "I made an autonomous messaging app using local LLM and Stable Diffusion.",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Unity"],
+        "image": "img/projects/aissenger/aissenger_card.jpg",
+        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
         "id": "aissenger",
         "date": "November 2024"
     },
     {
         "title": "IAstagram",
         "description": "I made an autonomous social media app using local LLM and Stable Diffusion.",
-        "image": "https://imageplaceholder.net/1920x720",
+        "image": "img/projects/iastagram/iastagram_card2.jpg",
         "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
         "id": "iastagram",
         "date": "October 2024"
@@ -144,12 +128,12 @@ export const projects = [
         "date": "November 2024"
     },
     {
-        "title": "IQ Puzzler Pro Solver",
+        "title": "[WIP] IQ Puzzler Pro Solver",
         "description": "I made with a teammate an algorithm able to resolve any IQ Puzzler Pro game puzzles for IA41 UTBM project.",
         "image": "img/projects/iqpuzzle/iqpuzzlesolver.png",
         "tags": ["AI", "Python", "Prolog"],
         "id": "iq-puzzler",
-        "date": "October 2024"
+        "date": "December 2024"
     },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",

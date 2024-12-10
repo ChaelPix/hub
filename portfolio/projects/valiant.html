@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="output.css" rel="stylesheet">
+    <script src="js/theme.js" defer></script>
+</head>
+
+
+<body class="bg-white-100 text-black-900">
+    <!-- background -->
+    <div class="relative min-h-screen overflow-y-auto">
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Project Window -->
+        <div class="flex flex-col gap-1.25 justify-center items-center">
+          <p class="mt-4">
+            School Project with my classmate where we had 3 weeks to code a multiplayer battleship game with a TCP server from scratch with C++ that handles matchmaking. We decided to push further and build a whole graphic interface, add online database to save stats, avatar customization, internal game chat, ...
+          </p>
+          <p class="mt-4">
+            I made the graphic interface and networking system.
+          </p>
+          <div class="divider "></div>
+          <p class="mt-4">
+            The game can be downloaded on Itch.io: 
+          <a href="https://chaelpix.itch.io/valiant" target="_blank" class="link link-primary">Itch.io Valiant</a>
+          </p>
+          <div class="divider "></div>
+
+          <img src="img/projects/valiant/valiant_2.png" class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+          <p class="italic text-center">Enemy turn</p>
+
+          <img src="img/projects/valiant/valiant_1.png" class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+          <p class="italic text-center">User turn</p>
+          <div class="divider "></div>
+          <img src="img/projects/valiant/val_boatplacement.png" class="w-2/3 rounded-2xl object-cover aspect-video hover:scale-110 duration-300" />
+          <p class="italic text-center">Boat Placement</p>
+          <p class="mt-4">
+            I used SFML for 2D graphics and UI, it's a low level graphic librairy for C++ that provides only primitives shapes, text, and window display. So I made my own classes to easily manage the interface
+          </p>
+            
+          <div class="flex gap-5 justify-center items-center overflow-hidden">
+            <a 
+              href="img/projects/valiant/val_graph_class.png" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-5/6"
+            >
+              <img
+                src="img/projects/valiant/val_graph_class.png"
+                class="rounded-2xl object-cover hover:scale-110 duration-300 cursor-pointer"
+              />
+            </a>
+          </div>
+          <p class="italic text-center">simplified class diagram of the interface stack</p>
+
+          <div class="divider "></div>
+
+          <p class="mt-4">
+            To manage the networking with matchmaking system, I had to work with multithreading and winsock. In order to simplify the explainations, here are the diagram I made for the project report to explain my system.
+          </p>
+
+          <div class="flex gap-5 justify-center items-center overflow-hidden">
+            <a 
+              href="img/projects/valiant/val_netclass.png" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-5/6"
+            >
+              <img
+                src="img/projects/valiant/val_netclass.png"
+                class="rounded-2xl object-cover hover:scale-110 duration-300 cursor-pointer"
+              />
+            </a>
+          </div>
+          <p class="italic text-center">Class diagram of the networking stack</p>
+        
+          <div class="flex gap-5 justify-center items-center overflow-hidden">
+            <a 
+              href="img/projects/valiant/val_netseq.png" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-5/6"
+            >
+              <img
+                src="img/projects/valiant/val_netseq.png"
+                class="rounded-2xl object-cover hover:scale-110 duration-300 cursor-pointer"
+              />
+            </a>
+          </div>
+          <p class="italic text-center">Sequence diagram of the matchmaking system</p>
+
+          <div class="divider "></div>
+          
+        </div>
+        
+    </div>
+
+    </div>
+
+</body>
+
+</html>

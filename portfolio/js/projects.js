@@ -8,14 +8,6 @@ export const projects = [
         "date": "September 2021 - December 2021"
     },
     {
-        "title": "Humapple Colors",
-        "description": "I made a Casual Android game integrating GooglePlay Features (IAP, Cloud...).",
-        "image": "https://imageplaceholder.net/1920x720",
-        "tags": ["C#", "Unity", "Android", "Game", "GooglePlay"],
-        "id": "humapple",
-        "date": "March 2022"
-    },
-    {
         "title": "Dragon Kill Stack",
         "description": "I made an Idle Android MVP hypercasual game.",
         "image": "img/mvps/dragonkillstack/mvp_dragonDestruction.png",
@@ -69,7 +61,7 @@ export const projects = [
         "image": "img/mvps/balancemaster/mvp_balanceMaster.jpg",
         "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
         "id": "mvp_balancemaster",
-        "date": "November 2022"
+        "date": "September 2022"
     },
     {
         "title": "Inverse Kinematics Solver",
@@ -101,7 +93,7 @@ export const projects = [
         "image": "img/projects/supernovasprint/SNS3.png",
         "tags": ["Web", "Game", "C#", "SQL", "PHP", "Unity"],
         "id": "supernovasprint",
-        "date": "November 2024"
+        "date": "March 2024"
     },
     {
         "title": "AIssenger",
@@ -123,9 +115,9 @@ export const projects = [
         "title": "My portfolio",
         "description": "I made this portfolio that you are currently viewing.",
         "image": "img/projects/web/portfolio.png",
-        "tags": ["Web", "Tailwind CSS", "Javascript"],
+        "tags": ["Web", "Js", "Tailwind CSS", "Javascript"],
         "id": "portfolio",
-        "date": "November 2024"
+        "date": "December 2024"
     },
     {
         "title": "[WIP] IQ Puzzler Pro Solver",

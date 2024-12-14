@@ -1,15 +1,15 @@
 export const projects = [
     {
         "title": "Falling It",
-        "description": "I made a Live-Casual Puzzle Android game integrating GooglePlay Features (IAP, Cloud...).",
-        "image": "https://imageplaceholder.net/1920x720",
+        "description": "A live-casual puzzle game for Android with Google Play features like in-app purchases and cloud saves.",
+        "image": "img/projects/fallingit/fit_screen.jpg",
         "tags": ["C#", "Unity", "Android", "Game", "GooglePlay"],
         "id": "fallingit",
         "date": "September 2021 - December 2021"
     },
     {
         "title": "Dragon Kill Stack",
-        "description": "I made an Idle Android MVP hypercasual game.",
+        "description": "An idle hyper-casual game prototype for Android showcasing simple yet engaging gameplay.",
         "image": "img/mvps/dragonkillstack/mvp_dragonDestruction.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_dragonkillstack",
@@ -17,7 +17,7 @@ export const projects = [
     },
     {
         "title": "Panic Plane Flight",
-        "description": "I made a Runner Android MVP hypercasual game.",
+        "description": "A runner hyper-casual game prototype for Android focused on fast-paced gameplay.",
         "image": "img/mvps/panicplaneflight/mvp_panicPlaneFlight.png",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_panicplaneflight",
@@ -25,47 +25,47 @@ export const projects = [
     },
     {
         "title": "Ladders & Snakes",
-        "description": "I made a Runner Android MVP hypercasual game.",
+        "description": "A hyper-casual runner game for Android with fun and accessible mechanics.",
         "image": "img/mvps/laddersnakes/mvp_laddersSnakes.png",
-        "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
+        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_laddersnakes",
         "date": "July 2022"
     },
     {
         "title": "Destrucubes Dynamite",
-        "description": "I made a Puzzle Android MVP hypercasual game.",
+        "description": "A hyper-casual puzzle game prototype for Android featuring dynamic physics-based interactions.",
         "image": "img/mvps/destrucubes/mvp_destrucubes.jpg",
-        "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
+        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_destrucubes",
         "date": "August 2022"
     },
     {
         "title": "Eating Blob Crush",
-        "description": "I made an Incremental Idle Android MVP hypercasual game.",
+        "description": "An incremental idle game prototype for Android with progressive challenges and upgrades.",
         "image": "img/mvps/blobcrush/mvp_EatingBlobCrush.png",
-        "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
+        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_blobcrush",
         "date": "August 2022"
     },
     {
         "title": "Sticky Ball",
-        "description": "I made a Stack Runner Android MVP hypercasual game.",
+        "description": "A stack-runner game prototype for Android with smooth mechanics and rewarding gameplay.",
         "image": "img/mvps/stickyball/mvp_stickyball.png",
-        "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
+        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_stickyball",
         "date": "September 2022"
     },
     {
         "title": "Balance Master",
-        "description": "I made a Puzzle Android MVP hypercasual game.",
+        "description": "A physics-based puzzle game for Android testing precision and problem-solving skills.",
         "image": "img/mvps/balancemaster/mvp_balanceMaster.jpg",
-        "tags": ["C#", "Unity", "Android", "Game","Hypercasual MVPs"],
+        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvp_balancemaster",
         "date": "September 2022"
     },
     {
         "title": "Inverse Kinematics Solver",
-        "description": "I made a C++ simulation to understand inverse kinematics.",
+        "description": "A C++ project exploring inverse kinematics, improving my understanding of animation and robotics.",
         "image": "img/projects/iksolver/iksolver.png",
         "tags": ["AI", "C++"],
         "id": "iksolver",
@@ -73,7 +73,7 @@ export const projects = [
     },
     {
         "title": "Dices of Fishes Raid",
-        "description": "I made a window game for a 48h Unity GameJam.",
+        "description": "A 48-hour game jam project in Unity, focusing on creativity and fast development.",
         "image": "img/projects/dicesfishraids/fish_0.png",
         "tags": ["C#", "Unity", "Game"],
         "id": "dicesoffraid",
@@ -81,7 +81,7 @@ export const projects = [
     },
     {
         "title": "Valiant",
-        "description": "I made with a partner a multiplayer game from scratch with only SFML/C++ in 3 weeks.",
+        "description": "A multiplayer game built from scratch using SFML/C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
         "tags": ["C++", "Networking", "Game", "Linux", "PHP", "SQL"],
         "id": "valiant",
@@ -89,7 +89,7 @@ export const projects = [
     },
     {
         "title": "SupernovaSprint",
-        "description": "We made a web game with a class-mate as extra-project for a class in 24h.",
+        "description": "A web game made in 24 hours for a class project, showcasing fast prototyping and teamwork.",
         "image": "img/projects/supernovasprint/SNS3.png",
         "tags": ["Web", "Game", "C#", "SQL", "PHP", "Unity"],
         "id": "supernovasprint",
@@ -97,15 +97,15 @@ export const projects = [
     },
     {
         "title": "AIssenger",
-        "description": "I made an autonomous messaging app using local LLM and Stable Diffusion.",
+        "description": "An autonomous messaging app using local LLM and Stable Diffusion, exploring AI-powered communication.",
         "image": "img/projects/aissenger/aissenger_card.jpg",
-        "tags": ["AI", "Software", "Networking", "Linux","Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
+        "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
         "id": "aissenger",
         "date": "November 2024"
     },
     {
         "title": "IAstagram",
-        "description": "I made an autonomous social media app using local LLM and Stable Diffusion.",
+        "description": "An autonomous social media app powered by local LLM and Stable Diffusion to generate content and interactions.",
         "image": "img/projects/iastagram/iastagram_card2.jpg",
         "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
         "id": "iastagram",
@@ -113,15 +113,15 @@ export const projects = [
     },
     {
         "title": "My portfolio",
-        "description": "I made this portfolio that you are currently viewing.",
+        "description": "A personal project to showcase my skills and projects using Tailwind CSS.",
         "image": "img/projects/web/portfolio.png",
-        "tags": ["Web", "Js", "Tailwind CSS", "Javascript"],
+        "tags": ["Web", "Tailwind CSS", "Javascript"],
         "id": "portfolio",
         "date": "December 2024"
     },
     {
         "title": "[WIP] IQ Puzzler Pro Solver",
-        "description": "I made with a teammate an algorithm able to resolve any IQ Puzzler Pro game puzzles for IA41 UTBM project.",
+        "description": "A team project to build an AI capable of solving IQ Puzzler Pro challenges for an academic course.",
         "image": "img/projects/iqpuzzle/iqpuzzlesolver.png",
         "tags": ["AI", "Python", "Prolog"],
         "id": "iq-puzzler",
@@ -129,7 +129,7 @@ export const projects = [
     },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
-        "description": "I built for the <b>international competition</b> of Worldskills a robot ables to navigate and interract with environnement by using his arm.",
+        "description": "Built a robot for Worldskills 2024 capable of navigating and interacting with its environment.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "tags": ["Competition", "Highlights", "Robotics", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
         "category": "worldskills",
@@ -138,7 +138,7 @@ export const projects = [
     },
     {
         "title": "ROS2 x Unity Autonomous Robot Simulation",
-        "description": "I set up a simulation for robots using my ROS2 stack in Unity",
+        "description": "A Unity simulation to test robots using a ROS2 stack, merging robotics and 3D visualization.",
         "image": "img/worldskills/lyon24/simu.png",
         "tags": ["Highlights", "Robotics", "Linux", "ROS2", "C++", "C#", "Unity"],
         "id": "ws_simunity",
@@ -146,7 +146,7 @@ export const projects = [
     },
     {
         "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
-        "description": "I built for the Worldskills Austria national competition a little robot ables to navigate autonomously",
+        "description": "Designed a small autonomous robot for AustriaSkills 2023 national competition.",
         "image": "img/worldskills/austria/robot_austria.jpg",
         "tags": ["Competition", "Robotics", "Linux", "ROS2", "C++"],
         "id": "ws_austria-skills23",
@@ -154,7 +154,7 @@ export const projects = [
     },
     {
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
-        "description": "I built for the the <b>national competition</b> of Worldskills a little robot ables to navigate autonomously",
+        "description": "Created a ROS1-based robot for the French national Worldskills competition.",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
         "tags": ["Competition", "Robotics", "Linux", "ROS1", "C++", "OpenCV"],
         "id": "ws_fnat23",
@@ -162,7 +162,7 @@ export const projects = [
     },
     {
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
-        "description": "I programmed a robot to complete the different courses.",
+        "description": "Programmed an Arduino robot to complete challenges in the regional Worldskills event.",
         "image": "img/worldskills/reg/robot_sand.jpg",
         "tags": ["Competition", "Robotics", "C++", "Arduino"],
         "id": "ws_reg",

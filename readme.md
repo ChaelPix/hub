@@ -1,3 +1,9 @@
+Repo with my websites to upload on github page.
+
+*It's not intented to be an optimized and clean repo.*
+
+# Sphink Doc
+
 ```
 python3 -m pip install -r requirements.txt
 ```
@@ -9,12 +15,11 @@ cd docs/
 make clean html
 ```
 
-
 ```sh
 firefox build/html/index.html
 ```
 
-Install NPM, NodeJs, & Tailwind with DaisyUI:
+# Install NPM, NodeJs, & Tailwind with DaisyUI:
 
 ```sh
 sudo apt install npm -y
@@ -36,25 +41,26 @@ npx tailwindcss init
 # Tailwind CSS + DaisyUI Setup
 
 1. **Install Node.js with `nvm`**:
+
    ```bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
    source ~/.bashrc
    nvm install --lts
    ```
-
 2. **Create a new npm project**:
+
    ```bash
    mkdir tailwind-daisyui-test && cd tailwind-daisyui-test
    npm init -y
    ```
-
 3. **Install Tailwind CSS**:
+
    ```bash
    npm install -D tailwindcss postcss autoprefixer
    npx tailwindcss init
    ```
-
 4. **Configure `tailwind.config.js`**:
+
    ```javascript
    module.exports = {
      content: ["./*.html"],
@@ -62,17 +68,18 @@ npx tailwindcss init
      plugins: [],
    };
    ```
-
 5. **Add DaisyUI**:
+
    ```bash
    npm install daisyui
    ```
    Update `tailwind.config.js`:
+
    ```javascript
    plugins: [require("daisyui")],
    ```
-
 6. **Create necessary files**:
+
    - **`input.css`** (main CSS file):
      ```css
      @tailwind base;
@@ -97,8 +104,8 @@ npx tailwindcss init
      </body>
      </html>
      ```
-
 7. **Compile Tailwind CSS**:
+
    - Add a `build` script to `package.json`:
      ```json
      "scripts": {
@@ -107,15 +114,13 @@ npx tailwindcss init
      ```
    - Run the build process:
      ```bash
+     nvm use --lts
      npm run build
      ```
-
 8. **Test the project**:
+
    - Open `index.html` in your browser or use a local server:
      ```bash
+     nvm use --lts
      npx live-server
-     # or
-     python3 -m http.server
      ```
-
-    nvm use --lts

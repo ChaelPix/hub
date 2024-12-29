@@ -1,5 +1,13 @@
 export const projects = [
     {
+        "title": "AI Art Gallery NPCs",
+        "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
+        "image": "img/projects/aigallery/aigallery.jpg",
+        "tags": ["C#", "Unity", "AI"],
+        "id": "aigallery",
+        "date": "December 2024"
+    },
+    {
         "title": "Falling It",
         "description": "A live-casual puzzle game for Android with Google Play features like in-app purchases and cloud saves.",
         "image": "img/projects/fallingit/fit_screen.jpg",

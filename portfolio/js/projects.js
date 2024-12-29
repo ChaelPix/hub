@@ -8,60 +8,12 @@ export const projects = [
         "date": "September 2021 - December 2021"
     },
     {
-        "title": "Dragon Kill Stack",
-        "description": "An idle hyper-casual game prototype for Android showcasing simple yet engaging gameplay.",
-        "image": "img/mvps/dragonkillstack/mvp_dragonDestruction.png",
+        "title": "Hypercasual Minimum Viable Prototypes",
+        "description": "A series of MVPs to explore game design and development in Unity, focusing on fast iteration and testing.",
+        "image": "img/mvps/mvps.jpg",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_dragonkillstack",
-        "date": "June 2022"
-    },
-    {
-        "title": "Panic Plane Flight",
-        "description": "A runner hyper-casual game prototype for Android focused on fast-paced gameplay.",
-        "image": "img/mvps/panicplaneflight/mvp_panicPlaneFlight.png",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_panicplaneflight",
-        "date": "June 2022"
-    },
-    {
-        "title": "Ladders & Snakes",
-        "description": "A hyper-casual runner game for Android with fun and accessible mechanics.",
-        "image": "img/mvps/laddersnakes/mvp_laddersSnakes.png",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_laddersnakes",
-        "date": "July 2022"
-    },
-    {
-        "title": "Destrucubes Dynamite",
-        "description": "A hyper-casual puzzle game prototype for Android featuring dynamic physics-based interactions.",
-        "image": "img/mvps/destrucubes/mvp_destrucubes.jpg",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_destrucubes",
-        "date": "August 2022"
-    },
-    {
-        "title": "Eating Blob Crush",
-        "description": "An incremental idle game prototype for Android with progressive challenges and upgrades.",
-        "image": "img/mvps/blobcrush/mvp_EatingBlobCrush.png",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_blobcrush",
-        "date": "August 2022"
-    },
-    {
-        "title": "Sticky Ball",
-        "description": "A stack-runner game prototype for Android with smooth mechanics and rewarding gameplay.",
-        "image": "img/mvps/stickyball/mvp_stickyball.png",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_stickyball",
-        "date": "September 2022"
-    },
-    {
-        "title": "Balance Master",
-        "description": "A physics-based puzzle game for Android testing precision and problem-solving skills.",
-        "image": "img/mvps/balancemaster/mvp_balanceMaster.jpg",
-        "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
-        "id": "mvp_balancemaster",
-        "date": "September 2022"
+        "id": "mvps",
+        "date": "June 2022 - November 2022"
     },
     {
         "title": "Inverse Kinematics Solver",

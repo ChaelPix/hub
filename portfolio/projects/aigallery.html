@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="output.css" rel="stylesheet">
+    <script src="js/theme.js" defer></script>
+</head>
+
+
+<body class="bg-white-100 text-black-900">
+    <!-- background -->
+    <div class="relative min-h-screen overflow-y-auto">
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+    <!-- Project Window -->
+    <p class="mt-4 text-center font-bold">
+        I aimed to implement various local AI tools, including speech recognition, natural language processing, and text-to-speech. My goal is to create engaging conversations with AI-powered NPCs.
+    </p>
+    
+    <br>
+    <p class="mt-4 text-center">
+        There are 3 NPCs : <br> <br>
+        - Girl : Prompted to be a shy teen girl. <br>
+        - Boy : Prompted to be a curious and friendly teen boy. <br>
+        - Rick : Prompted to act as Rick Sanchez from Rick and Morty, he is sarcastic and rude. <br>
+
+        <i>'Girl' and 'Boy' models have advanced face blendshapes, so I coded a lip synchronisation by analysing the incoming audio and adjusting the 'A', 'E', 'I', 'O', 'U' blendshapes accordingly.</i> <br>
+    </p>
+
+    <div class="divider"></div>
+    <br>
+    <div class="w-full object-cover aspect-video bg-black ">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/79uKlT-lXAg" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="italic text-center">Demo.</p>
+    <div class="divider"></div>
+
+    <p class="mt-4 text-center">
+        The system comprises three major components: <br> <br>
+        - Speech Recognition powered by Whisper Large V3 Turbo via Hugging Face API <br>
+        - Natural Language Processing using locally-hosted Llama 3.1 8B model <br>
+        - Text-to-Speech synthesis through a local F5TTS server implementation <br>
+    </p>
+</body>
+
+</html>

@@ -4,6 +4,106 @@ RN41
 Suites
 ------
 
+Solutions commentées des exercices types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Exercice 1 - Suite récurrente simple
+**********************************
+
+.. code-block:: text
+
+   Pour uₙ₊₁ = √(2 + uₙ) avec u₀ = 0
+
+ÉTAPE 1 - Premiers termes
+------------------------
+.. code-block:: text
+
+   u₀ = 0
+   u₁ = √(2 + 0) = √2 ≈ 1.414
+   u₂ = √(2 + √2) ≈ 1.847
+   u₃ = √(2 + 1.847) ≈ 2.000
+   
+   → On observe que la suite semble croître vers 2
+
+ÉTAPE 2 - Monotonie
+------------------
+.. code-block:: text
+
+   1. Soit f(x) = √(2 + x)
+   2. f'(x) = 1/(2√(2 + x)) > 0
+   → f est croissante
+   
+   3. Pour x < 2:
+      f(x) = √(2 + x) > x car (2 + x) > x²
+   → uₙ₊₁ > uₙ tant que uₙ < 2
+   → Suite croissante
+
+ÉTAPE 3 - Majoration
+-------------------
+.. code-block:: text
+
+   Si uₙ ≤ 2:
+   uₙ₊₁ = √(2 + uₙ) ≤ √(2 + 2) = 2
+   
+   Par récurrence:
+   - Vrai pour u₀ = 0 ≤ 2
+   - Si vrai pour n, alors vrai pour n+1
+   → Suite majorée par 2
+
+ÉTAPE 4 - Conclusion et limite
+----------------------------
+.. code-block:: text
+
+   Suite croissante et majorée → convergente
+   Soit l la limite:
+   l = √(2 + l)
+   l² = 2 + l
+   l² - l - 2 = 0
+   (l - 2)(l + 1) = 0
+   l = 2 (car l > 0)
+
+Exercice 2 - Suite explicite
+**************************
+
+.. code-block:: text
+
+   Pour uₙ = n/(n+2)
+
+ÉTAPE 1 - Premiers termes
+------------------------
+.. code-block:: text
+
+   u₀ = 0
+   u₁ = 1/3
+   u₂ = 2/4 = 1/2
+   u₃ = 3/5
+   
+   → Semble croissante vers 1
+
+ÉTAPE 2 - Monotonie directe
+-------------------------
+.. code-block:: text
+
+   uₙ₊₁ - uₙ = (n+1)/(n+3) - n/(n+2)
+   = [(n+1)(n+2) - n(n+3)]/[(n+3)(n+2)]
+   = 2/[(n+3)(n+2)] > 0
+   
+   → Suite strictement croissante
+
+ÉTAPE 3 - Majoration évidente
+---------------------------
+.. code-block:: text
+
+   uₙ = n/(n+2) < n/n = 1
+   → Suite majorée par 1
+
+ÉTAPE 4 - Limite
+--------------
+.. code-block:: text
+
+   lim n→∞ n/(n+2) 
+   = lim n→∞ 1/(1 + 2/n) = 1
+
 Guide pas à pas de résolution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

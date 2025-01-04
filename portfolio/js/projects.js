@@ -1,9 +1,9 @@
 export const projects = [
     {
-        "title": "AI Art Gallery NPCs",
+        "title": "VR AI Art Gallery NPCs",
         "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
         "image": "img/projects/aigallery/aigallery.jpg",
-        "tags": ["C#", "Unity", "AI"],
+        "tags": ["C#", "VR", "Unity", "AI"],
         "id": "aigallery",
         "date": "December 2024"
     },
@@ -80,10 +80,10 @@ export const projects = [
         "date": "December 2024"
     },
     {
-        "title": "[WIP] IQ Puzzler Pro Solver",
-        "description": "A team project to build an AI capable of solving IQ Puzzler Pro challenges for an academic course.",
-        "image": "img/projects/iqpuzzle/iqpuzzlesolver.png",
-        "tags": ["AI", "Python", "Prolog"],
+        "title": "IQ Puzzler Pro Solver",
+        "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
+        "image": "img/projects/iqpuzzle/60x5.png",
+        "tags": ["AI", "Python"],
         "id": "iq-puzzler",
         "date": "December 2024"
     },

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>RN41</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="rn41">RN41</h1>
+<h2 id="suites">Suites</h2>
+<h3 id="méthodologie-pour-létude-des-suites">Méthodologie pour l'étude des suites</h3>
+<h4 id="1-types-de-suites-et-comportements">1. Types de suites et comportements</h4>
+<ol>
+<li><strong>Suite arithmétique</strong></li>
+</ol>
+<p>.. math::
+u_{n+1} = u_n + r</p>
+<pre><code>Exemple : uₙ = 2n + 3
+- u₀ = 3
+- u₁ = 5
+- u₂ = 7
+→ Diverge vers +∞ car r &gt; 0
+</code></pre>
+<ol start="2">
+<li><strong>Suite géométrique</strong></li>
+</ol>
+<p>.. math::
+u_{n+1} = qu_n</p>
+<p>u_n = u_0 q^n</p>
+<pre><code>Exemple : avec q = 1/2
+- u₀ = 1
+- u₁ = 1/2
+- u₂ = 1/4
+→ Converge vers 0 car |q| &lt; 1
+</code></pre>
+<ol start="3">
+<li><strong>Suite récurrente</strong></li>
+</ol>
+<p>.. math::
+u_{n+1} = f(u_n)</p>
+<pre><code>Exemple : f(x) = 1/x, u₀ = 2
+- u₀ = 2
+- u₁ = 1/2
+- u₂ = 2
+→ Oscillante car f∘f(x) = x
+</code></pre>
+<h4 id="2-techniques-de-calcul-essentielles">2. Techniques de calcul essentielles</h4>
+<ol>
+<li><strong>Étude de la monotonie</strong></li>
+</ol>
+<p>Pour :math:<code>u_n = \frac{n^2+1}{n}</code> :</p>
+<p>.. math::
+u_{n+1} - u_n &amp;= \frac{(n+1)^2+1}{n+1} - \frac{n^2+1}{n} \
+&amp;= \frac{n-1}{n(n+1)} \
+&amp;&gt; 0 \text{ pour } n &gt; 1</p>
+<ol start="2">
+<li><strong>Calcul de limite</strong></li>
+</ol>
+<p>Pour :math:<code>u_n = \frac{n^2}{n^2+1}</code> :</p>
+<p>.. math::
+u_n = \frac{1}{1 + \frac{1}{n^2}} \xrightarrow[n \to +\infty]{} 1</p>
+<ol start="3">
+<li><strong>Points fixes et convergence</strong></li>
+</ol>
+<p>Pour :math:<code>u_{n+1} = \frac{u_n + 2}{3}</code> :</p>
+<p>.. math::
+l = \frac{l + 2}{3} \implies l = 1</p>
+<h4 id="3-théorèmes-clés">3. Théorèmes clés</h4>
+<ol>
+<li>
+<p><strong>Convergence</strong></p>
+<ul>
+<li>Suite croissante majorée ⟹ convergente</li>
+<li>Suite décroissante minorée ⟹ convergente</li>
+</ul>
+</li>
+<li>
+<p><strong>Critère du quotient</strong></p>
+</li>
+</ol>
+<p>.. math::
+\left|\frac{u_{n+1}}{u_n}\right| &lt; 1 &amp;\implies \text{converge vers 0} \
+\left|\frac{u_{n+1}}{u_n}\right| &gt; 1 &amp;\implies \text{diverge}</p>
+<h2 id="séries">Séries</h2>
+<h2 id="diagonalisation">Diagonalisation</h2>
+<h2 id="complexes-quantique-pas-à-lexam">Complexes Quantique (Pas à l'exam)</h2>
+<h2 id="développement-limité">Développement Limité</h2>
+
+            
+            
+        </body>
+        </html>

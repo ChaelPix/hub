@@ -21,7 +21,7 @@ export const projects = [
         "image": "img/mvps/mvps.jpg",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvps",
-        "date": "June 2022 - November 2022"
+        "date": "June 2022 - September 2022"
     },
     {
         "title": "Inverse Kinematics Solver",
@@ -83,7 +83,7 @@ export const projects = [
         "title": "IQ Puzzler Pro Solver",
         "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
         "image": "img/projects/iqpuzzle/60x5.png",
-        "tags": ["AI", "Python"],
+        "tags": ["AI", "Python", "Tkinter"],
         "id": "iq-puzzler",
         "date": "December 2024"
     },

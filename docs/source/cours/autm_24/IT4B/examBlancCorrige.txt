@@ -1,0 +1,189 @@
+
+ Théorie de la communication
+ Final 2023 : Considérons une source sans mémoire S {A,B}avec p(A) 0,98et p(B) 0,02. Le
+ débit symboles de la source est DS 300Ksymboles/sec. En outre, on dispose d’un canal binaire
+ symétriquedeprobabilitéd’erreurp 0,05fonctionnantaudébitd’utilisationdeDC 280kbits/sec.
+ Danslescalculs demandés,onprendraqueles4chiffresaprèslavirgule
+ Questionpréliminaire
+ Peut-on envisager d’utiliser ce canal pour transmettre le contenu de la source S ?
+ Partie A: Codagedesource
+ (2 pts)
+ 1) On se propose de réduire le débit binaire de la source S d’au moins 50% grâce à un code de
+ Huffman. Quel doit être l’ordre minimum d’extension de la source S permettant d’assurer une
+ telle performance ?
+ (1 pt)
+ 2) Construire le codage de Huffman de l’extension d’ordre 3 de la source S en utilisant le modèle
+ dutableau suivant :
+ (2 pts)
+ !
+ On veillera à respecter scrupuleusement la convention suivante : On associe le bit 1 à
+ chaqueembranchementpartantversladroiteetlebit0verslagauche.
+ s0
+ CodageHuffman
+ s1
+ s2
+ Motssource d’ordre 3 AAA AAB ABA ABB BAA BAB BBA BBB
+ Notation des mots
+ s3
+ ?
+ ?
+ s4
+ s5
+ s6
+ s7
+ ?
+ ?
+ ?
+ ?
+ ?
+ ?
+ 3) Soit S la nouvelle source binaire obtenue à partir de S par le codage de Huffman. Calculer le
+ taux de réduction du débit binaire effectif par le codage de Huffman.
+ (2 pts)
+ 4) Quelest le nombre debits de contrôle que l’on doit ajouter à deux bit d’information si on veut
+ utiliser le canal à son débit nominal de 280kbits/sec?
+ (4 pts)
+ Partie B: Codageducanal
+ Onse propose de coder l’information binaire obtenue après le codage de Huffman de la question 1
+ enutilisant le codeC(5,2) engendré par les équations suivantes :
+ c1 i1
+ c2 i2
+ c3 i1 i2
+ où (i1,i2) sont les bits d’informations et (c1,c2,c3) sont les bits de contrôle. Un mot de code s’écrit
+ donc(i1,i2,c1,c2,c3).
+ 5) (a) Expliciter tous les mots code.
+ (b) Calculer la distance minimale du code.
+ (2 pts)
+ (2 pts)
+ 34
+UVIT4B
+ Théorie de la communication
+ (c) Endéduire le nombred’erreurs que le code peut détecter/corriger.
+ (d) Déterminer unematrice génératriceG deC(5,2) sous forme systématique.
+ (e) Déterminer la matrice de contrôle H.
+ (1 pt)
+ (2 pts)
+ (1 pt)
+ (f) La table de décodageindiquant les configurations d’erreurs effectivement corrigées de ce
+ code est donnéeci-dessous. Corriger le mot reçu suivants 11010.
+ (2 pts)
+ Syndromes Vecteursdecorrection
+ 000
+ 00000
+ 001
+ 010
+ 00001
+ 00010
+ 011
+ 01000
+ 100
+ 00100
+ 101
+ 10000
+ 110
+ 00110
+ 111
+ 10010
+ 35
+UVIT4B
+ Théorie de la communication
+ Solution
+ Questionpréliminaire
+ Il faut vérifier que la condition du deuxième théorème de Shannon est satisfaite.– L’entropie de la source S par symbole est: H(S) H2(0,98) 0,1414 bit.– Lacapacité du canal par utilisation estC 1 H2(0,05) 0,7136 bit.– Débit d’entropie de S: H 300103 0,1414 42420 bits/sec.– Capacité du canal par unité de temps: C 0,7136 280103 199808 bits/sec.
+ Onvérifie H C ,onpeutdoncthéoriquementtransmettrelecontenudelasourcesurlecanal.
+ Partie A: Codagedesource
+ 1) La source étant sans mémoire, si M est l’ordre d’extension, on sait qu’il existe un code pré
+f
+ ixe dont le nombre moyen d’éléments binaires n utilisés pour représenter un symbole source
+ vérifie;
+ H(S)·n·H(S) 1
+ M
+ Si on veut obtenir une réduction du débit initial d’au moins 50%, il ne faut pas que n dépasse
+ 0,5 puisqu’à un symbole source, il correspond (en moyenne) n éléments binaires code. M doit
+ donc vérifier: 0,141 1
+ M 0,5 soit 1
+ M 0,359, c’est-à-dire M 2,78. Il faut donc prendre
+ l’extension d’ordre 3.
+ 2) Calculons les probabilités des huit mots de l’extension d’ordre 3 de S
+ désignation des mots motssourced’ordre3
+ probabilités
+ s0
+ AAA
+ (0,98)3 0,941
+ s1
+ AAB
+ (0,98)2 0,02 0,019
+ s2
+ s3
+ ABA
+ ABB
+ s4
+ 0,019
+ 0,98 (0,02)2 3,9210 4
+ BAA
+ s5
+ BAB
+ s6
+ 0,019
+ 3,9210 4
+ BBA
+ 3,9210 4
+ s7
+ BBB
+ 810 6
+ 36
+UVIT4B Théoriedelacommunication
+ Voirtableau.
+ Motssourced’ordre3 AAA AAB ABA ABB BAA BAB BBA BBB
+ Notationdesmots s0 s1 s2 s3 s4 s5 s6 s7
+ CodageHuffman 1 011 010 00011 001 00010 00001 00000
+ 3) Lalongueurmoyenned’unmotcode(correspondantàunmotsourcedelongueur3)est;
+ n3 5 810 4 5 3 3,9210 4 3 3 0,019 1 0,941 1,118bits
+ Donc,àunsymbolesource, ilcorrespondn n3
+ 3
+ 1,118
+ 3 0,3726élémentbinairecode. Le
+ débitbinaireDS delanouvellesourceS est;DS 300103 0,3726 111,78kbits/sec.
+ PuisqueDS
+ DS
+ 0,3726,letauxderéductiondudébitbinaireestdel’ordrede63%.
+ 4) Ledébitd’utilisationducanalétantde280kbits/sec. Puisque DC
+ DS
+ 280
+ 111,78 2,5. Celaveut
+ direqu’ilfautajouter1,5élémentbinairedecontrôleà1élémentbinaired’information,soit3
+ élémentsbinairesdecontrôleà2élémentsbinairesd’information.
+ Pourbiencomprendreleraisonnementprécédent,ilfautimaginerquelecanalpossède
+ destiroirs.Chaquetiroirpossèdeunecapacitéde2.5places.Ainsi,1bitsource(informa
+tion)peutoccuperuneplaceetles1,5placesrestantespeuventêtreutilisésparlecodeur
+ decanalpourlesbitsdecontrôle.
+ Remarque7:
+ PartieB:Codageducanal
+ 5) (a) Voirtableau.
+ Motsinformation Motscode
+ 00 00000
+ 10 01011
+ 10 10101
+ 11 11110
+ (b) dm 3,voirmotscode.
+ (c) détection:1et2;Correction:1
+ (d)
+ G 1 0 1 0 1
+ I2
+ 0 1
+ N
+ 0 1 1
+ (e)
+ H
+ 1 0 1 0 0
+ 0 1 0 1 0
+ Nt
+ 1 1
+ I3
+ 0 0 1
+ 37
+UVIT4B
+ Théorie de la communication
+ Onremarquequecolonne1+colonne3=colonne5,etdoncdmin 3.
+ (f) LesyndromeS(y) Hyt 100,vecteurdecorrection00100. Ainsi,lemotreçu y 11010
+ est corrigé par : 11010 00100 11110.

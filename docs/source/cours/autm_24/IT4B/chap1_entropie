@@ -1,0 +1,545 @@
+UVIT46
+######
+
+ Théorie de la communication
+ Chap1: Incertitude =Information
+ 1 Introduction
+ La théorie de l’information est un concept essentiel en communication. Elle repose de façon essen
+tielle sur l’existence d’une mesure objective de la quantité d’information contenue dans un message
+ aléatoire.
+ La théorie de l’information est basée principalement sur les travaux de Claud Shannon en 1948. Elle
+ établit la limite théorique de performance pour les systèmes de télécommunication. Elle démontre
+ aussi qu’on peut atteindre cette limite en utilisant des codes correcteurs d’erreur performants.
+ 2 Mesuredel’incertitude(Information): Entropie
+ OnconsidèreuneexpérienceX dontlesrésultatspossiblessontunnombrefinid’événements{x1,x2, ,xn}.
+ Pour tout xi, on note p(xi) Pr[X xi]laprobabilitédel’événement X xi.
+ Problème: Etant donné que nous ne savons pas d’avance le résultat de l’expérience X, il s’ensuit
+ qu’elle contient une certaine incertitude qui sera éliminée après sa réalisation. Le problème qui se
+ pose est le suivant: Commentpourrions-nousmesurercetteincertitude?
+ Solution: Soit x un événement. Il est assez naturel de définir l’incertitude h(x) liée à la réalisation
+ de l’événement x commeétantunefonctiondesaprobabilité a priori p(x).
+ h(x) f(p(x))
+ L’idéedeShannonestdequantifierlafonction f sachantqueplusl’événementestrareplusl’incertitude
+ est grande et plus l’information apportée est importante. A contrario, si on est sûr de la réalisation
+ d’un certain événement, il n’apporte aucune information (l’incertitude est donc nulle) et la mesure
+ de l’information apportée devra alors être nulle. C’est pourquoi:
+ l’incertitude sur un événementetl’information apportéeparlaréalisation decet
+ événementsontdesnotionséquivalentes
+ 1
+UVIT46
+ Théorie de la communication
+ Ainsi, on peut dire que:
+ • Apriori, h(x) est l’incertitude qui règne sur la réalisation de l’événement x.
+ • Aposteriori, h(x) est l’information apportée par la réalisation de x.
+ Onpeutainsi imposer àh(x), et par conséquent à f lespropriétés suivantes :
+ 1. h(x)est unequantité positive car c’est une mesure.
+ 2. h(x)estunefonctiondécroissante, c’est-à-dire que l’incertitude est d’autant plus élevée que la
+ probabilité deréalisationde x estfaible. Onpeutposeralorsh(x) f ( 1
+ p(x) ) avec f unefonction
+ croissante.
+ 3. Si p(x) 1alorsh(x) f(1) 0. Iln’yaaucuneincertitudequandl’événementestcertain.
+ 4. Si p(x)
+ 0 alors h(x)
+ . L’incertitude est très grande quand l’événement est rare.
+ 5. Si x et y sont deux événements indépendants alors on a p(x y) p(x) p(y). Dans ce cas,
+ l’incertitude liée à la réalisation du couple (x;y) est la sommedel’incertitude liée à x etdecelle
+ liée à y :
+ h(x y) f( 1
+ p(x y) ) f(
+ 1
+ p(x) p(y) ) f( 1
+ p(x) ) f( 1
+ L’utilisation de ces conditions conduit facilement à
+ ln( 1
+ p(x) )
+ h(x)
+ ln(2) 
+log2(p(x))
+ p(y) ) h(x) h(y)
+ Onremarque que la fonction h(x) vérifie bien les requis exprimés plus haut : si p(x) diminue, h(x)
+ augmenteetsi p(x) 1alorsh(x) 0. Deplus,
+ log2(p(x) p(y))
+ log2(p(x)) log2(p(y)) h(x) h(y)
+ Unitédeh(x): L’unitédelaquantitéd’information est le bit. Le choix du logarithme en base 2 n’est
+ pas anodin : En effet, le bit (binary unit) est défini comme la quantité d’information apportée par le
+ choix entre deux événement équiprobables, car 1bit 
+log2(1/2).
+ 2
+UVIT46
+ Théorie de la communication
+ Commentmesurerl’informationd’uneexpérienceàplusieursévénements?
+ Définition1:Entropie
+ La valeur moyenne de l’information (incertitude) propre calculée sur l’ensemble de
+ l’expérience X revêt une grande importance. Elle est appelée l’entropie de l’expérience X et
+ vaut
+ H(X)
+ p(xi)log2(p(xi))
+ xi
+ Interprétation numérique : H(X) représente le nombre moyen de bits nécessaires pour coder les
+ différents événements de X, c’est-à-dire le nombre moyen de bits nécessaires pour la représentation
+ de chaqueévénementde X.
+ Exemple: Onextraitauhasardunecarted’unjeude32cartes.
+ Question : Combien de bits sont nécessaires pour coder les différentes cartes afin de deviner la
+ carte choisie.
+ Solution : Chaquecartealamêmeprobabilitéd’être choisie. Ainsi, p(xi) 1
+ 32, i et donc
+ 32
+ H(X)
+ i 1
+ p(xi)log2(p(xi))
+ 32 1
+ 32 log2( 1
+ 32) 5bits
+ Pour savoir quelle carte a été extraite, 5 bits sont nécessaires pour représenter chaque carte :
+ • 1bitpoursavoir si sa couleur est rouge ou noire (ex: 0 pour rouge et 1 pour noire)
+ • 1bitpoursavoirs’il s’agit d’un coeur ou d’un carreau (resp: trèfle, pique) (ex : 0 pour coeur et 1
+ pour carreau (resp:0 pour trèfle 1 pour pique )
+ • 1bit pour savoir si la carte appartient à l’ensemble (7, 8, 9, 10) ou (valet, dame, roi, as) (ex : 0
+ pour (7, 8, 9, 10) et 1 pour valet, dame, roi, as )
+ • 1bitpoursavoirsilacarteappartientà(7,8)ou(9,10)silacartechoisie appartient àl’ensemble
+ (7, 8, 9, 10) (ex : 0 pour (7,8) et 1 pour (9,10) )
+ • 1bit pour savoir si la carte est 7 ou 8 si la carte choisie appartient à (7, 8). (ex : 0 pour 7 et 1
+ pour 8 ) (resp: 1 bit pour savoir si la carte est 9 ou 10 si la carte choisie appartient à (9,10). (ex :
+ 0 pour9et1pour10)
+ Par exemple :(10010), il s’agit :– bit 1 : la carte est noire.– bit 0 : la carte est un trèfle.– bit 0 : la carte appartient à (7, 8, 9, 10).
+ 3
+UVIT46
+ Théorie de la communication– bit 1 : la carte appartient à (9, 10).– bit 0 : la carte est un 9 detrèfle.
+ 2.1 Propriétésdel’entropie
+ Propriété 1 : H(X) 0.
+ Propriété 2 : L
+ ’entropie d’une variable aléatoire X à n valeurs possibles est maximale et vaut
+ log2(n) lorsque la loi de X est uniforme, c-à-d si les n événements sont équiprobables alors
+ H(X) log2(n)
+ En effet, l’incertitude sur X est la plus grande si toutes les valeurs possibles ont la même probabilité
+ deseréaliser. Autrementdit, l’expériencedanslaquellelesévénementssontéquiprobablesestlaplus
+ incertaine.
+ Conséquence: SiX prendn 2r événementsilfautenmoyenneaumaximumr symbolesbinaires
+ pour représenter chaque événement de X. Eneffet,
+ H(X) log2(n) log2(2r) ln(2r)
+ ln(2) 
+r
+ r ln(2)
+ ln(2) 
+Propriété 3 : L’entropie augmente lorsque le nombre devaleurs possibles augmente.
+ 3 Entropieetinformationliéesàuncoupledevariables
+ Soient X et Y deuxvariables aléatoires (VA) discrètes à valeurs dans {x1,x2, ,xn} et {y1,y2, ,ym}.
+ Si on désigne la loi du couple (X,Y) par : pij P(X xi Y yj),onpeutalorsdéfinirdenouvelles
+ grandeurs caractérisant un couple de variables :– Entropied’uncoupledeVA
+ n
+ H(X,Y)
+ i 1
+ m
+ j 1
+ pij log2(pij)– Entropiesde X sachantY yj : C’estl’entropiede X sachantqueY nousaitfournie yj
+ n
+ H(X/Y yj)
+ i 1
+ P(X xi/Y yj)log2(P(X xi/Y yj))
+ 4
+UVIT46
+ A
+ Théorie de la communication– Entropiesde X sachantY:
+ ttention, il n’y a pas de signe avant la somme.
+ m
+ H(X/Y)
+ j 1
+ P(Y yj)H(X/Y yj)
+ C’estl’incertitude quirestesur X quandY estréalisé. Autrementdit,laquantitéd’informationréelle
+mentapportée par X sionconnaîtdéjàY.
+ Remarque1:
+ si H(X/Y) 0l’incertitude sur X estnulle en réalisant Y et par conséquent la connaissance de
+ Y permetdedéterminer X aveccertitude.– InformationmutuellemoyenneentreXetY:
+ I(X,Y ) H(X) H(X/Y) H(Y) H(Y/X)
+ I(X,Y )représente la diminution de l’incertitude sur X (resp. sur Y ) lorsque l’on connaît Y (resp. X).
+ C’est l’information apportée par Y sur X (resp: par X sur Y).
+ Pour représenter des relations logiques entres ces entropies, on peut utiliser de diagramme de Venn
+ suivant
+ 3.1 Propriétés
+ Propriété 4: Si X etY sontindépendantesalors
+ H(X,Y) H(X) H(Y)
+ Autrement dit, pour des variables indépendantes, l’information conjointe est égale à la somme des
+ informations.
+ Propriété 5: Si X etY sontindépendantesalors
+ H(X/Y) H(X)
+ 5
+UVIT46
+ Théorie de la communication
+ Propriété 6: Soient X etY deuxvariablesaléatoires. Alors nous avons
+ H(X/Y)·H(X)
+ L’égalité n’étant possible que si X et Y sont indépendantes.
+ Propriété 7: Soient X etY deuxvariablesaléatoires. Alors nous avons
+ H(X,Y) H(X) H(Y/X) H(Y) H(X/Y)
+ I(X,Y ) H(X) H(Y) H(X,Y)
+ Remarques:
+ • Si Y détermine complètement X alors sa réalisation fait disparaitre toute incertitude sur X.
+ Danscecasona H(X/Y) 0etparconséquent I(X,Y) H(X)
+ • Si X etY sontindépendantesalors:
+ 1. Lapropriété 7 se transforme en 4.
+ 2. I(X,Y) 0,cest-à-dire Y n’apporte aucuneinformation sur X.
+ Exemple Soit X unevariable aléatoire discrète pouvant prendre n valeurs différentes et soit Y une
+ variable aléatoire discrète distribuée de façon uniforme sur m valeurs distinctes. On ne fera aucune
+ hypothèse particulière sur X.
+ 1. Quelle est l’incertitude maximale possible pour X? Justifiez votre réponse.
+ 2. Quevautl’entropie de Y?
+ 3. Onconsidère maintenant le cas où n 3, m 4etoùladistribution jointe p(X xi Y yj)
+ est donnée par:
+ P(X Y) y1 y2 y3 y4
+ x1
+ 1/24 1/12 1/6 1/24
+ x2
+ 1/6
+ 1/8 1/24 1/6
+ x3
+ 1/24 1/24 1/24 1/24
+ a) Vérifier que Y estbienuniformémentdistribuée.
+ b) Calculer I(X;Y).
+ 6
+UVIT46
+ Théorie de la communication
+ Solution
+ 1. L’incertitude d’unevariablealéatoire, c.-à-d. sonentropie, estmaximalelorsquesadistribution
+ de probabilité est uniforme . Son entropie vaut alors H(X) log2(n) (voir propriété 2).
+ 2. Y étantprécisément uniformémentrépartie, son entropie vaut H(Y) log2(m)
+ 3.
+ a) Il faut calculer p(Y yi). Eneffet:
+ p(Y y1) 1/24 1/6 1/24 1/4
+ p(Y y2) 1/12 1/8 1/24 1/4
+ p(Y y3) 1/6 1/24 1/24 1/4
+ p(Y y4) 1/24 1/6 1/24 1/4
+ DoncY estbienuniformémentdistribuée.
+ b) Le plus simple pour calculer I(X;Y) est d’utiliser la formule I(X;Y) H(Y) H(Y/X)
+ puisqueH(Y)estdéjàconnue. Eneffet,Y étantéquirépartiesur4valeurs, H(Y ) log2(4)
+ 2bits. Pour calculer H(Y /X) le mieux est de passer par la formule
+ 3
+ H(Y/X)
+ i 1
+ P(X xi)H(Y/X xi)
+ P(X x1)H(Y/X x1) P(X x2)H(Y/X x2)
+ P(X x3)H(Y/X x3)
+ Calcul deP(X xi)
+ p(X x1) 1/24 1/12 1/6 1/24 1/3
+ p(X x2) 1/6 1/8 1/24 1/6 1/2
+ p(X x3) 1/24 1/24 1/24 1/24 1/6
+ Calcul de H(Y/X xi): Pour ce faire il faut calculer d’abord la probabilité conditionnelle P(Y 
+yj/X xi). Eneffet, d’après la formule de bayes P(A/B) PB(A) P(A B)
+ P(Y y1/X x1) P(Y y1 X x1)
+ P(B) ona
+ 1/24
+ p(X x1)
+ P(Y y2/X x1) P(Y y2 X x1)
+ p(X x1)
+ 1/3 1/8
+ 1/12
+ 1/3 1/4
+ 7
+UVIT46 Théoriedelacommunication
+ Nousobtenonsalorsletableausuivantencalculantdelamêmemanièrelesautresprobabilitéscon
+ditionnelles:
+ P(Y/X) y1 y2 y3 y4
+ x1 1/8 1/4 1/2 1/8
+ x2 1/3 1/4 1/12 1/3
+ x3 1/6 1/6 1/6 1/6
+ Ainsi
+ H(Y/X x1)
+ 4
+ i 1
+ P(Y yi/X x1)log2(P(Y yi/X x1))
+ 1/8log2(1/8) 1/4log2(1/4) 1/2log2(1/2) 1/8log2(1/8)
+ 7/4
+ H(Y/X x2)
+ 4
+ i 1
+ P(Y yi/X x2)log2(P(Y yi/X x2))
+ 1/3log2(1/3) 1/4log2(1/4) 1/12log2(1/12) 1/3log2(1/3)
+ 2/3 3/4log2(3)
+ H(Y/X x3)
+ 4
+ i 1
+ P(Y yi/X x3)log2(P(Y yi/X x3))
+ 1/6log2(1/6) 1/6log2(1/6) 1/6log2(1/6) 1/6log2(1/6)
+ 2
+ Finalement
+ H(Y/X) P(X x1)H(Y/X x1) P(X x2)H(Y/X x2) P(X x3)H(Y/X x3)
+ 1/3 7/4 1/22/3 3/4log2(3) 1/6 2
+ 10/24 3/8log2(3)
+ Et
+ I(X;Y) H(Y) H(Y/X) 2 10/24 3/8log2(3)
+ 8
+UVIT46 Théoriedelacommunication
+ TD1
+ Exercice1
+ SoientlesvariablesaléatoiresXetYayantladistributiondeprobabilitép(x y)suivante:
+ P(X Y) y1 y2 y3 y4
+ x1 1/8 1/8 1/8 1/8
+ x2 1/10 1/15 1/15 1/10
+ x3 1/36 1/12 1/36 1/36
+ CalculerH(X,Y),H(X),H(Y),H(Y/X)etI(X;Y)
+ Correction
+ CalculdeH(X,Y):
+ Pardéfinitionl’entropiejointeest:
+ H(X,Y)
+ n
+ i 1
+ m
+ j 1
+ p(xi,yj)log2p(xi,yj)
+ 4 1
+ 8 log2(1
+ 8) 2 1
+ 10 log2( 1
+ 10) 2 1
+ 15 log2( 1
+ 15)
+ 1
+ 12 log2( 1
+ 12) 3 1
+ 36 log2( 1
+ 36)
+ 3,415bits
+ CalculdeH(X)etH(Y):
+ PardéfinitionlesentropiesH(X)etH(Y)sontdonnéespar:
+ H(X)
+ 3
+ i 1
+ p(xi)log2p(xi)
+ H(Y)
+ 4
+ j 1
+ p(yj)log2p(yj)
+ Apartirdesprobabilitésjointesnoustrouvonslesp(xi)etp(yi)parlesrelations:
+ p(xi)
+ 3
+ i 1
+ p(xi,yj)
+ p(yj)
+ 4
+ j 1
+ p(xi,yj)
+ CalculdeP(X xi)
+ p(x1) 4 1
+ 8
+ 1
+ 2
+ p(x2) 2 1
+ 10 2 1
+ 15
+ 1
+ 3
+ p(x3) 1
+ 12 3 1
+ 36 1/6
+ 9
+UVIT46 Théoriedelacommunication
+ CalculdeP(Y yj)
+ p(y1) 1
+ 8
+ 1
+ 10
+ 1
+ 36
+ 91
+ 360
+ p(y2) 1
+ 8
+ 1
+ 15
+ 1
+ 12
+ 11
+ 40
+ p(y3) 1
+ 8
+ 1
+ 15
+ 1
+ 36
+ 79
+ 360
+ p(y4) 1
+ 8
+ 1
+ 10
+ 1
+ 36
+ 91
+ 360
+ Ils’ensuit
+ H(X)
+ 3
+ i 1
+ p(xi)log2p(xi) 1,459bits
+ H(Y)
+ 4
+ j 1
+ p(yj)log2p(yj) 1,995bits
+ CalculdeH(Y/X):
+ Pardéfinitionl’entropieH(Y/X)estdonnéepar:
+ H(Y/X)
+ 3
+ i 1
+ P(X xi)H(Y/X xi)
+ P(X x1)H(Y/X x1) P(X x2)H(Y/X x2)
+ P(X x3)H(Y/X x3)
+ Ensuivantlamêmedémarchedel’exemple,nousobtenonsalorsletableaudesprobabilitéscondi
+tionnellessuivant
+ P(Y/X) x1 x2 x3
+ y1 1/4 3/10 1/6
+ y2 1/4 1/5 1/2
+ y3 1/4 1/5 1/6
+ y3 1/4 3/10 1/6
+ Ainsi,touscalculsfaitsontrouve
+ H(Y/X) 1,956bits
+ Finalement:
+ I(X;Y) H(X) H(Y) H(X,Y) 0,039
+ Exercice2:Testdedépistage
+ Lorsd’undépistaged’unemaladie,untestbiologiqueestcensédiscriminerentrelessituationsX
+ {M;M}endonnantunrésultatY {T ;T }.Supposonsqueletestaitlescaractéristiquessuivantes:
+ 10
+UVIT46 Théoriedelacommunication
+ P(X Y) T =testpositif T =testnégatif
+ M=malade 0,07 0,01
+ M=nonmalade 0,03 0,89
+ 1. Calculerl’entropieH(X)etl’informationmutuelleI(X;Y).
+ 2. Ondéfinitl’efficacitédutestcommeétant:r I(X;Y)
+ H(X)
+ (a)Quellesvaleurspeut,apriori,prendrer?
+ (b) Aquoicorrespondraientlesvaleursr 0?r 1?
+ (c) Cedépistageremplit-ilsonrôle?
+ Correction
+ 1. PourcalculerH(X),ilnousfautP(X M)etP(X M).
+ P(X M) P(M T ) P(M T ) 0,07 0,01 0,08
+ P(X M) P(M T ) P(M T ) 0,03 0,89 0,92
+ Ainsi
+ H(X) 0,08log2(0,08) 0,92log2(0,92) 0,402bits–CalculdeI(X,Y) H(X) H(X/Y).
+ Onsaitque
+ H(X/Y) P(Y T ) H(X/Y T ) P(Y T ) H(X/Y T )
+ Oncalculed’abordP(Y T )etP(Y T ).
+ P(Y T ) P(M T ) P(M T ) 0,07 0,03 0,1
+ P(Y T ) P(M T ) P(M T ) 0,01 0,89 0,9
+ Onoutre,puisquepourdeuxévénementAetBnousavonsP(A/B) P(A B)
+ P(B) ,ilvient
+ H(X/Y T ) P(M/T )log2P(M/T ) P(M/T )log2P(M/T )
+ P(M T )
+ P(T ) log2
+ P(M T )
+ P(T )
+ P(M T )
+ P(T ) log2
+ P(M T )
+ P(T )
+ 0,07
+ 0,1 log2
+ 0,07
+ 0,1
+ 0,03
+ 0,1 log2
+ 0,03
+ 0,1
+ 0,881
+ 11
+UVIT46 Théoriedelacommunication
+ DelamêmefaçononcalculeH(X/Y T ).
+ H(X/Y T ) P(M/T )log2P(M/T ) P(M/T )log2P(M/T )
+ P(M T )
+ P(T ) log2
+ P(M T )
+ P(T )
+ P(M T )
+ P(T ) log2
+ P(M T )
+ P(T )
+ 0,01
+ 0,9 log2
+ 0,01
+ 0,9
+ 0,89
+ 0,9 log2
+ 0,89
+ 0,9
+ 0,088
+ Ilvientalors
+ H(X/Y) P(Y T ) H(X/Y T ) P(Y T ) H(X/Y T )
+ 0,1 0,881 0,9 0,088
+ 0,167
+ Finalement
+ I(X,Y) H(X) H(X/Y) 0,402 0,167 0,234bits
+ 2. PuisqueI(X,Y)·H(X)alors I(X,Y)
+ H(X) ·1.DeplusI(X,Y) 0etH(X) 0,ils’ensuitque0·r·
+ 1
+ 3.–Sir 0alorsI(X,Y) 0etparconséquentH(X) H(X/Y). CelasignifiequeXetYsont
+ indépendantes.–Sir 1alorsI(X,Y) H(X)etdoncH(X/Y) 0.CelasignifiequelaréalisationdeYdéter
+minecomplètementX,c-à-dletestdéterminecomplètementlamaladie.
+ 4. Plusrestprochede1plusletestestefficace.Or,pournotrecasnousavonsr 0,234
+ 0,402 0,58
+ 1.Ainsiletestneremplitpassonrôle.
+ Exercices3:
+ SoitXetY2variablesaléatoiresdiscrètesoùladistributionjointep(xi;yj) p(X xi Y yj)est
+ donnéepar:
+ P(X Y) x1 x2 x3 x4
+ y1 1/8 1/16 1/32 1/32
+ y2 1/16 1/8 1/32 1/32
+ y3 1/16 1/16 1/16 1/16
+ y4 1/4 0 0 0
+ a) Calculerl’entropiejointeH(X,Y).
+ b) CalculerlesentropiesmarginalesH(X)etH(Y).
+ c) PourchaquevaleurdeyietxiquellessontlesentropiesconditionnellesH(X/Y yi)etH(Y/Y
+ xi).
+ 12
+UVIT46 Théoriedelacommunication
+ d)QuevautlesentropiesconditionnellesH(X/Y)etH(Y/X).
+ e) Calculerpartroisméthodesl’informationmutuelleI(X;Y).
+ Correction
+ a) H(X,Y) 27
+ 8 .
+ b)
+ P(y1) P(y2) P(y3) P(y4) 1
+ 4 H(Y) log2(4) 2bits
+ P(x1) 1
+ 2 P(x2) 1
+ 8 P(x3) P(x4) 1
+ 4 H(X) 7
+ 4bits
+ c) Tableaudesprobabilitésconditionnelles:
+ P(X/Y) y1 y2 y3 y4
+ x1 1/2 1/4 1/4 1
+ x2 1/4 1/2 1/4 0
+ x3 1/8 1/8 1/4 0
+ x4 1/8 1/8 1/4 0
+ H(X/yi) 7
+ 4
+ 7
+ 4 2 0
+ P(X/Y) x1 x2 x3 x4
+ y1 1/4 1/4 1/4 1/4
+ y2 1/8 1/2 1/4 1/4
+ y3 1/8 1/4 1/2 1/2
+ y4 1/2 0 0 0
+ H(y/Xi) 7
+ 4
+ 3
+ 2
+ 3
+ 2
+ 3
+ 2
+ d) H(X/Y) 11
+ 8 bitsetH(Y/X) 13
+ 8 bits
+ e)
+ I(X;Y) H(X) H(X/Y) 7
+ 4
+ 11
+ 8
+ 3
+ 8bits
+ I(X;Y) H(Y) H(Y/X) 2 3
+ 8
+ 3
+ 8bits
+ I(X;Y) H(X) H(Y) H(Y;X) 7
+ 4 2 27
+ 8
+ 3
+ 8bits
+ 13

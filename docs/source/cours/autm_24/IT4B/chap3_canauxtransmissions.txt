@@ -1,0 +1,595 @@
+UV IT46 Théorie de la communication
+Chap 3: Canaux de transmission
+Un canal de transmission est un milieu physique au travers duquel on peut transmettre de l’information.
+Dans la suite du chapitre on ne s’intéresse en aucun cas de la nature physique du canal, on se contente d’en donner une description purement probabiliste. Le canal est alors considéré comme un
+système probabiliste qui accepte des symboles porteurs d’information en entrée et restitue en sortie
+d’autres symboles.
+Un canal de transmission est défini par la donnée d’un triplet {X , Y, p(yi/xj)} tel que :
+1. X = {x1,x2,··· ,xn} est l’alphabet d’entrée
+2. Y = {y1, y2,··· , ym} est l’alphabet de sortie
+3. p(yi/xj) est la probabilité conditionnelle de recevoir le symbole yi sachant que l’on a
+émis le symbole xj
+.
+Définition 1 : Canal de transmission
+La matrice suivante est appelée matrice de transition du canal:
+T =
+
+
+
+
+
+
+
+p(y1/x1) p(y2/x1) ··· p(ym/x1)
+p(y1/x2) p(y2/x2) ··· p(ym/x2)
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+p(y1/xn) p(y2/xn) ··· p(ym/xn)
+
+
+
+
+
+
+
+Un canal discret est dit symétrique si chaque ligne (colonne) de la matrice de transition contient
+les mêmes valeurs à une permutation près. Par exemple T =
+
+
+
+
+0,2 0,8
+0,8 0,2
+0,2 0,8
+
+
+
+
+Définition 2 : Canal symétrique
+Exemple : Le Canal Binaire Symétrique (CBS): Ce canal a une probabilité d’erreur p.
+X Y
+0 0
+1 1
+1− p
+1− p
+p
+p
+1
+UV IT46 Théorie de la communication
+La matrice de transition du canal est donnée par
+T =
+Ã
+1− p p
+p 1− p
+!
+Exemple: Canal binaire à effacements : La canal binaire à effacements est donné par:
+X Y
+0
+1
+0
+²
+1
+1− p
+1− p
+p
+p
+La matrice de transition du canal est donnée par
+T =
+Ã
+1− p p 0
+0 p 1− p
+!
+1 Bruit et capacité d’un canal
+Dans un canal de transmission {X , Y, p(xi/y j)}, la quantité H(X /Y ) représente une incertitude
+moyenne sur l’entrée lorsque la sortie est connue. C’est l’information qui serait encore nécessaire
+pour caractériser X alors que Y est connue. En d’autres termes H(X /Y )représente la quantité moyenne
+d’information qui, pendant la transmission, se perd dans la voie à cause du bruit.
+Ainsi, si de la source X on transmet la quantité H(X ), il s’ensuit qu’à l’utilisateur arrivera seulement
+une quantité d’information égale à:
+I(X ,Y ) = H(X )− H(X /Y )
+C’est l’information transmise par symbole à travers le canal.
+Afin d’optimiser la transmission dans le canal, il faudra donc chercher à maximiser l’information
+échangée I(X ,Y ). Autrement dit, il faut chercher la source qui rende l’information échangée I(X ,Y )
+maximale. Cette valeur maximale peut donc être appelée capacité du canal.
+2
+UV IT46 Théorie de la communication
+On appelle capacité d’un canal la valeur
+C = max
+p(x)
+I(X ,Y )
+Définition 3 :
+Pour un canal symétrique, la capacité est atteinte pour une loi uniforme sur l’alphabet d’entrée.
+Théorème 1 :
+Conséquence: Pour calculer la capacité d’un canal symétrique, il suffit d’imposer l’équiprobabilité
+sur les symboles d’entrée et de calculer I(X ,Y ). La valeur trouvée de I(X ,Y ) est exactement la capacité du canal.
+Exemples de calculs de capacité
+Exemple 1: Soit le canal suivant:
+X Y
+A
+B
+C
+D
+A
+B
+C
+D
+1
+1
+1
+1
+On calcul d’abord I(X ,Y ). En effet, on sait que
+I(X ,Y ) = H(X )− H(X /Y ) = H(Y )− H(Y /X )
+Le choix le plus judicieux entre les deux formules est I(X ,Y ) = H(X )− H(X /Y ) car on remarque que
+la sortie Y détermine complètement X . Ainsi, la connaissance de Y fait disparaitre toute incertitude
+sur X . Dans ce cas on a H(X /Y ) = 0 et par conséquent I(X ,Y ) = H(X ). Donc, pour calculer la
+capacité, il faut maximiser H(X ) par rapport aux probabilités d’entrée. Or, on sait que le maximum de
+H(X ) est atteint quand tous les symboles sont équiprobables et par conséquent C = maxp(x) H(X ) =
+log2
+(4) = 2 bi t s.
+3
+UV IT46 Théorie de la communication
+Exemple 2: Soit le canal suivant:
+X Y
+A
+B
+C
+D
+A
+0
+B
+0
+1
+1
+1
+1
+On remarque que l’entrée X détermine complètement Y . Ainsi, H(Y /X ) = 0 et par conséquent
+I(X ,Y ) = H(Y ). Il faut calculer donc H(Y ). Pour ce faire, il faut calculer p(A
+0
+) et p(B
+0
+). En effet,
+on a
+p(A
+0
+) = p(Y = A
+0 ∩ X = A)+ p(Y = A
+0 ∩ X = B)
+= p(A)× p(Y = A
+0
+/X = A)
+| {z }
+=1
++p(B)× p(Y = A
+0
+/X = B)
+| {z }
+=1
+= p(A)+ p(B)
+Pour le calcul de p(B
+0
+) on utilise:
+p(B
+0
+) = 1− p(A
+0
+) = 1−(p(A)+ p(B))
+Posons :p = p(A)+ p(B), il s’ensuit que p(A
+0
+) = p et p(B
+0
+) = 1− p. Ainsi,
+H(Y ) = −p log2
+(p)−(1− p) log2
+(1− p)
+de f
+= H2(p)
+La fonction H2(p) nous sera très utile à de nombreuses reprises dans la suite. Nous avons représenté
+dans la figure suivante comment cette fonction varie en fonction de p. En particulier, si p = 1 ou
+p = 0 alors H2(p) = O. La fonction est symétrique par rapport à la droite p = 0,5 et maximale pour
+p = 0,5 et vaut 1.
+Ainsi, d’après la courbe de H2(p), la capacité de ce canal est C = 1bi t quand p = 1/2.
+Exemple 3: Considérons le canal binaire symétrique avec sa probabilité d’erreur p :
+4
+UV IT46 Théorie de la communication
+X Y
+0 0
+1 1
+1− p
+1− p
+p
+p
+Le canal étant symétrique, d’après le théorème 1, on calcule I(X ,Y ) pour l’entrée X tel que p(X =
+0) = 1/2 et p(X = 1) = 1/2. Ainsi, nous allons utiliser la formule
+I(X ,Y ) = H(Y )− H(Y /X )
+car on connait p(Y /X ).
+Calcul de H(Y ):
+p(Y = 0) = p(Y = 0∩ X = 0)+ p(Y = 0∩ X = 1)
+= p(X = 0)× p(Y = 0/X = 0)+ p(X = 1)× p(Y = 0/X = 1)
+=
+1
+2
+(1− p)+
+1
+2
+p
+=
+1
+2
+De même
+p(Y = 1) = 1− p(Y = 0) =
+1
+2
+Il vient
+H(Y ) = −
+1
+2
+log2
+(
+1
+2
+)−
+1
+2
+log2
+(
+1
+2
+) = 1 bi t
+Calcul de H(Y /X ):
+On a
+H(Y /X = 0) = −p log2
+(p)−(1− p) log2
+(1− p) = H2(p)
+H(Y /X = 1) = −p log2
+(p)−(1− p) log2
+(1− p) = H2(p)
+D’où
+H(Y /X ) = p(X = 0)H2(p)+ p(X = 1)H2(p) =
+1
+2
+H2(p)+
+1
+2
+H2(p) = H2(p)
+Finalement, la capacité du canal est donnée par
+C(p) = I(X ,Y ) = H(Y )− H(Y /X ) = 1− H2(p)
+Cette capacité a pour allure :
+5
+UV IT46 Théorie de la communication
+1.1 Deuxième théorème de Shannon
+On considère:
+• une source S d’entropie H(S) délivrant ses symboles au débit DS ,
+• Un canal de capacité C et utilisé au débit DC .
+Question: Sous quelle condition peut-on transmettre de façon satisfaisante le contenu de la source
+par le biais d’un canal.
+Soient H0
+(S) = H(S) × DS le débit d’entropie de de la source S et C
+0 = C × DC la capacité par
+unité de temps du canal. Si
+H
+0
+(S) < C
+0
+alors on peut transmettre le contenu de la source sur le canal.
+Théorème 2 : Réponse à la question
+Exemple: Soit une source binaire sans mémoire S telle que p(S = 0) = 0,98 et p(S = 1) = 0,02,
+DS = 600 K bi t s/s. On dispose d’un canal binaire symétrique de probabilité d’erreur p = 10−3
+avec
+DC = 450 K bi t s/s.
+Peut-on transmettre le contenu de la source sur le canal ?
+Réponse
+On a
+H(S) = −0,98 log2
+(0,98)−0,02 log2
+(0,02) = 0,1414 bi t
+6
+UV IT46 Théorie de la communication
+Il vient
+H
+0
+(S) = H(S)×DS = 0,1414×600 103 = 84864 bi t s/s
+D’autre part, puisque le canal est binaire symétrique et p = 10−3
+alors d’après l’exemple précédent
+on a
+C(10−3
+) = 1− H2(10−3
+) = 0,9886 bi t
+D’où
+C
+0 = C ×DC = 0,9886×450 103 = 444870 bi t s/s
+Ainsi, puisque H0 < C
+0
+, on peut toujours adapter la source au canal.
+7
+UV IT46 Théorie de la communication
+TD : Chap 3
+Exercice 1 : Expliquez pourquoi le canal représenté ci-dessous est appelé canal inutile.
+X Y
+0 0
+1 1
+p
+1− p
+1− p
+p
+Solution: Le canal étant symétrique, d’après le théorème 1, on calcule I(X ,Y ) pour l’entrée X tel
+que p(X = 0) = 1/2 et p(X = 1) = 1/2. Ainsi, nous allons utiliser la formule
+I(X ,Y ) = H(Y )− H(Y /X )
+car on connait p(Y /X ).
+Calcul de H(Y ):
+p(Y = 0) = p(Y = 0∩ X = 0)+ p(Y = 0∩ X = 1)
+= p(X = 0)× p(Y = 0/X = 0)+ p(X = 1)× p(Y = 0/X = 1)
+=
+1
+2
+p +
+1
+2
+p
+= p
+De même
+p(Y = 1) = 1− p(Y = 0) = 1− p
+Il vient
+H(Y ) = −p log2
+(p)−(1− p) log2
+(1− p) = H2(p)
+Calcul de H(Y /X ):
+On a
+H(Y /X = 0) = −p log2
+(p)−(1− p) log2
+(1− p) = H2(p)
+H(Y /X = 1) = −p log2
+(p)−(1− p) log2
+(1− p) = H2(p)
+D’où
+H(Y /X ) = p(X = 0)H2(p)+ p(X = 1)H2(p) =
+1
+2
+H2(p)+
+1
+2
+H2(p) = H2(p)
+8
+UV IT46 Théorie de la communication
+Finalement, la capacité du canal est donnée par
+C(p) = I(X ,Y ) = H2(p)− H2(p) = 0
+Autrement dit, le canal ne transporte aucune information.
+Exercice 2: Calculer la capacité des canaux suivants
+X Y
+0
+1
+0
+²
+1
+1− p
+1− p
+p
+p
+X Y
+A
+B
+C
+D
+A
+B
+E
+C
+D
+p
+p
+p
+p
+1− p
+1− p
+1− p
+1− p
+Solution: Pour le premier canal, on calcul d’abord I(X ,Y ). En effet, on sait que
+I(X ,Y ) = H(X )− H(X /Y ) = H(Y )− H(Y /X )
+Le choix le plus judicieux entre les deux formules est I(X ,Y ) = H(X ) − H(X /Y ) car on remarque
+que la sortie Y = 0 ou Y = 1 détermine complètement X . Ainsi, la connaissance de Y = 0 ou Y = 1
+fait disparaitre toute incertitude sur X . Dans ce cas on a H(X /Y = 0) = 0 et H(X /Y = 1) = 0 et par
+conséquent
+H(X /Y ) = p(Y = 0)×H(X /Y = 0)
+| {z }
+=0
++p(Y = 1)×H(X /Y = 1)
+| {z }
+=0
++p(Y = ²)×H(X /Y = ²) = p(Y = ²)×H(X /Y = ²)
+et
+I(X ,Y ) = H(X )− p(Y = ²)× H(X /Y = ²)
+Calcul de p(Y = ²)
+p(Y = ²) = p(X = 0∩Y = ²)+ p(X = 1∩Y = ²)
+= p(X = 0)× p(Y = ²/X = 0)+ p(X = 1)× p(Y = ²/X = 1)
+= p(X = 0)× p + p(X = 1)× p
+= p
+Calcul de H(X /Y = ²)
+9
+UV IT46 Théorie de la communication
+Il faut calculer p(X = 0ou 1/Y = ²). En effet, on a
+p(X = 0/Y = ²) =
+p(X = 0∩Y = ²)
+p(Y = ²)
+=
+p(X = 0∩Y = ²)
+p
+Or, on sait aussi que
+p(X = 0∩Y = ²) = p(X = 0)× p(Y = ²/X = 0) = p(X = 0)× p
+On en déduit
+p(X = 0/Y = ²) =
+p(X = 0)× p
+p
+= p(X = 0)
+De la même manière on obtient
+p(X = 1/Y = ²) =
+p(X = 0)× p
+p
+= p(X = 1)
+Ainsi,
+H(X /Y = ²) = −p(X = 0) log2
+¡
+p(X = 0)¢
+− p(X = 1) log2
+¡
+p(X = 1)¢
+= H(X )
+et l’on a
+H(X /Y ) = p(Y = ²)× H(X /Y = ²) = p × H(X )
+D’où
+I(X ,Y ) = H(X )− p × H(X ) = H(X )(1− p)
+Finalement, maximiser I(X ,Y ) revient à maximiser H(X ). Or le maximum de H(X ) est atteint quand
+les symboles de X sont équiprobables. D’où max(H(X )) = log2
+(2) = 1 bi t. Par conséquent
+C(p) = 1− p
+Calcul de la capacité du deuxième canal : Nous n’allons pas adopter la même démarche de solution
+du premier canal. Nous allons exploiter la symétrie du canal. En effet, le canal étant symétrique, on
+sait que la capacité est atteinte pour une loi uniforme sur l’entrée X . Donc, il suffit de calculer I(X ,Y )
+pour p(X = A) = p(X = B) = p(X = C) = p(X = D) = 1/4. Remarquons en plus que l’interprétation du
+canal permet d’écrire:
+H(Y /X = A) = H(Y /X = B) = H(Y /X = C) = H(Y /X = D) = H2(p)
+soit
+H(Y /X ) = 4×
+1
+4
+H2(p) = H2(p)
+Nous allons donc calculer I(X ,Y ) par l’expression:
+C = I(X ,Y ) = H(Y )− H(Y /X )
+10
+UV IT46 Théorie de la communication
+En effet:
+p(Y = A) = p(X = A ∩Y = A) = p(X = A)× p(Y = A/X = A) =
+1
+4
+(1− p)
+p(Y = B) =
+1
+4
+(1− p)
+p(Y = C) =
+1
+4
+(1− p)
+p(Y = D) =
+1
+4
+(1− p)
+p(Y = E) = 4×
+1
+4
+× p = p
+D’où
+H(Y ) = −4×
+1
+4
+(1− p) log2
+³1
+4
+(1− p)
+´
+− p log2
+(p)
+= −(1− p)
+h
+log2
+(1− p)−log2
+(4)
+| {z }
+=2
+i
+− p log2
+(p)
+= 2(1− p)−(1− p) log2
+(1− p)− p log2
+(p)
+| {z }
+H2(p)
+= 2(1− p)+ H2(p)
+Finalement
+C = I(X ,Y ) = 2(1− p)+ H2(p)− H2(p) = 2(1− p)
+Exercice 3: Certaines sources d’information ont une structure appelée "stay, grow or die". Lorsqu’elles
+émettent un symbole si à un instant donné, le symbole émis à l’instant suivant est soit si (stay) soit
+si+1 (grow), et lorsqu’elles ont émis le dernier symbole sn de l’alphabet, le symbole émis suivant et
+soit sn, soit s1 (die). La figure 1 correspond à une source S de ce type, qui utilise un alphabet de 4
+symboles s1, s2, s3, s4 et que l’on va supposer d’ordre 1.
+s1 s2 s3 s4
+1
+4/5
+1/5
+2/3
+1/3
+1/2
+1/2
+1. En sachant que les probabilités des symboles sont les suivantes : p(s1) =
+1
+11 ; p(s2) =
+5
+11 ; p(s3) =
+3
+11 ; p(s4) =
+2
+11 , calculer l’entropie de la source S.
+2. Si cette source émet un symbole tous les 188 µs, est-il possible de transmettre le contenu de la
+source à l’aide d’un canal binaire dont la capacité par unité de temps est de 9600 bi t s/s.
+11
+UV IT46 Théorie de la communication
+3. Est-il possible d’utiliser un code de longueur fixe ou un code de Huffman pour transmettre le
+contenu de la source via le canal. Conclure.
+Solution:
+1. Calcul de H(S/si) : Il est clair que H(S/s1) = 0.
+H(S/s2) = −4/5 log2
+(4/5)−1/5 log2
+(1/5) = 0,722 bi t s
+H(S/s3) = −2/3 log2
+(2/3)−1/3 log2
+(1/3) = 0,918 bi t s
+H(S/s4) = −1/2 log2
+(1/2)−1/2 log2
+(1/2) = 1 bi t s
+L’entropie de cette source est alors égale à :
+H(S) = p(s1)× H(S/s1)+ p(s2)× H(S/s2)+ p(s3)× H(S/s3)+ p(s4)× H(S/s4)
+= 0,76 bi t
+2. Si cette source émet un symbole tous les 188 µs, elle émet donc DS =
+1
+188×10−6 = 5319,15
+symboles par seconde. Le débit d’entropie de la source est alors égal à H0 = DS × H(S) =
+4042,55 bi t s/s. Puisque cette quantité est inférieure à la capacité par unité de temps du canal
+C
+0 = 9600 bi t s/s, la transmission du contenu de la source peut être réalisée par le canal d’après
+le deuxième théorème de Shannon.
+3. Si on envisage un code de longueur fixe, le fait qu’il y ait 4 symboles implique l’utilisation de 2
+bits, ce qui produit un débit DS ×2 = 10638,3 bi t s/s à la sortie du codeur de source, ce qui est
+supérieur à la capacité par unité de temps du canal C
+0 = 9600 bi t s/s, donc inutilisable.
+Si on envisage un code de Huffman, on obtient l’arbre et le code suivants :
+1
+6/11
+3/11
+S1 : p = 1/11
+0
+S4 : p = 2/11
+1
+0
+S3 : p = 3/11
+1
+0
+S2 : p = 5/11
+1
+Mots code : s2 = 0, s3 = 10, s4 = 110, s1 = 111
+Sa longueur moyenne est donc
+n = p(s2)+2p(s3)+3p(s4)+3p(s1) = 1,82 bi t s
+12
+UV IT46 Théorie de la communication
+Dans ce cas, le débit en sortie du codeur de source est Ds × 1,82 = 9671,18 bi t s/s, qui rend
+donc impossible la transmission du contenu de la source puisque 9671,18 > 9600.
+Conclusion: Il faut envisager un codage de Huffman de l’extension d’ordre 2 et transmettre les
+symboles par paires.
+13

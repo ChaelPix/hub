@@ -296,7 +296,7 @@ Méthodologie de résolution
    \frac{u_{n+1}}{u_n} = \frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n} = \frac{2}{n+1} \xrightarrow[n \to +\infty]{} 0 < 1
 
 3. Astuces pratiques
-*******************
+********************
 
 .. note::
 
@@ -313,7 +313,7 @@ Méthodologie de résolution
       * Utiliser les propriétés des logs
 
 4. Exemples types d'exam
-***********************
+************************
 
 **Exemple 1: Somme télescopique**
 

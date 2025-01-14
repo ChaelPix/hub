@@ -71,6 +71,48 @@ Table de Décodage Type
    001      | 0010000
    ...      | ...
 
+Table de Décision Rapide
+---------------------
+
+**Pour dmin donné**:
+::
+
+   dmin = 2:  détecte 1 erreur, corrige 0
+   dmin = 3:  détecte 2 erreurs, corrige 1
+   dmin = 4:  détecte 3 erreurs, corrige 1
+   dmin = 5:  détecte 4 erreurs, corrige 2
+   dmin = 6:  détecte 5 erreurs, corrige 2
+   dmin = 7:  détecte 6 erreurs, corrige 3
+
+**Règles générales**:
+- Pour détecter d erreurs: dmin > d
+- Pour corriger t erreurs: dmin > 2t
+
+Comment Savoir si un Code est Corrigeable
+------------------------------------
+
+1. **Code non corrigeable si**:
+   - Plusieurs vecteurs de correction pour un même syndrome
+   - dmin ≤ 2
+
+2. **Code corrigeable si**:
+   - Un seul vecteur de correction par syndrome
+   - dmin ≥ 3
+   - Le syndrome identifie uniquement l'erreur
+
+3. **Exemple pratique**:
+   ::
+      
+      Syndrome | Vecteur correction
+      S1      | ε1, ε2   → Non corrigeable (plusieurs vecteurs)
+      S2      | ε3       → Corrigeable (un seul vecteur)
+      S3      | -        → Non corrigeable (pas de correction)
+
+4. **En examen**:
+   a. Calculer dmin
+   b. Si dmin ≥ 3: vérifier unicité des vecteurs de correction
+   c. Si ambiguïté: code non corrigeable pour ces erreurs
+
 Vérifications Importantes
 -------------------------
 
@@ -281,6 +323,116 @@ Type 4: Correction d'un mot reçu
 2. Chercher S dans la table
 3. Ajouter ε correspondant
 4. Si S pas dans table = non corrigible
+
+Comprendre les Syndromes
+--------------------
+
+**Définition simple**: 
+Le syndrome est une "signature d'erreur". C'est un calcul qui permet de savoir si un mot reçu est correct ou non, et si non, quelle erreur s'est produite.
+
+**Formule**:
+
+.. math::
+   S = H \times y^t
+
+où:
+- H est la matrice de contrôle
+- y est le mot reçu
+- yt est le mot reçu transposé
+
+**Comment ça marche**:
+
+1. **Si S = 0**:
+   - Le mot reçu est probablement correct
+   - Car H × (mot code)t = 0 toujours
+
+2. **Si S ≠ 0**:
+   - Une erreur s'est produite
+   - Le syndrome est identique à la colonne de H correspondant à la position de l'erreur
+
+**Exemple Pratique**:
+::
+
+   H = [1 1 0]   y = [1 0 1]
+       [0 1 1]
+
+1. Calculer S = H × yt:
+   S = [1]  ← Ce syndrome indique une erreur
+       [1]
+
+2. Chercher ce syndrome dans les colonnes de H:
+   - Correspond à colonne 1 de H
+   - Donc erreur en position 1
+
+**En résumé**:
+- Le syndrome est un outil de détection/correction
+- Il agit comme un détecteur d'erreur
+- Sa valeur indique où se trouve l'erreur
+
+Construction de la Table de Décodage: Méthode Systématique
+-----------------------------------------------------
+
+1. **Étape Préliminaire**:
+   - Calculer dmin (ici = 3)
+   - Le code peut corriger 1 erreur car dmin > 2t → t = 1
+
+2. **Recensement des Syndromes**:
+   - Nombre de syndromes possible = 2^(n-k) = 2^3 = 8 syndromes
+   - Les syndromes vont de 000 à 111
+
+3. **Construction de la Table**:
+
+   a. **Première ligne**: 
+      - Toujours commencer par le syndrome nul (000)
+      - Vecteur de correction ε1 = (000000)
+   
+   b. **Erreurs de poids 1**:
+      - Prendre les colonnes de H une par une
+      - Chaque colonne de H = syndrome d'une erreur de poids 1
+      ::
+      
+         Col1 de H = (1,0,1)t = S2 → ε2 = (100000)
+         Col2 de H = (1,1,0)t = S3 → ε3 = (010000)
+         etc...
+
+   c. **Vérification**:
+      - Une erreur en position i → vecteur de correction avec un 1 en position i
+      - Le syndrome = colonne i de H
+
+Exemple de Construction
+-------------------
+::
+
+   H = [1 1 0 1 0 0]
+       [0 1 1 0 1 0]
+       [1 0 1 0 0 1]
+
+1. **Syndromes de poids 1**:
+   Position 1: (100000) → S = col1 = (101)
+   Position 2: (010000) → S = col2 = (110)
+   etc...
+
+2. **Table résultante**:
+   ::
+   
+      Vect correction | Syndrome
+      (000000)       | (000)  ← pas d'erreur
+      (100000)       | (101)  ← erreur pos 1
+      (010000)       | (110)  ← erreur pos 2
+      (001000)       | (011)  ← erreur pos 3
+      ...            | ...
+
+Vérification Rapide
+----------------
+1. Chaque syndrome doit apparaître une seule fois
+2. Les vecteurs de correction doivent être de poids ≤ t
+3. Le nombre total de syndromes = 2^(n-k)
+
+En Pratique à l'Examen
+------------------
+1. Écrire toutes les colonnes de H comme syndromes
+2. Pour chaque syndrome, mettre un 1 à la position correspondante
+3. Vérifier que chaque vecteur corrige bien une seule erreur
 
 Pour un Exam Réussi
 ----------------

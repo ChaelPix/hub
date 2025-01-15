@@ -1,0 +1,297 @@
+UV RN41 Nom et Prénom : ............................................................ Examen, durée 2h
+Sur la diagonalisation des matrices
+Exercice 1 : (3 points) Soit
+A =
+Ã
+0 1
+y −4 2x
+!
+; x, y ∈ R
+1. Calculer le polynôme caractéristique (1 point)
+p(λ) = .........................................................................................................................
+2. Pour quelles valeurs de x et y la matrice A est-elle diagonalisable ? (2 points)
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Solution
+1. Calculer le polynôme caractéristique
+p(λ) = λ
+2 −2xλ+4− y
+2. Pour quelles valeurs de x et y la matrice A est-elle diagonalisable ?
+On a ∆ = 4x
+2 − 4(4 − y) = 4x
+2 + 4y − 16. Ainsi, A est-elle diagonalisable si ∆ = 4x
+2 + 4y − 16 ≥ 0. Le
+cas ∆ = 0 est impossible car la matrice n’est pas diagonale. Il s’ensuit que A est-elle diagonalisable si
+∆ = 4x
+2 +4y −16 > 0, soit x
+2 + y > 4.
+Exercice 2 : (7 points) : Considérons la matrice A suivante :
+Ã
+3 −4
+2 −6
+!
+1. Déterminer les valeurs propres λ1 < λ2 de A. (2 points)
+λ1 = ..................... λ2 = ....................
+2. Dans la suite on prendra D =
+Ã
+λ1 0
+0 λ2
+!
+. Fournir la matrice de passage P de la base canonique à la
+base propre. On veillera à ce que les composantes des vecteurs propres e1 et e2 soient des entiers
+relatifs. (2 points)
+P =
+e1 e2
+
+
+
+
+
+
+······ ······
+······ ······
+3. Calculer P
+−1
+. (1 point)
+1
+UV RN41 Nom et Prénom : ............................................................ Examen, durée 2h
+P
+−1 = ······Ã
+······ ······
+······ ······!
+4. Calculer A
+n
+en fonction de n. (2 points)
+A
+n = ······
+
+
+
+
+
+
+
+························ ························
+························ ························
+
+
+
+
+
+
+
+Solution
+1. Déterminer les valeurs propres λ1 < λ2 de A. (2 points)
+λ1 = −5 λ2 = 2
+2. Dans la suite on prendra D =
+Ã
+λ1 0
+0 λ2
+!
+. Fournir la matrice de passage P de la base canonique à la
+base propre. On veillera à ce que les composantes des vecteurs propres e1 et e2 soient des entiers
+relatifs. (2 points)
+P =
+e1 e2
+
+
+
+
+
+
+1 4
+2 1
+3. Calculer P
+−1
+. (1 point)
+P
+−1 =
+1
+7
+Ã
+−1 4
+2 −1
+!
+4. Calculer A
+n
+en fonction de n. (2 points)
+A
+n = PDnP
+−1 =
+1
+7
+
+
+
+
+
+
+
+2
+n+3 −(−5)n 4(−5)n −2
+n+2
+2
+n+1 −2(−5)n 8(−5)n −2
+n
+
+
+
+
+
+
+
+2
+UV RN41 Nom et Prénom : ............................................................ Examen, durée 2h
+Sur le Développement Limité : Cocher la bonne réponse.
+Question 1 : (1 point) Soit f une fonction définie sur un intervalle ouvert contenant 0 telle que f (0) = 0
+et DL4(0) de f est f (x) = x +
+x
+2
+2
++
+x
+3
+4
++o(x
+4
+). Cocher la bonne réponse.
+ f
+00(0) =
+1
+2
+ f
+00(0) = 1
+ f (2x) = 2x + x
+2 +2x
+3 +o(x
+4
+)  Aucune des propositions précédentes n’est valable
+f (x
+2
+) = x
+2 +
+1
+2
+x
+4 +
+1
+4
+x
+5 +o(x
+5
+)
+Correction : f
+00(0) = 1
+Question 2 : (2 points) Soit f (x) =
+1
+2+ x
+. Cocher la bonne réponse.
+ DL2(0) f (x) = 1−
+x
+2
++
+x
+2
+4
++o(x
+2
+)  DL2(0) f (x) =
+1
+2
++
+x
+4
++
+x
+2
+8
++o(x
+2
+)
+ DL2(0) f (x) =
+1
+2
+−
+x
+4
+−
+x
+2
+8
++o(x
+2
+)  Aucune des propositions précédentes n’est valable
+correction Aucune des propositions précédentes n’est valable
+Question 3 : (2 points) Déterminer le développement limité de la fonction f (x) = e
+x
+à l’ordre 3 en 1.
+f (x) = ...............................................................................................................................
+Correction
+e
+x = e
+1
+(1+(x −1)+(x −1)2
+/2+(x −1)3
+/6)
+Question 4 : (2 points) Parmi les égalités suivantes, cocher la bonne réponse. :
+ limx→0
+e
+x +e
+−x −3
+x
+2
+= 1  limx→0
+2x
+lnµ
+1+ x
+1− x
+¶ = 1  limx→0
+e
+x −cosx − x
+x
+2
+=
+1
+2
+correction limx→0
+2x
+lnµ
+1+ x
+1− x
+¶ = 1
+3
+UV RN41 Nom et Prénom : ............................................................ Examen, durée 2h
+Sur les séries
+Question 1 : (2 points) Si la série P
+un à termes positifs converge alors (Cocher la bonne réponse) :
+ la série P
+cos(un) converge  la série P
+sin(un) converge
+ la série P
+e
+un converge  la série P
+ln(un) converge
+Question 2 : (2 points) Donner la nature des séries numériques P
+un suivantes :
+1. un = 1−cos
+π
+n
+2. un = expµ
+cosµ
+1
+n
+¶¶−expµ
+cosµ
+2
+n
+¶¶ 3. un =
+³ n
+n +1
+´n
+2
+.
+Correction
+4
+UV RN41 Nom et Prénom : ............................................................ Examen, durée 2h
+5

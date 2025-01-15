@@ -1,0 +1,1512 @@
+UV RN41 DL
+Formule de Taylor: Application aux calculs approchés
+1 Un exemple introductif
+Souvenez-vous : lorsque vous avez étudié les limites on avait remarqué que sin(x) ≈ x quand x est « proche de
+0 ». On peut le vérifier facilement avec une calculatrice, ou mieux encore en superposant les graphes des deux
+fonctions :
+Figure 1: Approximation de sin(x) en x = 0 par le polynôme p(x) = x.
+On voit bien qu’au voisinage de 0, les courbes sont presque indiscernables et que plus on s’éloigne, plus
+l’approximation devient mauvaise. On peut trouver un polynôme (on verra comment plus loin), qui épouse mieux
+les formes de la fonction sinus.
+Figure 2: Approximation de sin(x) en x = 0 par: Gauche, p(x) = x −
+x
+3
+6
+. Droite, p(x) = x −
+x
+3
+6
++
+x
+5
+120 .
+1
+UV RN41 DL
+2 Formule de Taylor
+Notation : f
+(n)
+signifie la dérivée n
+i eme de f .
+Si une fonction f (x) est définie et continue sur [a,b], ainsi que ses n premières dérivées, et si elle
+admet dans l’intervalle ]a,b[ une dérivée d’ordre n + 1, alors il existe une valeur c ∈]a,b[ pour
+laquelle
+f (b) = f (a)+ f
+0
+(a)(b − a)+ f
+(2)(a)
+(b − a)
+2
+2!
++··· + f
+(n)
+(a)
+(b − a)
+n
+n!
+| {z }
+Partie principale
++ f
+(n+1)(c)
+(b − a)
+n+1
+(n +1)!
+| {z }
+Reste d’ordre n +1
+(1)
+Cette égalité peut encore s’écrire avec h = b − a
+f (a +h) = f (a)+ f
+0
+(a)h + f
+(2)(a)
+h
+2
+2!
++··· + f
+(n)
+(a)
+h
+n
+n!
+| {z }
+Partie principale
++ f
+(n+1)(c)
+h
+n+1
+(n +1)!
+| {z }
+Reste d’ordre n +1
+(2)
+Théorème 1 : Théorème de Taylor-Lagrange
+Si on pose b = x dans le théorème 1 on retrouve le polynôme de Taylor qui approxime la fonction
+f au voisinage de a à l’ordre n :
+f (x) = f (a)+ f
+0
+(a)(x − a)+ f
+(2)(a)
+(x − a)
+2
+2!
++··· + f
+(n)
+(a)
+(x − a)
+n
+n!
+| {z }
+Polynôme de Taylor d’ordre n en x
++ f
+(n+1)(c)
+(x − a)
+n+1
+(n +1)!
+| {z }
+Reste d’ordre n +1
+(3)
+Définition 1 : Polynôme de Taylor
+2.1 Approximation par le polynôme de Taylor
+Posons :
+p(x) = f (a)+ f
+0
+(a)(x − a)+ f
+(2)(a)
+(x − a)
+2
+2!
++··· + f
+(n)
+(a)
+(x − a)
+n
+n!
+Rn = f
+(n+1)(c)
+(x − a)
+n+1
+(n +1)!
+Il vient alors à partir de l’équation (3)
+f (x) = p(x)+Rn
+de sorte que
+f (x)− p(x) = Rn
+Donc, en approchant la fonction f par le polynôme p(x) on commet une erreur Rn(x). Ainsi, pour avoir une idée
+sur la qualité de l’approximation, on a besoin d’une estimation de l’erreur Rn(x).
+On dit que le polynôme p(x) est une approximation de f (x) à ² près si
+¯
+¯
+¯f (x)− p(x)
+¯
+¯
+¯ =
+¯
+¯
+¯Rn
+¯
+¯
+¯ ≤ ²
+Définition 2 : Approximation à ² près
+2
+UV RN41 DL
+2.2 Application aux calculs approchés
+Si on désire approcher une fonction f en un point fixe x par le polynôme de Taylor on doit choisir
+une valeur de a voisin de x de telle sorte que les f
+(k)
+(a) soient faciles à calculer.
+Remarque 1 : Importante
+Exemple 1: Calcul d’une valeur approchée à ² = 10−5 près de sin47◦
+.
+Notons d’abord que f (x) = sin(x). En outre, 47 = 45+2, ce qui se traduit en radian par 47π
+180 =
+π
+4
++
+π
+90 . Ainsi, si
+on pose x =
+47π
+180 et a =
+π
+4
+de sorte que x − a =
+π
+90 , alors il existe un c ∈]45,47[ tel que l’équation (3) se traduit par :
+f (
+47π
+180
+) = f (
+π
+4
+)+ f
+0
+(
+π
+4
+)
+π
+90
++ f
+(2)(
+π
+4
+)
+(
+π
+90 )
+2
+2!
++··· + f
+(n)
+(
+π
+4
+)
+(
+π
+90 )
+n
+n!
+| {z }
+Polynôme de Taylor d’ordre n en 47◦
++ f
+(n+1)(c)
+(
+π
+90 )
+n+1
+(n +1)!
+| {z }
+Reste d’ordre n +1
+Le but ici est de trouver la plus petite valeur de n telle que le polynôme de Taylor d’ordre n en 47π
+180 soit une
+valeur approchée à ² = 10−5 près de sin47◦
+. En effet, d’après la Définition 2, il suffit de poser
+¯
+¯
+¯Rn
+¯
+¯
+¯ =
+¯
+¯
+¯f
+(n+1)(c)
+(
+π
+90 )
+n+1
+(n +1)!
+¯
+¯
+¯≤ 10−5
+et de résoudre cette inégalité par rapport à n.
+Problème : La non-connaissance de la valeur de c rend la résolution de l’inégalité infaisable.
+Solution : Il faut majorer
+¯
+¯
+¯f
+(n+1)(c)
+¯
+¯
+¯
+En effet, remarquons d’abord que
+f
+(n)
+(x) = sin(x +n
+π
+2
+) et
+¯
+¯
+¯f
+(n+1)(c)
+(
+π
+90 )
+n+1
+(n +1)!
+¯
+¯
+¯=
+¯
+¯
+¯f
+(n+1)(c)
+¯
+¯
+¯
+(
+π
+90 )
+n+1
+(n +1)!
+Or, on sait que
+¯
+¯
+¯f
+(n+1)(c)
+¯
+¯
+¯=
+¯
+¯
+¯sin(c +(n +1)
+π
+2
+)
+¯
+¯
+¯≤ 1
+Il s’ensuit
+¯
+¯
+¯Rn
+¯
+¯
+¯ ≤
+(
+π
+90 )
+n+1
+(n +1)!
+Ainsi, on cherche alors n tel que
+¯
+¯
+¯Rn
+¯
+¯
+¯ ≤
+(
+π
+90 )
+n+1
+(n +1)!
+≤ 10−5
+• Pour n = 1 on a
+(
+π
+90 )
+1+1
+(1+1)! u 6×10−4 > 10−5
+• Pour n = 2 on a
+(
+π
+90 )
+2+1
+(2+1)! u 7×10−6 < 10−5
+On en déduit que le polynôme de Taylor d’ordre 2 en 47π
+180 est une valeur approchée à ² = 10−5 près.
+sin(47◦
+) = sin(
+47π
+180
+) = sin(
+π
+4
+)+
+π
+90
+cos(
+π
+4
+)−
+1
+2
+(
+π
+90
+)
+2
+sin(
+π
+4
+) = 0.731360 à 10−5 près
+3
+UV RN41 DL
+Autres exemples
+1. En appliquant la formule de Taylor pour e
+x
+à l’ordre 5 au voisinage de 0, donner une valeur approchée de
+p
+e à 10−4 près.
+2. Soit x un réel strictement positif. Démontrer que :
+¯
+¯
+¯
+¯
+ln(1+ x)− x +
+x
+2
+2
+¯
+¯
+¯
+¯
+≤
+x
+3
+3
+.
+En déduire une valeur approchée de ln(1,003) à 10−8 près.
+Correction
+1. La fonction e
+x
+est continue et indéfiniment dérivable. Donc, en appliquant la formule de Taylor pour e
+x
+à
+l’ordre 5 au voisinage de 0 sur [0,x] on trouve : Il existe c ∈]0,x[ tel que
+e
+x = 1+ x +
+x
+2
+2!
++
+x
+3
+3!
++
+x
+4
+4!
++
+x
+5
+5!
++
+x
+6
+6!
+e
+c
+On applique cette formule à x =
+1
+2
+, ce qui donne :
+p
+e = 1+
+1
+2
++
+1
+2!4
++
+1
+3!8
++
+1
+4!16
++
+1
+5!32
++
+1
+6!64
+e
+c
+D?autre part, puisque c ∈]0,1/2[ alors nous avons e
+c < e < 3. Il vient
+1
+6!64
+e
+c <
+3
+6!64
+' 7,2×10−5 < 10−4
+Ceci montre que la somme des 6 premiers termes dans la formule ci-dessus constitue une valeur approchée
+de p
+e à 10−4 près.
+2. Notons f (x) = ln(1+ x). On a
+f
+000(x) =
+2
+(1+ x)
+3
+.
+La formule de Taylor à l’ordre 2 sur [0,x] donne donc : Il existe c ∈]0,x[ tel que
+ln(1+ x) = x −
+x
+2
+2
++
+2
+(1+c)
+3
+x
+3
+6
+Puisque c > 0, on en déduit :
+¯
+¯
+¯
+¯
+2
+(1+c)
+3
+¯
+¯
+¯
+¯
+≤ 2,
+Il vient alors :
+¯
+¯
+¯
+¯
+ln(1+ x)− x +
+x
+2
+2
+¯
+¯
+¯
+¯ =
+¯
+¯
+¯
+¯
+2
+(1+c)
+3
+¯
+¯
+¯
+¯
+x
+3
+6
+≤
+x
+3
+3
+.
+Remarquons que ln(1,003) = ln(1 + 0,003). Donc pour x = 0,003 on a (0,003)3
+/3 = 9 × 10−9 ≤ 10−8
+. Une
+valeur approchée à 10−8 près de ln(1,003) est donc : 0,003−(0,003)2
+/2 = 0,0029955.
+4
+UV RN41 DL
+Développements limités
+Soit n ∈ N. Soit I un intervalle de R, a ∈ I. Soit f une fonction de I dans R.
+On dit que f admet un développement limité (DL) à l’ordre n en a (DLn(a)) Ssi il existe un
+polynôme P(x) de degré n et ² : I → R tels que pour tout x ∈ I
+f (x) = P(x − a)+(x − a)
+n
+²(x)
+et
+limx→a
+²(x) = 0
+P(x − a) est appelée partie régulière du DL, et (x − a)
+n²(x) est appelé reste d’ordre n.
+On peut également écrire :
+f (x) = P(x − a)+O(x − a)
+n
+Définition 3 : Développement limité
+Un développement limité est donc l’approximation locale d’une fonction par un polynôme. L’approximation
+est d’autant plus précise que l’ordre du DL est élevé.
+3 Propriétés des développements limités
+1. Unicité
+Une fonction ne peut admettre qu?un seul développement limité d?ordre n donné.
+2. Somme
+Si f (x) et g (x) admettent des développements limités d’ordre n, f (x)+g (x) admet un développement limité
+dont la partie régulière est la somme des parties régulières des développements limités de f (x) et g (x).
+3. Produit
+La partie régulière du développement limité d’ordre n de f (x).g (x) se compose des termes de degré au plus
+égal à n du produit des parties régulières des développements limités de f (x) et g (x).
+4 Formulation du développement limité
+Voici maintenant un théorème qui assure l’existence de DLs pour une grande classe de fonctions, et permet de
+plus de les calculer simplement.
+Soit n ∈ N
+∗
+, I un intervalle de R, a dans l’intérieur de I. Soit f une fonction de I dans R, n fois
+dérivable dans I.
+Alors, f admet un DLn(a), donné par :
+f (x) =
+x→a
+Xn
+k=0
+f
+(k)
+(a)
+k!
+(x − a)
+k +o((x − a)
+n
+)
+f
+(k)
+signifie la dérivée k
+i eme de f .
+Théorème 2 : Taylor-Young
+5
+UV RN41 DL
+5 Développements limités au voisinage de 0 à l’ordre n usuels à connaître
+e
+x = 1+ x +
+x
+2
+2
++.........+
+x
+n
+n!
++ x
+n
+ε(x)
+sinx = x −
+x
+3
+3!
++
+x
+5
+5!
++.........+(−1)p
+x
+2p+1
+(2p +1)!
++ x
+2p+1
+ε(x)
+cosx = 1−
+x
+2
+2!
++
+x
+4
+4!
++.........+(−1)p
+x
+2p
+(2p)!
++ x
+2p
+ε(x)
+1
+1− x
+= 1+ x + x
+2 + +x
+3 +.........+ x
+n + x
+n
+ε(x)
+ln(1− x) = −x −
+x
+2
+2
+−
+x
+3
+3
+−
+x
+4
+4
+−.........−
+x
+n
+n
++ x
+n
+ε(x)
+ln(1+ x) = x −
+x
+2
+2
++
+x
+3
+3
+−
+x
+4
+4
++.........+(−1)n−1
+x
+n
+n
++ x
+n
+ε(x)
+(1+ x)
+α = 1+αx +α(α−1)
+x
+2
+2!
++.........+α(α−1)···(α−n +1)
+x
+n
+n!
++ x
+n
+ε(x)
+6
+UV RN41 DL
+TD
+Exercice 1 : Somme et produit de DLs
+Calculer les développements limités suivants :
+1.
+1
+1− x
+−e
+x
+à l’ordre 3 en 0 2. p
+1− x +
+p
+1+ x à l’ordre 4 en 0
+3. sinx cos(2x) à l’ordre 6 en 0 4. cos(x) ln(1+ x) à l’ordre 4 en 0
+5. (x
+3 +1)p
+1− x à l’ordre 3 en 0 6. ¡
+ln(1+ x)
+¢2
+à l’ordre 4 en 0
+Exercice 2 : Composition de DLs
+Calculer les développements limités suivants :
+1. lnµ
+sinx
+x
+¶
+à l’ordre 4 en 0 2. exp(sinx) à l’ordre 4 en 0
+3. (cosx)
+sinx
+à l’ordre 5 en 0
+Exercice 3 : DLs pas en 0
+Calculer les développements limités suivants :
+1. 1
+x
+à l’ordre 3 en 2 2. ln(x) à l’ordre 3 en 2
+Exercice 4 : Application des DLs: Limites de fonctions
+Déterminer les limites des fonctions suivantes :
+1.
+sinx − x
+x
+3
+en 0; 2.
+1+ln(1+ x)−e
+x
+1−cosx
+en 0;
+3. µ
+a
+x +b
+x
+2
+¶1/x
+en 0;
+7
+UV RN41 DL
+Correction
+Exercice 1
+1. Il suffit d’écrire
+1
+1− x
+= 1+ x + x
+2 + x
+3 +o(x
+3
+)
+e
+x = 1+ x +
+x
+2
+2
++
+x
+3
+6
++o(x
+3
+)
+et de faire la différence :
+1
+1− x
+−e
+x =
+x
+2
+2
++
+5x
+3
+6
++o(x
+3
+).
+2. Il suffit d’écrire
+p
+1+ x = 1+
+x
+2
+−
+x
+2
+8
++
+x
+3
+16
+−
+5x
+4
+128
++o(x
+4
+)
+p
+1− x = 1−
+x
+2
+−
+x
+2
+8
+−
+x
+3
+16
+−
+5x
+4
+128
++o(x
+4
+)
+et de faire la somme :
+p
+1+ x +
+p
+1− x = 2−
+x
+2
+4
+−
+5x
+4
+64
++o(x
+4
+).
+3. On écrit
+sin(x) = x −
+x
+3
+6
++
+x
+5
+120
++o(x
+6
+)
+cos(2x) = 1−2x
+2 +
+2x
+4
+3
++
+4x
+6
+45
++o(x
+5
+).
+Remarquons qu’il n’est pas nécessaire d’aller jusqu’à l’ordre 6 pour cos(2x) car tous les termes de son développement limité seront au moins multipliés par x, et on gagne un ordre. On en déduit, en effectuant le produit
+sin(x)cos(2x) = x −
+13x
+3
+6
++
+121x
+5
+120
++o(x
+6
+).
+4. On écrit les développements limités
+cosx = 1−
+x
+2
+2
++
+x
+4
+24
++o(x
+4
+)
+ln(1+ x) = x −
+x
+2
+2
++
+x
+3
+3
+−
+x
+4
+4
++o(x
+4
+)
+et on effectue le produit pour trouver
+(cosx) ln(1+ x) = x −
+x
+2
+2
+−
+x
+3
+6
++o(x
+4
+).
+5. C’est la même méthode, encore plus facile car 1+ x
+3 = 1+ x
+3 +o(x
+3
+). Puisque d’autre part
+p
+1− x = 1−
+x
+2
+−
+x
+2
+8
+−
+x
+3
+16
++o(x
+3
+)
+on trouve en effectuant le produit
+(1+ x
+3
+)
+p
+1− x = 1−
+x
+2
+−
+x
+2
+8
++
+15x
+3
+16
++o(x
+3
+).
+6. Puisque ln(1 + x) ∼0 x, il est là aussi simplement nécessaire d’effectuer un DL de ln(1 + x) à l’ordre 3. En
+effectuant le produit, on va automatiquement gagner un ordre. Donc, en écrivant
+ln(1+ x) = x −
+x
+2
+2
++
+x
+3
+3
++o(x
+3
+)
+on trouve
+¡
+ln(1+ x)
+¢2
+= x
+2 − x
+3 +
+11x
+4
+12
++o(x
+4
+).
+8
+UV RN41 DL
+Exercice 2
+1. Puisque l’on divise par x, on part d’un DL de sin(x) à l’ordre 5. Il vient
+sinx
+x
+= 1−
+x
+2
+6
++
+x
+4
+120
++o(x
+4
+).
+On peut donc écrire
+lnµ
+sinx
+x
+¶
+= ln(1+u) avec u = −
+x
+2
+6
++
+x
+4
+120
++o(x
+4
+).
+De plus, on sait que
+ln(1+u) = u −
+u
+2
+2
++o(u
+2
+).
+On calcule les puissances de u, et on les tronque à l’ordre 4. Ainsi,
+u = −
+x
+2
+6
++
+x
+4
+120
++o(x
+4
+)
+u
+2 =
+x
+4
+36
++o(x
+4
+).
+Il vient
+lnµ
+sinx
+x
+¶
+=
+−x
+2
+6
++
+µ
+1
+120
+−
+1
+2×36¶
+x
+4 +o(x
+4
+)
+=
+−x
+2
+6
+−
+x
+4
+180
++o(x
+4
+).
+2. On pose u = sinx = x −
+x
+3
+6
++o(x
+4
+). u tend vers 0 lorsque x tend vers 0, et on peut bien écrire que
+exp(u) = 1+u +
+u
+2
+2
++
+u
+3
+6
++
+u
+4
+24
++o(u
+4
+).
+On calcule les puissances de u, et on les tronque à l’ordre 4. Ainsi,
+u = x −
+x
+3
+6
++o(x
+4
+)
+u
+2 = x
+2 −
+x
+4
+3
++o(x
+4
+)
+u
+3 = x
+3 +o(x
+4
+)
+u
+4 = x
+4 +o(x
+4
+).
+En remplaçant, on trouve
+exp(sin(x)) = 1+ x +
+x
+2
+2
+−
+x
+4
+8
++o(x
+4
+).
+3. On écrit
+(cosx)
+sinx = exp¡
+sinx ln(cosx)
+¢
+.
+On va donc devoir composer deux DLs, et faire un produit! Soit d’abord cos(x) = 1 −
+x
+2
+2
++
+x
+4
+24 + o(x
+5
+) et posons
+u = −
+x
+2
+2
++
+x
+4
+24 +o(x
+5
+). On a alors
+ln(cosx) = ln(1+u) = u −
+u
+2
+2
++
+u
+3
+3
+−
+u
+4
+4
++
+u
+5
+5
++o(u
+5
+).
+D’autre part,
+u = −
+x
+2
+2
++
+x
+4
+24
++o(x
+5
+)
+u
+2 =
+x
+4
+4
++o(x
+5
+)
+u
+3 = o(x
+5
+) car l’ordre du polynême de u
+3
+dépasse 5
+u
+4 = o(x
+5
+) Idem
+u
+5 = o(x
+5
+) Idem
+9
+UV RN41 DL
+Il vient
+ln(cosx) = −
+x
+2
+2
+−
+x
+4
+12
++o(x
+5
+).
+On en déduit
+sin(x) ln(cosx) =
+µ
+x −
+x
+3
+6
++
+x
+5
+120
++o(x
+5
+)
+¶µ−
+x
+2
+2
+−
+x
+4
+12
++o(x
+5
+)
+¶
+= −
+x
+3
+2
++o(x
+5
+)
+Finalement, on pose v = −
+x
+3
+2
++o(x
+3
+), et on voit que v
+2 = o(x
+5
+). On obtient donc
+exp¡
+sinx ln(cosx)
+¢
+= exp(v) = 1+ v +O(v
+2
+) = 1−
+x
+3
+2
++o(x
+5
+).
+Il y avait finalement moins de calculs que l’on ne pouvait le craindre!
+Exercice 3
+1. On pose x = 2+h, d’où
+1
+2+h
+=
+1
+2
+×
+1
+1+
+h
+2
+=
+1
+2
+µ
+1−
+h
+2
++
+h
+2
+4
+−
+h
+3
+8
++o(h
+3
+)
+¶
+=
+1
+2
+−
+h
+4
++
+h
+2
+8
+−
+h
+3
+16
++o(h
+3
+).
+En revenant à x, on obtient
+1
+x
+=
+1
+2
+−
+x −2
+4
++
+(x −2)2
+8
+−
+(x −2)3
+16
++o
+¡
+x −2)3
+¢
+.
+2. On pose x = 2+h, on factorise par 2 et on utilise les propriétés de la fonction logarithme :
+ln(2+h) = ln2+lnµ
+1+
+h
+2
+¶
+= ln2+
+h
+2
+−
+h
+2
+8
++
+h
+3
+24
++o(h
+3
+).
+Revenant à x, cela s’écrit encore
+ln(x) = ln2+
+x −2
+2
+−
+(x −2)2
+8
++
+(x −2)3
+24
++o
+¡
+(x −2)3
+¢
+.
+Exercice 4
+1. Effectuons un développement limité du numérateur à l’ordre 3. On a
+sinx − x
+x
+3
+=
+x −
+x
+3
+6
++o(x
+3
+)− x
+x
+3
+=
+−
+x
+3
+6
++o(x
+3
+)
+x
+3
+= −
+1
+6
++o(1).
+La limite recherchée est −1/6.
+2. Effectuons un développement limité du numérateur et du dénominateur à l’ordre 2. On a
+1+ln(1+ x)−e
+x
+1−cosx
+=
+1+ x −
+x
+2
+2
+−1− x −
+x
+2
+2
++o(x
+2
+)
+1−1+
+x
+2
+2
++o(x
+2)
+=
+−x
+2 +o(x
+2
+)
+x
+2
+2
++o(x
+2)
+= −2+o(1).
+La limite recherchée est donc égale à −2.
+3. On a
+µ
+a
+x +b
+x
+2
+¶1/x
+= expµ
+1
+x
+lnµ
+1
+2
+³
+e
+x lna +e
+x lnb
+´
+¶¶
+10
+UV RN41 DL
+0n effectue un développement limité au premier ordre de e
+x lna
+et e
+x lnb
+. On trouve :
+1
+x
+lnµ
+1
+2
+³
+e
+x lna +e
+x lnb
+´
+¶
+=
+1
+x
+ln³
+1+
+x
+2
+¡
+lna +lnb
+¢
++o(x)
+´
+∼0
+1
+x
+x
+2
+ln(ab) =
+1
+2
+ln(ab).
+Repassant par l’exponentielle, on trouve que la limite recherchée est
+expµ
+1
+2
+ln(ab)
+¶
+= exp³
+ln((ab)
+1
+2 )
+´
+= (ab)
+1
+2 =
+p
+ab.
+11

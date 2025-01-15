@@ -11,6 +11,8 @@ Automne 2024
    IT4B/chap3_canauxtransmissions
    IT4B/chap4_codagecanl
    RN41/index
+   RN41/diagonalisation
+   RN41/dl_suites
    IA41/index
    IA41/scp
    IA41/finauxPrep

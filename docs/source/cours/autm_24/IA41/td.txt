@@ -1,0 +1,147 @@
+UV IA41 – Responsable : Fabrice Lauri
+Concepts fondamentaux en Intelligence Artificielle et langages dédiés
+Travaux Dirigés #9 : Résolution d'un problème de satisfaction de contraintes
+Le cavalier d'Euler
+Le problème du cavalier d'Euler consiste à trouver, sur un échiquier NxN, la séquence des
+mouvements d'un cavalier lui permettant de visiter une et une seule fois toutes les cases de
+l'échiquier. Pour certains échiquiers, la contrainte C
++
+peut être ajoutée : C
++
+impose au cavalier de
+revenir sur sa case initiale au dernier coup.
+La figure ci-dessus illustre un exemple de marche d'un cavalier parcourant les cases d'un échiquier
+8x8 à partir de la case H8 et revenant en H8 au dernier coup. Nous supposerons dans cet exercice
+que le cavalier se déplace sur un échiquier 5x5 et que la contrainte C+
+ est omise.
+Travail à réaliser :
+1. Spécifiez ce problème dans les termes d'un problème de satisfaction de contraintes, c'est-àdire :
+– Quelles sont les variables ?
+– Quels sont leurs domaines de valeurs ?
+– Quelles contraintes doivent-elles satisfaire ?
+2. Ce problème peut être résolu en suivant les trois étapes ci-dessous :
+a) Ecrire le prédicat buildBoard( +X,+Y,-L ) qui réussit ssi L est une liste contenant Y listes
+de X variables chacune.
+b) Ecrire le prédicat board_val( +B,+C,+L,+V ) qui réussit ssi l'élément présent en colonne
+C et ligne L dans le tableau B (construit avec buildBoard/3) s'unifie avec V.
+c) Ecrire le prédicat check( +B,+C,+L,+V ) qui réussit ssi l'élément présent en colonne C et
+ligne L dans B a la valeur V et que B contient une marche valide du cavalier.
+3. Quelle requête doit-on écrire pour avoir la solution d'une marche d'un cavalier parcourant les
+cases d'un échiquier 5x5 ?
+4. Quel(s) prédicat(s) faut-il modifier et quelles modifications doit-on y apporter pour pouvoir
+prendre en compte la contrainte C+
+ ?
+5. Quelle optimisation peut-on apporter au prédicat check/4 ?
+
+
+UV IA41 – Responsable : Fabrice Lauri
+Concepts fondamentaux en Intelligence Artificielle et langages dédiés
+Travaux Dirigés #10 : Résolution d'un problème d’optimisation par contraintes
+Problème du sac à dos optimal avec contraintes
+Énoncé général du problème de sac à dos :
+Soit n objets, chacun avec un poids w et une valeur v. Vous disposez d'un sac à dos avec une
+capacité de poids maximale W.
+Le but est de sélectionner un sous-ensemble d'objets pour les inclure dans le sac à dos de manière à
+maximiser la valeur totale tout en respectant la capacité en poids du sac.
+Certaines contraintes supplémentaires peuvent être ajoutées :
+• Exclusion Mutuelle : Certains objets ne peuvent pas être inclus ensemble.
+• Co-Exigence : Certains objets doivent être inclus ensemble si l'un d'eux l'est.
+• Exigence de Valeur Minimum : La valeur totale des objets sélectionnés doit atteindre ou
+dépasser une valeur minimale donnée.
+Exemple de problème :
+• Capacité du Sac à Dos (W): 50 unités de poids
+• Objets :
+◦ Objet 1 :
+▪ Poids : 10 unités
+▪ Valeur : 60
+◦ Objet 2 :
+▪ Poids : 20 unités
+▪ Valeur : 100
+◦ Objet 3 :
+▪ Poids : 30 unités
+▪ Valeur : 120
+◦ Objet 4 :
+▪ Poids : 5 unités
+▪ Valeur : 40
+◦ Objet 5 :
+▪ Poids : 15 unités
+▪ Valeur : 70
+• Contraintes :
+◦ Exclusion Mutuelle : Les objets 1 et 3 ne peuvent pas être inclus dans le sac à dos en
+même temps. (Choisir l'un ou aucun, mais pas les deux.)
+◦ Co-Exigence : Si l'objet 4 est inclus, l'objet 5 doit aussi l'être.
+◦ Exigence de Valeur Minimum : La valeur totale des objets dans le sac à dos doit être au
+moins de 150.
+Travail à réaliser :
+1. Spécifiez ce problème dans les termes d'un problème de satisfaction de contraintes, c'est-àdire :
+– Quelles sont les variables ?
+– Quels sont leurs domaines de valeurs ?
+– Quelles contraintes doivent-elles satisfaire ?
+2. Déterminer une solution optimale où la valeur totale des objets dans le sac à dos est
+maximisée tout en respectant toutes les contraintes données et sans dépasser la capacité en
+poids du sac à dos.
+3. Développer un algorithme pour résoudre ce problème d’optimisation par contraintes.
+
+UV IA41 – Responsable : Fabrice Lauri
+Concepts fondamentaux en Intelligence Artificielle et langages dédiés
+Travaux Dirigés #11 : Systèmes formels
+Exercice 1 : Langage généré par un système formel
+On considère le système formel S = <V,L,A,R> défini comme suit :
+– Vocabulaire V = { a, b, c }
+– Langage L = chaînes de caractères quelconques construites à partir de V
+– Axiome A = { ├ a }
+– Règles d'inférence R avec P ∈ V* :
+– (R1) : P → Pc
+– (R2) : P → bP
+V* est l'ensemble des mots pouvant être construits à partir de V. Le mot vide appartient à V*.
+On rappelle que (R1) se lit : si P est un théorème, alors Pc est un théorème.
+Question :
+Construisez un arbre de dérivation de S et déduisez-en la forme générale des théorèmes produits par
+S ?
+Exercice 2 : Casse-tête formel
+1. On considère le système formel S = <V,L,A,R> défini comme suit :
+– Vocabulaire V = { a, b }
+– Langage L = ensemble des mots constructibles à partir de V
+– Axiome A = { ├ a }
+– Règles d'inférence avec P ∈ V* :
+– (R1) : P a → a P a
+– (R2) : a P → a P b
+Question :
+Quelle est la forme générale des théorèmes de S : (ab)+
+, a+
+, ab+
+,a+b,a+b
+*
+ ou a+b
++a
++
+ ?
+(ab)+
+ indique une succession d'au moins une séquence ab, b*
+ une succession de 0, 1 ou
+plusieurs b.
+2. On considère le système formel S = <V,L,A,R> défini comme suit :
+– Vocabulaire V = { a, b }
+– Langage L = ensemble des mots constructibles à partir de V
+– Axiome A = { ├ a ; ├ b }
+– Règles d'inférence avec P ∈ V* :
+– (R1) : P a → a P b
+– (R2) : a P → b P a
+– (R3) : P b → b P a
+– (R4) : b P → a P b
+Questions :
+1. A t'on ├ abab ?
+2. Combien y a t'il de démonstrations pour la formule abb : 0 (ce n'est pas un théorème), 1,
+2, 3 ou 4 ?
+Exercice 3 : Un système formel plus complexe
+On considère le système formel S = <V,L,A,R> défini comme suit :
+– Vocabulaire V = { i, m, e }
+– Langage L = chaînes de caractères quelconques construites à partir de V
+– Axiome A = { ├ X m e } où X représente un mot quelconque (éventuellement vide) de L
+– Règles d'inférence avec R, S, T ∈ V* :
+– (R1) : R m S e T → R m i S e S T
+– (R2) : R m S e T → R i m S e R T
+Questions :
+1. A t'on ├ i i m i e i i i ?
+2. A t'on ├ i i i m i e i i i ?
+3. Combien y a t'il de démonstrations pour i m i i e i ?

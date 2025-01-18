@@ -1,8 +1,8 @@
 Guide SIMPLE du Pruning Alpha-Beta
-==============================
+==================================
 
 Principe de Base
--------------
+----------------
 ::
 
    Si MIN a déjà trouvé une valeur = 3
@@ -10,7 +10,7 @@ Principe de Base
    → Inutile d'explorer plus loin
 
 Exemple Visuel
------------
+--------------
 ::
 
                   MAX [-∞,+∞]
@@ -23,7 +23,7 @@ Exemple Visuel
            (2)
 
 Comment Ça Marche
---------------
+-----------------
 
 1. **Quand MIN trouve 2**:
    ::
@@ -46,7 +46,7 @@ Comment Ça Marche
       → On peut couper! (pruning)
 
 Exemple Pratique: Nim
-------------------
+---------------------
 ::
 
     État initial (8)
@@ -62,7 +62,7 @@ Exemple Pratique: Nim
 3. Plus besoin d'explorer (6,2)
 
 Vérification Rapide
-----------------
+-------------------
 
 1. Pour chaque nœud:
    ::

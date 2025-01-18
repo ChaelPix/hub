@@ -1,11 +1,11 @@
 Guide de Survie pour l'Examen IA41
-===============================
+==================================
 
 Exercices Types et Techniques de Résolution
----------------------------------------
+-------------------------------------------
 
 1. CSP (Problème de Satisfaction de Contraintes)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Étapes de résolution**:
 1. Dessiner le graphe avec:
@@ -33,7 +33,7 @@ Exercices Types et Techniques de Résolution
        X1=2, X2=3
 
 2. Alpha-Beta
-^^^^^^^^^^
+^^^^^^^^^^^^^
 
 **Méthode mécanique**:
 1. Dessiner l'arbre:
@@ -51,7 +51,7 @@ Exercices Types et Techniques de Résolution
 **Astuce**: Commencer par [−∞,+∞] à la racine
 
 3. A* (Recherche de Chemin)
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Procédure fixe**:
 1. Pour chaque nœud, noter:
@@ -72,7 +72,7 @@ Exercices Types et Techniques de Résolution
     2    | ...
 
 4. Prolog
-^^^^^^^
+^^^^^^^^^
 
 **Patterns récurrents**:
 
@@ -106,7 +106,7 @@ Exercices Types et Techniques de Résolution
     N > 0
 
 Vérifications Pour l'Examen
-------------------------
+---------------------------
 
 1. **CSP**:
    - Graphe complet?
@@ -129,7 +129,7 @@ Vérifications Pour l'Examen
    - Tests unitaires?
 
 Rappels Essentiels
----------------
+------------------
 
 1. **CSP**:
    - Variables + Domaines + Contraintes

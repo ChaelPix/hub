@@ -1,21 +1,21 @@
 Guide de Survie : Diagonalisation en Examen
-=========================================
+===========================================
 
 .. warning::
    Ce guide est optimisé pour l'examen avec une Casio Graph 35+E
 
 Avant de Commencer
-----------------
+------------------
 1. Enregistrer dans la calculatrice:
    * Menu MATRIX
    * Créer MAT A (matrice donnée)
    * Créer MAT I (matrice identité de même taille)
 
 Recette pour Matrices 2×2
------------------------
+-------------------------
 
 ÉTAPE 1: Polynôme Caractéristique
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Pour A = [a b]
           [c d]
 
@@ -29,7 +29,7 @@ Pour A = [a b]
    * Si λ₁ = λ₂: Vérifier si A déjà diagonale
 
 ÉTAPE 2: Vecteurs Propres
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Pour chaque λ:
 
 1. **Former (A - λI)**:
@@ -41,12 +41,12 @@ Pour chaque λ:
    * Simplifier avec des nombres entiers
 
 ÉTAPE 3: Matrices P et D
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 1. **Matrice P**: Mettre les vecteurs en colonnes
 2. **Matrice D**: Mettre les λ sur la diagonale
 
 Exemple du Final (2×2)
--------------------
+----------------------
 A = [0   1]
     [y -4+2x]
 
@@ -63,7 +63,7 @@ A = [0   1]
          [0  λ₂]
 
 Cas Spéciaux Fréquents
---------------------
+----------------------
 1. **Matrice Triangulaire**:
    * Valeurs propres = diagonale
    * Exemple du TD: [3 0 0]
@@ -79,16 +79,16 @@ Cas Spéciaux Fréquents
    * tr(A) = somme des v.p.
 
 Vérifications Finales
-------------------
+---------------------
 1. P⁻¹AP = D
 2. Les vecteurs sont en nombres entiers
 3. Ne pas oublier la condition de diagonalisation
 
 Formules des Déterminants (À APPRENDRE PAR CŒUR)
---------------------------------------------
+------------------------------------------------
 
 1. DÉTERMINANT 2×2
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 Pour |a b|
         |c d|
 
@@ -98,7 +98,7 @@ det = ad - bc
    Mémo visuel: Produit diagonale principale - Produit diagonale secondaire
 
 2. DÉTERMINANT 3×3 (Méthode de Sarrus)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Pour |a b c|
         |d e f|
         |g h i|
@@ -112,7 +112,7 @@ det = a×e×i + b×f×g + c×d×h - (c×e×g + a×f×h + b×d×i)
    3. Moins somme des produits montants (←)
 
 3. EXEMPLES COURANTS
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
 
 A) Pour det(A - λI) en 2×2:
    |a-λ  b |
@@ -127,7 +127,7 @@ B) Pour det(A - λI) en 3×3:
    = -λ³ + (a+e+i)λ² - ...
 
 4. ASTUCES RAPIDES
-~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
 * Si matrice triangulaire: det = produit diagonale
 * Pour A - λI: toujours développer en factorisant λ
 * Vérifier que le terme de plus haut degré est (-1)ⁿλⁿ
@@ -137,16 +137,15 @@ B) Pour det(A - λI) en 3×3:
    pour trouver les valeurs propres plus facilement !
 
 Simplification des Vecteurs Propres - Guide Express
----------------------------------------------
+---------------------------------------------------
 
 1. RÈGLE D'OR
-~~~~~~~~~~~~
+~~~~~~~~~~~~~
 * Toujours choisir les nombres entiers les plus petits possibles
 * Si x est libre, on prend souvent x = 1
 
 2. CAS TYPIQUES
-~~~~~~~~~~~~~
-
+~~~~~~~~~~~~~~~
 A) Cas: y = x
    * Solution: x = 1, y = 1
    * Vecteur: e = [1]
@@ -163,7 +162,7 @@ C) Cas: y = 2x
               [2]
 
 3. CAS AVEC FRACTIONS
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 Si vous obtenez y = x/2:
 1. Multiplier tout par 2
 2. Prendre x = 2, y = 1
@@ -171,7 +170,7 @@ Si vous obtenez y = x/2:
                      [1]
 
 4. EXEMPLE DU FINAL
-~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 Pour (A - λI)X = 0:
 
 1. Si vous obtenez: y = -3x
@@ -188,7 +187,7 @@ Pour (A - λI)X = 0:
          [0]
 
 5. VÉRIFICATION
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 * Les composantes doivent être des entiers
 * Le vecteur doit être le plus simple possible
 * [CALC] Vérifier Ae = λe

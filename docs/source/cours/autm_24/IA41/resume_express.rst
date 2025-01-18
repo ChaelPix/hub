@@ -1,8 +1,8 @@
 RÉSUMÉ EXPRESS POUR L'EXAMEN
-=========================
+============================
 
 1. CSP EN 30 SECONDES
-------------------
+---------------------
 ::
 
    ÉTAPE 1: À la lecture
@@ -22,7 +22,7 @@ RÉSUMÉ EXPRESS POUR L'EXAMEN
    - Si échec → retour arrière
 
 2. A* EN 3 POINTS
---------------
+-----------------
 ::
 
    1) f(n) = g(n) + h(n)
@@ -41,7 +41,7 @@ RÉSUMÉ EXPRESS POUR L'EXAMEN
    1    | ...
 
 3. MIN-MAX/ALPHA-BETA EN 4 RÈGLES
------------------------------
+---------------------------------
 ::
 
    1) CONSTRUCTION ARBRE:
@@ -65,7 +65,7 @@ RÉSUMÉ EXPRESS POUR L'EXAMEN
    Si α ≥ β → couper branche ✗
 
 MÉMO DERNIÈRE MINUTE
------------------
+--------------------
 
 CSP:
 - Toujours dessiner le graphe

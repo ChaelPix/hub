@@ -1,8 +1,8 @@
 Mini-Guide Canaux de Transmission pour les Examens
-=============================================
+==================================================
 
 Les 3 Concepts Essentiels
-----------------------
+-------------------------
 
 1. **Canal de transmission = {X, Y, p(yi/xj)}**:
    - X = alphabet d'entrée
@@ -20,7 +20,7 @@ Les 3 Concepts Essentiels
    - C = 1 - p pour canal à effacement
 
 Formules Fondamentales
--------------------
+----------------------
 
 .. math::
 
@@ -29,7 +29,7 @@ Formules Fondamentales
    C &= \max_{p(x)} I(X,Y)
 
 Procédure de Calcul de la Capacité
--------------------------------
+----------------------------------
 
 1. **Si canal symétrique**:
    - Poser p(xi) = 1/n pour tout i
@@ -45,7 +45,7 @@ Procédure de Calcul de la Capacité
    - Vérifier H'(S) < C'
 
 Exemple CBS Résolu
----------------
+------------------
 Canal binaire symétrique p = 0.1:
 ::
 
@@ -68,7 +68,7 @@ Canal binaire symétrique p = 0.1:
    C = 1 - H2(0.1) ≈ 0.531 bits
 
 Vérifications Importantes
----------------------
+-------------------------
 
 1. **Pour tout canal**:
    - Somme des probabilités par ligne = 1
@@ -80,7 +80,7 @@ Vérifications Importantes
    - DS × H(S) < DC × C
 
 Pièges à Éviter
--------------
+---------------
 
 1. **Ne pas oublier**:
    - Vérifier symétrie avant calcul
@@ -93,7 +93,7 @@ Pièges à Éviter
    - Convertir log2 en bits
 
 Pour l'Examen
------------
+-------------
 
 1. Identifier le type de canal
 2. Appliquer procédure correspondante

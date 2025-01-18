@@ -1,5 +1,5 @@
 Mini-Guide Codage Canal pour les Examens
-=====================================
+========================================
 
 Les 3 Choses à Savoir Absolument
 --------------------------------
@@ -72,7 +72,7 @@ Table de Décodage Type
    ...      | ...
 
 Table de Décision Rapide
----------------------
+------------------------
 
 **Pour dmin donné**:
 ::
@@ -89,7 +89,7 @@ Table de Décision Rapide
 - Pour corriger t erreurs: dmin > 2t
 
 Comment Savoir si un Code est Corrigeable
-------------------------------------
+-----------------------------------------
 
 1. **Code non corrigeable si**:
    - Plusieurs vecteurs de correction pour un même syndrome
@@ -131,7 +131,7 @@ Vérifications Importantes
    - Si pas dans la table = non corrigible
 
 Pièges à Éviter
-------------
+---------------
 
 1. **Pour les matrices**:
    - Ne pas oublier la transposée pour H
@@ -144,7 +144,7 @@ Pièges à Éviter
    - Ne pas oublier d'ajouter ε
 
 Exemples Types d'Examen
--------------------
+-----------------------
 
 1. **Question type 1**: Trouver H à partir de G
    - Identifier [Ik | N]
@@ -161,10 +161,10 @@ Exemples Types d'Examen
    - Si dmin = 5 → corrige 2 erreurs
 
 Guide de Construction Pas à Pas
-----------------------------
+-------------------------------
 
 Construction de G à partir des équations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Avec équations de contrôle**:
    ::
@@ -185,7 +185,7 @@ Construction de G à partir des équations
    - Les autres colonnes = équations de contrôle
 
 Construction de H à partir de G
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Si G est systématique [I | N]**:
    - Prendre Nt (transposée de N)
@@ -203,7 +203,7 @@ Construction de H à partir de G
    - Dimensions: (n-k) × n
 
 Calcul de dmin
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 1. **Méthode 1**: Via H
    a. Comparer les colonnes 2 à 2
@@ -216,7 +216,7 @@ Calcul de dmin
    c. Le plus petit poids non nul = dmin
 
 Exemple Complet
-------------
+---------------
 ::
 
    Équations:
@@ -246,10 +246,10 @@ Exemple Complet
    - Peut corriger 1 erreur
 
 Patterns d'Examen Typiques
-------------------------
+--------------------------
 
 Type 1: Des équations vers les matrices
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Si on vous donne**: Équations de type ci = ... (bits de contrôle)
 **On demande**: Trouver G et H
 
@@ -275,7 +275,7 @@ Type 1: Des équations vers les matrices
        [0 1 | 1 0 1]  ← équation pour i2
 
 Type 2: Des mots code vers les propriétés
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Si on vous donne**: Liste de mots code
 **On demande**: dmin, capacités de détection/correction
 
@@ -294,7 +294,7 @@ Type 2: Des mots code vers les propriétés
    → Peut corriger 1 erreur
 
 Type 3: Construction de la table de décodage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Si on vous donne**: G ou H
 **On demande**: Table de syndromes
 
@@ -314,7 +314,7 @@ Type 3: Construction de la table de décodage
    ...       | ...
 
 Type 4: Correction d'un mot reçu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 **Si on vous donne**: Mot reçu y et table de décodage
 **On demande**: Correction
 
@@ -325,7 +325,7 @@ Type 4: Correction d'un mot reçu
 4. Si S pas dans table = non corrigible
 
 Comprendre les Syndromes
---------------------
+------------------------
 
 **Définition simple**: 
 Le syndrome est une "signature d'erreur". C'est un calcul qui permet de savoir si un mot reçu est correct ou non, et si non, quelle erreur s'est produite.
@@ -370,7 +370,7 @@ où:
 - Sa valeur indique où se trouve l'erreur
 
 Construction de la Table de Décodage: Méthode Systématique
------------------------------------------------------
+----------------------------------------------------------
 
 1. **Étape Préliminaire**:
    - Calculer dmin (ici = 3)
@@ -400,7 +400,7 @@ Construction de la Table de Décodage: Méthode Systématique
       - Le syndrome = colonne i de H
 
 Exemple de Construction
--------------------
+-----------------------
 ::
 
    H = [1 1 0 1 0 0]
@@ -423,26 +423,26 @@ Exemple de Construction
       ...            | ...
 
 Vérification Rapide
-----------------
+-------------------
 1. Chaque syndrome doit apparaître une seule fois
 2. Les vecteurs de correction doivent être de poids ≤ t
 3. Le nombre total de syndromes = 2^(n-k)
 
 En Pratique à l'Examen
-------------------
+----------------------
 1. Écrire toutes les colonnes de H comme syndromes
 2. Pour chaque syndrome, mettre un 1 à la position correspondante
 3. Vérifier que chaque vecteur corrige bien une seule erreur
 
 Pour un Exam Réussi
-----------------
+-------------------
 1. S'entraîner sur ces 4 types d'exercices
 2. Mémoriser les étapes de chaque type
 3. Vérifier les dimensions à chaque calcul
 4. S'assurer que tout est cohérent avec dmin
 
 Pour Réussir l'Examen
-------------------
+---------------------
 
 1. Apprendre par cœur la forme des matrices G et H
 2. S'entraîner à repérer rapidement dmin

@@ -1,8 +1,8 @@
 Guide de Survie Alpha-Beta pour l'Examen
-====================================
+========================================
 
 Lecture de l'Énoncé
------------------
+-------------------
 
 1. **Identifier les éléments clés**:
    - Qui joue MAX/MIN? (ici IA = MIN)
@@ -19,7 +19,7 @@ Lecture de l'Énoncé
       - Diviser en (4,4) [invalide car piles identiques]
 
 Méthode de Construction de l'Arbre
--------------------------------
+----------------------------------
 
 1. **Niveau Initial (MAX)**:
    ::
@@ -35,7 +35,7 @@ Méthode de Construction de l'Arbre
    - S'arrêter quand plus de coup possible
 
 Application Alpha-Beta
-------------------
+----------------------
 
 1. **Initialisation**:
    - Racine: [-∞,+∞]
@@ -58,7 +58,7 @@ Application Alpha-Beta
    [-2,4]    [-1,2] ✗  ← Élagué car α≥β
 
 CLARIFICATION: Représentation des Nœuds
----------------------------------
+---------------------------------------
 
 **Les nœuds représentent les ÉTATS**:
 ::
@@ -85,7 +85,7 @@ Les VALEURS des nœuds:
               [2] [4] [3] [5]   ← Valeurs des positions
 
 Arbre Complet pour n=8
--------------------
+----------------------
 ::
 
     Niveau 0 (MAX)        [8][-∞,+∞]
@@ -98,7 +98,7 @@ Arbre Complet pour n=8
     (MAX)        [2,4]  [1,3]
 
 Comment Évaluer les Positions
--------------------------
+-----------------------------
 
 1. **Position finale**:
    - Plus de coup possible = PERTE (-1)
@@ -123,14 +123,14 @@ Comment Évaluer les Positions
       [8]         | MAX      |  2 (maximum)
 
 ATTENTION: Pièges Courants
------------------------
+--------------------------
 1. Ne pas oublier [7,1] qui est aussi un coup valide
 2. Bien marquer les valeurs ET les [α,β]
 3. Propager du bas vers le haut
 4. Vérifier l'alternance MAX/MIN
 
 Résolution Pas à Pas
------------------
+--------------------
 
 1. **Pour n=8**:
    ::
@@ -155,7 +155,7 @@ Résolution Pas à Pas
    - MIN prend minimum des fils
 
 RÈGLE D'OR: Toujours du Bas vers le Haut!
-----------------------------------
+-----------------------------------------
 
 **Pourquoi?**:
 ::
@@ -192,7 +192,7 @@ RÈGLE D'OR: Toujours du Bas vers le Haut!
             [2]   [3] [4]  [5]   ← ÉTAPE 1: On commence ici!
 
 Trouver Premier Coup IA
---------------------
+-----------------------
 
 1. **Méthode**:
    - IA = MIN, prend branche avec plus petite valeur
@@ -207,7 +207,7 @@ Trouver Premier Coup IA
       → IA choisit (5,3)
 
 Déterminer le Gagnant
-------------------
+---------------------
 
 1. **Règles**:
    - Valeur finale positive → MAX gagne
@@ -217,7 +217,7 @@ Déterminer le Gagnant
 2. **Note**: Le gagnant est déterminé par la valeur à la racine
 
 Tips pour l'Examen
----------------
+------------------
 
 1. **Ne pas oublier**:
    - Trier les piles

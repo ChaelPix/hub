@@ -1,8 +1,8 @@
 Mini-Guide Entropie pour les Examens
-==================================
+====================================
 
 Les 3 Formules Essentielles
--------------------------
+---------------------------
 
 .. math::
 
@@ -11,7 +11,7 @@ Les 3 Formules Essentielles
    I(X;Y) &= H(X) - H(X|Y) \text{ [information mutuelle]}
 
 H(X|Y) Expliqué Simplement
-------------------------
+--------------------------
 
 Imaginez un jeu de devinettes avec deux dés (X et Y):
 
@@ -41,7 +41,7 @@ Pour calculer H(X|Y), on fait:
       = 0.5 × [\text{résultat étape 1}] + 0.4 × [\text{résultat étape 2}]
 
 En Pratique: Comment Calculer H(X|Y)
----------------------------------
+------------------------------------
 
 1. Pour chaque colonne Y=yj:
    a. Diviser chaque case par le total de la colonne
@@ -53,7 +53,7 @@ En Pratique: Comment Calculer H(X|Y)
 3. Sommer tous ces produits
 
 Procédure Mécanique pour l'Examen
-------------------------------
+---------------------------------
 
 1. **Étape Préparation**:
    - Ajouter une ligne de sommes pour les colonnes
@@ -69,13 +69,13 @@ Procédure Mécanique pour l'Examen
    - Sommer tous ces produits
 
 Vérification
------------
+------------
 - Les sommes de probabilités = 1
 - H(X|Y) ≤ H(X)
 - Tous les résultats sont positifs
 
 Exemple Minimal Résolu
--------------------
+----------------------
 ::
 
    P(X,Y) | Y=0  | Y=1  | Somme ligne (P(X))
@@ -98,7 +98,7 @@ Exemple Minimal Résolu
    - I(X;Y) = H(X) - H(X|Y)
 
 C'est Tout! Pour l'Examen
------------------------
+-------------------------
 1. Appliquer mécaniquement ces 4 étapes
 2. Ne pas chercher à comprendre la théorie
 3. Vérifier les sommes = 1

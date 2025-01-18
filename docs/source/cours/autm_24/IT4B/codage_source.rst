@@ -2,7 +2,7 @@ Mini-Guide Codage Source pour les Examens
 =========================================
 
 Les 3 Types de Codes à Connaître
-----------------------------
+--------------------------------
 
 1. **Code à longueur fixe**:
    - Tous les mots ont la même longueur
@@ -17,7 +17,7 @@ Les 3 Types de Codes à Connaître
    - Garantit le décodage unique
 
 Formules Essentielles
--------------------
+---------------------
 
 .. math::
 
@@ -27,7 +27,7 @@ Formules Essentielles
    \text{Débit d'information} &= D \times H(X) \text{ [bits/sec]}
 
 Méthode de Huffman en 4 Étapes
----------------------------
+------------------------------
 
 1. **Préparation**:
    - Lister les symboles et leurs probabilités
@@ -47,7 +47,7 @@ Méthode de Huffman en 4 Étapes
    - Noter les 0 et 1 rencontrés
 
 Exemple Simple Résolu
-------------------
+---------------------
 ::
 
    Symboles | A   | B   | C   | D
@@ -75,7 +75,7 @@ Exemple Simple Résolu
    n = 1×0.4 + 2×0.3 + 3×0.2 + 3×0.1 = 1.9 bits
 
 Vérifications à Faire
-------------------
+---------------------
 
 1. **Pour tout code**:
    - Somme des probabilités = 1
@@ -88,7 +88,7 @@ Vérifications à Faire
    - Plus petite prob → mot le plus long
 
 Procédure d'Examen
----------------
+------------------
 
 1. Si on demande un code:
    a. Vérifier si longueur fixe possible
@@ -106,7 +106,7 @@ Procédure d'Examen
    c. Plus proche = plus efficace
 
 Tips et Pièges
-------------
+--------------
 
 1. **Pièges courants**:
    - Oublier de vérifier la somme des probabilités

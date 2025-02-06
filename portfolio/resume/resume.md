@@ -1,3 +1,7 @@
+<div class="container">
+<div class="left-column">
+
+
 <div class="header">
     <div class="profile-container">
         <div class="text-content">
@@ -9,68 +13,66 @@
                 <div class="contact-item"><i class="fas fa-globe"></i> <a href="https://chaelpix.github.io/hub/portfolio/">https://chaelpix.github.io/hub/portfolio/</a></div>
             </div>
         </div>
-        <img src="./assets/profile.jpg" alt="Photo de profil" class="profile-image">
     </div>
 </div>
-
-<div class="container">
-<div class="left-column">
-
 
 
 ## <span class="section-title">Expérience Professionnelle</span>
 
+
 <div class="date-block">2022 - 2024</div>
 
-### Compétiteur Worldskills en Robotique Mobile Autonome
+### Compétiteur International Worldskills - Robotique Mobile Autonome
 <div class="experience-item highlight-item">
 <div class="skills-tag">Robotique, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div>
 
-• Médaillé "Best-of-nation" à la compétition Internationale des Worldskills 2024. Vice-Champion de France et Régionale en Nouvelle-Aquitaine
+• Obtention de la médaille "Best-of-Nation" aux Worldskills 2024 et titre de Vice-Champion de France.
 
-• Développement de robots industriels autonomes en équipe capables d'interagir dans des environnements dynamiques et complexes
+• Conception et développement de robots autonomes pour environnements industriels complexes.
 
-• Formations de préparation physique et mentale aux compétitions
+• Architecture et implémentation d'un système de simulation robotique intégrant Unity et ROS.
+
+• Gestion du stress et performance sous pression grâce à des entraînements.
 </div>
 
 <div class="date-block">Juin - Juillet 2023</div>
 
-### Stage développeur de jeux - All·Inclusive
+### Développeur Unity - Stage chez All·Inclusive
 <div class="experience-item">
 <div class="skills-tag">C#, Unity, Android, IA, Git</div>
 
-• Développement d'un prototype de jeu Battle Royale en C# et Unity sur Android, intégrant des algorithmes d'intelligence artificielle pour le comportement des joueurs
+• Développement d'un prototype de jeu Battle Royale en C# et Unity sur Android, intégrant des algorithmes d'intelligence artificielle pour le comportement les personnages non jouables.
 
-• Optimisation des performances et tests fonctionnels
-
-• Collaboration en équipe avec utilisation de Git et gestion de projet
+• Collaboration en équipe avec utilisation de Git et gestion de projet.
 </div>
 
 ## <span class="section-title">Formation</span>
 
 <div class="date-block">2024 - Présent</div>
 
-### Étudiant Ingénieur Informatique – UTBM
+### Formation d'Ingénieur en Informatique
+<div class="subtitle">UTBM - Belfort </div>
+
 <div class="education-item">
-1ère année, spécialité informatique IA et Robotique embarquée
+Spécialisation en Intelligence Artificielle et Systèmes Robotiques Embarqués.
 </div>
 
 <div class="date-block">2022 - 2024</div>
 
 ### BTS Système Numérique Informatique et Réseaux
-<div class="education-item">
-Diplômé Major de l'académie de Bordeaux
 <div class="subtitle">Lycée Turgot, Limoges</div>
+<div class="education-item">
+• Diplômé Major de l'académie de Bordeaux.
 </div>
 
 <div class="date-block">2021</div>
 
 ### Baccalauréat Mention Bien
-<div class="education-item">
 <div class="subtitle">Lycée Bellevue, Saintes</div>
+<div class="education-item">
+• Spécialités : Mathématiques, Littérature Anglaise & Physique-Chimie.
 
-• Spécialités : Mathématiques, Littérature Anglaise & Physique-Chimie
-• Section Européenne Maths-Anglais
+• Section Européenne Maths-Anglais.
 </div>
 
 </div>
@@ -78,53 +80,71 @@ Diplômé Major de l'académie de Bordeaux
 
 
 ## <span class="section-title">Profil</span>
-Passionné par l'informatique, je recherche un stage de 6 mois. Mon parcours inclut des compétitions de haut niveau, des solutions professionnelles, et l'exploration de technologies variées (IA, Vision Artificielle, Simulations, Robotique, VR/XR).
+Développeur passionné et **médaillé** en robotique, je recherche un **stage de 6 mois** à partir d'**août 2024** dans le domaine de [thème selon l'entreprise]. Mon parcours unique combine :
 
-## <span class="section-title">Projets & Réalisations</span>
+• **Excellence technique** : Vice-champion de France en robotique mobile autonome et compétiteur international médaillé "Best-of-Nation".
 
-### Président Club de robotique « Unitec » (2024)
+• **Leadership & Communication** : Président d'association et ambassadeur Worldskills, démontrant une forte capacité à fédérer et communiquer.
+
+Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente mes projets personnels et démontre ma motivation à approfondir mes connaissances techniques dans différents domaines de l'informatique.
+
+## <span class="section-title">Projets Associatifs</span>
+
+<div class="date-block">Décembre 2024 - Présent</div>
+
+### Président du Club Robotique de l'UTBM
 <div class="experience-item">
-- Supervision de projets robotiques
-- Gestion d'association
-- Organisation d'événements
-</div>
 
-### Ambassadeur Worldskills (2024)
+• Présidence de l'association « Unitec », le club robotique de l'UTBM.  
+
+• Initiation et développement de solutions robotiques en équipe.  
+
+• Gestion administrative et coordination de l'équipe.  
+
+• Organisation d'événements pour la promotion des sciences robotiques.  </div>
+
+<div class="date-block">2024</div>
+
+### Ambassadeur Worldskills France
+
 <div class="experience-item">
-- Promotion de la compétition
-- Représentation institutionnelle
+
+• Interventions dans les écoles pour promouvoir les métiers techniques et la compétition des Worldskills.
+
+• Participation aux actions de communication médiatique pour Worldskills.
+
 </div>
 
 ## <span class="section-title">Compétences</span>
 
-### Langages de Programmation
-- C++, C#, Python
-- Unity Game Engine
-- ROS (Robot Operating System)
-
-### Vision par Ordinateur & Intelligence Artificielle
-- OpenCV
-- YOLO
-- Intelligence Artificielle
-
-### Méthodologies & Outils
-- Git & Contrôle de version
-- Méthodologies Agiles
-- Tests & Debugging
-
-## <span class="section-title">Compétences Transversales</span>
-- Leadership & Gestion d'équipe
-- Résolution de problèmes complexes
-- Gestion du stress et performance sous pression
-- Communication efficace
-- Adaptabilité & Apprentissage rapide
+<div class="skills-grid">
+    <div class="skill-item">
+        <strong>Développement Robotique</strong> : ROS1/2, Arduino, Linux embarqué.
+    </div>
+    <div class="skill-item">
+        <strong>Vision par Ordinateur</strong> : OpenCV, YOLO, traitement d'images.
+    </div>
+    <div class="skill-item">
+        <strong>Développement Unity</strong> : C#, jeux 3D/2D, VR, Android.
+    </div>
+    <div class="skill-item">
+        <strong>Programmation Système</strong> : C++, Python, plantuml.
+    </div>
+    <div class="skill-item">
+        <strong>Web & Mobile</strong> : TailwindCSS, PHP, JS, SQL, Kotlin.
+    </div>
+    <div class="skill-item">
+        <strong>Outils & Méthodes</strong> : Git, Docker, Linux, Doc Sphink, markdown, Tests unitaires.
+    </div>
+    <div class="skill-item">
+    </div>
+</div>
+        <strong>Softskills</strong> : Gestion en équipe, Communication efficace, Gestion du stress et performance sous pression, Adaptabilité, Apprentissage rapide.
 
 ## <span class="section-title">Langues</span>
 - Français (natif)
 - Anglais (C1)
 - Chinois (débutant)
-
-
 
 </div>
 </div>
@@ -141,7 +161,7 @@ body {
 
 .header {
     margin-bottom: 2rem;
-    padding: 1.5rem 2rem;
+    padding: 0;
     background: linear-gradient(to right, #f8f9fa, #ffffff, #f8f9fa);
 }
 
@@ -149,21 +169,22 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 0;
 }
 
 .text-content {
     flex: 1;
+    padding: 1.5rem 2rem;
 }
 
 .profile-image {
     width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #3498db;
+    height: auto;
+    border: 1px solid #000;
     object-fit: cover;
+    margin: 0;
 }
 
 .contact-info {
@@ -185,10 +206,34 @@ body {
 .container {
     display: flex;
     gap: 40px;
+    position: relative;
 }
 
 .left-column, .right-column {
     flex: 1;
+    position: relative;
+}
+
+.right-column {
+    background-color:rgb(245, 245, 245);  
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 50%;
+}
+
+.left-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        transparent,
+        #3498db 10%,
+        #3498db 90%,
+        transparent
+    );
 }
 
 .section-title {
@@ -323,8 +368,8 @@ em {
     }
     
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
     }
     
     .contact-info {
@@ -335,9 +380,24 @@ em {
     h1 {
         font-size: 1.8rem;
     }
+
+    .skills-columns {
+        gap: 1rem;
+    }
 }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    background: transparent;
+    margin: 1rem 0;
+}
+
+.skill-item {
+}
+
 </style>
 
-<!-- Ajoutez ce lien dans le <head> de votre document HTML pour les icônes -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">

@@ -26,6 +26,10 @@ jobs:
           cd docs/
           make clean html
 
+      - name: Copy portfolio to Sphinx build directory
+        run: |
+          cp -r portfolio/ docs/build/html/portfolio/
+
       - name: Debug build output
         run: ls -R docs/build/html/
 

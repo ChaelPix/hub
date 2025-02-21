@@ -83,7 +83,7 @@ function generateTags() {
     const tagsContainer = document.getElementById('tags-container');
     tagsContainer.innerHTML = '';
     
-    //extract and count tags
+    // extract and count tags
     const tagOccurrences = {};
     projects.forEach(project => {
         project.tags.forEach(tag => {
@@ -97,40 +97,41 @@ function generateTags() {
         "Highlights",
         ...Array.from(Object.keys(tagOccurrences))
             .filter(tag => tag !== "Highlights")
-            .sort((a, b) => a.localeCompare(b)) // sort alphabetically
+            .sort((a, b) => a.localeCompare(b))
     ];
 
     tagsArray.forEach(tag => {
         const tagButton = document.createElement('div');
-
-        // apply unique styles for reset and highlights tags
+        tagButton.dataset.tag = tag; // add data-tag attribute for direct selection
         if (tag === "Reset") {
             tagButton.className = 'cursor-pointer badge badge-secondary badge-outline transform hover:scale-110 duration-300';
             tagButton.textContent = tag;
             tagButton.onclick = () => {
                 generateCards();
                 resetTagStyles();
+                location.hash = ''; // clear hash on reset
             };
         } else if (tag === "Highlights") {
-            tagButton.className = 'cursor-pointer badge badge-accent badge-outline transform scale-110'; // filled with accent color
+            tagButton.className = 'cursor-pointer badge badge-accent badge-outline transform scale-110';
             tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
             tagButton.onclick = () => {
                 resetTagStyles();
                 tagButton.className = 'cursor-pointer badge badge-accent transform scale-110';
                 const filteredProjects = projects.filter(project => project.tags.includes(tag));
                 generateCards(filteredProjects);
+                location.hash = `#tag-${tag}`; // update URL hash for tag selection
             };
         } else {
             tagButton.className = 'cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300';
             tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
             tagButton.onclick = () => {
                 resetTagStyles();
-                tagButton.className = 'cursor-pointer badge badge-primary transform scale-110'; // filled
+                tagButton.className = 'cursor-pointer badge badge-primary transform scale-110';
                 const filteredProjects = projects.filter(project => project.tags.includes(tag));
                 generateCards(filteredProjects);
+                location.hash = `#tag-${tag}`; // update URL hash for tag selection
             };
         }
-
         tagsContainer.appendChild(tagButton);
     });
 }
@@ -147,6 +148,7 @@ function resetTagStyles() {
     });
 }
 
+// update openPopup to use "project-" prefix in URL
 function openPopup(projectId) {
     // find the project by ID
     const project = projects.find(p => p.id === projectId);
@@ -161,7 +163,7 @@ function openPopup(projectId) {
 
     // block main page scroll
     document.body.classList.add('no-scroll');
-    history.pushState(null, null, `#${projectId}`);
+    history.pushState(null, null, `#project-${projectId}`);  // updated hash prefix
     // update the project title in the toolbar
     const projectUrl = document.getElementById('project-url');
     projectUrl.textContent = project.title;
@@ -183,11 +185,21 @@ function openPopup(projectId) {
         });
 }
 
+// modify checkForProjectIdInUrl to support hash-based tag selection
 function checkForProjectIdInUrl() {
     const hash = location.hash;
     if (hash) {
-        const projectId = hash.substring(1);
-        openPopup(projectId);
+        if (hash.startsWith('#tag-')) {
+            const tag = hash.substring(5); // remove '#tag-'
+            const tagButton = document.querySelector(`#tags-container .badge[data-tag="${tag}"]`);
+            if (tagButton) tagButton.click();
+        } else if (hash.startsWith('#project-')) {
+            const projectId = hash.substring(9); // remove '#project-'
+            openPopup(projectId);
+        } else {
+            const projectId = hash.substring(1);
+            openPopup(projectId);
+        }
     }
 }
 // close popup

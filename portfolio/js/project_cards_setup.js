@@ -204,6 +204,13 @@ document.addEventListener('DOMContentLoaded', () => {
     generateTags();
     generateCards();
     checkForProjectIdInUrl();
+    
+    const popup = document.getElementById('popup');
+    popup.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            window.closePopup();
+        }
+    });
 });
 
 generateTags();

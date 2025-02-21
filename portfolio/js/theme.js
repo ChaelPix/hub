@@ -11,7 +11,7 @@ function loadTheme() {
         applyTheme(savedTheme); // apply saved theme
         // update the toggle state if needed
         const themeToggle = document.querySelector('.theme-controller');
-        if (themeToggle) themeToggle.checked = savedTheme === 'night'; // night
+        if (themeToggle) themeToggle.checked = savedTheme === 'custom-night';
     }
 }
 
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.querySelector('.theme-controller');
     if (themeToggle) {
         themeToggle.addEventListener('change', (e) => {
-            const newTheme = e.target.checked ? 'night' : 'cmyk'; // light
+            const newTheme = e.target.checked ? 'custom-night' : 'custom-cmyk';
             applyTheme(newTheme);
         });
     }

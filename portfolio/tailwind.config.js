@@ -122,8 +122,25 @@ module.exports = {
   plugins: [require("daisyui")],
   daisyui: {
     themes: [
-      "night",
       "cmyk",
+      {
+        "custom-cmyk": {
+          "primary": "#223b9c",
+          "secondary": "#e9478a",
+          "accent": "#ffc107",
+          "neutral": "#020b13",
+          "base-100": "#ffffff",
+        },
+      },
+      {
+        "custom-night": {
+          primary: "#39bdf8",
+          secondary: "#e9478a",
+          accent: "#ffc107",
+          neutral: "#1e293b",
+          "base-100": "#0f172a",
+        },
+      },
     ],
   },
 };

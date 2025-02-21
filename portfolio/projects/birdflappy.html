@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<html data-theme="cmyk">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="output.css" rel="stylesheet">
+    <script src="js/theme.js" defer></script>
+</head>
+
+
+<body class="bg-white-100 text-black-900">
+    <!-- background -->
+    <div class="relative min-h-screen overflow-y-auto">
+        <div class="wrapper">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <!-- Project Window -->
+        <div class="flex flex-col gap-1.25 justify-center items-center">
+            <p class="mt-4 text-left">
+                To understand the NEAT algorithm, I created a Flappy Bird clone using C++ and SFML then integrated <a href="https://github.com/cryptolympix/neat-cpp" target="_blank" class="link link-primary">NEAT cpp</a> to my project.
+            </p>
+        </div>
+        <div class="w-full object-cover aspect-video bg-black ">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/mEfjpr5itfc" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <br>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>AI NEAT Flappy Bird</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="ai-neat-flappy-bird">AI NEAT Flappy Bird</h1>
+<h2 id="what-is-neat">What is NEAT?</h2>
+<p>NEAT (NeuroEvolution of Augmenting Topologies) is a genetic algorithm that evolves both the weights and structure of artificial neural networks. Key concepts:</p>
+<ul>
+<li>
+<p><strong>Genome</strong>: The complete genetic encoding of a neural network, including:</p>
+<ul>
+<li>Nodes (neurons)</li>
+<li>Connection genes (synapses with weights)</li>
+<li>Innovation numbers (tracking structural mutations)</li>
+</ul>
+</li>
+<li>
+<p><strong>Species</strong>: Groups of similar genomes that compete within their niche</p>
+</li>
+<li>
+<p><strong>Innovation</strong>: Tracking system for new network structures</p>
+</li>
+<li>
+<p><strong>Crossover</strong>: Combining genetic material from two parent networks</p>
+</li>
+<li>
+<p><strong>Mutation</strong>: Random modifications including:</p>
+<ul>
+<li>Weight mutations (±20% of current value)</li>
+<li>Add/remove connections</li>
+<li>Add/remove hidden nodes</li>
+</ul>
+</li>
+</ul>
+<h2 id="neural-network-architecture">Neural Network Architecture</h2>
+<p>Input Layer (5 neurons):</p>
+<ul>
+<li>Bird Y-position</li>
+<li>Vertical velocity</li>
+<li>Horizontal distance to next pipe</li>
+<li>Top pipe Y-position</li>
+<li>Bottom pipe Y-position</li>
+</ul>
+<p>Output Layer (1 neuron):</p>
+<ul>
+<li>Flap probability (threshold 0.5)</li>
+</ul>
+<p>Hidden Layer:</p>
+<ul>
+<li>Dynamically evolves through mutation</li>
+<li>Can develop hidden neurons</li>
+</ul>
+<h2 id="precise-fitness-function">Precise Fitness Function</h2>
+<p>Total Fitness = Base Score + Bonuses - Penalties</p>
+<ul>
+<li>
+<p><strong>Base Score</strong>:</p>
+<ul>
+<li>+10.0 points per pipe passed</li>
+<li>+0.1 points per frame survived</li>
+</ul>
+</li>
+<li>
+<p><strong>Position Bonuses</strong>:</p>
+<ul>
+<li>Up to +1.0 point per frame for optimal pipe gap alignment</li>
+<li>Bonus = max(0, 1 - |birdY - gapCenterY| / 150)</li>
+</ul>
+</li>
+<li>
+<p><strong>Penalties</strong>:</p>
+<ul>
+<li>Instant death for hitting screen boundaries</li>
+<li>Fitness reset to 0 on death</li>
+</ul>
+</li>
+</ul>
+<h2 id="performance-metrics">Performance Metrics</h2>
+<p>From a test run (Generation 0-17):</p>
+<ul>
+<li>
+<p><strong>Initial Performance</strong>:</p>
+<ul>
+<li>Gen 0: Random behavior, 0% survival rate</li>
+<li>Gen 1: 7 birds reach first pipe, max fitness 137.34</li>
+</ul>
+</li>
+<li>
+<p><strong>Learning Progress</strong>:</p>
+<ul>
+<li>Gen 9: Major breakthrough (207 pipes, fitness 12,381.09)</li>
+<li>Gen 13-14: Peak performance (300 pipes, fitness 19,560.28)</li>
+<li>Population adaptation: 80%+ birds consistently reaching first pipe</li>
+</ul>
+</li>
+<li>
+<p><strong>Mutation Impact</strong>:</p>
+<ul>
+<li>~275 mutations per generation</li>
+<li>Optimal mutation rate: 30% chance per offspring</li>
+<li>Top 75 birds preserved unchanged each generation</li>
+</ul>
+</li>
+</ul>
+
+            
+            
+        </body>
+        </html>
+
+</body>
+
+</html>

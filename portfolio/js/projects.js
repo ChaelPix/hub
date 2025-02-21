@@ -1,5 +1,13 @@
 export const projects = [
     {
+        "title": "AI Neat Bird Flappy",
+        "description": "A neural evolution experiment using the NEAT algorithm to train AI agents to master Flappy Bird gameplay using machine learning through natural selection.",
+        "image": "img/projects/birdflappy/birdflappy.png",
+        "tags": ["C++", "SFML", "AI"],
+        "id": "birdflappy",
+        "date": "February 2025"
+    },
+    {
         "title": "VR AI Art Gallery NPCs",
         "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
         "image": "img/projects/aigallery/aigallery.jpg",
@@ -43,7 +51,7 @@ export const projects = [
         "title": "Valiant",
         "description": "A multiplayer game built from scratch using SFML/C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
-        "tags": ["C++", "Networking", "Game", "Linux", "PHP", "SQL"],
+        "tags": ["C++", "SFML", "Networking", "Game", "Linux", "PHP", "SQL"],
         "id": "valiant",
         "date": "December 2023"
     },

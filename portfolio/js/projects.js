@@ -1,5 +1,13 @@
 export const projects = [
     {
+        "title": "Courses Hub",
+        "description": "A sphink documentation that I use to store my revision notes.",
+        "image": "img/projects/courseshub/hubhome.png",
+        "tags": ["Sphink", "Web"],
+        "id": "courseshub",
+        "date": "September 2024"
+    },
+    {
         "title": "AI Neat Bird Flappy",
         "description": "A neural evolution experiment using the NEAT algorithm to train AI agents to master Flappy Bird gameplay using machine learning through natural selection.",
         "image": "img/projects/birdflappy/birdflappy.png",

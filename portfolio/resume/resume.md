@@ -54,7 +54,7 @@
 <div class="subtitle">UTBM - Belfort </div>
 
 <div class="education-item">
-Spécialisation en Intelligence Artificielle et Systèmes Robotiques Embarqués.
+1ère année de branche informatique, spécialisation en Intelligence Artificielle et Systèmes Robotiques Embarqués.
 </div>
 
 <div class="date-block">2022 - 2024</div>
@@ -80,7 +80,7 @@ Spécialisation en Intelligence Artificielle et Systèmes Robotiques Embarqués.
 
 
 ## <span class="section-title">Profil</span>
-Développeur passionné et **médaillé** en robotique, je recherche un **stage de 6 mois** à partir d'**août 2024** dans le domaine de [thème selon l'entreprise]. Mon parcours unique combine :
+Développeur passionné et **médaillé** en robotique mobile autonome, en 1ère année de branche ingénieure, je recherche un **stage de 6 mois** à partir d'**août 2024** dans le domaine de la robotique, intelligence artificielle ou développement logiciel.
 
 • **Excellence technique** : Vice-champion de France en robotique mobile autonome et compétiteur international médaillé "Best-of-Nation".
 

@@ -1,5 +1,5 @@
-Mini-Guide Codage Source pour les Examens
-=========================================
+Codage Source
+=============
 
 Les 3 Types de Codes à Connaître
 --------------------------------

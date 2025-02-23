@@ -1,5 +1,5 @@
-Mini-Guide Codage Canal pour les Examens
-========================================
+Codage Canal
+============
 
 Les 3 Choses à Savoir Absolument
 --------------------------------

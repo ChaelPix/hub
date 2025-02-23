@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Mes Cours'
-copyright = '2024'
-author = ' '
+copyright = '2025'
+author = 'Traïan BEAUJARD'
 
 
 # -- General configuration ---------------------------------------------------
@@ -32,6 +32,8 @@ extensions = [
     'sphinx_copybutton',
     'sphinxcontrib.video',
     'myst_parser',
+    'sphinx_last_updated_by_git',
+    'sphinx.ext.graphviz'
 ]
 
 

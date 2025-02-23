@@ -1,5 +1,5 @@
-Guide de Survie : Diagonalisation en Examen
-===========================================
+Diagonalisation Matrices
+========================
 
 .. warning::
    Ce guide est optimisé pour l'examen avec une Casio Graph 35+E

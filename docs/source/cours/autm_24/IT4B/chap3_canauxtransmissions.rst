@@ -1,5 +1,5 @@
-Mini-Guide Canaux de Transmission pour les Examens
-==================================================
+Canaux de Transmission
+======================
 
 Les 3 Concepts Essentiels
 -------------------------

@@ -1,8 +1,5 @@
-Guide de Survie : Développements Limités en Examen
-==================================================
-
-GUIDE PANIQUE - 30min avant l'examen
-====================================
+Développements Limités
+======================
 
 DLx(y) = QUOI ?
 ---------------

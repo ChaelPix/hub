@@ -1,5 +1,5 @@
-Mini-Guide Entropie pour les Examens
-====================================
+Entropie
+========
 
 Les 3 Formules Essentielles
 ---------------------------

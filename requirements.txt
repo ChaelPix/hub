@@ -3,3 +3,4 @@ sphinx-rtd-theme
 sphinx-copybutton
 sphinxcontrib-video
 myst-parser
+sphinx-last-updated-by-git

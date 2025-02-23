@@ -1,6 +1,25 @@
+====
 EV00
 ====
 
-Matière sur l'environnement. 1 projet final de création de ville, et des questions sur les thèmes abordés durant le semestre.
+**Description**
 
-`Lien vers la présentation <https://docs.google.com/presentation/d/>`_
+Matière portant sur l'étude de l'environnement et ses enjeux comme :
+
+- le changement climatique
+- la gestion des déchets
+- le nucléaire
+- les catastrophes comme Tchernobyl
+- l'énergie renouvelable
+- transports et mobilité durable
+- ...
+
+**Notes**
+
+
+* **Projet final** : Création d'une ville écologique et durable (`Ma présentation <https://utbm-my.sharepoint.com/:p:/g/personal/traian_beaujard_utbm_fr/ERqAEAv8-j1PpBiQaL3sYpwBcfe9Mvwph6VMHR4tf7gk1w?e=kipwWm>`_)
+
+* **Final** : Questions sur les thèmes du semestre
+
+
+

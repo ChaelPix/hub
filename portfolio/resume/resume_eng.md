@@ -40,7 +40,7 @@
 
 • Development of a Battle Royale game prototype in C# and Unity for Android, integrating AI algorithms for NPC behavior
 
-• Team collaboration using Git and project management methodologies
+• Team collaboration using Github
 </div>
 
 ## <span class="section-title">Education</span>
@@ -76,11 +76,8 @@ Specialization in Artificial Intelligence and Embedded Robotic Systems
 <div class="right-column">
 
 ## <span class="section-title">Profile</span>
-Passionate developer and **medalist** in robotics, seeking a **6-month internship** starting **August 2024** in [field according to company]. My unique background combines:
+Passionate developer and **medalist** in autonomous mobime robotics, seeking a **6-month internship** starting from 1th September 2025 in [field according to company]. 
 
-• **Technical Excellence**: French Vice-Champion in autonomous mobile robotics and international competitor with "Best-of-Nation" medal
-
-• **Leadership & Communication**: Association President and Worldskills Ambassador, demonstrating strong ability to unite and communicate
 
 My <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> showcases my personal projects and demonstrates my motivation to deepen my technical knowledge across various computer science fields.
 
@@ -115,25 +112,25 @@ My <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> showcases m
 
 <div class="skills-grid">
     <div class="skill-item">
-        <strong>Robotics Development</strong>: ROS1/2, Arduino, Embedded Linux
+        <strong>Robotics Development</strong>: C, ROS1/2, Arduino, Embedded Linux
     </div>
     <div class="skill-item">
         <strong>Computer Vision</strong>: OpenCV, YOLO, Image Processing
     </div>
     <div class="skill-item">
-        <strong>Unity Development</strong>: C#, 3D/2D Games, VR, Android
+        <strong>Software Development</strong>: C#, Unity 3D/2D, VR
     </div>
     <div class="skill-item">
-        <strong>System Programming</strong>: C++, Python, PlantUML
+        <strong>System Programming</strong>: C++, Python
     </div>
     <div class="skill-item">
         <strong>Web & Mobile</strong>: TailwindCSS, PHP, JS, SQL, Kotlin
     </div>
     <div class="skill-item">
-        <strong>Tools & Methods</strong>: Git, Docker, Linux, Sphinx Doc, Markdown, Unit Testing
+        <strong>Tools & Methods</strong>: PlantUML, Git, Docker, Linux, Markdown, Unit Testing
     </div>
 </div>
-        <strong>Soft Skills</strong>: Team Management, Effective Communication, Stress Management and Performance Under Pressure, Adaptability, Fast Learning
+        <strong>Soft Skills</strong>: Self-learner, Curious, Team Management, Effective Communication, Stress Management, ...
 
 ## <span class="section-title">Languages</span>
 - French (Native)

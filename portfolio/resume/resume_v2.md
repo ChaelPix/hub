@@ -1,3 +1,5 @@
+# CV - Traïan Beaujard
+
 <div class="container">
 <div class="left-column">
 
@@ -24,14 +26,21 @@
 
 ### Compétiteur International Worldskills - Robotique Mobile Autonome
 <div class="experience-item highlight-item">
-<div class="skills-tag">Robotique, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div>
+<!-- <div class="skills-tag">Robotique, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div> -->
 
-• Obtention de la médaille "Best-of-Nation" aux Worldskills 2024 et titre de Vice-Champion de France.
-
-• Conception et développement de robots autonomes pour environnements industriels complexes.
-
-• Architecture et implémentation d'un système de simulation robotique intégrant Unity et ROS.
-
+• Développement d’un robot autonome avec bras mécanique sur Raspberry Pi avec Linux embarqué.
+- Architecture d'un système robotique complexe et modulaire avec ROS2.
+- Développement de noeuds d'un arbre de comportement pour la modularité du robot avec *BehaviorTree.CPP*.
+- Déplacement autonome avec *SLAM, AMCL et Nav2*.
+- Reconnaissance d’objets avec *YOLO et OpenCV*.
+- Intéraction du robot avec l’environnement via son bras par *Cinématique inverse*.
+- Gestion du projet en équipe de 3 personnes avec *GitHub*.
+- Travail en équipe et résolution de problématiques robotiques industrielles en conditions compétitives internationales.
+  
+• Développement d'un simulateur de robotique en C# sur Unity.
+- Intégration du fichier URDF du robot dans Unity.
+- Création d'environnements 3D procéduraux pour tester la fiabilité des arbres de comportement du robot.
+  
 • Amélioration des soft skills à travers des stages de préparation physique et mentale.
 
 </div>
@@ -40,11 +49,13 @@
 
 ### Développeur Unity - Stage chez All·Inclusive
 <div class="experience-item">
-<div class="skills-tag">C#, Unity, Android, IA, Git</div>
+<!-- <div class="skills-tag">C#, Unity, Android, IA, Git</div> -->
 
-• Développement d'un prototype de jeu Battle Royale en C# et Unity sur Android, intégrant des algorithmes d'intelligence artificielle pour le comportement les personnages non jouables.
-
-• Collaboration en équipe avec l'utilisation de GitHub.
+• Développement d'un prototype de jeu Battle Royale *(C#, Unity, Android)*.
+- Intégrer à un projet existant un système de simulation de multi-joueur en créant des bots IA immitant le comportement de joueurs humains.
+- Créations des mécaniques de battles royale (Spawn, Armes, Loot, etc.)
+- Développement du système de matchmaking, de l'interface utilisateur.
+- Gestion du projet en équipe de 5 personnes avec GitHub.
 </div>
 
 ## <span class="section-title">Formation</span>
@@ -55,7 +66,9 @@
 <div class="subtitle">UTBM - Belfort </div>
 
 <div class="education-item">
-1ère année de branche informatique, spécialisation en Intelligence Artificielle et Systèmes Robotiques Embarqués.
+• 1ère année de branche informatique
+
+- Cours sur le développement logiciel *(ex: Kotlin, QT)*, intelligence artificielle, systèmes embarqués *(STM32 en C)*, et mathématiques algorithmiques.
 </div>
 
 <div class="date-block">2022 - 2024</div>
@@ -64,6 +77,8 @@
 <div class="subtitle">Lycée Turgot, Limoges</div>
 <div class="education-item">
 • Diplômé Major de l'académie de Bordeaux.
+
+- Cours sur toutes les bases de l'informatique dont le réseau *(Matériel, Administration)*, la programmation logicielle *(C++)* et web, la gestion de projet *(UML, Git)*, l'électronique *(Rasperry Pi, C)*.
 </div>
 
 <div class="date-block">2021</div>
@@ -81,30 +96,36 @@
 
 
 ## <span class="section-title">Profil</span>
+            
+<strong>🏅 Compétiteur "Best-of-Nation" Wordskills International 2024, Vice-champion de France à la finale Worldskills 2023 en Robotique Mobile Autonome.</strong>
+<br><br>
 Je suis en 1ère année de branche ingénieure, je recherche un **stage de 6 mois** à partir du 1er Septembre 2025 au 06 Février 2026 dans le domaine de *[la robotique, intelligence artificielle ou développement logiciel]*. 
+<!-- *[la robotique, intelligence artificielle ou développement logiciel]* : j'adapterais selon l'entreprise bien sûr, ne crois pas que c'est la version finale -->
 
-Je suis motivé par les défis et je m'investis pleinement dans chaque projet que j'entreprends, je suis à l'aise avec le travail en équipe et la gestion de projets. Par exemple 
-
-**Compétition Internationale** : J'ai développé des robots autonomes pour la compétition internationale Worldskills, où j'ai remporté la médaille "Best-of-Nation" et le titre de Vice-Champion de France. J'ai acquis une solide expérience en conception et développement de systèmes robotiques complexes.
-
-**Distinction Scolaire** : Par ma rigueur, j'ai été diplômé Major de la région de la Nouvelle-Aquitaine en BTS Système Numérique Informatique et Réseaux.
-
-Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente mes projets personnels et démontre ma motivation et ma curiosité à développer mes connaissances techniques dans différents domaines de l'informatique.
+Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente mes projets où j'ai cherché à développer mes compétences en créant des applications comme
+**AIssenger** : une messagerie IA avec des Large Language Models (LLM) optimisée pour la gestion mémoire des conversations longues <i>(Solution aux contraintes des LLM)</i>. 
+Il y a aussi la **présentation des robots** et des systèmes crées pour la compétition Worldskills, avec des vidéos de démonstration concrètes.
 
 ## <span class="section-title">Projets Associatifs</span>
 
-<div class="date-block">Décembre 2024 - Présent</div>
+<div class="date-block">Janvier 2025 - Présent</div>
 
 ### Président du Club Robotique de l'UTBM
 <div class="experience-item">
 
-• Présidence de l'association « Unitec », le club robotique de l'UTBM.  
+ 
+• Conception et développement de robots de combat avec arduino embarqué.
+- Communication réseau entre les robots par un serveur *(C++)*.
+- Intégration caméra STM32 *(C++)* avec détection d'objets (OpenCV, Yolo) et alogorithme restauration d'image *(Real-ESRGAN)*.
+- Interfaces utilisateurs Web pour le contrôle des robots.
+- Supervision du projet et des membres du club.
 
-• Initiation et développement de solutions robotiques en équipe.  
+• Gestion administrative du club.  
 
-• Gestion administrative et coordination de l'équipe.  
-
-• Organisation d'événements pour la promotion des sciences robotiques.  </div>
+• Organisation d'événements pour la promotion des sciences robotiques. 
+- Rassemblements avec les autres clubs de robotique.
+- Organisation d'un tournoi de robots de combat à destination des autres étudiants, impliquant la gestion technique et événementielle.
+</div>
 
 <div class="date-block">2024</div>
 
@@ -112,8 +133,9 @@ Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente 
 
 <div class="experience-item">
 
-• Interventions dans les écoles pour promouvoir les métiers techniques et la compétition des Worldskills.
-
+• Interventions dans les écoles pour promouvoir la compétition des Worldskills en tant que compétiteur en robotique.
+- Pédagogie et communication pour expliquer les enjeux de la compétition et la passion de la robotique à des personnes extérieures à ce milieu.
+  
 • Participation aux actions de communication médiatique pour Worldskills.
 
 </div>
@@ -122,27 +144,36 @@ Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente 
 
 <div class="skills-grid">
     <div class="skill-item">
-        <strong>Développement Robotique</strong> : C, ROS1/2, Arduino, Linux embarqué.
+        <strong>Développement Robotique & Systèmes Embarqués</strong><br>
+        <span class="skill-category">Langages</span> : C, C++, Python<br>
+        <span class="skill-category">Frameworks</span> : ROS1/2, BehaviorTree.CPP<br>
+        <span class="skill-category">Matériel & Systèmes</span> : Linux embarqué, Arduino, STM32
     </div>
     <div class="skill-item">
-        <strong>Vision par Ordinateur</strong> : OpenCV, YOLO, traitement d'images.
+        <strong>Intelligence Artificielle & Vision par Ordinateur</strong><br>
+        <span class="skill-category">Computer Vision</span> : OpenCV, YOLO, traitement d'images
     </div>
     <div class="skill-item">
-        <strong>Développement Logiciel</strong> : C#, Unity 3D/2D, VR.
+        <strong>Développement Logiciel & Simulation</strong><br>
+        <span class="skill-category">Langages</span> : C#, Python<br>
+        <span class="skill-category">Technologies</span> : Unity 3D/2D, VR, Qt
     </div>
     <div class="skill-item">
-        <strong>Programmation Système</strong> : C++, Python.
+        <strong>Outils & Méthodes</strong><br>
+        <span class="skill-category">Gestion de projet</span> : Git, Docker, PlantUML, Tests unitaires<br>
+        <span class="skill-category">OS & DevOps</span> : Linux, Markdown, GitHub Actions (automatisation déploiement de documentations)<br>
     </div>
-    <div class="skill-item">
-        <strong>Web & Mobile</strong> : TailwindCSS, PHP, JS, SQL, Kotlin.
-    </div>
-    <div class="skill-item">
-        <strong>Outils & Méthodes</strong> : PlantUML, Git, Docker, Linux, markdown, Tests unitaires.
-    </div>
-    <div class="skill-item">
-    </div>
+
 </div>
-        <strong>Soft Skills</strong> : Autonomie, curiosité, travail en équipe, communication efficace, résolution de problèmes
+        <strong>Soft Skills</strong> <br><br>
+        <strong>Gestion de projet</strong> - ex : Supervision du Club Robotique de l’UTBM (organisation, encadrement, gestion des membres).
+        <br>
+        <strong>Travail sous pression</strong> - ex : Compétition Worldskills avec deadlines serrées et exigences techniques élevées. 
+        <br>
+        <strong>Communication</strong> - ex : Travail en équipe dans différents projets, Vulgarisation de la robotique auprès du public (Wordskills, Club robotique).
+        <br>
+        <strong>Adaptabilité et auto-formation</strong> - ex : Réalisation de projets personnels avancés (IA, VR, Web, etc.) en autodidacte.
+        <br>
 
 ## <span class="section-title">Langues</span>
 - Français (natif)
@@ -152,6 +183,10 @@ Mon <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> présente 
 </div>
 
 <style>
+body > h1:first-of-type {
+    display: none;
+}
+
 body {
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
@@ -350,6 +385,8 @@ strong {
 em {
     color: #34495e;
     font-style: italic;
+    font-weight: 500;
+
 }
 
 @media print {
@@ -388,15 +425,24 @@ em {
     }
 }
 
+.skill-category {
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9em;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    background: transparent;
-    margin: 1rem 0;
+    gap: 1.2rem;
 }
 
 .skill-item {
+}
+
+.skill-item strong {
+    display: block;
+    color: #2c3e50;
 }
 
 </style>

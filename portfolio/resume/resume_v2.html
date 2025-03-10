@@ -299,9 +299,9 @@ body {
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 1200px;
+    max-width: 100%; /* Changed from 1200px to use full width */
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px; /* Reduced padding */
 }
 
 .header {
@@ -350,20 +350,21 @@ body {
 
 .container {
     display: flex;
-    gap: 40px;
+    gap: 20px; /* Reduced gap to save space */
     position: relative;
+    width: 100%; /* Ensure container takes full width */
 }
 
 .left-column, .right-column {
-    flex: 1;
+    width: calc(50% - 10px); /* Each column takes exactly 50% minus half the gap */
     position: relative;
 }
 
 .right-column {
-    background-color:rgb(245, 245, 245);  
+    background-color: rgb(245, 245, 245);  
     padding: 1.5rem;
     border-radius: 8px;
-    max-width: 50%;
+    max-width: none; /* Removed max-width constraint */
 }
 
 .left-column::after {

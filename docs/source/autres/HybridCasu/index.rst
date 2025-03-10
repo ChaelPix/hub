@@ -1,5 +1,5 @@
 ===================
-Hybrid Casual Games
+Hybrid-Casual Games
 ===================
 
 .. toctree::

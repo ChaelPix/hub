@@ -8,4 +8,4 @@ Cours UTBM FISE Info
    autm_24/index
    spring_25/index
    spring_26/index
-   autm_27/index
+   autm_26s/index

@@ -1,5 +1,8 @@
+# CV - Traïan Beaujard
+
 <div class="container">
 <div class="left-column">
+
 
 <div class="header">
     <div class="profile-container">
@@ -15,96 +18,125 @@
     </div>
 </div>
 
+
 ## <span class="section-title">Professional Experience</span>
+
 
 <div class="date-block">2022 - 2024</div>
 
 ### International Worldskills Competitor - Autonomous Mobile Robotics
 <div class="experience-item highlight-item">
-<div class="skills-tag">Robotics, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div>
+<!-- <div class="skills-tag">Robotique, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div> -->
 
-• "Best-of-Nation" Medal at Worldskills 2024 International Competition and French Vice-Champion title
+• Design and development of an autonomous robot with mechanical arm on *Raspberry Pi* with *embedded Linux* for manipulation and navigation challenges.
+- Development of a modular architecture with *ROS2*, and *optimization* of compilation time and deployment through containerization (Docker) and cross-compilation.
+- Implementation of autonomous navigation (*SLAM*, *AMCL*, *Nav2*), and a behavior tree to navigate in complex and unknown environments.
+- Development of an object recognition system *(YOLO, OpenCV)* for analysis and manipulation via inverse kinematics.
+- Management and development in a team of 3 people, with continuous integration and version control using *GitHub*.
+- Solving industrial robotic challenges in international competition conditions, with rapid adaptation to technical and time constraints.
+  
+→ System designed and prepared to meet industrial requirements.
 
-• Design and development of autonomous robots for complex industrial environments
+• Development of a robotics simulator in C# on Unity.
+- Integration of the robot's URDF model into *Unity* for realistic simulation of behaviors and interactions.
+- Creation of procedural 3D environments to test and ensure reliability of behavior trees before deploying them in real conditions.
+  
+• Enhancement of soft skills through physical and mental preparation training.
 
-• Architecture and implementation of a robotic simulation system integrating Unity and ROS
-
-• Stress management and performance under pressure through intensive training
 </div>
 
 <div class="date-block">June - July 2023</div>
 
 ### Unity Developer - Internship at All·Inclusive
 <div class="experience-item">
-<div class="skills-tag">C#, Unity, Android, AI, Git</div>
+<!-- <div class="skills-tag">C#, Unity, Android, IA, Git</div> -->
 
-• Development of a Battle Royale game prototype in C# and Unity for Android, integrating AI algorithms for NPC behavior
-
-• Team collaboration using Github
+• Development of a Battle Royale game prototype *(C#, Unity, Android)*.
+- Integration of a multiplayer simulation system into an existing project by creating AI bots that mimic human player behavior.
+- Creation of battle royale mechanics (Spawning, Weapons, Loot, etc.)
+- Development of matchmaking system and user interface.
+- Project management in a team of 5 people using GitHub.
 </div>
 
 ## <span class="section-title">Education</span>
 
 <div class="date-block">2024 - Present</div>
 
-### Computer Science Engineering
-<div class="subtitle">UTBM - Belfort, France</div>
+### Computer Engineering Degree
+<div class="subtitle">UTBM - Belfort </div>
 
 <div class="education-item">
-Specialization in Artificial Intelligence and Embedded Robotic Systems
+• 1st year of computer science specialization
+
+- Courses on software development *(e.g., Kotlin, QT)*, artificial intelligence, embedded systems *(STM32 in C)*, and algorithmic mathematics.
 </div>
 
 <div class="date-block">2022 - 2024</div>
 
-### Advanced Technical Degree in Computer Science
+### BTS in Digital Systems - Computer Science and Networks
 <div class="subtitle">Lycée Turgot, Limoges</div>
 <div class="education-item">
-• Graduated top of class in Bordeaux Academy
+• Graduated top of the Bordeaux academy.
+
+- Courses covering all computer science fundamentals including networking *(Hardware, Administration)*, software programming *(C++)* and web development, project management *(UML, Git)*, and electronics *(Raspberry Pi, C)*.
 </div>
 
 <div class="date-block">2021</div>
 
-### Scientific Baccalaureate with Honors
+### High School Diploma with Honors
 <div class="subtitle">Lycée Bellevue, Saintes</div>
 <div class="education-item">
-• Specializations: Mathematics, English Literature & Physics-Chemistry
+• Specializations: Mathematics, English Literature & Physics-Chemistry.
 
-• European Section Mathematics-English
+• European Section Mathematics-English.
 </div>
 
 </div>
 <div class="right-column">
 
+
 ## <span class="section-title">Profile</span>
-Passionate developer and **medalist** in autonomous mobime robotics, seeking a **6-month internship** starting from 1th September 2025 in [field according to company]. 
+            
+<strong>🏅 "Best-of-Nation" Competitor at Worldskills International 2024, Vice-champion of France at the Worldskills 2023 finals in Autonomous Mobile Robotics.</strong>
+<br><br>
+I am in my 1st year of engineering studies, seeking a **6-month internship** from September 1st, 2025 to February 6th, 2026 in the field of *[robotics, artificial intelligence, or software development]*. 
+<!-- *[robotics, artificial intelligence or software development]* : I would adapt depending on the company of course, don't think this is the final version -->
 
-
-My <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> showcases my personal projects and demonstrates my motivation to deepen my technical knowledge across various computer science fields.
+My <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> showcases my projects where I've sought to develop my skills by creating applications such as
+**AIssenger**: an AI messaging system with Large Language Models (LLM) optimized for memory management of long conversations <i>(Solution to LLM constraints)</i>. 
+It also includes **presentations of robots** and systems created for the Worldskills competition, with concrete demonstration videos.
 
 ## <span class="section-title">Associative Projects</span>
 
-<div class="date-block">December 2024 - Present</div>
+<div class="date-block">January 2025 - Present</div>
 
-### President of UTBM Robotics Club
+### President of the UTBM Robotics Club
 <div class="experience-item">
 
-• Leadership of "Unitec", the UTBM robotics club
+ 
+• Design and development of combat robots with embedded Arduino.
+- Network communication between robots through a server *(C++)*.
+- STM32 camera integration *(C++)* with object detection (OpenCV, Yolo) and image restoration algorithm *(Real-ESRGAN)*.
+- Web user interfaces for robot control.
+- Project supervision and club member management.
 
-• Initiation and development of robotic solutions in team
+• Administrative management of the club.  
 
-• Administrative management and team coordination
-
-• Organization of events promoting robotics sciences
+• Organization of events to promote robotics sciences.
+- Gatherings with other robotics clubs.
+- Organization of a combat robot tournament for other students, involving both technical and event management.
 </div>
 
 <div class="date-block">2024</div>
 
 ### Worldskills France Ambassador
+
 <div class="experience-item">
 
-• School presentations promoting technical careers and Worldskills competition
-
-• Participation in media communication activities for Worldskills
+• School presentations to promote the Worldskills competition as a robotics competitor.
+- Pedagogy and communication to explain the competition challenges and passion for robotics to people outside the field.
+  
+• Participation in media communication activities for Worldskills.
 
 </div>
 
@@ -112,42 +144,56 @@ My <a href="https://chaelpix.github.io/hub/portfolio/">portfolio</a> showcases m
 
 <div class="skills-grid">
     <div class="skill-item">
-        <strong>Robotics Development</strong>: C, ROS1/2, Arduino, Embedded Linux
+        <strong>Robotics & Embedded Systems Development</strong><br>
+        <span class="skill-category">Languages</span> : C, C++, Python<br>
+        <span class="skill-category">Frameworks</span> : ROS1/2, BehaviorTree.CPP<br>
+        <span class="skill-category">Hardware & Systems</span> : Embedded Linux, Arduino, STM32
     </div>
     <div class="skill-item">
-        <strong>Computer Vision</strong>: OpenCV, YOLO, Image Processing
+        <strong>Artificial Intelligence & Computer Vision</strong><br>
+        <span class="skill-category">Computer Vision</span> : OpenCV, YOLO, image processing
     </div>
     <div class="skill-item">
-        <strong>Software Development</strong>: C#, Unity 3D/2D, VR
+        <strong>Software Development & Simulation</strong><br>
+        <span class="skill-category">Languages</span> : C#, Python<br>
+        <span class="skill-category">Technologies</span> : Unity 3D/2D, VR, Qt
     </div>
     <div class="skill-item">
-        <strong>System Programming</strong>: C++, Python
+        <strong>Tools & Methods</strong><br>
+        <span class="skill-category">Project management</span> : Git, Docker, PlantUML, Unit testing<br>
+        <span class="skill-category">OS & DevOps</span> : Linux, Markdown, GitHub Actions (documentation deployment automation)<br>
     </div>
-    <div class="skill-item">
-        <strong>Web & Mobile</strong>: TailwindCSS, PHP, JS, SQL, Kotlin
-    </div>
-    <div class="skill-item">
-        <strong>Tools & Methods</strong>: PlantUML, Git, Docker, Linux, Markdown, Unit Testing
-    </div>
+
 </div>
-        <strong>Soft Skills</strong>: Self-learner, Curious, Team Management, Effective Communication, Stress Management, ...
+        <strong>Soft Skills</strong> <br><br>
+        <strong>Project management</strong> - e.g., Supervision of the UTBM Robotics Club (organization, guidance, member management).
+        <br>
+        <strong>Working under pressure</strong> - e.g., Worldskills competition with tight deadlines and high technical requirements.
+        <br>
+        <strong>Communication</strong> - e.g., Teamwork in various projects, Making robotics accessible to the public (Worldskills, Robotics Club).
+        <br>
+        <strong>Adaptability and self-learning</strong> - e.g., Implementation of advanced personal projects (AI, VR, Web, etc.) through self-teaching.
+        <br>
 
 ## <span class="section-title">Languages</span>
-- French (Native)
+- French (native)
 - English (C1)
-- Chinese (Beginner)
 
 </div>
 </div>
 
 <style>
+body > h1:first-of-type {
+    display: none;
+}
+
 body {
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 1200px;
+    max-width: 100%; /* Changed from 1200px to use full width */
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px; /* Reduced padding */
 }
 
 .header {
@@ -196,20 +242,21 @@ body {
 
 .container {
     display: flex;
-    gap: 40px;
+    gap: 20px; /* Reduced gap to save space */
     position: relative;
+    width: 100%; /* Ensure container takes full width */
 }
 
 .left-column, .right-column {
-    flex: 1;
+    width: calc(50% - 10px); /* Each column takes exactly 50% minus half the gap */
     position: relative;
 }
 
 .right-column {
-    background-color:rgb(245, 245, 245);  
+    background-color: rgb(245, 245, 245);  
     padding: 1.5rem;
     border-radius: 8px;
-    max-width: 50%;
+    max-width: none; /* Removed max-width constraint */
 }
 
 .left-column::after {
@@ -339,6 +386,8 @@ strong {
 em {
     color: #34495e;
     font-style: italic;
+    font-weight: 500;
+
 }
 
 @media print {
@@ -377,15 +426,24 @@ em {
     }
 }
 
+.skill-category {
+    font-weight: 500;
+    color: #666;
+    font-size: 0.9em;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
-    background: transparent;
-    margin: 1rem 0;
+    gap: 1.2rem;
 }
 
 .skill-item {
+}
+
+.skill-item strong {
+    display: block;
+    color: #2c3e50;
 }
 
 </style>

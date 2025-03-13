@@ -28,18 +28,18 @@
 <div class="experience-item highlight-item">
 <!-- <div class="skills-tag">Robotique, C++, C#, Python, ROS, OpenCV, YOLO, Unity, Git</div> -->
 
-• Développement d’un robot autonome avec bras mécanique sur Raspberry Pi avec Linux embarqué.
-- Architecture d'un système robotique complexe et modulaire avec ROS2.
-- Développement de noeuds d'un arbre de comportement pour la modularité du robot avec *BehaviorTree.CPP*.
-- Déplacement autonome avec *SLAM, AMCL et Nav2*.
-- Reconnaissance d’objets avec *YOLO et OpenCV*.
-- Intéraction du robot avec l’environnement via son bras par *Cinématique inverse*.
-- Gestion du projet en équipe de 3 personnes avec *GitHub*.
-- Travail en équipe et résolution de problématiques robotiques industrielles en conditions compétitives internationales.
+• Conception et développement d’un robot autonome avec bras mécanique sur *Raspberry Pi* sous *Linux embarqué* pour des épreuves de manipulation et navigation.
+- Développement d’une architecture modulaire sous *ROS2*, et *optimisation* du temps de compilation et du déploiement grâce à la containérisation (Docker) et la cross-compilation.
+- Implémentation d’une navigation autonome (*SLAM*, *AMCL*, *Nav2*), et un arbre de comportement pour naviguer dans des environnements complexes et inconnus.
+- Développement d’un système de reconnaissance d’objets *(YOLO, OpenCV)* pour l’analyse et la manipulation via cinématique inverse.
+- Gestion et développement en équipe de 3 personnes, avec intégration continue et suivi de version sous *GitHub*.
+- Résolution de problématiques robotiques industrielles en conditions de compétition internationale, avec adaptation rapide aux contraintes techniques et temporelles.
   
+→ Système conçu et préparé pour répondre à des exigences industrielles.
+
 • Développement d'un simulateur de robotique en C# sur Unity.
-- Intégration du fichier URDF du robot dans Unity.
-- Création d'environnements 3D procéduraux pour tester la fiabilité des arbres de comportement du robot.
+- Intégration du modèle URDF du robot dans *Unity* pour une simulation réaliste des comportements et interactions.
+- Création d’environnements 3D procéduraux pour tester et fiabiliser les arbres de comportement avant leur déploiement en conditions réelles.
   
 • Amélioration des soft skills à travers des stages de préparation physique et mentale.
 

@@ -1,11 +1,11 @@
 export const projects = [
     {
-        "title": "Courses Hub",
-        "description": "A sphink documentation that I use to store my revision notes.",
-        "image": "img/projects/courseshub/hubhome.png",
-        "tags": ["Sphink", "Web"],
-        "id": "courseshub",
-        "date": "September 2024"
+        "title": "Miscellaneous Projects",
+        "description": "A collection of various little projects.",
+        "image": "img/projects/miscprojects/miscprojects.jpg",
+        "tags": ["Sphink", "Web", "AI", "C++", "Tailwind CSS", "Javascript", "C#", "Unity", "Game", "PHP", "SQL"],
+        "id": "miscprojects",
+        "date": ""
     },
     {
         "title": "AI Neat Bird Flappy",
@@ -40,22 +40,6 @@ export const projects = [
         "date": "June 2022 - September 2022"
     },
     {
-        "title": "Inverse Kinematics Solver",
-        "description": "A C++ project exploring inverse kinematics, improving my understanding of animation and robotics.",
-        "image": "img/projects/iksolver/iksolver.png",
-        "tags": ["AI", "C++"],
-        "id": "iksolver",
-        "date": "June 2024"
-    },
-    {
-        "title": "Dices of Fishes Raid",
-        "description": "A 48-hour game jam project in Unity, focusing on creativity and fast development.",
-        "image": "img/projects/dicesfishraids/fish_0.png",
-        "tags": ["C#", "Unity", "Game"],
-        "id": "dicesoffraid",
-        "date": "April 2022"
-    },
-    {
         "title": "Valiant",
         "description": "A multiplayer game built from scratch using SFML/C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
@@ -64,36 +48,12 @@ export const projects = [
         "date": "December 2023"
     },
     {
-        "title": "SupernovaSprint",
-        "description": "A web game made in 24 hours for a class project, showcasing fast prototyping and teamwork.",
-        "image": "img/projects/supernovasprint/SNS3.png",
-        "tags": ["Web", "Game", "C#", "SQL", "PHP", "Unity"],
-        "id": "supernovasprint",
-        "date": "March 2024"
-    },
-    {
-        "title": "AIssenger",
-        "description": "An autonomous messaging app using local LLM and Stable Diffusion, exploring AI-powered communication.",
-        "image": "img/projects/aissenger/aissenger_card.jpg",
+        "title": "Aissenger & IAstragram",
+        "description": "Two autonomous android apps simulating social media with integration of local LLM.",
+        "image": "img/projects/aissenger/ia_apps.jpg",
         "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
-        "id": "aissenger",
-        "date": "November 2024"
-    },
-    {
-        "title": "IAstagram",
-        "description": "An autonomous social media app powered by local LLM and Stable Diffusion to generate content and interactions.",
-        "image": "img/projects/iastagram/iastagram_card2.jpg",
-        "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "C++", "Unity"],
-        "id": "iastagram",
-        "date": "October 2024"
-    },
-    {
-        "title": "My portfolio",
-        "description": "A personal project to showcase my skills and projects using Tailwind CSS.",
-        "image": "img/projects/web/portfolio.png",
-        "tags": ["Web", "Tailwind CSS", "Javascript"],
-        "id": "portfolio",
-        "date": "December 2024"
+        "id": "ai_apps",
+        "date": "October - November 2024"
     },
     {
         "title": "IQ Puzzler Pro Solver",

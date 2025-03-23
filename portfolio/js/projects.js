@@ -19,7 +19,7 @@ export const projects = [
         "title": "VR AI Art Gallery NPCs",
         "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
         "image": "img/projects/aigallery/aigallery.jpg",
-        "tags": ["C#", "VR", "Unity", "AI"],
+        "tags": ["C#", "VR", "Unity", "AI", "MetaXR"],
         "id": "aigallery",
         "date": "December 2024"
     },

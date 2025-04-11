@@ -7,3 +7,6 @@ Autres
 
    HybridCasu/index
    Markdown/index
+   Unitec/index
+   Neat/index
+   IBM_CourseComputerVision/index

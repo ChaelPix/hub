@@ -26,22 +26,78 @@ Un mot sur l'alphabet $A = \{M, H, P, K\}$.
 
 L'encodage Keystroke des méthodes est le suivant :
 - Méthode M1 :
-  - O1 : Acte de penser à l’opération à effectuer (M)
-  - O2 : Déplacer les mains entre la souris et le clavier (H)
-  - O3 : Déplacer la souris sur la cible (P)
-  - O4 : Sélectionner (K)
-  - O5 : Déplacer les mains entre la souris et le clavier (H) 
-  
-→ $M.H.P.K.H$
+  - M1 = H[souris] → P[destination] → K[select] → H[clavier]
+  - M1 = HPKH
+
+    - → $MHPKH$
 
 - Méthode M2 :
-  - O1 : Acte de penser à l’opération à effectuer (M)
-  - O2 : Frappe au clavier (K) : ctrl-n
-  - O3 : Acte de penser à l’opération à effectuer (M)
-  - O4 : Frappe au clavier (K) : esc-f
 
-→ $M(K^x) . M(K^y)$
+  - M2 = K[ctrl] → K^n[n] → (K[esc] → K[f])^p
 
-1) Ajouter des états mentaux en justifiant.
+    - → $K.K^m . (K.K)^p$
+    - → $M(K.K^m) . (K.K)^p$
+
 2) Déterminer les temps d’exécution. Evaluer l’inéquation TM1 < TM2, sous forme numérique puis appliquée.
-3) Discuter suivant un utilisateur lambda ou expert (enlever un M).
+
+$T_{M1} = T_M + 2T_H + T_p + T_K ms$
+
+$T_{M2} = 2T_M + T_K + mT_K + 2pT_K ms$
+3700 + m(1100) + 2p(1100) = 3700 + 1100m + 2200p
+
+
+$T_M + 2T_H + T_p + T_K < 2T_M + T_K + mT_K + 2pT_K$
+
+$2T_H + T_p < T_M + mT_K + 2pT_K$
+
+
+1) Discuter suivant un utilisateur lambda ou expert (enlever un M).
+
+On supprime un état mental car sinon incohérent car souris toujours mieux.
+
+3400 < 2400 + 1100m + 2200p
+3400 - 2400 < 1100m + 2200p
+1000 < 1100m + 2200p
+m + 2p > 1
+
+## Exercice 0 : Ouvrir un fichier dans une arborescence.
+
+>A l’aide de la méthode Goms basée sur le modèle du processeur humain décrivez et comparez 2 procédés pour éditer un fichier, soit en utilisant un terminal et le langage de commandes standard (ls, cd, edit), soit en utilisant un file manager et les modalités de déplacement et d’édition à la souris. Pour délimiter la tâche à réaliser, on considère qu’une fenêtre de saisie et un file manager sont déjà ouverts et sont positionnés sous le répertoire racine. L’utilisateur sait où se trouve le fichier fichier.txt, sous un répertoire rep. Il doit se positionner au bon endroit et lancer l’éditeur sur le fichier. On suppose que la profondeur est p, et que la longueur d’un nom de fichier est l. 
+
+Quel mécanisme est le plus rapide ? A quelle condition. Justifier.
+
+M1 Terminal :
+
+- $K^3[edit](M.K^{l+1}[rep])^pK[enter]$
+
+M2 Souris :
+- $H[souris] -> (M -> P[souris rep] -> K^2[double clique])^p -> H[clavier]$
+
+$M1 = K^3 (MK^{l+1})^{p-1}(K ^ { l+1})$
+
+$M1 = K^3 (K^{l+1})^p$
+
+$M2 = H(PK^2)^pH$
+
+$T_{M1} < T_{M2}$
+
+$3T_K + pT_M + lT_K + T_K < 2T_H + p(T_p + 2 T_k)$
+
+mettre p à gauche
+
+$l < 6.5 + 1 + 1/p$
+$1 < 7.5 + 1/p$
+
+Si $p → +\infty$ alors $l < 7.5$
+
+-> utilisation avec Tab
+
+M3 : Clavier sur l'explorateur
+
+(Flèche droite/gauche/haut/bas, entrée)
+l fichiers visibles
+
+Pour trouver en moyenne l/2 fichiers.
+$2 \sqrt{l/2}$
+
+$M3 = casmoyen / (K^{\sqrt{l}})^p$

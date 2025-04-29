@@ -1,5 +1,77 @@
 import { projects } from './projects.js';
 
+// --- Tag Category & Modern Color System ---
+const TAG_CATEGORY_MAP = {
+    // Languages
+    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP': 'Language', 'SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language',
+    // Frameworks/Libraries
+    'Unity': 'Framework', 'SFML': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
+    // Platforms
+    'Android': 'Platform', 'Linux': 'Platform', 'MetaXR': 'Platform',
+    // Types
+    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'GooglePlay': 'Type', 'Web': 'Type', 'Computer Vision': 'Type',
+    // Special
+    'Highlights': 'Special', 
+    // Competition/Events
+    'WorldSkills': 'Competition', 'Competition': 'Competition',
+    // Others
+    'Sphink': 'Default', 'Hypercasual MVPs': 'Default',
+
+};
+
+const CATEGORY_STYLE_MAP = {
+    'Language':    'badge bg-sky-900 text-sky-100 border-sky-400',
+    'Framework':   'badge bg-emerald-900 text-emerald-100 border-emerald-400',
+    'Platform':    'badge bg-fuchsia-900 text-fuchsia-100 border-fuchsia-400',
+    'Type':        'badge bg-orange-900 text-orange-100 border-orange-400',
+    'Competition': 'badge bg-rose-900 text-rose-100 border-rose-400',
+    'Special':     'badge bg-yellow-800 text-yellow-100 border-yellow-400',
+    'Default':     'badge bg-zinc-700 text-zinc-100 border-zinc-400',
+};
+
+const CATEGORY_ORDER = [
+    'Language',
+    'Framework',
+    'Platform',
+    'Type',
+    'Competition',
+    'Special',
+    'Default',
+];
+
+const CATEGORY_SOLID_BG_MAP = {
+    'Language':    'bg-sky-300',
+    'Framework':   'bg-emerald-300',
+    'Platform':    'bg-fuchsia-300',
+    'Type':        'bg-orange-300',
+    'Competition': 'bg-rose-300',
+    'Special':     'bg-yellow-300',
+    'Default':     'bg-zinc-300',
+};
+
+function getTagCategory(tag) {
+    return TAG_CATEGORY_MAP[tag] || 'Default';
+}
+
+function getTagStyle(tag) {
+    const category = getTagCategory(tag);
+    return CATEGORY_STYLE_MAP[category] || CATEGORY_STYLE_MAP['Default'];
+}
+
+function getTagSolidBg(tag) {
+    const category = getTagCategory(tag);
+    return CATEGORY_SOLID_BG_MAP[category] || CATEGORY_SOLID_BG_MAP['Default'];
+}
+
+function sortTagsByCategory(tags) {
+    return tags.slice().sort((a, b) => {
+        const catA = CATEGORY_ORDER.indexOf(getTagCategory(a));
+        const catB = CATEGORY_ORDER.indexOf(getTagCategory(b));
+        if (catA !== catB) return catA - catB;
+        return a.localeCompare(b);
+    });
+}
+
 function generateCards(filteredProjects) {
     const container = document.getElementById('projects-container');
     container.innerHTML = ''; // clear container
@@ -28,6 +100,9 @@ function generateCards(filteredProjects) {
             card.classList.add('ring', 'ring-accent', 'ring-offset-2');
         }
 
+        // sort tags by category for card
+        const sortedTags = sortTagsByCategory(project.tags);
+
         // card content
         card.innerHTML = `
             <figure class="relative overflow-hidden aspect-video">
@@ -38,7 +113,7 @@ function generateCards(filteredProjects) {
                 <p class="text-sm text-gray-500">${project.date || ''}</p>
                 <p class="text-base-content">${project.description}</p>
                 <div class="card-actions justify-end">
-                    ${project.tags.map(tag => `<div class="text-base-content badge badge-outline hover:scale-105 duration-300">${tag}</div>`).join('')}
+                    ${sortedTags.map(tag => `<div class="${getTagStyle(tag)} mx-0.5 my-0.5 text-xs">${tag}</div>`).join('')}
                 </div>
             </div>
         `;
@@ -76,8 +151,7 @@ function parseDate(date) {
     return parseInt(year) * 12 + (months[month] || 0); // convert to a sortable numeric value
 }
 
-
-
+let selectedTag = null;
 
 function generateTags() {
     const tagsContainer = document.getElementById('tags-container');
@@ -91,14 +165,26 @@ function generateTags() {
         });
     });
 
-    // ensure "Highlights" is the second tag
-    const tagsArray = [
+    // group tags by category for sorting
+    const tagsByCategory = {};
+    Object.keys(tagOccurrences).forEach(tag => {
+        const cat = getTagCategory(tag);
+        if (!tagsByCategory[cat]) tagsByCategory[cat] = [];
+        tagsByCategory[cat].push(tag);
+    });
+
+    // build sorted tag list: Reset, Highlights, then by category order
+    let tagsArray = [
         "Reset",
         "Highlights",
-        ...Array.from(Object.keys(tagOccurrences))
-            .filter(tag => tag !== "Highlights")
-            .sort((a, b) => a.localeCompare(b))
     ];
+    CATEGORY_ORDER.forEach(cat => {
+        if (tagsByCategory[cat]) {
+            // Remove 'Highlights' from category-sorted tags to avoid duplicate
+            const filtered = tagsByCategory[cat].filter(tag => tag !== "Highlights");
+            tagsArray = tagsArray.concat(filtered.sort((a, b) => a.localeCompare(b)));
+        }
+    });
 
     tagsArray.forEach(tag => {
         const tagButton = document.createElement('div');
@@ -107,28 +193,39 @@ function generateTags() {
             tagButton.className = 'cursor-pointer badge badge-secondary badge-outline transform hover:scale-110 duration-300';
             tagButton.textContent = tag;
             tagButton.onclick = () => {
+                selectedTag = null;
                 generateCards();
-                resetTagStyles();
+                generateTags(); 
                 location.hash = ''; // clear hash on reset
             };
         } else if (tag === "Highlights") {
-            tagButton.className = 'cursor-pointer badge badge-accent badge-outline transform scale-110';
+            let baseClass = `cursor-pointer ${getTagStyle(tag)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tag) {
+                baseClass = baseClass.replace(/bg-[^\s]+-50/, 'bg-yellow-300').replace(/dark:bg-[^\s]+-900/, 'dark:bg-yellow-900');
+                baseClass = baseClass.replace(/hover:scale-110/, ''); // Remove hover scale for selected
+                baseClass += ' scale-110 font-bold ring-2 ring-offset-2 ring-primary/40';
+            }
+            tagButton.className = baseClass;
             tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
             tagButton.onclick = () => {
-                resetTagStyles();
-                tagButton.className = 'cursor-pointer badge badge-accent transform scale-110';
-                const filteredProjects = projects.filter(project => project.tags.includes(tag));
-                generateCards(filteredProjects);
+                selectedTag = tag;
+                generateCards(projects.filter(project => project.tags.includes(tag)));
+                generateTags(); // re-render to update highlight
                 location.hash = `#tag-${tag}`; // update URL hash for tag selection
             };
         } else {
-            tagButton.className = 'cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300';
+            let baseClass = `cursor-pointer ${getTagStyle(tag)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tag) {
+                baseClass = baseClass.replace(/bg-[^\s]+\/80/, getTagSolidBg(tag));
+                baseClass = baseClass.replace(/hover:scale-110/, ''); // Remove hover scale for selected
+                baseClass += ' scale-110 font-bold ring-2 ring-offset-2 ring-primary/40';
+            }
+            tagButton.className = baseClass;
             tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
             tagButton.onclick = () => {
-                resetTagStyles();
-                tagButton.className = 'cursor-pointer badge badge-primary transform scale-110';
-                const filteredProjects = projects.filter(project => project.tags.includes(tag));
-                generateCards(filteredProjects);
+                selectedTag = tag;
+                generateCards(projects.filter(project => project.tags.includes(tag)));
+                generateTags(); // re-render to update highlight
                 location.hash = `#tag-${tag}`; // update URL hash for tag selection
             };
         }
@@ -136,14 +233,19 @@ function generateTags() {
     });
 }
 
-// reset tag styles
+// resetTagStyles is no longer needed for tag highlight, but keep for compatibility if used elsewhere
 function resetTagStyles() {
     const allTags = document.querySelectorAll('#tags-container .badge:not(.badge-secondary)');
     allTags.forEach(tag => {
         if (tag.textContent.includes("Highlights")) {
-            tag.className = 'cursor-pointer badge badge-accent badge-outline transform hover:scale-110 duration-300';
+            tag.className = 'cursor-pointer badge bg-yellow-50 text-yellow-900 border-yellow-300 transform hover:scale-110 duration-300';
         } else {
-            tag.className = 'cursor-pointer badge badge-primary badge-outline transform hover:scale-110 duration-300';
+            const tagName = tag.dataset.tag;
+            let baseClass = `cursor-pointer ${getTagStyle(tagName)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tagName) {
+                baseClass = baseClass.replace(/bg-[^\s]+\/80/, getTagSolidBg(tagName));
+            }
+            tag.className = baseClass;
         }
     });
 }

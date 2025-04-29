@@ -67,7 +67,7 @@ export const projects = [
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
         "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
-        "tags": ["Competition", "Highlights", "Robotics", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
+        "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
         "category": "worldskills",
         "id": "ws_lyon24",
         "date": "December 2023 - September 2024"
@@ -76,7 +76,7 @@ export const projects = [
         "title": "ROS2 x Unity Autonomous Robot Simulation",
         "description": "A Unity simulation to test robots using a ROS2 stack, merging robotics and 3D visualization.",
         "image": "img/worldskills/lyon24/simu.png",
-        "tags": ["Highlights", "Robotics", "Linux", "ROS2", "C++", "C#", "Unity"],
+        "tags": ["Highlights", "Robotics", "Computer Vision", "Linux", "ROS2", "C++", "C#", "Unity"],
         "id": "ws_simunity",
         "date": "December 2023 - September 2024"
     },
@@ -92,7 +92,7 @@ export const projects = [
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
         "description": "Created a ROS1-based robot for the French national Worldskills competition.",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
-        "tags": ["Competition", "Robotics", "Linux", "ROS1", "C++", "OpenCV"],
+        "tags": ["Competition", "Robotics", "Linux", "Computer Vision", "ROS1", "C++", "OpenCV"],
         "id": "ws_fnat23",
         "date": "January 2023 - September 2023"
     },
@@ -100,7 +100,7 @@ export const projects = [
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
         "description": "Programmed an Arduino robot to complete challenges in the regional Worldskills event.",
         "image": "img/worldskills/reg/robot_sand.jpg",
-        "tags": ["Competition", "Robotics", "C++", "Arduino"],
+        "tags": ["Competition", "Robotics", "Computer Vision", "C++", "Arduino"],
         "id": "ws_reg",
         "date": "October 2022"
     }

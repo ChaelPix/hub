@@ -48,6 +48,7 @@ export const projects = [
         "title": "Hypercasual Minimum Viable Prototypes",
         "description": "A series of MVPs to explore game design and development in Unity, focusing on fast iteration and testing.",
         "image": "img/mvps/mvps.jpg",
+        "video_preview": "img/mvps/snake_trailer.mp4",
         "tags": ["C#", "Unity", "Android", "Game", "Hypercasual MVPs"],
         "id": "mvps",
         "date": "June 2022 - September 2022"

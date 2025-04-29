@@ -9,4 +9,4 @@ Autres
    Markdown/index
    Unitec/index
    Neat/index
-   IBM_CourseComputerVision/index
+   ComputerVision101/index

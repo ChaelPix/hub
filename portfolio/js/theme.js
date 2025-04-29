@@ -2,6 +2,11 @@
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme); // set theme on <html>
     localStorage.setItem('selected-theme', theme); // save theme to localStorage
+    if (theme === 'custom-night') {
+        document.documentElement.classList.add('dark-theme');
+    } else {
+        document.documentElement.classList.remove('dark-theme');
+    }
 }
 
 // function to load the saved theme on page load
@@ -9,9 +14,10 @@ function loadTheme() {
     const savedTheme = localStorage.getItem('selected-theme');
     if (savedTheme) {
         applyTheme(savedTheme); // apply saved theme
-        // update the toggle state if needed
         const themeToggle = document.querySelector('.theme-controller');
         if (themeToggle) themeToggle.checked = savedTheme === 'custom-night';
+    } else {
+        document.documentElement.classList.remove('dark-theme');
     }
 }
 

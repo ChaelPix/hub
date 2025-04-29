@@ -3337,6 +3337,10 @@ details.collapse summary::-webkit-details-marker {
   z-index: 50;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .mx-0\.5 {
   margin-left: 0.125rem;
   margin-right: 0.125rem;

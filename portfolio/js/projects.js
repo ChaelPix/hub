@@ -1,5 +1,13 @@
 export const projects = [
     {
+        "title": "Autonomous CV Boat (WIP)",
+        "description": "A project focusing on learning computer vision algorithms using OpenCV. Camera input is simulated in Unity but the CV stack is independent and runs in Python.",
+        "image": "img/projects/autonomousboat/autonomous_boat_projectcard.png",
+        "tags": ["Computer Vision", "AI", "Python", "OpenCV", "C#", "Unity"],
+        "id": "autonomousboat",
+        "date": "April - May 2025"
+    },
+    {
         "title": "Miscellaneous Projects",
         "description": "A collection of various little projects.",
         "image": "img/projects/miscprojects/miscprojects.jpg",

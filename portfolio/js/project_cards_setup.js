@@ -104,10 +104,26 @@ function generateCards(filteredProjects) {
         const sortedTags = sortTagsByCategory(project.tags);
 
         // card content
+        let figureContent = '';
+        if (project.video_preview) {
+            // If video_preview exists, render both image and video (video hidden by default)
+            figureContent = `
+                <div class="relative overflow-hidden aspect-video group">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" />
+                    <video src="${project.video_preview}" class="absolute inset-0 w-full h-full object-cover hidden card-video" muted loop playsinline></video>
+                </div>
+            `;
+        } else {
+            // Default: just image
+            figureContent = `
+                <figure class="relative overflow-hidden aspect-video">
+                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110 cursor-pointer card-img" />
+                </figure>
+            `;
+        }
+
         card.innerHTML = `
-            <figure class="relative overflow-hidden aspect-video">
-                <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110 cursor-pointer" />
-            </figure>
+            ${figureContent}
             <div class="card-body hover:scale-105 duration-300">
                 <h2 class="card-title text-base-content">${project.title}</h2>
                 <p class="text-sm text-gray-500">${project.date || ''}</p>
@@ -122,6 +138,26 @@ function generateCards(filteredProjects) {
         card.onclick = () => {
             openPopup(project.id);
         };
+
+        // If video_preview, add hover logic to swap image/video
+        if (project.video_preview) {
+            const figure = card.querySelector('.group');
+            const img = card.querySelector('.card-img');
+            const video = card.querySelector('.card-video');
+            if (figure && img && video) {
+                figure.addEventListener('mouseenter', () => {
+                    img.classList.add('hidden');
+                    video.classList.remove('hidden');
+                    video.currentTime = 0;
+                    video.play();
+                });
+                figure.addEventListener('mouseleave', () => {
+                    video.pause();
+                    video.classList.add('hidden');
+                    img.classList.remove('hidden');
+                });
+            }
+        }
 
         container.appendChild(card);
     });

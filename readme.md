@@ -2,6 +2,11 @@ Repo with my websites to upload on github page.
 
 *It's not intented to be an optimized and clean repo.*
 
+# crop video
+```sh
+ffmpeg -i VIDEO.mp4 -ss 00:00:00 -t 00:00:12 -c:v libx264 -c:a aac -strict experimental output.mp4
+```
+
 # Sphink Doc
 
 ```

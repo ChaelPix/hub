@@ -146,6 +146,14 @@ function generateCards(filteredProjects) {
             const video = card.querySelector('.card-video');
             if (figure && img && video) {
                 figure.addEventListener('mouseenter', () => {
+                    document.querySelectorAll('.card-video').forEach(v => {
+                        if (v !== video) {
+                            v.pause();
+                            v.classList.add('hidden');
+                            const siblingImg = v.parentElement.querySelector('.card-img');
+                            if (siblingImg) siblingImg.classList.remove('hidden');
+                        }
+                    });
                     img.classList.add('hidden');
                     video.classList.remove('hidden');
                     video.currentTime = 0;

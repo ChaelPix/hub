@@ -22,7 +22,7 @@ export const projects = [
         "description": "A neural evolution experiment using the NEAT algorithm to train AI agents to master Flappy Bird gameplay using machine learning through natural selection.",
         "image": "img/projects/birdflappy/birdflappy.png",
         "video_preview": "img/projects/birdflappy/birdflappy_preview.mp4",
-        "tags": ["C++", "SFML", "AI"],
+        "tags": ["C++", "SFML", "AI", "Machine Learning"],
         "id": "birdflappy",
         "date": "February 2025"
     },
@@ -58,7 +58,7 @@ export const projects = [
         "description": "A multiplayer game built from scratch using SFML/C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
         "video_preview": "img/projects/valiant/valiant_trailer.mp4",
-        "tags": ["C++", "SFML", "Networking", "Game", "Linux", "PHP", "SQL"],
+        "tags": ["C++", "SFML", "Networking", "Game",  "PHP", "SQL", "School"],
         "id": "valiant",
         "date": "December 2023"
     },
@@ -67,7 +67,7 @@ export const projects = [
         "description": "Two autonomous android apps simulating social media with integration of local LLM.",
         "image": "img/projects/aissenger/ia_apps.jpg",
         "video_preview": "img/projects/iastagram/iastagram.mp4",
-        "tags": ["AI", "Software", "Networking", "Linux", "Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
+        "tags": ["AI", "Networking",  "Android", "C#", "SQL", "PHP", "Python", "Regex", "Unity"],
         "id": "ai_apps",
         "date": "October - November 2024"
     },
@@ -76,7 +76,7 @@ export const projects = [
         "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
         "image": "img/projects/iqpuzzle/60x5.png",
         "video_preview": "img/projects/iqpuzzle/iqpuzzle_trailer.mp4",
-        "tags": ["AI", "Python", "Tkinter"],
+        "tags": ["AI", "Python", "Tkinter", "School"],
         "id": "iq-puzzler",
         "date": "December 2024"
     },
@@ -85,7 +85,7 @@ export const projects = [
         "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "video_preview": "img/worldskills/lyon24/pixx_trailer.mp4",
-        "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "Linux", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
+        "tags": ["Competition", "Highlights", "Robotics", "Computer Vision",  "ROS2", "C++", "Python", "YOLO", "OpenCV"],
         "category": "worldskills",
         "id": "ws_lyon24",
         "date": "December 2023 - September 2024"
@@ -95,7 +95,7 @@ export const projects = [
         "description": "A Unity simulation to test robots using a ROS2 stack, merging robotics and 3D visualization.",
         "image": "img/worldskills/lyon24/simu.png",
         "video_preview": "img/worldskills/unity/unitysimu_trailer.mp4",
-        "tags": ["Highlights", "Robotics", "Computer Vision", "Linux", "ROS2", "C++", "C#", "Unity"],
+        "tags": ["Highlights", "Robotics", "Computer Vision",  "ROS2", "C++", "C#", "Unity"],
         "id": "ws_simunity",
         "date": "December 2023 - September 2024"
     },
@@ -103,7 +103,7 @@ export const projects = [
         "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
         "description": "Designed a small autonomous robot for AustriaSkills 2023 national competition.",
         "image": "img/worldskills/austria/robot_austria.jpg",
-        "tags": ["Competition", "Robotics", "Linux", "ROS2", "C++"],
+        "tags": ["Competition", "Robotics",  "ROS2", "C++"],
         "id": "ws_austria-skills23",
         "date": "October 2023 - November 2023"
     },
@@ -111,7 +111,7 @@ export const projects = [
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
         "description": "Created a ROS1-based robot for the French national Worldskills competition.",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
-        "tags": ["Competition", "Robotics", "Linux", "Computer Vision", "ROS1", "C++", "OpenCV"],
+        "tags": ["Competition", "Robotics",  "Computer Vision", "ROS1", "C++", "OpenCV"],
         "id": "ws_fnat23",
         "date": "January 2023 - September 2023"
     },

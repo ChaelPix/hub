@@ -9,13 +9,13 @@ const TAG_CATEGORY_MAP = {
     // Platforms
     'Android': 'Platform', 'Linux': 'Platform', 'MetaXR': 'Platform',
     // Types
-    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'GooglePlay': 'Type', 'Web': 'Type', 'Computer Vision': 'Type',
+    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'GooglePlay': 'Type', 'Web': 'Type', 'Computer Vision': 'Type', 'Machine Learning': 'Type',
     // Special
     'Highlights': 'Special', 
     // Competition/Events
     'WorldSkills': 'Competition', 'Competition': 'Competition',
     // Others
-    'Sphink': 'Default', 'Hypercasual MVPs': 'Default',
+    'Sphink': 'Default', 'Hypercasual MVPs': 'Default', 'School': 'Default',
 
 };
 
@@ -93,11 +93,11 @@ function generateCards(filteredProjects) {
     sortedProjects.forEach((project, index) => {
         // create card
         const card = document.createElement('div');
-        card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in `;
+        card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in`;
 
         // add halo effect for "Highlights" tag
         if (project.tags.includes("Highlights")) {
-            card.classList.add('ring', 'ring-accent', 'ring-offset-2');
+            card.classList.add('ring', 'ring-accent', 'ring-offset-0');
         }
 
         // sort tags by category for card
@@ -108,7 +108,7 @@ function generateCards(filteredProjects) {
         if (project.video_preview) {
             // If video_preview exists, render both image and video (video hidden by default)
             figureContent = `
-                <div class="relative overflow-hidden aspect-video group">
+                <div class="relative overflow-hidden aspect-video rounded-t-xl group">
                     <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" />
                     <video src="${project.video_preview}" class="absolute inset-0 w-full h-full object-cover hidden card-video" muted loop playsinline></video>
                 </div>
@@ -116,7 +116,7 @@ function generateCards(filteredProjects) {
         } else {
             // Default: just image
             figureContent = `
-                <figure class="relative overflow-hidden aspect-video">
+                <figure class="relative overflow-hidden aspect-video rounded-t-xl">
                     <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110 cursor-pointer card-img" />
                 </figure>
             `;
@@ -226,7 +226,12 @@ function generateTags() {
         if (tagsByCategory[cat]) {
             // Remove 'Highlights' from category-sorted tags to avoid duplicate
             const filtered = tagsByCategory[cat].filter(tag => tag !== "Highlights");
-            tagsArray = tagsArray.concat(filtered.sort((a, b) => a.localeCompare(b)));
+            filtered.sort((a, b) => {
+                const countDiff = (tagOccurrences[b] || 0) - (tagOccurrences[a] || 0);
+                if (countDiff !== 0) return countDiff;
+                return a.localeCompare(b);
+            });
+            tagsArray = tagsArray.concat(filtered);
         }
     });
 

@@ -6,6 +6,7 @@ GE06
    :maxdepth: 1
 
    chap1
+   revisions
 
 **Description**
 

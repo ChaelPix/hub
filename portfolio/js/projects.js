@@ -4,7 +4,7 @@ export const projects = [
         "description": "A project focusing on learning computer vision algorithms using OpenCV. Camera input is simulated in Unity but the CV stack is independent and runs in Python.",
         "image": "img/projects/autonomousboat/autonomous_boat_projectcard.png",
         "video_preview": "img/projects/autonomousboat/abcv_trailer.mp4",
-        "tags": ["Computer Vision", "AI", "Python", "OpenCV", "C#", "Unity"],
+        "tags": ["Computer Vision", "AI", "Python", "OpenCV", "C#", "Unity", "WIP"],
         "id": "autonomousboat",
         "date": "April - May 2025"
     },
@@ -99,6 +99,15 @@ export const projects = [
         "id": "ws_simunity",
         "date": "December 2023 - September 2024"
     },
+    // {
+    //     "title": "YoloX easy training",
+    //     "description": "An easy-to-use tool for training YOLOX models, using data-augmentation.",
+    //     "image": "",
+    //     "video_preview": "",
+    //     "tags": ["Computer Vision", "Python", "YOLO", "Machine Learning"],
+    //     "id": "yolox_training",
+    //     "date": "May 2025"
+    // },
     {
         "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
         "description": "Designed a small autonomous robot for AustriaSkills 2023 national competition.",

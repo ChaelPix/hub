@@ -15,7 +15,7 @@ const TAG_CATEGORY_MAP = {
     // Competition/Events
     'WorldSkills': 'Competition', 'Competition': 'Competition',
     // Others
-    'Sphink': 'Default', 'Hypercasual MVPs': 'Default', 'School': 'Default',
+    'Sphink': 'Default', 'Hypercasual MVPs': 'Default', 'School': 'Default', 'WIP': 'Default'
 
 };
 

@@ -3,13 +3,13 @@ import { projects } from './projects.js';
 // --- Tag Category & Modern Color System ---
 const TAG_CATEGORY_MAP = {
     // Languages
-    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP': 'Language', 'SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language',
+    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language',
     // Frameworks/Libraries
-    'Unity': 'Framework', 'SFML': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
+    'Unity': 'Framework', 'SFML C++': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
     // Platforms
     'Android': 'Platform', 'Linux': 'Platform', 'MetaXR': 'Platform',
     // Types
-    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'GooglePlay': 'Type', 'Web': 'Type', 'Computer Vision': 'Type', 'Machine Learning': 'Type',
+    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'PlayStore': 'Competition', 'Web': 'Type', 'Computer Vision': 'Type', 'Machine Learning': 'Type', 'LLM': 'Type',
     // Special
     'Highlights': 'Special', 
     // Competition/Events
@@ -32,8 +32,8 @@ const CATEGORY_STYLE_MAP = {
 const CATEGORY_ORDER = [
     'Language',
     'Framework',
-    'Platform',
     'Type',
+    'Platform',
     'Competition',
     'Special',
     'Default',

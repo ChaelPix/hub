@@ -106,11 +106,15 @@ function generateCards(filteredProjects) {
         // card content
         let figureContent = '';
         if (project.video_preview) {
-            // If video_preview exists, render both image and video (video hidden by default)
+            // cache-busting
+            const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
+            const videoSrc = project.video_preview.includes('?')
+                ? `${project.video_preview}&${cacheBuster}`
+                : `${project.video_preview}?${cacheBuster}`;
             figureContent = `
                 <div class="relative overflow-hidden aspect-video rounded-t-xl group">
                     <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" />
-                    <video src="${project.video_preview}" class="absolute inset-0 w-full h-full object-cover hidden card-video" muted loop playsinline></video>
+                    <video src="${videoSrc}" class="absolute inset-0 w-full h-full object-cover hidden card-video" muted loop playsinline></video>
                 </div>
             `;
         } else {

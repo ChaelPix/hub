@@ -3566,11 +3566,6 @@ details.collapse summary::-webkit-details-marker {
   border-radius: 0.75rem;
 }
 
-.rounded-t-lg {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-
 .rounded-t-xl {
   border-top-left-radius: 0.75rem;
   border-top-right-radius: 0.75rem;
@@ -4007,12 +4002,12 @@ details.collapse summary::-webkit-details-marker {
   --tw-ring-color: var(--fallback-p,oklch(var(--p)/0.4));
 }
 
-.ring-offset-2 {
-  --tw-ring-offset-width: 2px;
-}
-
 .ring-offset-0 {
   --tw-ring-offset-width: 0px;
+}
+
+.ring-offset-2 {
+  --tw-ring-offset-width: 2px;
 }
 
 .grayscale {

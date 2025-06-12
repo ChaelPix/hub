@@ -11,3 +11,4 @@ Autres
    Neat/index
    ComputerVision101/index
    ComputerVision101/yolox
+   visualServoing/index

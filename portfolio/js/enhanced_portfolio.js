@@ -122,10 +122,6 @@ function createHighlightCard(project) {
         ${mediaContent}
         <div class="space-y-8">
             <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 text-sm font-medium">
-                    <span class="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></span>
-                    <span class="text-gradient">Featured Project</span>
-                </div>
                 <h3 class="font-display text-3xl lg:text-4xl font-black text-white leading-tight">${project.title}</h3>
                 <p class="text-white/80 text-lg leading-relaxed">${project.description}</p>
                 ${project.date ? `<p class="text-sm font-medium text-gradient">${project.date}</p>` : ''}

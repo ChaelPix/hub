@@ -185,7 +185,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
             ? `${project.video_preview}&${cacheBuster}`
             : `${project.video_preview}?${cacheBuster}`;
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-square' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
+            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
                 <img src="${project.image}" alt="${project.title}" 
                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 card-img" />
                 <video src="${videoSrc}"
@@ -195,7 +195,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
         `;
     } else {
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-square' : 'aspect-video'} relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
+            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
                 <img src="${project.image}" alt="${project.title}" 
                      class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
             </div>
@@ -203,10 +203,10 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     }
 
     const cardBodyClasses = isSmall ? 'p-4 space-y-3' : 'p-6 space-y-4';
-    const titleClasses = isSmall ? 'font-display text-sm font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
-    const dateClasses = isSmall ? 'text-[11px] text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
+    const titleClasses = isSmall ? 'font-display text-lg font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
+    const dateClasses = isSmall ? 'text-sm text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
     const descriptionClasses = isSmall
-        ? `text-xs text-white/70${noClamp ? '' : ' line-clamp-2'}`
+        ? `text-sm text-white/70${noClamp ? '' : ' line-clamp-2'}`
         : 'text-white/80 leading-relaxed';
 
     card.innerHTML = `

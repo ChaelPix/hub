@@ -4,25 +4,16 @@ export const projects = [
         "description": "A project focusing on learning computer vision algorithms using OpenCV. Camera input is simulated in Unity but the CV stack is independent and runs in Python.",
         "image": "img/projects/autonomousboat/autonomous_boat_projectcard.png",
         "video_preview": "img/projects/autonomousboat/abcv_trailer.mp4",
-        "tags": ["Computer Vision", "AI", "Python", "OpenCV", "C#", "Unity", "WIP"],
+        "tags": ["Computer Vision", "Python", "OpenCV", "AIproject"],
         "id": "autonomousboat",
         "date": "April - May 2025"
-    },
-    {
-        "title": "Miscellaneous Projects",
-        "description": "A collection of various little projects.",
-        "image": "img/projects/miscprojects/miscprojects.jpg",
-        "video_preview": "img/projects/supernovasprint/supernova.mp4",
-        "tags": ["Web", "C++", "C#", "Unity", "Game", "PHP/SQL"],
-        "id": "miscprojects",
-        "date": ""
     },
     {
         "title": "AI Neat Bird Flappy",
         "description": "A neural evolution experiment using the NEAT algorithm to train AI agents to master Flappy Bird gameplay using machine learning through natural selection.",
         "image": "img/projects/birdflappy/birdflappy.png",
         "video_preview": "img/projects/birdflappy/birdflappy_preview.mp4",
-        "tags": ["C++", "SFML C++", "AI", "Machine Learning"],
+        "tags": ["C++", "Machine Learning", "AIproject"],
         "id": "birdflappy",
         "date": "February 2025"
     },
@@ -31,7 +22,7 @@ export const projects = [
         "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
         "image": "img/projects/aigallery/aigallery.jpg",
         "video_preview": "img/projects/aigallery/aigallery_trailer.mp4",
-        "tags": ["C#", "VR", "Unity", "AI", "LLM", "MetaXR"],
+        "tags": ["C#", "VR", "Unity", "MetaXR", "AIproject"],
         "id": "aigallery",
         "date": "December 2024"
     },
@@ -40,7 +31,7 @@ export const projects = [
         "description": "A live-casual puzzle game for Android with Google Play features like in-app purchases and cloud saves.",
         "image": "img/projects/fallingit/fit_screen.jpg",
         "video_preview": "img/projects/fallingit/fit_gameplay.mp4",
-        "tags": ["C#", "Unity", "Android", "Game", "PlayStore"],
+        "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "fallingit",
         "date": "September 2021 - December 2021"
     },
@@ -49,7 +40,7 @@ export const projects = [
         "description": "A series of MVPs to explore game design and development in Unity, focusing on fast iteration and testing.",
         "image": "img/mvps/mvps.jpg",
         "video_preview": "img/mvps/snake_trailer.mp4",
-        "tags": ["C#", "Unity", "Android", "Game", "PlayStore"],
+        "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "mvps",
         "date": "June 2022 - September 2022"
     },
@@ -58,7 +49,7 @@ export const projects = [
         "description": "A multiplayer game built from scratch using SFML C++/C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
         "video_preview": "img/projects/valiant/valiant_trailer.mp4",
-        "tags": ["C++", "SFML C++", "Game",  "PHP/SQL", "School"],
+        "tags": ["C++", "SFML C++",  "PHP/SQL", "School Project", "gameProject"],
         "id": "valiant",
         "date": "December 2023"
     },
@@ -67,19 +58,19 @@ export const projects = [
         "description": "Two autonomous android apps simulating social media with integration of local LLM.",
         "image": "img/projects/aissenger/ia_apps.jpg",
         "video_preview": "img/projects/iastagram/iastagram.mp4",
-        "tags": ["AI",  "Android", "C#", "LLM", "PHP/SQL", "Python", "Unity"],
+        "tags": ["AI",  "Android", "C#", "LLM", "PHP/SQL", "Python", "Unity", "AIproject"],
         "id": "ai_apps",
         "date": "October - November 2024"
     },
-    {
-        "title": "IQ Puzzler Pro Solver",
-        "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
-        "image": "img/projects/iqpuzzle/60x5.png",
-        "video_preview": "img/projects/iqpuzzle/iqpuzzle_trailer.mp4",
-        "tags": ["AI", "Python", "School"],
-        "id": "iq-puzzler",
-        "date": "December 2024"
-    },
+    // {
+    //     "title": "IQ Puzzler Pro Solver",
+    //     "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
+    //     "image": "img/projects/iqpuzzle/60x5.png",
+    //     "video_preview": "img/projects/iqpuzzle/iqpuzzle_trailer.mp4",
+    //     "tags": ["AI", "Python", "School", "AIproject"],
+    //     "id": "iq-puzzler",
+    //     "date": "December 2024"
+    // },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
         "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",
@@ -112,7 +103,7 @@ export const projects = [
         "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
         "description": "Designed a small autonomous robot for AustriaSkills 2023 national competition.",
         "image": "img/worldskills/austria/robot_austria.jpg",
-        "tags": ["Competition", "Robotics",  "ROS2", "C++"],
+        "tags": ["Competition", "Robotics",  "ROS2", "C++", "AIproject"],
         "id": "ws_austria-skills23",
         "date": "October 2023 - November 2023"
     },
@@ -120,7 +111,7 @@ export const projects = [
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
         "description": "Created a ROS1-based robot for the French national Worldskills competition.",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
-        "tags": ["Competition", "Robotics",  "Computer Vision", "ROS1", "C++", "OpenCV"],
+        "tags": ["Competition", "Robotics",  "Computer Vision", "ROS1", "C++", "OpenCV", "AIproject"],
         "id": "ws_fnat23",
         "date": "January 2023 - September 2023"
     },
@@ -128,7 +119,7 @@ export const projects = [
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
         "description": "Programmed an Arduino robot to complete challenges in the regional Worldskills event.",
         "image": "img/worldskills/reg/robot_sand.jpg",
-        "tags": ["Competition", "Robotics", "Computer Vision", "C++"],
+        "tags": ["Competition", "Robotics", "Computer Vision", "C++", "AIproject"],
         "id": "ws_reg",
         "date": "October 2022"
     }

@@ -63,9 +63,19 @@
             <div class="absolute inset-0 overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
                 <div class="absolute top-1/2 right-0 w-1/2 h-full transform -translate-y-1/2">
-                    <div class="victory-banner-bg h-full">
+                    <div class="victory-banner-bg h-full relative">
+                        <!-- Code Loading Animation -->
+                        <div class="code-loader">
+                            <div class="text-gray-400 mb-2">// Loading image...</div>
+                            <div class="text-green-400">const banner = new Image();</div>
+                            <div class="text-green-400">banner.src = "img/pdp/banner.jpg";</div>
+                            <div class="text-green-400">banner.load();</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
                         <img src="img/pdp/banner.jpg" alt="WorldSkills Victory" 
-                             class="w-full h-full object-cover object-center opacity-30" />
+                             class="banner-image w-full h-full object-cover object-center" />
                         <div class="absolute inset-0 bg-gradient-to-l from-transparent"></div>
                     </div>
                 </div>
@@ -79,20 +89,20 @@
                             <span class="text-gradient">Autonomous Systems Engineer Student</span>
                         </div>
                         <div class="space-y-6">
-                            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] animate-slide-in-up">
+                            <h1 class="typing-title font-display text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
                                 <span class="text-gradient">BEAUJARD</span><br>
                                 <span class="text-white">Traïan</span><span class="typing-cursor">|</span>
                             </h1>
-                            <p class="max-w-2xl text-xl text-white/80 leading-relaxed animate-slide-in-up animation-delay-200 font-light">
+                            <p class="typing-subtitle max-w-2xl text-xl text-white/80 leading-relaxed font-light">
                                 Crafting autonomous robots and AI-powered apps.
                             </p>
                         </div>
-                        <div class="flex flex-wrap items-center gap-4 animate-slide-in-up animation-delay-400">
+                        <div class="typing-button flex flex-wrap items-center gap-4">
                             <a href="#highlights" class="btn-premium text-white smooth-scroll">
                                 Explore Projects
                             </a>
                         </div>
-                        <div class="flex flex-wrap gap-4 animate-slide-in-up animation-delay-600">
+                        <div class="typing-pills flex flex-wrap gap-4">
                             <div class="stat-pill">🤖 Robotics • ROS2</div>
                             <div class="stat-pill">🧠 AI • Computer Vision</div>
                             <div class="stat-pill">🎮 Unity • C# • C++</div>
@@ -104,7 +114,7 @@
                     </div>
                 </div>
             </div>
-                </section>
+        </section>
 
         <!-- Highlights Section -->
 

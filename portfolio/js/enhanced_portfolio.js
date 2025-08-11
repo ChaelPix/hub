@@ -1,5 +1,19 @@
 import { projects } from './projects.js';
 
+// Dev Vibes Entry Animation
+function initDevVibesAnimation() {
+    // Remove code loader after image loads
+    setTimeout(() => {
+        const codeLoader = document.querySelector('.code-loader');
+        if (codeLoader) {
+            codeLoader.style.opacity = '0';
+            setTimeout(() => {
+                codeLoader.remove();
+            }, 300);
+        }
+    }, 800);
+}
+
 // --- Tag Category & Modern Color System ---
 const TAG_CATEGORY_MAP = {
     // Languages
@@ -453,6 +467,9 @@ document.addEventListener('DOMContentLoaded', () => {
             window.closePopup();
         }
     });
+
+    // Initialize dev vibes animation
+    initDevVibesAnimation();
 });
 
 // Also initialize immediately if DOM is already loaded

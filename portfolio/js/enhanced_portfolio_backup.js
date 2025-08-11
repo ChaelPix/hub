@@ -70,23 +70,19 @@ function sortTagsByCategory(tags) {
     });
 }
 
-// Backend-only tags that shouldn't be displayed as badges
-function isBackendTag(tag) {
-    // support multiple spellings just in case
-    const backendTags = new Set(['Highlights', 'highlights', 'hihlights', 'AIproject', 'Aiproject', 'gameProject']);
-    return backendTags.has(tag);
-}
-
 // Categorize projects
 function categorizeProjects() {
-    const isHighlight = (p) => ['Highlights', 'highlights', 'hihlights'].some(t => p.tags.includes(t));
-    const isGame = (p) => p.tags.includes('gameProject');
-    const isAI = (p) => p.tags.includes('AIproject') || p.tags.includes('Aiproject');
-
-    const highlights = projects.filter(isHighlight);
-    const games = projects.filter(p => isGame(p) && !isHighlight(p));
-    // projects container = AI projects section; strictly AI tags only
-    const regularProjects = projects.filter(p => isAI(p) && !isHighlight(p) && !isGame(p));
+    const highlights = projects.filter(p => p.tags.includes('Highlights'));
+    const games = projects.filter(p => 
+        (p.tags.includes('Game') || p.tags.includes('Unity') || p.id === 'mvps') && 
+        !p.tags.includes('Highlights')
+    );
+    const regularProjects = projects.filter(p => 
+        !p.tags.includes('Highlights') && 
+        !p.tags.includes('Game') && 
+        !p.tags.includes('Unity') &&
+        p.id !== 'mvps'
+    );
 
     return { highlights, games, regularProjects };
 }
@@ -96,8 +92,7 @@ function createHighlightCard(project) {
     const card = document.createElement('div');
     card.className = 'highlight-card grid grid-cols-1 lg:grid-cols-2 gap-12 items-center';
 
-    const tagList = project.tags.filter(t => !isBackendTag(t));
-    const sortedTags = sortTagsByCategory(tagList);
+    const sortedTags = sortTagsByCategory(project.tags);
     
     let mediaContent = '';
     if (project.video_preview) {
@@ -132,10 +127,11 @@ function createHighlightCard(project) {
                 ${project.date ? `<p class="text-sm font-medium text-gradient">${project.date}</p>` : ''}
             </div>
             <div class="flex flex-wrap gap-2">
-                ${sortedTags.map(tag => `<div class="${getTagStyle(tag)} text-xs px-3 py-1.5 rounded-full font-medium">${tag}</div>`).join('')}
+                ${sortedTags.slice(0, 8).map(tag => `<div class="${getTagStyle(tag)} text-xs px-3 py-1.5 rounded-full font-medium">${tag}</div>`).join('')}
+                ${sortedTags.length > 8 ? `<div class="text-xs text-white/50 px-3 py-1.5">+${sortedTags.length - 8} more</div>` : ''}
             </div>
             <button class="btn-premium text-white inline-flex items-center" onclick="openPopup('${project.id}')">
-                Learn More
+                Explore Project
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                 </svg>
@@ -167,7 +163,7 @@ function createHighlightCard(project) {
 }
 
 // Create regular project card
-function createProjectCard(project, isSmall = false, noClamp = false) {
+function createProjectCard(project, isSmall = false) {
     const card = document.createElement('div');
     const cardClasses = isSmall 
         ? 'game-card cursor-pointer transform transition-all duration-300' 
@@ -175,8 +171,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     
     card.className = cardClasses;
 
-    const tagList = project.tags.filter(t => !isBackendTag(t));
-    const sortedTags = sortTagsByCategory(tagList);
+    const sortedTags = sortTagsByCategory(project.tags);
 
     let figureContent = '';
     if (project.video_preview) {
@@ -204,23 +199,21 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
 
     const cardBodyClasses = isSmall ? 'p-4 space-y-3' : 'p-6 space-y-4';
     const titleClasses = isSmall ? 'font-display text-sm font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
-    const dateClasses = isSmall ? 'text-[11px] text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
-    const descriptionClasses = isSmall
-        ? `text-xs text-white/70${noClamp ? '' : ' line-clamp-2'}`
-        : 'text-white/80 leading-relaxed';
+    const descriptionClasses = isSmall ? 'text-xs text-white/70 line-clamp-2' : 'text-white/80 leading-relaxed';
 
     card.innerHTML = `
         ${figureContent}
         <div class="${cardBodyClasses}">
             <div class="space-y-2">
                 <h2 class="${titleClasses}">${project.title}</h2>
-                ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
+                ${project.date && !isSmall ? `<p class="text-sm text-white/60 font-medium">${project.date}</p>` : ''}
                 <p class="${descriptionClasses}">${project.description}</p>
             </div>
             <div class="flex flex-wrap gap-1.5">
-                ${sortedTags.map(tag => 
+                ${sortedTags.slice(0, isSmall ? 2 : 4).map(tag => 
                     `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
                 ).join('')}
+                ${sortedTags.length > (isSmall ? 2 : 4) ? `<div class="text-xs text-white/40 px-2 py-1">+${sortedTags.length - (isSmall ? 2 : 4)}</div>` : ''}
             </div>
         </div>
     `;
@@ -287,12 +280,12 @@ function generateProjectSections() {
         });
     }
 
-    // Generate AI projects in the projects container using the same layout as games (small cards, no truncation)
+    // Generate regular projects
     const projectsContainer = document.getElementById('projects-container');
     if (projectsContainer) {
         projectsContainer.innerHTML = '';
         regularProjects.forEach((project, index) => {
-            const card = createProjectCard(project, true, true);
+            const card = createProjectCard(project);
             card.style.animationDelay = `${index * 0.1}s`;
             card.classList.add('animate-fade-in');
             projectsContainer.appendChild(card);
@@ -405,7 +398,7 @@ function openPopup(projectId) {
 
     const popup = document.getElementById('popup');
     popup.classList.remove('hidden');
-    document.documentElement.classList.add('no-scroll');
+    document.body.classList.add('no-scroll');
     history.pushState(null, null, `#project-${projectId}`);
 
     const projectUrl = document.getElementById('project-url');
@@ -444,7 +437,7 @@ window.closePopup = function () {
     const popup = document.getElementById('popup');
     popup.classList.add('hidden');
     document.getElementById('popup-content').innerHTML = '';
-    document.documentElement.classList.remove('no-scroll');
+    document.body.classList.remove('no-scroll');
     history.pushState(null, null, ' ');
 };
 
@@ -459,10 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const popup = document.getElementById('popup');
     popup.addEventListener('click', (event) => {
-        const container = popup.querySelector('[data-popup-container]');
-        if (!container) return;
-        const clickedInside = container.contains(event.target);
-        if (!clickedInside) {
+        if (event.target === popup) {
             window.closePopup();
         }
     });
@@ -486,5 +476,3 @@ if (document.readyState === 'loading') {
     generateProjectSections();
     initScrollTracking();
 }
-
-// Outside click close is handled by the overlay click listener on #popup

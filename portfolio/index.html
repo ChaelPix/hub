@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Traïan B. — Portfolio</title>
+    <title>Traïan B. Portfolio</title>
         <meta name="description" content="Traïan Beaujard — Robotics, AI, and creative engineering projects. WorldSkills finalist. Explore concise, visual stories of selected works." />
         <meta property="og:title" content="Traïan B. — Portfolio" />
         <meta property="og:description" content="Robotics, AI, Unity, CV. Concise visual project stories." />
@@ -13,7 +13,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
         <link href="output.css" rel="stylesheet" />
-        <script type="module" src="js/project_cards_setup.js" defer></script>
+        <script type="module" src="js/enhanced_portfolio.js" defer></script>
         <script src="js/theme.js" defer></script>
         <script src="js/scroll_to_top.js" defer></script>
     </head>
@@ -27,12 +27,22 @@
         </div>
 
         <!-- Top Bar -->
+                <!-- Top Bar -->
         <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-base-100/60 border-b border-base-200">
             <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
                 <a href="#home" class="flex items-center gap-3 group">
                     <img src="img/pdp/pdp.jpg" alt="Traïan" class="w-10 h-10 rounded-full ring-2 ring-primary/40" />
-                    <span class="font-display text-lg font-semibold tracking-tight group-hover:text-primary transition-colors">My Portfolio</span>
+                    <span class="font-display text-lg font-semibold tracking-tight group-hover:text-primary transition-colors">Traïan B.</span>
                 </a>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="#home" class="nav-link active" data-target="home">Home</a>
+                    <a href="#highlights" class="nav-link" data-target="highlights">Featured</a>
+                    <a href="#projects" class="nav-link" data-target="projects">Projects</a>
+                    <a href="#games" class="nav-link" data-target="games">Games</a>
+                </nav>
+                
                 <div class="flex items-center gap-3">
                     <a href="https://github.com/chaelpix" class="icon-btn" aria-label="GitHub">
                         <img src="img/icons/icon_github_w.png" alt="GitHub" class="w-6 h-6 invert dark:invert-0" />
@@ -40,47 +50,119 @@
                     <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" class="icon-btn" aria-label="LinkedIn">
                         <img src="img/icons/icon_linkedin.png" alt="LinkedIn" class="w-6 h-6" />
                     </a>
-          <a href="mailto:traian.beaujard@gmail.com" class="icon-btn" aria-label="Email">
-            <img src="img/icons/icon_gmail.png" alt="Email" class="w-6 h-6" />
-          </a>
-        </div>
-      </div>
-    </header>        <!-- Hero -->
-        <section id="home" class="relative mx-auto max-w-7xl px-4 pt-10 sm:pt-14 md:pt-20">
-            <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8">
-                <div class="lg:col-span-7">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-base-300 bg-base-100/60 px-3 py-1 text-xs font-medium backdrop-blur">
-                        <span class="inline-flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-                        WorldSkills Robotics WorldChampionship Finalist & Best of Nation • Student in Autonomous Systems
-                    </div>
-                    <h1 class="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
-                        BEAUJARD Traïan
-                    </h1>
-                    <p class="mt-4 max-w-2xl text-base sm:text-lg text-base-content/70">
-                        From autonomous robots to AI-powered apps and playful games.
-                    </p>
-                    <div class="mt-6 flex flex-wrap items-center gap-3">
-                        <a href="#work" class="btn btn-primary shadow-lg shadow-primary/20">Explore projects</a>
-                    </div>
-                    <div class="mt-8 flex flex-wrap gap-4 text-sm">
-                        <div class="stat-pill">Robotics • ROS</div>
-                        <div class="stat-pill">AI • CV • LLM</div>
-                        <div class="stat-pill">Unity • C# • C++</div>
-                    </div>
+                    <a href="mailto:traian.beaujard@gmail.com" class="icon-btn" aria-label="Email">
+                        <img src="img/icons/icon_gmail.png" alt="Email" class="w-6 h-6" />
+                    </a>
                 </div>
-                <div class="lg:col-span-5">
-                    <div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl ring-1 ring-base-300/70 hover:ring-primary/40 transition">
-                        <img src="img/pdp/banner.jpg" alt="Hero banner" class="w-full h-full object-cover scale-105" />
-                        <div class="absolute inset-0 bg-gradient-to-tr from-base-100/20 to-transparent"></div>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section id="home" class="relative min-h-screen flex items-center">
+            <!-- Victory Banner Background -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+                <div class="absolute top-1/2 right-0 w-1/2 h-full transform -translate-y-1/2">
+                    <div class="victory-banner-bg h-full">
+                        <img src="img/pdp/banner.jpg" alt="WorldSkills Victory" 
+                             class="w-full h-full object-cover object-center opacity-30" />
+                        <div class="absolute inset-0 bg-gradient-to-l from-transparent"></div>
                     </div>
                 </div>
             </div>
+            
+            <div class="relative z-10 mx-auto max-w-7xl px-4 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 min-h-[80vh]">
+                    <div class="lg:col-span-7 space-y-8">
+                        <div class="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium animate-fade-in">
+                            <span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse shadow-lg shadow-green-400/50"></span>
+                            <span class="text-gradient">Autonomous Systems Engineer Student</span>
+                        </div>
+                        <div class="space-y-6">
+                            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9] animate-slide-in-up">
+                                <span class="text-gradient">BEAUJARD</span><br>
+                                <span class="text-white">Traïan</span><span class="typing-cursor">|</span>
+                            </h1>
+                            <p class="max-w-2xl text-xl text-white/80 leading-relaxed animate-slide-in-up animation-delay-200 font-light">
+                                Crafting autonomous robots and AI-powered apps.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-4 animate-slide-in-up animation-delay-400">
+                            <a href="#highlights" class="btn-premium text-white smooth-scroll">
+                                Explore Projects
+                            </a>
+                        </div>
+                        <div class="flex flex-wrap gap-4 animate-slide-in-up animation-delay-600">
+                            <div class="stat-pill">🤖 Robotics • ROS2</div>
+                            <div class="stat-pill">🧠 AI • Computer Vision</div>
+                            <div class="stat-pill">🎮 Unity • C# • C++</div>
+                            <div class="stat-pill">🏆 Autonomous Mobile Robotics WorldSkills Champion</div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 flex justify-end">
+                        
+                    </div>
+                </div>
+            </div>
+                </section>
+
+        <!-- Highlights Section -->
+
+        <!-- Highlights Section -->
+        <section id="highlights" class="relative mx-auto max-w-7xl px-4 py-16">
+            <div class="text-center mb-12">
+                <hr class="border-white/20 my-4">
+                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
+                    <span class="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></span>
+                    <span class="text-gradient">Featured Work</span>
+                </div> -->
+                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
+                    <span class="text-gradient">Featured</span> <span class="text-white">Projects</span>
+                </h2>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+                    Showcasing real-world applications of robotics and AI during my International Competition Journey of Worldskills.
+                </p>
+            </div>
+            <div id="highlights-container" class="space-y-12"></div>
         </section>
 
-    <!-- Projects Grid -->
-    <main id="work" class="mx-auto max-w-7xl px-4">
-      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 py-6"></div>
-    </main>        <!-- Popup / Modal -->
+        <!-- Projects Section -->
+        <section id="projects" class="relative mx-auto max-w-7xl px-4 py-16">
+            <div class="text-center mb-12">
+                <hr class="border-white/20 my-4">
+                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
+                    <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></span>
+                    <span class="text-gradient">Technical Portfolio</span>
+                </div> -->
+                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
+                    <span class="text-white">Past</span> <span class="text-gradient">Projects</span>
+                </h2>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+                    Advanced software development, Robotics, AI experimentation, ...
+                </p>
+            </div>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="relative mx-auto max-w-7xl px-4 py-16">
+            <div class="text-center mb-12">
+                <hr class="border-white/20 my-4">
+                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
+                    <span class="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
+                    <span class="text-gradient">Interactive Experiences</span>
+                </div> -->
+                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
+                    <span class="text-gradient">Mobile</span> <span class="text-white">Games</span>
+                </h2>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+                    Unity-powered games, mobile applications, and immersive digital experiences
+                </p>
+            </div>
+            <div id="games-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+        </section>
+
+        <!-- Popup / Modal -->
         <div id="popup" class="fixed inset-0 hidden z-40">
             <div class="absolute inset-0 bg-base-100/40 backdrop-blur-md"></div>
             <div class="relative z-10 mx-auto my-8 w-[95vw] max-w-5xl">
@@ -93,12 +175,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- Scroll to top -->
-        <button id="scrollToTopBtn" class="fixed bottom-6 right-6 z-30 hidden bg-primary text-white rounded-full shadow-2xl p-4 transition-all duration-500 ease-in-out transform opacity-0 scale-90 hover:bg-primary-focus focus:outline-none focus:ring-2 focus:ring-primary-focus hover:scale-110 hover:shadow-[0_8px_32px_0_rgba(31,41,55,0.25)]" aria-label="Scroll to top">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-            </svg>
-        </button>
     </body>
 </html>

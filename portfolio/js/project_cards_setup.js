@@ -91,13 +91,15 @@ function generateCards(filteredProjects) {
         });
 
     sortedProjects.forEach((project, index) => {
-        // create card
-        const card = document.createElement('div');
-        card.className = `card bg-base-100 shadow-xl hover:scale-105 hover:shadow-2xl transition-shadow duration-500 block animate-fade-in`;
+    // create card
+    const card = document.createElement('div');
+    card.className = `card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 block animate-fade-in tilt`;
 
         // add halo effect for "Highlights" tag
         if (project.tags.includes("Highlights")) {
-            card.classList.add('ring', 'ring-accent', 'ring-offset-0');
+            card.classList.add('ring', 'ring-2', 'ring-accent/60', 'ring-offset-2', 'ring-offset-base-100');
+        } else {
+            card.classList.add('hover:ring', 'hover:ring-base-300');
         }
 
         // sort tags by category for card
@@ -105,17 +107,19 @@ function generateCards(filteredProjects) {
 
         // card content
         let figureContent = '';
-        if (project.video_preview) {
+    if (project.video_preview) {
             // cache-busting
             const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
             const videoSrc = project.video_preview.includes('?')
                 ? `${project.video_preview}&${cacheBuster}`
                 : `${project.video_preview}?${cacheBuster}`;
             figureContent = `
-                <div class="relative overflow-hidden aspect-video rounded-t-xl group">
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" />
-                    <video src="${videoSrc}" class="absolute inset-0 w-full h-full object-cover hidden card-video" muted loop playsinline></video>
-                </div>
+        <div class="relative overflow-hidden aspect-video rounded-t-xl group">
+            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" onerror="this.style.display='none'" />
+            <video src="${videoSrc}"
+              class="absolute inset-0 w-full h-full object-cover hidden card-video"
+              muted loop playsinline preload="metadata"></video>
+        </div>
             `;
         } else {
             // Default: just image
@@ -375,6 +379,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const popup = document.getElementById('popup');
     popup.addEventListener('click', (event) => {
         if (event.target === popup) {
+            window.closePopup();
+        }
+    });
+
+    // close on Escape
+    document.addEventListener('keydown', (e) => {
+        const isVisible = !popup.classList.contains('hidden');
+        if (isVisible && e.key === 'Escape') {
             window.closePopup();
         }
     });

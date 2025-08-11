@@ -132,3 +132,84 @@ html.dark-theme .theme-icon-moon {
   opacity: 1;
   transform: scale(1) rotate(0deg);
 }
+
+/* --- Modern additions for the new layout --- */
+:root {
+  --grid-color: rgba(2, 17, 27, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --grid-color: rgba(255, 255, 255, 0.06); }
+}
+
+.font-display {
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Soft grid background */
+.bg-grid {
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
+  background-position: -1px -1px, -1px -1px;
+}
+
+/* Organic color blobs */
+.animate-blob {
+  animation: blob 18s infinite;
+}
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+@keyframes blob {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.98); }
+}
+
+/* Small reusable components */
+.icon-btn {
+  width: 2.5rem; /* w-10 */
+  height: 2.5rem; /* h-10 */
+  border-radius: 0.75rem; /* rounded-xl */
+  background: #f8fafc; /* base light */
+  border: 1px solid rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.icon-btn:hover { transform: scale(1.05); background: #eef2f7; }
+html.dark-theme .icon-btn { background: #111827; border-color: rgba(255,255,255,0.12); box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+html.dark-theme .icon-btn:hover { background: #1f2937; }
+
+.stat-pill {
+  padding: 0.25rem 0.75rem; /* py-1 px-3 */
+  border-radius: 9999px; /* rounded-full */
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.8);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 500; /* font-medium */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+html.dark-theme .stat-pill { background: rgba(15,23,42,0.8); border-color: rgba(255,255,255,0.12); }
+
+/* Card tilt hover (no JS) */
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 300ms ease;
+}
+.tilt:hover { transform: translateY(-4px) rotateX(2deg) rotateY(-2deg); }
+
+/* Glassy modal support */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));
+  backdrop-filter: blur(10px);
+}
+html.dark-theme .glass {
+  background: linear-gradient(180deg, rgba(15,23,42,0.7), rgba(15,23,42,0.55));
+}

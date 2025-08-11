@@ -3,6 +3,10 @@ module.exports = {
   content: ["./*.html", "./js/**/*.js", "./projects/**/*.html"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"],
+        display: ["Space Grotesk", "Inter", "ui-sans-serif", "system-ui"],
+      },
       animation: {
       'fade-in': 'fadeIn 0.5s ease-in-out',
       'fade-out': 'fadeOut 0.5s ease-in-out',

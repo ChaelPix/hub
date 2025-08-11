@@ -16,6 +16,7 @@ const TAG_CATEGORY_MAP = {
     'WorldSkills': 'Competition', 'Competition': 'Competition',
     // Others
     'Sphink': 'Default', 'Hypercasual MVPs': 'Default', 'School': 'Default', 'WIP': 'Default'
+
 };
 
 const CATEGORY_STYLE_MAP = {
@@ -38,6 +39,16 @@ const CATEGORY_ORDER = [
     'Default',
 ];
 
+const CATEGORY_SOLID_BG_MAP = {
+    'Language':    'bg-sky-300',
+    'Framework':   'bg-emerald-300',
+    'Platform':    'bg-fuchsia-300',
+    'Type':        'bg-orange-300',
+    'Competition': 'bg-rose-300',
+    'Special':     'bg-yellow-300',
+    'Default':     'bg-zinc-300',
+};
+
 function getTagCategory(tag) {
     return TAG_CATEGORY_MAP[tag] || 'Default';
 }
@@ -45,6 +56,11 @@ function getTagCategory(tag) {
 function getTagStyle(tag) {
     const category = getTagCategory(tag);
     return CATEGORY_STYLE_MAP[category] || CATEGORY_STYLE_MAP['Default'];
+}
+
+function getTagSolidBg(tag) {
+    const category = getTagCategory(tag);
+    return CATEGORY_SOLID_BG_MAP[category] || CATEGORY_SOLID_BG_MAP['Default'];
 }
 
 function sortTagsByCategory(tags) {
@@ -56,12 +72,12 @@ function sortTagsByCategory(tags) {
     });
 }
 
-function generateCards() {
+function generateCards(filteredProjects) {
     const container = document.getElementById('projects-container');
     container.innerHTML = ''; // clear container
 
     // prioritize "Highlights" projects and sort by date
-    const sortedProjects = projects
+    const sortedProjects = (filteredProjects || projects)
         .sort((a, b) => {
             const dateA = extractDateValue(a.date);
             const dateB = extractDateValue(b.date);
@@ -75,9 +91,9 @@ function generateCards() {
         });
 
     sortedProjects.forEach((project, index) => {
-        // create card
-        const card = document.createElement('div');
-        card.className = `card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 block animate-fade-in tilt`;
+    // create card
+    const card = document.createElement('div');
+    card.className = `card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-500 block animate-fade-in tilt`;
 
         // add halo effect for "Highlights" tag
         if (project.tags.includes("Highlights")) {
@@ -91,19 +107,19 @@ function generateCards() {
 
         // card content
         let figureContent = '';
-        if (project.video_preview) {
+    if (project.video_preview) {
             // cache-busting
             const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
             const videoSrc = project.video_preview.includes('?')
                 ? `${project.video_preview}&${cacheBuster}`
                 : `${project.video_preview}?${cacheBuster}`;
             figureContent = `
-                <div class="relative overflow-hidden aspect-video rounded-t-xl group">
-                    <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" onerror="this.style.display='none'" />
-                    <video src="${videoSrc}"
-                      class="absolute inset-0 w-full h-full object-cover hidden card-video"
-                      muted loop playsinline preload="metadata"></video>
-                </div>
+        <div class="relative overflow-hidden aspect-video rounded-t-xl group">
+            <img src="${project.image}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 cursor-pointer card-img" onerror="this.style.display='none'" />
+            <video src="${videoSrc}"
+              class="absolute inset-0 w-full h-full object-cover hidden card-video"
+              muted loop playsinline preload="metadata"></video>
+        </div>
             `;
         } else {
             // Default: just image
@@ -187,6 +203,110 @@ function parseDate(date) {
     return parseInt(year) * 12 + (months[month] || 0); // convert to a sortable numeric value
 }
 
+let selectedTag = null;
+
+function generateTags() {
+    const tagsContainer = document.getElementById('tags-container');
+    tagsContainer.innerHTML = '';
+    
+    // extract and count tags
+    const tagOccurrences = {};
+    projects.forEach(project => {
+        project.tags.forEach(tag => {
+            tagOccurrences[tag] = (tagOccurrences[tag] || 0) + 1;
+        });
+    });
+
+    // group tags by category for sorting
+    const tagsByCategory = {};
+    Object.keys(tagOccurrences).forEach(tag => {
+        const cat = getTagCategory(tag);
+        if (!tagsByCategory[cat]) tagsByCategory[cat] = [];
+        tagsByCategory[cat].push(tag);
+    });
+
+    // build sorted tag list: Reset, Highlights, then by category order
+    let tagsArray = [
+        "Reset",
+        "Highlights",
+    ];
+    CATEGORY_ORDER.forEach(cat => {
+        if (tagsByCategory[cat]) {
+            // Remove 'Highlights' from category-sorted tags to avoid duplicate
+            const filtered = tagsByCategory[cat].filter(tag => tag !== "Highlights");
+            filtered.sort((a, b) => {
+                const countDiff = (tagOccurrences[b] || 0) - (tagOccurrences[a] || 0);
+                if (countDiff !== 0) return countDiff;
+                return a.localeCompare(b);
+            });
+            tagsArray = tagsArray.concat(filtered);
+        }
+    });
+
+    tagsArray.forEach(tag => {
+        const tagButton = document.createElement('div');
+        tagButton.dataset.tag = tag; // add data-tag attribute for direct selection
+        if (tag === "Reset") {
+            tagButton.className = 'cursor-pointer badge badge-secondary badge-outline transform hover:scale-110 duration-300';
+            tagButton.textContent = tag;
+            tagButton.onclick = () => {
+                selectedTag = null;
+                generateCards();
+                generateTags(); 
+                location.hash = ''; // clear hash on reset
+            };
+        } else if (tag === "Highlights") {
+            let baseClass = `cursor-pointer ${getTagStyle(tag)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tag) {
+                baseClass = baseClass.replace(/bg-[^\s]+-50/, 'bg-yellow-300').replace(/dark:bg-[^\s]+-900/, 'dark:bg-yellow-900');
+                baseClass = baseClass.replace(/hover:scale-110/, ''); // Remove hover scale for selected
+                baseClass += ' scale-110 font-bold ring-2 ring-offset-2 ring-primary/40';
+            }
+            tagButton.className = baseClass;
+            tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
+            tagButton.onclick = () => {
+                selectedTag = tag;
+                generateCards(projects.filter(project => project.tags.includes(tag)));
+                generateTags(); // re-render to update highlight
+                location.hash = `#tag-${tag}`; // update URL hash for tag selection
+            };
+        } else {
+            let baseClass = `cursor-pointer ${getTagStyle(tag)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tag) {
+                baseClass = baseClass.replace(/bg-[^\s]+\/80/, getTagSolidBg(tag));
+                baseClass = baseClass.replace(/hover:scale-110/, ''); // Remove hover scale for selected
+                baseClass += ' scale-110 font-bold ring-2 ring-offset-2 ring-primary/40';
+            }
+            tagButton.className = baseClass;
+            tagButton.textContent = `${tag} (${tagOccurrences[tag] || 0})`;
+            tagButton.onclick = () => {
+                selectedTag = tag;
+                generateCards(projects.filter(project => project.tags.includes(tag)));
+                generateTags(); // re-render to update highlight
+                location.hash = `#tag-${tag}`; // update URL hash for tag selection
+            };
+        }
+        tagsContainer.appendChild(tagButton);
+    });
+}
+
+// resetTagStyles is no longer needed for tag highlight, but keep for compatibility if used elsewhere
+function resetTagStyles() {
+    const allTags = document.querySelectorAll('#tags-container .badge:not(.badge-secondary)');
+    allTags.forEach(tag => {
+        if (tag.textContent.includes("Highlights")) {
+            tag.className = 'cursor-pointer badge bg-yellow-50 text-yellow-900 border-yellow-300 transform hover:scale-110 duration-300';
+        } else {
+            const tagName = tag.dataset.tag;
+            let baseClass = `cursor-pointer ${getTagStyle(tagName)} transform hover:scale-110 duration-300`;
+            if (selectedTag === tagName) {
+                baseClass = baseClass.replace(/bg-[^\s]+\/80/, getTagSolidBg(tagName));
+            }
+            tag.className = baseClass;
+        }
+    });
+}
+
 // update openPopup to use "project-" prefix in URL
 function openPopup(projectId) {
     // find the project by ID
@@ -224,11 +344,15 @@ function openPopup(projectId) {
         });
 }
 
-// modify checkForProjectIdInUrl to support only project URLs
+// modify checkForProjectIdInUrl to support hash-based tag selection
 function checkForProjectIdInUrl() {
     const hash = location.hash;
     if (hash) {
-        if (hash.startsWith('#project-')) {
+        if (hash.startsWith('#tag-')) {
+            const tag = hash.substring(5); // remove '#tag-'
+            const tagButton = document.querySelector(`#tags-container .badge[data-tag="${tag}"]`);
+            if (tagButton) tagButton.click();
+        } else if (hash.startsWith('#project-')) {
             const projectId = hash.substring(9); // remove '#project-'
             openPopup(projectId);
         } else {
@@ -237,17 +361,18 @@ function checkForProjectIdInUrl() {
         }
     }
 }
-
 // close popup
 window.closePopup = function () {
     const popup = document.getElementById('popup');
     popup.classList.add('hidden');
     document.getElementById('popup-content').innerHTML = '';
     document.body.classList.remove('no-scroll');
+
     history.pushState(null, null, ' ');
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    generateTags();
     generateCards();
     checkForProjectIdInUrl();
     
@@ -267,4 +392,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+generateTags();
 generateCards();

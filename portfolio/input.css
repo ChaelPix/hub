@@ -110,29 +110,6 @@
   animation: slide-in-up 0.5s ease-out forwards;
 }
 
-.theme-icon-sun,
-.theme-icon-moon {
-  pointer-events: none;
-  transition: opacity 0.5s, transform 0.5s;
-  will-change: opacity, transform;
-}
-.theme-icon-sun {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-.theme-icon-moon {
-  opacity: 0;
-  transform: scale(0.7) rotate(-45deg);
-}
-html.dark-theme .theme-icon-sun {
-  opacity: 0;
-  transform: scale(0.7) rotate(45deg);
-}
-html.dark-theme .theme-icon-moon {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
-}
-
 /* --- Modern additions for the new layout --- */
 :root {
   --grid-color: rgba(2, 17, 27, 0.06);

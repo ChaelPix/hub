@@ -724,6 +724,10 @@ html {
   pointer-events: none;
 }
 
+.aspect-portrait {
+  aspect-ratio: 9 / 16;
+}
+
 /* Game Cards - Compact & Playful */
 .game-card {
   background: var(--surface-glass);

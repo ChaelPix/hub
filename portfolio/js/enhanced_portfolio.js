@@ -169,8 +169,9 @@ function createHighlightCard(project) {
 // Create regular project card
 function createProjectCard(project, isSmall = false, noClamp = false) {
     const card = document.createElement('div');
+    const isPortrait = !!project.isPortrait;
     const cardClasses = isSmall 
-        ? 'game-card cursor-pointer transform transition-all duration-300' 
+        ? `game-card cursor-pointer transform transition-all duration-300`
         : 'premium-card cursor-pointer transform transition-all duration-400';
     
     card.className = cardClasses;
@@ -179,25 +180,28 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     const sortedTags = sortTagsByCategory(tagList);
 
     let figureContent = '';
+    const mediaWrapperClass = isPortrait && isSmall
+        ? 'card-media h-full min-h-[220px] group relative overflow-hidden rounded-l-xl'
+        : `card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}`;
     if (project.video_preview) {
         const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
         const videoSrc = project.video_preview.includes('?')
             ? `${project.video_preview}&${cacheBuster}`
             : `${project.video_preview}?${cacheBuster}`;
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
-                <img src="${project.image}" alt="${project.title}" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 card-img" />
+                        <div class="${mediaWrapperClass}">
+                                <img src="${project.image}" alt="${project.title}" 
+                                         class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'group-hover:scale-110'} card-img" />
                 <video src="${videoSrc}"
-                       class="absolute inset-0 w-full h-full object-cover hidden card-video"
+                                             class="absolute inset-0 w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} hidden card-video"
                        muted loop playsinline preload="metadata"></video>
             </div>
         `;
     } else {
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
+            <div class="${mediaWrapperClass}">
                 <img src="${project.image}" alt="${project.title}" 
-                     class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+                     class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'hover:scale-110'}" />
             </div>
         `;
     }
@@ -206,24 +210,46 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     const titleClasses = isSmall ? 'font-display text-lg font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
     const dateClasses = isSmall ? 'text-sm text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
     const descriptionClasses = isSmall
-        ? `text-sm text-white/70${noClamp ? '' : ' line-clamp-2'}`
+        ? `text-sm text-white/70`
         : 'text-white/80 leading-relaxed';
 
-    card.innerHTML = `
-        ${figureContent}
-        <div class="${cardBodyClasses}">
-            <div class="space-y-2">
-                <h2 class="${titleClasses}">${project.title}</h2>
-                ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
-                <p class="${descriptionClasses}">${project.description}</p>
+    if (isPortrait && isSmall) {
+        // Side-by-side layout for portrait small cards
+        card.innerHTML = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 items-stretch h-full">
+                <div class="col-span-1 h-full">${figureContent}</div>
+                <div class="col-span-1 h-full flex flex-col justify-between ${cardBodyClasses}">
+                    <div class="space-y-2">
+                        <h2 class="${titleClasses}">${project.title}</h2>
+                        ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
+                        <p class="${descriptionClasses}">${project.description}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                        ${sortedTags.map(tag => 
+                            `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
+                        ).join('')}
+                    </div>
+                </div>
             </div>
-            <div class="flex flex-wrap gap-1.5">
-                ${sortedTags.map(tag => 
-                    `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
-                ).join('')}
+        `;
+    } else {
+        // Default stacked layout
+        card.innerHTML = `
+            ${figureContent}
+            <div class="${cardBodyClasses}">
+                <div class="space-y-2">
+                    <h2 class="${titleClasses}">${project.title}</h2>
+                    ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
+                    <p class="${descriptionClasses}">${project.description}</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    ${sortedTags.map(tag => 
+                        `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
+                    ).join('')}
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
 
     // Add click event
     card.onclick = () => openPopup(project.id);

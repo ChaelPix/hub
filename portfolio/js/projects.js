@@ -33,7 +33,8 @@ export const projects = [
         "video_preview": "img/projects/fallingit/fit_gameplay.mp4",
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "fallingit",
-        "date": "September 2021 - December 2021"
+        "date": "September 2021 - December 2021",
+        "isPortrait": true
     },
     {
         "title": "Hypercasual Minimum Viable Prototypes",
@@ -42,7 +43,8 @@ export const projects = [
         "video_preview": "img/mvps/snake_trailer.mp4",
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "mvps",
-        "date": "June 2022 - September 2022"
+        "date": "June 2022 - September 2022",
+        "isPortrait": true
     },
     {
         "title": "Valiant",
@@ -60,7 +62,8 @@ export const projects = [
         "video_preview": "img/projects/iastagram/iastagram.mp4",
         "tags": ["AI",  "Android", "C#", "LLM", "PHP/SQL", "Python", "Unity", "AIproject"],
         "id": "ai_apps",
-        "date": "October - November 2024"
+        "date": "October - November 2024",
+        "isPortrait": true
     },
     // {
     //     "title": "IQ Puzzler Pro Solver",

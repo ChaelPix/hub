@@ -171,7 +171,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     const card = document.createElement('div');
     const isPortrait = !!project.isPortrait;
     const cardClasses = isSmall 
-        ? `game-card cursor-pointer transform transition-all duration-300`
+        ? `game-card cursor-pointer transform transition-all duration-300 ${isPortrait ? 'min-h-[380px]' : ''}`
         : 'premium-card cursor-pointer transform transition-all duration-400';
     
     card.className = cardClasses;
@@ -216,7 +216,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     if (isPortrait && isSmall) {
         // Side-by-side layout for portrait small cards
         card.innerHTML = `
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 items-stretch h-full">
+            <div class="grid grid-cols-2 gap-0 items-stretch h-full">
                 <div class="col-span-1 h-full">${figureContent}</div>
                 <div class="col-span-1 h-full flex flex-col justify-between ${cardBodyClasses}">
                     <div class="space-y-2">

@@ -1,4 +1,5 @@
 import { projects } from './projects.js';
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 // Dev Vibes Entry Animation
 function initDevVibesAnimation() {
@@ -421,7 +422,7 @@ function parseDate(date) {
     return parseInt(year) * 12 + (months[month] || 0);
 }
 
-// Popup functionality (keeping from original)
+// Popup functionality (updated for Markdown)
 function openPopup(projectId) {
     const project = projects.find(p => p.id === projectId);
     if (!project) {
@@ -438,19 +439,173 @@ function openPopup(projectId) {
     projectUrl.textContent = project.title;
 
     const contentContainer = document.getElementById('popup-content');
-    fetch(`projects/${projectId}.html`)
+    
+    // Show loading state
+    contentContainer.innerHTML = '<div class="flex justify-center items-center py-12"><div class="loading loading-spinner loading-lg"></div></div>';
+    
+    // Load markdown file
+    fetch(`projects/${projectId}.md`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load project content: ${response.statusText}`);
             }
             return response.text();
         })
-        .then(html => {
-            contentContainer.innerHTML = html;
+        .then(markdown => {
+            // Configure marked for better rendering
+            marked.setOptions({
+                breaks: true,
+                gfm: true
+            });
+            
+            // Convert markdown to HTML
+            const html = marked.parse(markdown);
+            
+            // Apply styling wrapper for better presentation
+            contentContainer.innerHTML = `
+                <div class="markdown-content prose prose-invert prose-lg max-w-none">
+                    ${html}
+                </div>
+            `;
+            
+            // Process any special elements after rendering
+            processMarkdownElements(contentContainer);
         })
         .catch(error => {
-            contentContainer.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+            contentContainer.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="text-red-400 text-lg mb-4">❌ Error loading project content</div>
+                    <p class="text-red-300">${error.message}</p>
+                    <p class="text-gray-400 text-sm mt-2">Looking for: projects/${projectId}.md</p>
+                </div>
+            `;
         });
+}
+
+// Process special markdown elements for better styling
+function processMarkdownElements(container) {
+    // Center images
+    container.querySelectorAll('img').forEach(img => {
+        img.className = 'mx-auto rounded-lg shadow-lg max-w-full h-auto';
+        
+        // Add loading lazy for performance
+        img.loading = 'lazy';
+        
+        // Wrap standalone images in a figure for better spacing
+        if (img.parentNode.tagName === 'P' && img.parentNode.children.length === 1) {
+            const figure = document.createElement('figure');
+            figure.className = 'my-8';
+            img.parentNode.insertBefore(figure, img);
+            figure.appendChild(img);
+            if (img.parentNode.children.length === 0) {
+                img.parentNode.remove();
+            }
+        }
+    });
+    
+    // Style videos
+    container.querySelectorAll('video').forEach(video => {
+        video.className = 'mx-auto rounded-lg shadow-lg max-w-full h-auto';
+        video.controls = true;
+        video.loading = 'lazy';
+        
+        // Wrap videos in figure for consistency
+        if (video.parentNode.tagName === 'P') {
+            const figure = document.createElement('figure');
+            figure.className = 'my-8';
+            video.parentNode.insertBefore(figure, video);
+            figure.appendChild(video);
+            if (video.parentNode.children.length === 0) {
+                video.parentNode.remove();
+            }
+        }
+    });
+    
+    // Process grid layouts (look for comments like <!-- grid-2 --> or <!-- grid-3 -->)
+    const gridComments = [];
+    const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_COMMENT,
+        null,
+        false
+    );
+    
+    let node;
+    while (node = walker.nextNode()) {
+        if (node.nodeValue.trim().startsWith('grid-')) {
+            gridComments.push(node);
+        }
+    }
+    
+    gridComments.forEach(comment => {
+        const gridType = comment.nodeValue.trim();
+        const match = gridType.match(/grid-(\d+)/);
+        if (match) {
+            const cols = parseInt(match[1]);
+            const gridContainer = document.createElement('div');
+            gridContainer.className = `grid grid-cols-1 md:grid-cols-${cols} gap-6 my-8`;
+            
+            // Collect following elements until next grid comment or end
+            let current = comment.nextSibling;
+            const elements = [];
+            
+            while (current) {
+                if (current.nodeType === Node.COMMENT_NODE && current.nodeValue.trim() === 'end-grid') {
+                    current.remove();
+                    break;
+                }
+                if (current.nodeType === Node.ELEMENT_NODE) {
+                    elements.push(current);
+                    const next = current.nextSibling;
+                    current.remove();
+                    current = next;
+                } else {
+                    current = current.nextSibling;
+                }
+            }
+            
+            // Add elements to grid
+            elements.forEach(el => {
+                if (el.tagName === 'P' && el.children.length === 1 && 
+                    (el.children[0].tagName === 'IMG' || el.children[0].tagName === 'VIDEO')) {
+                    // Move media element directly to grid
+                    gridContainer.appendChild(el.children[0]);
+                } else {
+                    gridContainer.appendChild(el);
+                }
+            });
+            
+            // Insert grid container
+            comment.parentNode.insertBefore(gridContainer, comment);
+            comment.remove();
+        }
+    });
+    
+    // Style links
+    container.querySelectorAll('a').forEach(link => {
+        link.className = 'text-blue-400 hover:text-blue-300 underline transition-colors';
+        // Open external links in new tab
+        if (link.href && !link.href.startsWith(window.location.origin)) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
+    });
+    
+    // Style code blocks
+    container.querySelectorAll('pre').forEach(pre => {
+        pre.className = 'bg-gray-900 rounded-lg p-4 overflow-x-auto';
+    });
+    
+    container.querySelectorAll('code').forEach(code => {
+        if (code.parentNode.tagName !== 'PRE') {
+            code.className = 'bg-gray-800 px-2 py-1 rounded text-sm';
+        }
+    });
+    
+    // Style blockquotes
+    container.querySelectorAll('blockquote').forEach(blockquote => {
+        blockquote.className = 'border-l-4 border-blue-500 pl-4 italic text-gray-300 my-4';
+    });
 }
 
 function checkForProjectIdInUrl() {

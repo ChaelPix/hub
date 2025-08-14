@@ -1,4 +1,5 @@
 import { projects } from './projects.js';
+import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 // Dev Vibes Entry Animation
 function initDevVibesAnimation() {
@@ -17,7 +18,7 @@ function initDevVibesAnimation() {
 // --- Tag Category & Modern Color System ---
 const TAG_CATEGORY_MAP = {
     // Languages
-    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language',
+    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language', 'Kotlin': 'Language',
     // Frameworks/Libraries
     'Unity': 'Framework', 'SFML C++': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
     // Platforms
@@ -169,8 +170,9 @@ function createHighlightCard(project) {
 // Create regular project card
 function createProjectCard(project, isSmall = false, noClamp = false) {
     const card = document.createElement('div');
+    const isPortrait = !!project.isPortrait;
     const cardClasses = isSmall 
-        ? 'game-card cursor-pointer transform transition-all duration-300' 
+        ? `game-card cursor-pointer transform transition-all duration-300 ${isPortrait ? 'min-h-[380px]' : ''}`
         : 'premium-card cursor-pointer transform transition-all duration-400';
     
     card.className = cardClasses;
@@ -179,51 +181,76 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
     const sortedTags = sortTagsByCategory(tagList);
 
     let figureContent = '';
+    const mediaWrapperClass = isPortrait && isSmall
+        ? 'card-media h-full min-h-[220px] group relative overflow-hidden rounded-l-xl flex-shrink-0'
+        : `card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'} flex-shrink-0`;
     if (project.video_preview) {
         const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
         const videoSrc = project.video_preview.includes('?')
             ? `${project.video_preview}&${cacheBuster}`
             : `${project.video_preview}?${cacheBuster}`;
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
+            <div class="${mediaWrapperClass}">
                 <img src="${project.image}" alt="${project.title}" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 card-img" />
+                     class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'group-hover:scale-110'} card-img" />
                 <video src="${videoSrc}"
-                       class="absolute inset-0 w-full h-full object-cover hidden card-video"
+                       class="absolute inset-0 w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} hidden card-video"
                        muted loop playsinline preload="metadata"></video>
             </div>
         `;
     } else {
         figureContent = `
-            <div class="card-media ${isSmall ? 'aspect-video' : 'aspect-video'} relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}">
+            <div class="${mediaWrapperClass}">
                 <img src="${project.image}" alt="${project.title}" 
-                     class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
+                     class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'hover:scale-110'}" />
             </div>
         `;
     }
 
     const cardBodyClasses = isSmall ? 'p-4 space-y-3' : 'p-6 space-y-4';
     const titleClasses = isSmall ? 'font-display text-lg font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
-    const dateClasses = isSmall ? 'text-sm text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
+    const dateClasses = isSmall ? 'text-sm text-gradient font-medium' : 'text-sm text-gradient font-medium';
     const descriptionClasses = isSmall
-        ? `text-sm text-white/70${noClamp ? '' : ' line-clamp-2'}`
+        ? `text-sm text-white/70`
         : 'text-white/80 leading-relaxed';
 
-    card.innerHTML = `
-        ${figureContent}
-        <div class="${cardBodyClasses}">
-            <div class="space-y-2">
-                <h2 class="${titleClasses}">${project.title}</h2>
-                ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
-                <p class="${descriptionClasses}">${project.description}</p>
+    if (isPortrait && isSmall) {
+        // Side-by-side layout for portrait small cards
+        card.innerHTML = `
+            <div class="grid grid-cols-2 gap-0 items-stretch h-full">
+                <div class="col-span-1 h-full">${figureContent}</div>
+                <div class="col-span-1 h-full flex flex-col justify-between ${cardBodyClasses}">
+                    <div class="space-y-2">
+                        <h2 class="${titleClasses}">${project.title}</h2>
+                        ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
+                        <p class="${descriptionClasses}">${project.description}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 mt-2">
+                        ${sortedTags.map(tag => 
+                            `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
+                        ).join('')}
+                    </div>
+                </div>
             </div>
-            <div class="flex flex-wrap gap-1.5">
-                ${sortedTags.map(tag => 
-                    `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
-                ).join('')}
+        `;
+    } else {
+        // Default stacked layout
+        card.innerHTML = `
+            ${figureContent}
+            <div class="${cardBodyClasses}">
+                <div class="space-y-2">
+                    <h2 class="${titleClasses}">${project.title}</h2>
+                    ${project.date ? `<p class="${dateClasses}">${project.date}</p>` : ''}
+                    <p class="${descriptionClasses}">${project.description}</p>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                    ${sortedTags.map(tag => 
+                        `<div class="${getTagStyle(tag)} ${isSmall ? 'text-xs px-2 py-1' : 'text-xs px-2.5 py-1'} rounded-full font-medium">${tag}</div>`
+                    ).join('')}
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
 
     // Add click event
     card.onclick = () => openPopup(project.id);
@@ -395,7 +422,7 @@ function parseDate(date) {
     return parseInt(year) * 12 + (months[month] || 0);
 }
 
-// Popup functionality (keeping from original)
+// Popup functionality (updated for Markdown)
 function openPopup(projectId) {
     const project = projects.find(p => p.id === projectId);
     if (!project) {
@@ -412,19 +439,173 @@ function openPopup(projectId) {
     projectUrl.textContent = project.title;
 
     const contentContainer = document.getElementById('popup-content');
-    fetch(`projects/${projectId}.html`)
+    
+    // Show loading state
+    contentContainer.innerHTML = '<div class="flex justify-center items-center py-12"><div class="loading loading-spinner loading-lg"></div></div>';
+    
+    // Load markdown file
+    fetch(`projects/${projectId}.md`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Failed to load project content: ${response.statusText}`);
             }
             return response.text();
         })
-        .then(html => {
-            contentContainer.innerHTML = html;
+        .then(markdown => {
+            // Configure marked for better rendering
+            marked.setOptions({
+                breaks: true,
+                gfm: true
+            });
+            
+            // Convert markdown to HTML
+            const html = marked.parse(markdown);
+            
+            // Apply styling wrapper for better presentation
+            contentContainer.innerHTML = `
+                <div class="markdown-content prose prose-invert prose-lg max-w-none">
+                    ${html}
+                </div>
+            `;
+            
+            // Process any special elements after rendering
+            processMarkdownElements(contentContainer);
         })
         .catch(error => {
-            contentContainer.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+            contentContainer.innerHTML = `
+                <div class="text-center py-12">
+                    <div class="text-red-400 text-lg mb-4">❌ Error loading project content</div>
+                    <p class="text-red-300">${error.message}</p>
+                    <p class="text-gray-400 text-sm mt-2">Looking for: projects/${projectId}.md</p>
+                </div>
+            `;
         });
+}
+
+// Process special markdown elements for better styling
+function processMarkdownElements(container) {
+    // Center images
+    container.querySelectorAll('img').forEach(img => {
+        img.className = 'mx-auto rounded-lg shadow-lg max-w-full h-auto';
+        
+        // Add loading lazy for performance
+        img.loading = 'lazy';
+        
+        // Wrap standalone images in a figure for better spacing
+        if (img.parentNode.tagName === 'P' && img.parentNode.children.length === 1) {
+            const figure = document.createElement('figure');
+            figure.className = 'my-8';
+            img.parentNode.insertBefore(figure, img);
+            figure.appendChild(img);
+            if (img.parentNode.children.length === 0) {
+                img.parentNode.remove();
+            }
+        }
+    });
+    
+    // Style videos
+    container.querySelectorAll('video').forEach(video => {
+        video.className = 'mx-auto rounded-lg shadow-lg max-w-full h-auto';
+        video.controls = true;
+        video.loading = 'lazy';
+        
+        // Wrap videos in figure for consistency
+        if (video.parentNode.tagName === 'P') {
+            const figure = document.createElement('figure');
+            figure.className = 'my-8';
+            video.parentNode.insertBefore(figure, video);
+            figure.appendChild(video);
+            if (video.parentNode.children.length === 0) {
+                video.parentNode.remove();
+            }
+        }
+    });
+    
+    // Process grid layouts (look for comments like <!-- grid-2 --> or <!-- grid-3 -->)
+    const gridComments = [];
+    const walker = document.createTreeWalker(
+        container,
+        NodeFilter.SHOW_COMMENT,
+        null,
+        false
+    );
+    
+    let node;
+    while (node = walker.nextNode()) {
+        if (node.nodeValue.trim().startsWith('grid-')) {
+            gridComments.push(node);
+        }
+    }
+    
+    gridComments.forEach(comment => {
+        const gridType = comment.nodeValue.trim();
+        const match = gridType.match(/grid-(\d+)/);
+        if (match) {
+            const cols = parseInt(match[1]);
+            const gridContainer = document.createElement('div');
+            gridContainer.className = `grid grid-cols-1 md:grid-cols-${cols} gap-6 my-8`;
+            
+            // Collect following elements until next grid comment or end
+            let current = comment.nextSibling;
+            const elements = [];
+            
+            while (current) {
+                if (current.nodeType === Node.COMMENT_NODE && current.nodeValue.trim() === 'end-grid') {
+                    current.remove();
+                    break;
+                }
+                if (current.nodeType === Node.ELEMENT_NODE) {
+                    elements.push(current);
+                    const next = current.nextSibling;
+                    current.remove();
+                    current = next;
+                } else {
+                    current = current.nextSibling;
+                }
+            }
+            
+            // Add elements to grid
+            elements.forEach(el => {
+                if (el.tagName === 'P' && el.children.length === 1 && 
+                    (el.children[0].tagName === 'IMG' || el.children[0].tagName === 'VIDEO')) {
+                    // Move media element directly to grid
+                    gridContainer.appendChild(el.children[0]);
+                } else {
+                    gridContainer.appendChild(el);
+                }
+            });
+            
+            // Insert grid container
+            comment.parentNode.insertBefore(gridContainer, comment);
+            comment.remove();
+        }
+    });
+    
+    // Style links
+    container.querySelectorAll('a').forEach(link => {
+        link.className = 'text-blue-400 hover:text-blue-300 underline transition-colors';
+        // Open external links in new tab
+        if (link.href && !link.href.startsWith(window.location.origin)) {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        }
+    });
+    
+    // Style code blocks
+    container.querySelectorAll('pre').forEach(pre => {
+        pre.className = 'bg-gray-900 rounded-lg p-4 overflow-x-auto';
+    });
+    
+    container.querySelectorAll('code').forEach(code => {
+        if (code.parentNode.tagName !== 'PRE') {
+            code.className = 'bg-gray-800 px-2 py-1 rounded text-sm';
+        }
+    });
+    
+    // Style blockquotes
+    container.querySelectorAll('blockquote').forEach(blockquote => {
+        blockquote.className = 'border-l-4 border-blue-500 pl-4 italic text-gray-300 my-4';
+    });
 }
 
 function checkForProjectIdInUrl() {

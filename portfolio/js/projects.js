@@ -1,5 +1,15 @@
 export const projects = [
     {
+        "title": "Orbit Vector AR",
+        "description": "AR Game School Project made with Kotlin and ARCore. Shoot the apple in an AR environment using planets' and moons' gravity. Featuring multiplayer leaderboard, asset delivery, database, and more.",
+        "image": "img/projects/orbitvectorar/page.jpg",
+        "video_preview": "img/projects/orbitvectorar/demo.mp4",
+        "tags": ["Kotlin", "PHP/SQL", "AR", "Android", "gameProject"],
+        "id": "orbitvectorar",
+        "date": "May - June 2025",
+        "isPortrait": true
+    },
+    {
         "title": "Autonomous CV Boat (WIP)",
         "description": "A project focusing on learning computer vision algorithms using OpenCV. Camera input is simulated in Unity but the CV stack is independent and runs in Python.",
         "image": "img/projects/autonomousboat/autonomous_boat_projectcard.png",
@@ -19,7 +29,7 @@ export const projects = [
     },
     {
         "title": "VR AI Art Gallery NPCs",
-        "description": "An experiment with AI-powered NPCs in Unity, showcasing AI integration.",
+        "description": "An experiment with AI-powered NPCs able to listen and talk to users.",
         "image": "img/projects/aigallery/aigallery.jpg",
         "video_preview": "img/projects/aigallery/aigallery_trailer.mp4",
         "tags": ["C#", "VR", "Unity", "MetaXR", "AIproject"],
@@ -28,25 +38,27 @@ export const projects = [
     },
     {
         "title": "Falling It",
-        "description": "A live-casual puzzle game for Android with Google Play features like in-app purchases and cloud saves.",
+        "description": "My first game project. A completed live-casual puzzle game for Android with Google Play features like in-app purchases and cloud saves.",
         "image": "img/projects/fallingit/fit_screen.jpg",
         "video_preview": "img/projects/fallingit/fit_gameplay.mp4",
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "fallingit",
-        "date": "September 2021 - December 2021"
+        "date": "September - December 2021",
+        "isPortrait": true
     },
     {
         "title": "Hypercasual Minimum Viable Prototypes",
-        "description": "A series of MVPs to explore game design and development in Unity, focusing on fast iteration and testing.",
-        "image": "img/mvps/mvps.jpg",
-        "video_preview": "img/mvps/snake_trailer.mp4",
+        "description": "A series of professionally tested Android game hypercasual MVPs, focusing on fast iteration and testing.",
+        "image": "img/mvps/mvps.png",
+        "video_preview": "img/mvps/mvps.mp4",
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "mvps",
-        "date": "June 2022 - September 2022"
+        "date": "June - September 2022",
+        "isPortrait": true
     },
     {
         "title": "Valiant",
-        "description": "A multiplayer game built from scratch using SFML C++/C++ over 3 weeks, focusing on networking and game design.",
+        "description": "A multiplayer game built with a friend and schoolmate from scratch using SFML C++ over 3 weeks, focusing on networking and game design.",
         "image": "img/projects/valiant/valiant_1.png",
         "video_preview": "img/projects/valiant/valiant_trailer.mp4",
         "tags": ["C++", "SFML C++",  "PHP/SQL", "School Project", "gameProject"],
@@ -54,23 +66,25 @@ export const projects = [
         "date": "December 2023"
     },
     {
-        "title": "Aissenger & IAstragram",
-        "description": "Two autonomous android apps simulating social media with integration of local LLM.",
-        "image": "img/projects/aissenger/ia_apps.jpg",
-        "video_preview": "img/projects/iastagram/iastagram.mp4",
-        "tags": ["AI",  "Android", "C#", "LLM", "PHP/SQL", "Python", "Unity", "AIproject"],
-        "id": "ai_apps",
-        "date": "October - November 2024"
+        "title": "Aissenger",
+        "description": "A simulated chat app that allows users to chat with AIs with unique personalities using a locally hosted LLM. They can both chat and send pictures. I built a system for infinite conversation memory despite token limits.",
+        "image": "img/projects/aissenger/aissenger_card.jpg",
+        "video_preview": "img/projects/aissenger/demo_chat.mp4",
+        "tags": ["AI",  "Android", "C#", "Python", "Unity", "AIproject"],
+        "id": "aissenger",
+        "date": "November 2024",
+        "isPortrait": true
     },
-    // {
-    //     "title": "IQ Puzzler Pro Solver",
-    //     "description": "An improved algorithm that solves IQ Puzzler Pro challenges and polyominos grid.",
-    //     "image": "img/projects/iqpuzzle/60x5.png",
-    //     "video_preview": "img/projects/iqpuzzle/iqpuzzle_trailer.mp4",
-    //     "tags": ["AI", "Python", "School", "AIproject"],
-    //     "id": "iq-puzzler",
-    //     "date": "December 2024"
-    // },
+    {
+        "title": "IAstragram",
+        "description": "An autonomous Android app simulating social media users and interactions using integration of a local LLM.",
+        "image": "img/projects/iastagram/iastagram_card.png",
+        "video_preview": "img/projects/iastagram/iastagram.mp4",
+        "tags": ["AI",  "Android", "C#", "PHP/SQL", "Python", "Unity", "AIproject"],
+        "id": "iastagram",
+        "date": "October 2024",
+        "isPortrait": true
+    },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
         "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",

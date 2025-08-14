@@ -293,7 +293,82 @@ html {
 .animation-delay-500 { animation-delay: 0.5s; }
 .animation-delay-600 { animation-delay: 0.6s; }
 
-/* Dev Vibes Entry Animation */
+/* Markdown Content Styling */
+.markdown-content {
+    @apply text-white max-w-4xl mx-auto px-6 py-8;
+}
+
+.markdown-content h1 {
+    @apply text-3xl font-bold mb-6 text-white border-b border-gray-700 pb-3;
+}
+
+.markdown-content h2 {
+    @apply text-2xl font-bold mb-4 mt-8 text-white;
+}
+
+.markdown-content h3 {
+    @apply text-xl font-bold mb-3 mt-6 text-white;
+}
+
+.markdown-content h4 {
+    @apply text-lg font-bold mb-2 mt-4 text-white;
+}
+
+.markdown-content p {
+    @apply mb-4 text-gray-300 leading-relaxed;
+}
+
+.markdown-content ul, .markdown-content ol {
+    @apply mb-4 ml-6 text-gray-300;
+}
+
+.markdown-content ul {
+    @apply list-disc;
+}
+
+.markdown-content ol {
+    @apply list-decimal;
+}
+
+.markdown-content li {
+    @apply mb-2;
+}
+
+.markdown-content strong {
+    @apply text-white font-bold;
+}
+
+.markdown-content em {
+    @apply italic text-gray-200;
+}
+
+.markdown-content table {
+    @apply w-full border-collapse border border-gray-600 my-6;
+}
+
+.markdown-content th, .markdown-content td {
+    @apply border border-gray-600 px-4 py-2;
+}
+
+.markdown-content th {
+    @apply bg-gray-800 text-white font-bold;
+}
+
+.markdown-content td {
+    @apply text-gray-300;
+}
+
+.markdown-content hr {
+    @apply border-gray-600 my-8;
+}
+
+.markdown-content img, .markdown-content video {
+    @apply max-w-full h-auto;
+}
+
+.markdown-content figure {
+    @apply text-center;
+}
 .typing-container {
     overflow: hidden;
     border-right: 2px solid #10b981;
@@ -403,7 +478,7 @@ html {
         filter: blur(4px);
     }
     to { 
-        opacity: 0.4; 
+        opacity: 0.75; 
         transform: scale(1);
         filter: blur(0);
     }
@@ -724,6 +799,10 @@ html {
   pointer-events: none;
 }
 
+.aspect-portrait {
+  aspect-ratio: 9 / 16;
+}
+
 /* Game Cards - Compact & Playful */
 .game-card {
   background: var(--surface-glass);
@@ -890,4 +969,32 @@ html {
   box-shadow: 
     0 12px 30px rgba(var(--primary-rgb), 0.4),
     inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Card Media Container - Prevent Size Changes */
+.card-media {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-media img,
+.card-media video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-media video {
+    z-index: 1;
+}
+
+.card-media img {
+    z-index: 2;
+}
+
+.card-media video.hidden {
+    z-index: 0;
 }

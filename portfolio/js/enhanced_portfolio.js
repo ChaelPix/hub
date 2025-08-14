@@ -18,7 +18,7 @@ function initDevVibesAnimation() {
 // --- Tag Category & Modern Color System ---
 const TAG_CATEGORY_MAP = {
     // Languages
-    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language',
+    'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language', 'Kotlin': 'Language',
     // Frameworks/Libraries
     'Unity': 'Framework', 'SFML C++': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
     // Platforms
@@ -182,19 +182,19 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
 
     let figureContent = '';
     const mediaWrapperClass = isPortrait && isSmall
-        ? 'card-media h-full min-h-[220px] group relative overflow-hidden rounded-l-xl'
-        : `card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'}`;
+        ? 'card-media h-full min-h-[220px] group relative overflow-hidden rounded-l-xl flex-shrink-0'
+        : `card-media ${isSmall ? 'aspect-video' : 'aspect-video'} group relative overflow-hidden ${isSmall ? 'rounded-t-xl' : 'rounded-t-xl'} flex-shrink-0`;
     if (project.video_preview) {
         const cacheBuster = `v=1&id=${encodeURIComponent(project.id)}`;
         const videoSrc = project.video_preview.includes('?')
             ? `${project.video_preview}&${cacheBuster}`
             : `${project.video_preview}?${cacheBuster}`;
         figureContent = `
-                        <div class="${mediaWrapperClass}">
-                                <img src="${project.image}" alt="${project.title}" 
-                                         class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'group-hover:scale-110'} card-img" />
+            <div class="${mediaWrapperClass}">
+                <img src="${project.image}" alt="${project.title}" 
+                     class="w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} transition-transform duration-500 ${isPortrait ? '' : 'group-hover:scale-110'} card-img" />
                 <video src="${videoSrc}"
-                                             class="absolute inset-0 w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} hidden card-video"
+                       class="absolute inset-0 w-full h-full ${isPortrait ? 'object-cover' : 'object-cover'} hidden card-video"
                        muted loop playsinline preload="metadata"></video>
             </div>
         `;
@@ -209,7 +209,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
 
     const cardBodyClasses = isSmall ? 'p-4 space-y-3' : 'p-6 space-y-4';
     const titleClasses = isSmall ? 'font-display text-lg font-bold text-white leading-tight' : 'font-display text-xl font-bold text-white';
-    const dateClasses = isSmall ? 'text-sm text-white/50 font-medium' : 'text-sm text-white/60 font-medium';
+    const dateClasses = isSmall ? 'text-sm text-gradient font-medium' : 'text-sm text-gradient font-medium';
     const descriptionClasses = isSmall
         ? `text-sm text-white/70`
         : 'text-white/80 leading-relaxed';

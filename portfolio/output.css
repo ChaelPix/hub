@@ -812,30 +812,6 @@ html {
   }
 }
 
-.avatar {
-  position: relative;
-  display: inline-flex;
-}
-
-.avatar > div {
-  display: block;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-
-.avatar img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.avatar.placeholder > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .badge {
   display: inline-flex;
   align-items: center;
@@ -864,11 +840,6 @@ html {
 }
 
 @media (hover:hover) {
-  .label a:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  }
-
   .menu li > *:not(ul, .menu-title, details, .btn):active,
 .menu li > *:not(ul, .menu-title, details, .btn).active,
 .menu li > details > summary:active {
@@ -880,11 +851,6 @@ html {
 
   .tab:hover {
     --tw-text-opacity: 1;
-  }
-
-  .tabs-boxed :is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not([disabled]):hover, .tabs-boxed :is(input:checked):hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
   }
 
   .table tr.hover:hover,
@@ -1037,66 +1003,6 @@ html {
   padding-bottom: 0.25rem;
 }
 
-.collapse:not(td):not(tr):not(colgroup) {
-  visibility: visible;
-}
-
-.collapse {
-  position: relative;
-  display: grid;
-  overflow: hidden;
-  grid-template-rows: auto 0fr;
-  transition: grid-template-rows 0.2s;
-  width: 100%;
-  border-radius: var(--rounded-box, 1rem);
-}
-
-.collapse-title,
-.collapse > input[type="checkbox"],
-.collapse > input[type="radio"],
-.collapse-content {
-  grid-column-start: 1;
-  grid-row-start: 1;
-}
-
-.collapse > input[type="checkbox"],
-.collapse > input[type="radio"] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  opacity: 0;
-}
-
-.collapse[open],
-.collapse-open,
-.collapse:focus:not(.collapse-close) {
-  grid-template-rows: auto 1fr;
-}
-
-.collapse:not(.collapse-close):has(> input[type="checkbox"]:checked),
-.collapse:not(.collapse-close):has(> input[type="radio"]:checked) {
-  grid-template-rows: auto 1fr;
-}
-
-.collapse[open] > .collapse-content,
-.collapse-open > .collapse-content,
-.collapse:focus:not(.collapse-close) > .collapse-content,
-.collapse:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-content,
-.collapse:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-content {
-  visibility: visible;
-  min-height: -moz-fit-content;
-  min-height: fit-content;
-}
-
-.diff {
-  position: relative;
-  display: grid;
-  width: 100%;
-  overflow: hidden;
-  container-type: inline-size;
-  grid-template-columns: auto 1fr;
-}
-
 .divider {
   display: flex;
   flex-direction: row;
@@ -1163,18 +1069,6 @@ html {
     }
   }
 
-  .btn-outline.btn-primary:hover {
-    --tw-text-opacity: 1;
-    color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-  }
-
-  @supports (color: color-mix(in oklab, black, black)) {
-    .btn-outline.btn-primary:hover {
-      background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-      border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    }
-  }
-
   .btn-disabled:hover,
     .btn[disabled]:hover,
     .btn:disabled:hover {
@@ -1198,19 +1092,6 @@ html {
     color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
     --tw-text-opacity: 0.2;
   }
-}
-
-.label {
-  display: flex;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .input {
@@ -1315,18 +1196,6 @@ html {
   justify-self: end;
 }
 
-.progress {
-  position: relative;
-  width: 100%;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  overflow: hidden;
-  height: 0.5rem;
-  border-radius: var(--rounded-box, 1rem);
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
-}
-
 .range {
   height: 1.5rem;
   width: 100%;
@@ -1403,48 +1272,6 @@ html {
   transform: translateY(0) scale(1);
   z-index: 3;
   opacity: 1;
-}
-
-.stats {
-  display: inline-grid;
-  border-radius: var(--rounded-box, 1rem);
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-}
-
-:where(.stats) {
-  grid-auto-flow: column;
-  overflow-x: auto;
-}
-
-.stat {
-  display: inline-grid;
-  width: 100%;
-  grid-template-columns: repeat(1, 1fr);
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  border-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-border-opacity)));
-  --tw-border-opacity: 0.1;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.stat-title {
-  grid-column-start: 1;
-  white-space: nowrap;
-  color: var(--fallback-bc,oklch(var(--bc)/0.6));
-}
-
-.stat-value {
-  grid-column-start: 1;
-  white-space: nowrap;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 800;
 }
 
 .steps {
@@ -1570,56 +1397,10 @@ input.tab:checked + .tab-content,
   display: block;
 }
 
-.table {
-  position: relative;
-  width: 100%;
-  border-radius: var(--rounded-box, 1rem);
-  text-align: left;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
-.table :where(.table-pin-rows thead tr) {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.table :where(.table-pin-rows tfoot tr) {
-  position: sticky;
-  bottom: 0px;
-  z-index: 1;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.table :where(.table-pin-cols tr th) {
-  position: sticky;
-  left: 0px;
-  right: 0px;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.avatar-group :where(.avatar) {
-  overflow: hidden;
-  border-radius: 9999px;
-  border-width: 4px;
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-border-opacity)));
-}
-
 .btm-nav > *:where(.active) {
   border-top-width: 2px;
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b1,oklch(var(--b1)/var(--tw-bg-opacity)));
-}
-
-.btm-nav > * .label {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -1640,19 +1421,8 @@ input.tab:checked + .tab-content,
     border-color: var(--btn-color, var(--fallback-b2));
   }
 
-  .btn-primary {
-    --btn-color: var(--fallback-p);
-  }
-
   .prose :where(code):not(:where([class~="not-prose"] *, pre *)) {
     background-color: var(--fallback-b3,oklch(var(--b3)/1));
-  }
-}
-
-@supports (color: color-mix(in oklab, black, black)) {
-  .btn-outline.btn-primary.btn-active {
-    background-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
-    border-color: color-mix(in oklab, var(--fallback-p,oklch(var(--p)/1)) 90%, black);
   }
 }
 
@@ -1660,18 +1430,6 @@ input.tab:checked + .tab-content,
   outline-style: solid;
   outline-width: 2px;
   outline-offset: 2px;
-}
-
-.btn-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-p,oklch(var(--p)/1));
-}
-
-@supports (color: oklch(0% 0 0)) {
-  .btn-primary {
-    --btn-color: var(--p);
-  }
 }
 
 .btn.glass {
@@ -1700,16 +1458,6 @@ input.tab:checked + .tab-content,
 .btn-ghost.btn-active {
   border-color: transparent;
   background-color: var(--fallback-bc,oklch(var(--bc)/0.2));
-}
-
-.btn-outline.btn-primary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-p,oklch(var(--p)/var(--tw-text-opacity)));
-}
-
-.btn-outline.btn-primary.btn-active {
-  --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
 }
 
 .btn.btn-disabled,
@@ -1809,90 +1557,6 @@ input.tab:checked + .tab-content,
   100% {
     background-position-y: 0;
   }
-}
-
-details.collapse {
-  width: 100%;
-}
-
-details.collapse summary {
-  position: relative;
-  display: block;
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-details.collapse summary::-webkit-details-marker {
-  display: none;
-}
-
-.collapse:focus-visible {
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
-}
-
-.collapse:has(.collapse-title:focus-visible),
-.collapse:has(> input[type="checkbox"]:focus-visible),
-.collapse:has(> input[type="radio"]:focus-visible) {
-  outline-style: solid;
-  outline-width: 2px;
-  outline-offset: 2px;
-  outline-color: var(--fallback-bc,oklch(var(--bc)/1));
-}
-
-.collapse:not(.collapse-open):not(.collapse-close) > input[type="checkbox"],
-.collapse:not(.collapse-open):not(.collapse-close) > input[type="radio"]:not(:checked),
-.collapse:not(.collapse-open):not(.collapse-close) > .collapse-title {
-  cursor: pointer;
-}
-
-.collapse:focus:not(.collapse-open):not(.collapse-close):not(.collapse[open]) > .collapse-title {
-  cursor: unset;
-}
-
-:where(.collapse > input[type="checkbox"]),
-:where(.collapse > input[type="radio"]) {
-  z-index: 1;
-}
-
-.collapse-title,
-:where(.collapse > input[type="checkbox"]),
-:where(.collapse > input[type="radio"]) {
-  width: 100%;
-  padding: 1rem;
-  padding-inline-end: 3rem;
-  min-height: 3.75rem;
-  transition: background-color 0.2s ease-out;
-}
-
-.collapse[open] > :where(.collapse-content),
-.collapse-open > :where(.collapse-content),
-.collapse:focus:not(.collapse-close) > :where(.collapse-content),
-.collapse:not(.collapse-close) > :where(input[type="checkbox"]:checked ~ .collapse-content),
-.collapse:not(.collapse-close) > :where(input[type="radio"]:checked ~ .collapse-content) {
-  padding-bottom: 1rem;
-  transition: padding 0.2s ease-out,
-    background-color 0.2s ease-out;
-}
-
-.collapse[open].collapse-arrow > .collapse-title:after,
-.collapse-open.collapse-arrow > .collapse-title:after,
-.collapse-arrow:focus:not(.collapse-close) > .collapse-title:after,
-.collapse-arrow:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-title:after,
-.collapse-arrow:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-title:after {
-  --tw-translate-y: -50%;
-  --tw-rotate: 225deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.collapse[open].collapse-plus > .collapse-title:after,
-.collapse-open.collapse-plus > .collapse-title:after,
-.collapse-plus:focus:not(.collapse-close) > .collapse-title:after,
-.collapse-plus:not(.collapse-close) > input[type="checkbox"]:checked ~ .collapse-title:after,
-.collapse-plus:not(.collapse-close) > input[type="radio"]:checked ~ .collapse-title:after {
-  content: "−";
 }
 
 .divider:not(:empty) {
@@ -2025,15 +1689,6 @@ details.collapse summary::-webkit-details-marker {
   width: 2.5rem;
 }
 
-:where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)):is(summary):not(.active, .btn):focus-visible, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn).focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):not(summary, .active, .btn):focus, :where(.menu li:not(.menu-title, .disabled) > details > summary:not(.menu-title)):is(summary):not(.active, .btn):focus-visible {
-  cursor: pointer;
-  background-color: var(--fallback-bc,oklch(var(--bc)/0.1));
-  --tw-text-opacity: 1;
-  color: var(--fallback-bc,oklch(var(--bc)/var(--tw-text-opacity)));
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 .menu li > *:not(ul, .menu-title, details, .btn):active,
 .menu li > *:not(ul, .menu-title, details, .btn).active,
 .menu li > details > summary:active {
@@ -2135,51 +1790,6 @@ details.collapse summary::-webkit-details-marker {
   0% {
     opacity: 0;
   }
-}
-
-.progress::-moz-progress-bar {
-  border-radius: var(--rounded-box, 1rem);
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-}
-
-.progress:indeterminate {
-  --progress-color: var(--fallback-bc,oklch(var(--bc)/1));
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--progress-color) -1%,
-    var(--progress-color) 10%,
-    transparent 10%,
-    transparent 90%
-  );
-  background-size: 200%;
-  background-position-x: 15%;
-  animation: progress-loading 5s ease-in-out infinite;
-}
-
-.progress::-webkit-progress-bar {
-  border-radius: var(--rounded-box, 1rem);
-  background-color: transparent;
-}
-
-.progress::-webkit-progress-value {
-  border-radius: var(--rounded-box, 1rem);
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-bc,oklch(var(--bc)/var(--tw-bg-opacity)));
-}
-
-.progress:indeterminate::-moz-progress-bar {
-  background-color: transparent;
-  background-image: repeating-linear-gradient(
-    90deg,
-    var(--progress-color) -1%,
-    var(--progress-color) 10%,
-    transparent 10%,
-    transparent 90%
-  );
-  background-size: 200%;
-  background-position-x: 15%;
-  animation: progress-loading 5s ease-in-out infinite;
 }
 
 @keyframes progress-loading {
@@ -2330,19 +1940,6 @@ details.collapse summary::-webkit-details-marker {
   to {
     background-position: -50%;
   }
-}
-
-:where(.stats) > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-x-reverse: 0;
-  border-right-width: calc(1px * var(--tw-divide-x-reverse));
-  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
-}
-
-[dir="rtl"] .stats > *:not([hidden]) ~ *:not([hidden]) {
-  --tw-divide-x-reverse: 1;
 }
 
 .steps .step:before {
@@ -2583,34 +2180,8 @@ details.collapse summary::-webkit-details-marker {
   background-position: top right;
 }
 
-.tabs-boxed {
-  border-radius: var(--rounded-btn, 0.5rem);
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-bg-opacity)));
-  padding: 0.25rem;
-}
-
 .tabs-boxed .tab {
   border-radius: var(--rounded-btn, 0.5rem);
-}
-
-.tabs-boxed :is(.tab-active, [aria-selected="true"]):not(.tab-disabled):not([disabled]), .tabs-boxed :is(input:checked) {
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-p,oklch(var(--p)/var(--tw-bg-opacity)));
-  --tw-text-opacity: 1;
-  color: var(--fallback-pc,oklch(var(--pc)/var(--tw-text-opacity)));
-}
-
-.table:where([dir="rtl"], [dir="rtl"] *) {
-  text-align: right;
-}
-
-.table :where(th, td) {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  vertical-align: middle;
 }
 
 .table tr.active,
@@ -2625,26 +2196,6 @@ details.collapse summary::-webkit-details-marker {
     .table-zebra-zebra tbody tr:nth-child(even) {
   --tw-bg-opacity: 1;
   background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-}
-
-.table :where(thead tr, tbody tr:not(:last-child), tbody tr:first-child:last-child) {
-  border-bottom-width: 1px;
-  --tw-border-opacity: 1;
-  border-bottom-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
-}
-
-.table :where(thead, tfoot) {
-  white-space: nowrap;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  font-weight: 700;
-  color: var(--fallback-bc,oklch(var(--bc)/0.6));
-}
-
-.table :where(tfoot) {
-  border-top-width: 1px;
-  --tw-border-opacity: 1;
-  border-top-color: var(--fallback-b2,oklch(var(--b2)/var(--tw-border-opacity)));
 }
 
 @keyframes toast-pop {
@@ -2775,10 +2326,6 @@ details.collapse summary::-webkit-details-marker {
   border-start-end-radius: inherit;
 }
 
-.stats-vertical {
-  grid-auto-flow: row;
-}
-
 .tabs-md :where(.tab) {
   height: 2rem;
   font-size: 0.875rem;
@@ -2807,40 +2354,6 @@ details.collapse summary::-webkit-details-marker {
   font-size: 0.75rem;
   line-height: .75rem;
   --tab-padding: 0.5rem;
-}
-
-.avatar.online:before {
-  content: "";
-  position: absolute;
-  z-index: 10;
-  display: block;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-su,oklch(var(--su)/var(--tw-bg-opacity)));
-  outline-style: solid;
-  outline-width: 2px;
-  outline-color: var(--fallback-b1,oklch(var(--b1)/1));
-  width: 15%;
-  height: 15%;
-  top: 7%;
-  right: 7%;
-}
-
-.avatar.offline:before {
-  content: "";
-  position: absolute;
-  z-index: 10;
-  display: block;
-  border-radius: 9999px;
-  --tw-bg-opacity: 1;
-  background-color: var(--fallback-b3,oklch(var(--b3)/var(--tw-bg-opacity)));
-  outline-style: solid;
-  outline-width: 2px;
-  outline-color: var(--fallback-b1,oklch(var(--b1)/1));
-  width: 15%;
-  height: 15%;
-  top: 7%;
-  right: 7%;
 }
 
 .card-compact .card-body {
@@ -2884,25 +2397,8 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 0px;
 }
 
-.stats-vertical > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-x-reverse: 0;
-  border-right-width: calc(0px * var(--tw-divide-x-reverse));
-  border-left-width: calc(0px * calc(1 - var(--tw-divide-x-reverse)));
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.stats-vertical {
-  overflow-y: auto;
-}
-
 .visible {
   visibility: visible;
-}
-
-.collapse {
-  visibility: collapse;
 }
 
 .fixed {
@@ -3022,10 +2518,6 @@ details.collapse summary::-webkit-details-marker {
   margin-left: 0.5rem;
 }
 
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -3036,10 +2528,6 @@ details.collapse summary::-webkit-details-marker {
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .line-clamp-2 {
@@ -3061,10 +2549,6 @@ details.collapse summary::-webkit-details-marker {
   display: inline-flex;
 }
 
-.table {
-  display: table;
-}
-
 .grid {
   display: grid;
 }
@@ -3073,20 +2557,12 @@ details.collapse summary::-webkit-details-marker {
   display: none;
 }
 
-.aspect-\[4\/1\] {
-  aspect-ratio: 4/1;
-}
-
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
 
 .aspect-video {
   aspect-ratio: 16 / 9;
-}
-
-.h-1\/3 {
-  height: 33.333333%;
 }
 
 .h-10 {
@@ -3101,20 +2577,12 @@ details.collapse summary::-webkit-details-marker {
   height: 0.5rem;
 }
 
-.h-2\/3 {
-  height: 66.666667%;
-}
-
 .h-3 {
   height: 0.75rem;
 }
 
 .h-5 {
   height: 1.25rem;
-}
-
-.h-5\/6 {
-  height: 83.333333%;
 }
 
 .h-6 {
@@ -3169,10 +2637,6 @@ details.collapse summary::-webkit-details-marker {
   width: 33.333333%;
 }
 
-.w-1\/6 {
-  width: 16.666667%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -3195,10 +2659,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-5 {
   width: 1.25rem;
-}
-
-.w-5\/6 {
-  width: 83.333333%;
 }
 
 .w-6 {
@@ -3227,10 +2687,6 @@ details.collapse summary::-webkit-details-marker {
 
 .max-w-2xl {
   max-width: 42rem;
-}
-
-.max-w-3xl {
-  max-width: 48rem;
 }
 
 .max-w-5xl {
@@ -3263,10 +2719,6 @@ details.collapse summary::-webkit-details-marker {
 
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-
-.border-collapse {
-  border-collapse: collapse;
 }
 
 .-translate-y-1\/2 {
@@ -3304,18 +2756,6 @@ details.collapse summary::-webkit-details-marker {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.list-inside {
-  list-style-position: inside;
-}
-
-.list-decimal {
-  list-style-type: decimal;
-}
-
-.list-disc {
-  list-style-type: disc;
 }
 
 .grid-cols-1 {
@@ -3390,12 +2830,6 @@ details.collapse summary::-webkit-details-marker {
   gap: 2rem;
 }
 
-.space-y-1 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
 .space-y-12 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
@@ -3432,10 +2866,6 @@ details.collapse summary::-webkit-details-marker {
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
-.overflow-auto {
-  overflow: auto;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -3448,24 +2878,12 @@ details.collapse summary::-webkit-details-marker {
   overflow-y: auto;
 }
 
-.whitespace-pre-wrap {
-  white-space: pre-wrap;
-}
-
-.break-words {
-  overflow-wrap: break-word;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
 
 .rounded-2xl {
   border-radius: 1rem;
-}
-
-.rounded-3xl {
-  border-radius: 1.5rem;
 }
 
 .rounded-full {
@@ -3610,11 +3028,6 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
 }
 
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
-}
-
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
@@ -3739,15 +3152,6 @@ details.collapse summary::-webkit-details-marker {
      object-position: center;
 }
 
-.object-top {
-  -o-object-position: top;
-     object-position: top;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
 .p-4 {
   padding: 1rem;
 }
@@ -3819,16 +3223,8 @@ details.collapse summary::-webkit-details-marker {
   padding-left: 1rem;
 }
 
-.text-left {
-  text-align: left;
-}
-
 .text-center {
   text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
 }
 
 .font-display {
@@ -3837,11 +3233,6 @@ details.collapse summary::-webkit-details-marker {
 
 .font-sans {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, Apple Color Emoji, Segoe UI Emoji;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-3xl {
@@ -3890,10 +3281,6 @@ details.collapse summary::-webkit-details-marker {
 
 .font-bold {
   font-weight: 700;
-}
-
-.font-extrabold {
-  font-weight: 800;
 }
 
 .font-light {
@@ -3966,11 +3353,6 @@ details.collapse summary::-webkit-details-marker {
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
-}
-
-.text-gray-800 {
-  --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
 .text-green-400 {
@@ -4117,11 +3499,6 @@ details.collapse summary::-webkit-details-marker {
 
 .blur-3xl {
   --tw-blur: blur(64px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.grayscale {
-  --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -4801,7 +4178,7 @@ html {
   }
 
   to {
-    opacity: 0.4;
+    opacity: 0.75;
     transform: scale(1);
     filter: blur(0);
   }
@@ -5368,27 +4745,34 @@ html {
     inset 0 1px 3px rgba(255, 255, 255, 0.3);
 }
 
-@media (min-width: 1024px) {
-  .lg\:stats-horizontal {
-    grid-auto-flow: column;
-  }
+/* Card Media Container - Prevent Size Changes */
 
-  .lg\:stats-horizontal > :not([hidden]) ~ :not([hidden]) {
-    --tw-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--tw-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-    --tw-divide-y-reverse: 0;
-    border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
-    border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
-  }
+.card-media {
+  position: relative;
+  overflow: hidden;
+}
 
-  .lg\:stats-horizontal {
-    overflow-x: auto;
-  }
+.card-media img,
+.card-media video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
 
-  .lg\:stats-horizontal:where([dir="rtl"], [dir="rtl"] *) {
-    --tw-divide-x-reverse: 1;
-  }
+.card-media video {
+  z-index: 1;
+}
+
+.card-media img {
+  z-index: 2;
+}
+
+.card-media video.hidden {
+  z-index: 0;
 }
 
 .selection\:bg-primary\/20 *::-moz-selection {
@@ -5513,10 +4897,6 @@ html {
 
   .md\:h-\[30\.5rem\] {
     height: 30.5rem;
-  }
-
-  .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:p-6 {

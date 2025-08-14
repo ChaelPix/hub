@@ -478,7 +478,7 @@ html {
         filter: blur(4px);
     }
     to { 
-        opacity: 0.4; 
+        opacity: 0.75; 
         transform: scale(1);
         filter: blur(0);
     }
@@ -969,4 +969,32 @@ html {
   box-shadow: 
     0 12px 30px rgba(var(--primary-rgb), 0.4),
     inset 0 1px 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Card Media Container - Prevent Size Changes */
+.card-media {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-media img,
+.card-media video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-media video {
+    z-index: 1;
+}
+
+.card-media img {
+    z-index: 2;
+}
+
+.card-media video.hidden {
+    z-index: 0;
 }

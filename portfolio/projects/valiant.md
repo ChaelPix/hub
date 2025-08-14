@@ -1,99 +1,48 @@
-# Snake Game - Classic Arcade Revival
+# Valiant: Multiplayer Battleship in C++
 
 ## Overview
+As a three-week school project, my teammate and I were tasked with creating a multiplayer battleship game from scratch in C++. We decided to push the boundaries of the assignment, delivering a polished game complete with a custom graphical interface, a multi-threaded TCP server for matchmaking, persistent online stats, and in-game chat.
 
-A modern take on the classic Snake game, built with smooth animations and responsive controls. This project demonstrates fundamental game development concepts and collision detection algorithms.
+**My primary contributions were architecting and implementing the entire networking stack and the SFML-based graphics engine.**
 
-![Snake Game Preview](../img/mvps/snake_trailer.mp4)
+## Links & Resources
+- **[Download and Play on Itch.io](https://chaelpix.itch.io/valiant)**
 
-## Key Features
+## Gameplay Demo
+See the full game in action, from the menu to multiplayer combat.
 
-- **Smooth Movement**: Fluid snake movement with configurable speed
-- **Score Tracking**: Real-time score updates and high score storage
-- **Responsive Design**: Works on both desktop and mobile devices
-- **Visual Effects**: Particle effects and smooth animations
-
-## Gameplay Screenshots
-<div style="display: flex; gap: 16px; justify-content: center;">
-    <img src="../img/mvps/destrucubes/screen_destrucubes.gif" alt="Gameplay 1" style="width: 30%; max-width: 200px; border-radius: 8px;">
-    <img src="../img/mvps/stickyball/screen_stickyball.gif" alt="Gameplay 2" style="width: 30%; max-width: 200px; border-radius: 8px;">
-    <img src="../img/mvps/panicplaneflight/screen_panicplaneflight.gif" alt="Gameplay 3" style="width: 30%; max-width: 200px; border-radius: 8px;">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; border-radius: 8px;">
+    <iframe src="https://www.youtube.com/embed/ImCbqGZR-jY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
 
-## Technology Stack
+## Screenshots
 
-| Component | Technology |
-|-----------|------------|
-| **Language** | JavaScript (ES6+) |
-| **Graphics** | HTML5 Canvas |
-| **Styling** | CSS3 with animations |
-| **Build** | Webpack |
+<!-- grid-3 -->
+<div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+    <img src="../img/projects/valiant/valiant_2.png" alt="Enemy turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
+    <img src="../img/projects/valiant/valiant_1.png" alt="User turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
+    <img src="../img/projects/valiant/val_boatplacement.png" alt="Boat placement screen" style="width: 30%; min-width: 250px; border-radius: 8px;">
+</div>
+<!-- end-grid -->
 
-## Game Mechanics
+## Technical Deep Dive: My Contributions
 
-### Core Logic
-```javascript
-function updateSnake() {
-    const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-    
-    // Check collision with walls
-    if (head.x < 0 || head.x >= boardWidth || 
-        head.y < 0 || head.y >= boardHeight) {
-        gameOver();
-        return;
-    }
-    
-    snake.unshift(head);
-    
-    // Check if food eaten
-    if (head.x === food.x && head.y === food.y) {
-        score += 10;
-        generateFood();
-    } else {
-        snake.pop();
-    }
-}
-```
+### 1. Custom UI Engine with SFML
+The game's graphical interface was built using **SFML**, a low-level C++ library that only provides basic rendering primitives (shapes, text). To build a scalable and manageable UI, I designed and implemented my own class-based framework on top of it. This custom engine handled complex elements like buttons, layouts, and screen transitions, which significantly streamlined the development process.
 
-### Collision Detection
-The game implements efficient collision detection for:
-- **Wall boundaries**: Prevents snake from leaving the game area
-- **Self-collision**: Detects when snake hits its own body
-- **Food collection**: Triggers growth and score increase
+[![Simplified class diagram of the interface stack](../img/projects/valiant/val_graph_class.png)](../img/projects/valiant/val_graph_class.png)
+*Simplified class diagram of my custom UI framework. (Click to view full size)*
 
-## Development Process
+### 2. Multi-threaded Networking & Matchmaking
+I developed the complete networking system using **C++ and Winsock**. The backbone is a multi-threaded TCP server I built to manage concurrent client connections. This architecture was crucial for implementing a seamless matchmaking system where players can join a lobby, get queued, and be automatically paired with an opponent to start a game.
 
-### Initial Planning
-- Sketched game flow and state management
-- Designed modular architecture for easy expansion
-- Planned responsive controls for touch devices
+The diagrams below illustrate the architecture of the networking stack and the logic of the matchmaking sequence.
 
-### Implementation Highlights
-1. **Canvas Optimization**: Used requestAnimationFrame for smooth rendering
-2. **Touch Controls**: Added swipe gestures for mobile compatibility
-3. **State Management**: Clean separation between game logic and rendering
+[![Class diagram of the networking stack](../img/projects/valiant/val_netclass.png)](../img/projects/valiant/val_netclass.png)
+*Class diagram of the networking stack. (Click to view full size)*
 
-## Performance Optimizations
+[![Sequence diagram of the matchmaking system](../img/projects/valiant/val_netseq.png)](../img/projects/valiant/val_netseq.png)
+*Sequence diagram of the matchmaking system. (Click to view full size)*
 
-> **Memory Management**: Implemented object pooling for food particles to reduce garbage collection overhead.
-
-- Efficient canvas clearing and redrawing
-- Optimized collision detection algorithms
-- Reduced DOM manipulations
-
-## Future Enhancements
-
-- [ ] **Multiplayer Mode**: Local co-op snake battles
-- [ ] **Power-ups**: Special food items with unique effects
-- [ ] **Themes**: Different visual themes and environments
-- [ ] **Leaderboard**: Online high score tracking
-
-## Links
-
-- [Play the Game](https://your-game-link.com) 🎮
-- [Source Code](https://github.com/username/snake-game) 📱
-- [Development Blog](https://blog-link.com) 📝
-
----
-
-*Completed as part of game development learning journey - [Month Year]*
+## Lessons Learned
+> This project was an intense but rewarding deep dive into low-level C++ development. Building a UI framework and a multi-threaded server from scratch under a tight deadline taught me invaluable lessons in software architecture, asynchronous programming, and effective project management.

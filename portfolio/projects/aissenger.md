@@ -12,8 +12,8 @@ Aissenger is an intelligent chatbot designed to overcome the common "memory loss
 
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <video src="../img/projects/aissenger/demo_match_personnality.mp4" controls loop style="width: 48%; border-radius: 8px;"></video>
-    <video src="../img/projects/aissenger/demo_chat.mp4" controls loop style="width: 48%; border-radius: 8px;"></video>
+    <video src="img/projects/aissenger/demo_match_personnality.mp4" controls loop style="width: 48%; border-radius: 8px;"></video>
+    <video src="img/projects/aissenger/demo_chat.mp4" controls loop style="width: 48%; border-radius: 8px;"></video>
 </div>
 <!-- end-grid -->
 *Left: Selecting an AI. Right: Chatting with an AI that has its own personality.*
@@ -22,13 +22,13 @@ Aissenger is an intelligent chatbot designed to overcome the common "memory loss
 I implemented a REGEX-based system to detect when a user asks for a picture. This triggers a separate image generation process that runs alongside the standard text reply.
 
 <div style="display: flex; justify-content: center;">
-    <img src="../img/projects/aissenger/picture.gif" alt="Detecting a picture request and generating an image" style="max-width:300px; width: 100%; height: auto; border-radius: 8px;">
+    <img src="img/projects/aissenger/picture.gif" alt="Detecting a picture request and generating an image" style="max-width:300px; width: 100%; height: auto; border-radius: 8px;">
 </div>
 
 ## System Architecture
 To achieve low latency for both text and image responses, I designed a system that processes requests in parallel. The diagram below illustrates the flow from user input to receiving a dual text and image response.
 
-[![Aissenger Sequence Diagram](../img/projects/aissenger/aissenger_diag.png)](../img/projects/aissenger/aissenger_diag.png)
+[![Aissenger Sequence Diagram](img/projects/aissenger/aissenger_diag.png)](img/projects/aissenger/aissenger_diag.png)
 
 ## Development Challenges
 - **Optimizing Response Time**: The primary challenge was processing both a text response (from one API) and an image generation request (from another) simultaneously without creating a noticeable delay for the user. This required careful management of asynchronous operations.

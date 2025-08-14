@@ -11,11 +11,11 @@ To do this, I created a custom pipeline:
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
     <div style="width: 48%; border-radius: 8px;">
-        <video src="../img/projects/autonomousboat/localhost.mp4" controls loop autoplay muted style="width: 100%; border-radius: 8px;"></video>
+        <video src="img/projects/autonomousboat/localhost.mp4" controls loop autoplay muted style="width: 100%; border-radius: 8px;"></video>
         <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Live stream from Unity</p>
     </div>
     <div style="width: 48%; border-radius: 8px;">
-        <img src="../img/projects/autonomousboat/night.png" alt="Night view from the boat" style="width: 100%; border-radius: 8px;">
+        <img src="img/projects/autonomousboat/night.png" alt="Night view from the boat" style="width: 100%; border-radius: 8px;">
         <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Night simulation with light source</p>
     </div>
 </div>
@@ -30,9 +30,9 @@ The first fundamental step was to establish a stable reference point by detectin
 I also added a smoothing algorithm to the line's position to prevent it from jittering due to waves, ensuring a stable detection even with obstacles in view.
 
 <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-    <img src="../img/projects/autonomousboat/houghline.png" alt="Hough Line detection" style="max-width: 600px; width: 100%; border-radius: 8px;">
-    <img src="../img/projects/autonomousboat/houghline2.png" alt="Hough Line with obstacles" style="max-width: 600px; width: 100%; border-radius: 8px;">
-    <video src="../img/projects/autonomousboat/houghline.mp4" controls loop autoplay muted style="max-width: 600px; width: 100%; border-radius: 8px;"></video>
+    <img src="img/projects/autonomousboat/houghline.png" alt="Hough Line detection" style="max-width: 600px; width: 100%; border-radius: 8px;">
+    <img src="img/projects/autonomousboat/houghline2.png" alt="Hough Line with obstacles" style="max-width: 600px; width: 100%; border-radius: 8px;">
+    <video src="img/projects/autonomousboat/houghline.mp4" controls loop autoplay muted style="max-width: 600px; width: 100%; border-radius: 8px;"></video>
 </div>
 
 ## Stage 2: Obstacle Detection with Contours
@@ -45,7 +45,7 @@ My initial approach to identifying obstacles was to use contour detection. This 
 5.  **Contour Finding**: Used OpenCV's algorithm to identify distinct shapes.
 6.  **Bounding Box Generation**: Drew a box around each detected contour to define a Region of Interest (ROI).
 
-![Bounding Box Process](../img/projects/autonomousboat/boundingbox.png)
+![Bounding Box Process](img/projects/autonomousboat/boundingbox.png)
 
 ### The Challenge
 > This method revealed a critical flaw: the horizon line was often detected as part of an obstacle's contour, causing the bounding boxes to merge incorrectly. This demonstrated that a more sophisticated feature detection method was needed.

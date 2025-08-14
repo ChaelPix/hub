@@ -2,8 +2,8 @@
 
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <img src="../img/worldskills/fnat/ws_fr23.jpg" alt="WorldSkills France 2023" style="width: 48%; max-width: 200px; height: auto; object-fit: contain; border-radius: 8px;">
-    <img src="../img/worldskills/fnat/pic_medal_2.png" alt="Silver Medal" style="width: 48%; max-width: 200px; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/fnat/ws_fr23.jpg" alt="WorldSkills France 2023" style="width: 48%; max-width: 200px; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/fnat/pic_medal_2.png" alt="Silver Medal" style="width: 48%; max-width: 200px; height: auto; object-fit: contain; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 
@@ -19,7 +19,7 @@ I leveled up the robot's capabilities by building a system on **ROS1 Noetic** an
 ### Gallery
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <img src="../img/worldskills/fnat/picture_me_fnat.jpg" alt="Me at the National Finals" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
-    <img src="../img/worldskills/fnat/robot_fnat.jpg" alt="National Finals Robot with Lidar" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/fnat/picture_me_fnat.jpg" alt="Me at the National Finals" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/fnat/robot_fnat.jpg" alt="National Finals Robot with Lidar" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
 </div>
 <!-- end-grid -->

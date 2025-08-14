@@ -4,7 +4,7 @@
 
 A modern take on the classic Snake game, built with smooth animations and responsive controls. This project demonstrates fundamental game development concepts and collision detection algorithms.
 
-![Snake Game Preview](../img/mvps/snake_trailer.mp4)
+![Snake Game Preview](img/mvps/snake_trailer.mp4)
 
 ## Key Features
 
@@ -16,9 +16,9 @@ A modern take on the classic Snake game, built with smooth animations and respon
 ## Gameplay Screenshots
 
 <!-- grid-3 -->
-![Gameplay 1](../img/mvps/destrucubes/screen_destrucubes.gif)
-![Gameplay 2](../img/mvps/stickyball/screen_stickyball.gif)
-![Gameplay 3](../img/mvps/panicplaneflight/screen_panicplaneflight.gif)
+![Gameplay 1](img/mvps/destrucubes/screen_destrucubes.gif)
+![Gameplay 2](img/mvps/stickyball/screen_stickyball.gif)
+![Gameplay 3](img/mvps/panicplaneflight/screen_panicplaneflight.gif)
 <!-- end-grid -->
 
 ## Technology Stack

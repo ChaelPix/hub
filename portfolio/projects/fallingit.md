@@ -17,18 +17,18 @@ After gaining experience in Unity, I set myself the challenge of mastering the e
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center; align-items: flex-start;">
     <div style="width: 48%;">
-        <video src="../img/projects/fallingit/fit_gameplay.mp4" controls loop style="width: 100%; border-radius: 8px; border: 2px solid #333;"></video>
+        <video src="img/projects/fallingit/fit_gameplay.mp4" controls loop style="width: 100%; border-radius: 8px; border: 2px solid #333;"></video>
         <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Core Physics Puzzle Gameplay</p>
     </div>
     <div style="width: 48%;">
-        <video src="../img/projects/fallingit/fit_garden.mp4" controls loop style="width: 100%; border-radius: 8px; border: 2px solid #333;"></video>
+        <video src="img/projects/fallingit/fit_garden.mp4" controls loop style="width: 100%; border-radius: 8px; border: 2px solid #333;"></video>
         <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Customizing the Apple & Garden</p>
     </div>
 </div>
 <!-- end-grid -->
 
 <div style="display: flex; justify-content: center; margin-top: 1rem;">
-    <img src="../img/projects/fallingit/fit_event.jpg" alt="Limited-time event page" style="max-width:300px; width: 100%; height: auto; border-radius: 8px; border: 2px solid #333;">
+    <img src="img/projects/fallingit/fit_event.jpg" alt="Limited-time event page" style="max-width:300px; width: 100%; height: auto; border-radius: 8px; border: 2px solid #333;">
 </div>
 <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Event page with special features</p>
 
@@ -41,7 +41,7 @@ This was my first time publishing an app. The process involved learning to prope
 
 <div style="display: flex; justify-content: center;">
     <a href="https://play.google.com/store/apps/details?id=com.ChaelPixCorp.FallingIt&hl=en" target="_blank">
-        <img src="../img/projects/fallingit/fit_playstore.png" alt="Falling It on the Google Play Store" style="max-width: 600px; width: 100%; border-radius: 8px;">
+        <img src="img/projects/fallingit/fit_playstore.png" alt="Falling It on the Google Play Store" style="max-width: 600px; width: 100%; border-radius: 8px;">
     </a>
 </div>
 <p style="text-align: center; font-style: italic; margin-top: 0.5rem;"><a href="https://play.google.com/store/apps/details?id=com.ChaelPixCorp.FallingIt&hl=en" target="_blank">View Falling It on the Play Store</a></p>
@@ -50,17 +50,17 @@ This was my first time publishing an app. The process involved learning to prope
 
 <!-- grid-3 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <video src="../img/projects/fallingit/fit_loading.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
-    <video src="../img/projects/fallingit/fit_leaderboard.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
-    <video src="../img/projects/fallingit/fit_shop.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
+    <video src="img/projects/fallingit/fit_loading.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
+    <video src="img/projects/fallingit/fit_leaderboard.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
+    <video src="img/projects/fallingit/fit_shop.mp4" controls loop style="width: 30%; border-radius: 8px; border: 2px solid #333;"></video>
 </div>
 <!-- end-grid -->
 <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Left to Right: Google Play Sign-In & Cloud Save, Leaderboards, In-App Purchase Shop.</p>
 
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center; margin-top: 1rem;">
-    <img src="../img/projects/fallingit/fit_notif1.jpg" alt="Push Notification Example 1" style="width: 48%; max-width: 250px; border-radius: 8px;">
-    <img src="../img/projects/fallingit/fit_notif2.jpg" alt="Push Notification Example 2" style="width: 48%; max-width: 250px; border-radius: 8px;">
+    <img src="img/projects/fallingit/fit_notif1.jpg" alt="Push Notification Example 1" style="width: 48%; max-width: 250px; border-radius: 8px;">
+    <img src="img/projects/fallingit/fit_notif2.jpg" alt="Push Notification Example 2" style="width: 48%; max-width: 250px; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Push notifications to re-engage players.</p>
@@ -70,8 +70,8 @@ To keep the game fresh, I used **Unity Cloud** to host and deliver asset bundles
 
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center; align-items: center;">
-    <video src="../img/projects/fallingit/fit_maps.mp4" controls loop style="width: 48%; border-radius: 8px; border: 2px solid #333;"></video>
-    <img src="../img/projects/fallingit/fit_assetbundles.png" alt="Asset Bundles in Unity Cloud" style="width: 48%; border-radius: 8px;">
+    <video src="img/projects/fallingit/fit_maps.mp4" controls loop style="width: 48%; border-radius: 8px; border: 2px solid #333;"></video>
+    <img src="img/projects/fallingit/fit_assetbundles.png" alt="Asset Bundles in Unity Cloud" style="width: 48%; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 <p style="text-align: center; font-style: italic; margin-top: 0.5rem;">Left: Maps loading dynamically from the cloud. Right: Asset bundles configured in Unity Cloud.</p>

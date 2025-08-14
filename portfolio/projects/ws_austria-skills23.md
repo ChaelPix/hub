@@ -2,7 +2,7 @@
 
 <!-- grid-1 -->
 <div style="display: flex; justify-content: center;">
-    <img src="../img/worldskills/austria/ws_austria23.jpg" alt="SkillsAustria 2023" style="max-width: 200px; width: 100%; height: auto; border-radius: 8px;">
+    <img src="img/worldskills/austria/ws_austria23.jpg" alt="SkillsAustria 2023" style="max-width: 200px; width: 100%; height: auto; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 
@@ -21,7 +21,7 @@ This competition required mastering the latest robotics standards. I developed t
 ### Gallery
 <!-- grid-2 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <img src="../img/worldskills/austria/robot_austria.jpg" alt="Austria Competition Robot" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
-    <img src="../img/worldskills/austria/austriaskills.jpg" alt="SkillsAustria Competition Floor" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/austria/robot_austria.jpg" alt="Austria Competition Robot" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
+    <img src="img/worldskills/austria/austriaskills.jpg" alt="SkillsAustria Competition Floor" style="width: 48%; height: auto; object-fit: contain; border-radius: 8px;">
 </div>
 <!-- end-grid -->

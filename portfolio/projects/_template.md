@@ -3,7 +3,7 @@
 ## Overview
 Brief description of what the project does and its main purpose.
 
-![Main project image](../img/projects/yourproject/main.jpg)
+![Main project image](img/projects/yourproject/main.jpg)
 
 ## Key Features
 - **Feature 1**: Description of the feature
@@ -11,15 +11,15 @@ Brief description of what the project does and its main purpose.
 - **Feature 3**: Third key feature
 
 ## Demo Video
-<video src="../img/projects/yourproject/demo.mp4" controls></video>
+<video src="img/projects/yourproject/demo.mp4" controls></video>
 
 ## Screenshots Grid
 
 <!-- grid-3 -->
 <div style="display: flex; gap: 16px; justify-content: center;">
-    <img src="../img/mvps/destrucubes/screen_destrucubes.gif" alt="Gameplay 1" style="width: 30%; max-width: 200px; border-radius: 8px;">
-    <img src="../img/mvps/stickyball/screen_stickyball.gif" alt="Gameplay 2" style="width: 30%; max-width: 200px; border-radius: 8px;">
-    <img src="../img/mvps/panicplaneflight/screen_panicplaneflight.gif" alt="Gameplay 3" style="width: 30%; max-width: 200px; border-radius: 8px;">
+    <img src="img/mvps/destrucubes/screen_destrucubes.gif" alt="Gameplay 1" style="width: 30%; max-width: 200px; border-radius: 8px;">
+    <img src="img/mvps/stickyball/screen_stickyball.gif" alt="Gameplay 2" style="width: 30%; max-width: 200px; border-radius: 8px;">
+    <img src="img/mvps/panicplaneflight/screen_panicplaneflight.gif" alt="Gameplay 3" style="width: 30%; max-width: 200px; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 
@@ -52,9 +52,9 @@ function exampleFunction() {
 ## Multiple Images Grid
 
 <!-- grid-3 -->
-![Image 1](../img/projects/yourproject/img1.jpg)
-![Image 2](../img/projects/yourproject/img2.jpg) 
-![Image 3](../img/projects/yourproject/img3.jpg)
+![Image 1](img/projects/yourproject/img1.jpg)
+![Image 2](img/projects/yourproject/img2.jpg) 
+![Image 3](img/projects/yourproject/img3.jpg)
 <!-- end-grid -->
 
 ## Links & Resources

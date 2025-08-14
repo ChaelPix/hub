@@ -7,7 +7,7 @@ To dive deep into the world of generative AI, I developed IAStagram: a fully aut
 Watch the platform come to life as it automatically generates and displays new content.
 
 <div style="display: flex; justify-content: center;">
-    <video src="../img/projects/iastagram/iastagram.mp4" controls loop style="width: 80%; max-width: 300px; border-radius: 8px;"></video>
+    <video src="img/projects/iastagram/iastagram.mp4" controls loop style="width: 80%; max-width: 300px; border-radius: 8px;"></video>
 </div>
 
 ## Key Features
@@ -21,7 +21,7 @@ The application is built on a robust, event-driven architecture that separates c
 
 This sequence diagram illustrates the complete data flow:
 
-[![IAStagram Sequence Diagram](../img/projects/iastagram/iastagram_diag.jpg)](../img/projects/iastagram/iastagram_diag.jpg)
+[![IAStagram Sequence Diagram](img/projects/iastagram/iastagram_diag.jpg)](img/projects/iastagram/iastagram_diag.jpg)
 
 ## The Technical Challenge: Resource Optimization
 A significant challenge was deploying and running these models on my personal Linux machine, which is equipped with a modest **GTX 1060 laptop GPU**.

@@ -1,7 +1,7 @@
 # OrbitVectorAR: Pushing the Boundaries of a School Project
 
 <div style="display: flex; justify-content: center;">
-    <img src="../img/projects/orbitvectorar/app_title.png" alt="OrbitVectorAR Logo" style="max-width:200px; width: 100%; height: auto; border-radius: 8px;">
+    <img src="img/projects/orbitvectorar/app_title.png" alt="OrbitVectorAR Logo" style="max-width:200px; width: 100%; height: auto; border-radius: 8px;">
 </div>
 
 What began as a standard school assignment to create a simple service app, I decided to push far beyond the curriculum. As a team of two, I took the lead on developing an entire Android application from the ground up, transforming the project into a complete, physics-based augmented reality game published on the Google Play Store. My partner handled the backend services, while I engineered the core AR experience, game logic, UI, and the entire asset pipeline.
@@ -16,9 +16,9 @@ What began as a standard school assignment to create a simple service app, I dec
 OrbitVectorAR is an AR puzzle game where players shoot arrows at targets by skillfully using the gravitational pull of procedurally generated planets and moons that appear in their real-world environment.
 
 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-  <img src="../img/projects/orbitvectorar/ar1.jpg" alt="OrbitVectorAR Gameplay 1" style="width: 32%; min-width: 250px; border-radius: 8px;">
-  <img src="../img/projects/orbitvectorar/ar2.jpg" alt="OrbitVectorAR Gameplay 2" style="width: 32%; min-width: 250px; border-radius: 8px;">
-  <img src="../img/projects/orbitvectorar/ar3.jpg" alt="OrbitVectorAR Gameplay 3" style="width: 32%; min-width: 250px; border-radius: 8px;">
+  <img src="img/projects/orbitvectorar/ar1.jpg" alt="OrbitVectorAR Gameplay 1" style="width: 32%; min-width: 250px; border-radius: 8px;">
+  <img src="img/projects/orbitvectorar/ar2.jpg" alt="OrbitVectorAR Gameplay 2" style="width: 32%; min-width: 250px; border-radius: 8px;">
+  <img src="img/projects/orbitvectorar/ar3.jpg" alt="OrbitVectorAR Gameplay 3" style="width: 32%; min-width: 250px; border-radius: 8px;">
 </div>
 
 ---
@@ -51,9 +51,9 @@ The heart of the game is a custom physics engine I built to handle all celestial
 
 <!-- grid-3 -->
 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-    <img src="../img/projects/orbitvectorar/screen_shop.png" alt="Shop Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
-    <img src="../img/projects/orbitvectorar/screen_equip.png" alt="Equip Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
-    <img src="../img/projects/orbitvectorar/screen_lead.png" alt="Leaderboard Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
+    <img src="img/projects/orbitvectorar/screen_shop.png" alt="Shop Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
+    <img src="img/projects/orbitvectorar/screen_equip.png" alt="Equip Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
+    <img src="img/projects/orbitvectorar/screen_lead.png" alt="Leaderboard Screen" style="width: 30%; min-width: 200px; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 

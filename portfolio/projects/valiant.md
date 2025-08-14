@@ -19,9 +19,9 @@ See the full game in action, from the menu to multiplayer combat.
 
 <!-- grid-3 -->
 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-    <img src="../img/projects/valiant/valiant_2.png" alt="Enemy turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
-    <img src="../img/projects/valiant/valiant_1.png" alt="User turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
-    <img src="../img/projects/valiant/val_boatplacement.png" alt="Boat placement screen" style="width: 30%; min-width: 250px; border-radius: 8px;">
+    <img src="img/projects/valiant/valiant_2.png" alt="Enemy turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
+    <img src="img/projects/valiant/valiant_1.png" alt="User turn" style="width: 30%; min-width: 250px; border-radius: 8px;">
+    <img src="img/projects/valiant/val_boatplacement.png" alt="Boat placement screen" style="width: 30%; min-width: 250px; border-radius: 8px;">
 </div>
 <!-- end-grid -->
 
@@ -30,7 +30,7 @@ See the full game in action, from the menu to multiplayer combat.
 ### 1. Custom UI Engine with SFML
 The game's graphical interface was built using **SFML**, a low-level C++ library that only provides basic rendering primitives (shapes, text). To build a scalable and manageable UI, I designed and implemented my own class-based framework on top of it. This custom engine handled complex elements like buttons, layouts, and screen transitions, which significantly streamlined the development process.
 
-[![Simplified class diagram of the interface stack](../img/projects/valiant/val_graph_class.png)](../img/projects/valiant/val_graph_class.png)
+[![Simplified class diagram of the interface stack](img/projects/valiant/val_graph_class.png)](img/projects/valiant/val_graph_class.png)
 *Simplified class diagram of my custom UI framework. (Click to view full size)*
 
 ### 2. Multi-threaded Networking & Matchmaking
@@ -38,10 +38,10 @@ I developed the complete networking system using **C++ and Winsock**. The backbo
 
 The diagrams below illustrate the architecture of the networking stack and the logic of the matchmaking sequence.
 
-[![Class diagram of the networking stack](../img/projects/valiant/val_netclass.png)](../img/projects/valiant/val_netclass.png)
+[![Class diagram of the networking stack](img/projects/valiant/val_netclass.png)](img/projects/valiant/val_netclass.png)
 *Class diagram of the networking stack. (Click to view full size)*
 
-[![Sequence diagram of the matchmaking system](../img/projects/valiant/val_netseq.png)](../img/projects/valiant/val_netseq.png)
+[![Sequence diagram of the matchmaking system](img/projects/valiant/val_netseq.png)](img/projects/valiant/val_netseq.png)
 *Sequence diagram of the matchmaking system. (Click to view full size)*
 
 ## Lessons Learned

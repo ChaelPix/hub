@@ -31,7 +31,7 @@ sudo apt install npm -y
 npm init -y
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-source ~/.bashrc
+source ~/.zshrc
 nvm install --lts
 
 nvm use --lts
@@ -49,7 +49,7 @@ npx tailwindcss init
 
    ```bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-   source ~/.bashrc
+   source ~/.zshrc
    nvm install --lts
    ```
 2. **Create a new npm project**:

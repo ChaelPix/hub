@@ -99,6 +99,8 @@ function createHighlightCard(project) {
 
     const tagList = project.tags.filter(t => !isBackendTag(t));
     const sortedTags = sortTagsByCategory(tagList);
+    const isPortrait = !!project.isPortrait;
+    const aspectClass = isPortrait ? 'aspect-square' : 'aspect-video';
     
     let mediaContent = '';
     if (project.video_preview) {
@@ -107,7 +109,7 @@ function createHighlightCard(project) {
             ? `${project.video_preview}&${cacheBuster}`
             : `${project.video_preview}?${cacheBuster}`;
         mediaContent = `
-            <div class="highlight-media group aspect-video cursor-pointer">
+            <div class="highlight-media group ${aspectClass} cursor-pointer">
                 <img src="${project.image}" alt="${project.title}" 
                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 card-img" />
                 <video src="${videoSrc}"
@@ -117,7 +119,7 @@ function createHighlightCard(project) {
         `;
     } else {
         mediaContent = `
-            <div class="highlight-media aspect-video">
+            <div class="highlight-media ${aspectClass}">
                 <img src="${project.image}" alt="${project.title}" 
                      class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
             </div>

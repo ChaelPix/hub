@@ -1,5 +1,14 @@
 export const projects = [
     {
+        "title": "SARA — 360° Visual Servoing for Mobile Manipulation",
+        "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper submitted to ICPR.",
+        "image": "img/projects/sara/robot.jpg",
+        "tags": ["Highlights", "Robotics", "Computer Vision", "ROS", "C++", "Python", "Research", "Visp"],
+        "id": "sara_internship",
+        "date": "September 2025 - February 2026",
+        "isPortrait": true
+    },
+    {
         "title": "Orbit Vector AR",
         "description": "AR Game School Project made with Kotlin and ARCore. Shoot the apple in an AR environment using planets' and moons' gravity. Featuring multiplayer leaderboard, asset delivery, database, and more.",
         "image": "img/projects/orbitvectorar/page.jpg",
@@ -100,7 +109,7 @@ export const projects = [
         "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "video_preview": "img/worldskills/lyon24/pixx_trailer.mp4",
-        "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "Machine Learning", "ROS2", "C++", "Python", "YOLO", "OpenCV"],
+        "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "Machine Learning", "ROS2", "C++", "Python", "OpenCV"],
         "category": "worldskills",
         "id": "ws_lyon24",
         "date": "December 2023 - September 2024"
@@ -110,7 +119,7 @@ export const projects = [
         "description": "A Unity simulation to test robots using a ROS2 stack, merging robotics and 3D visualization.",
         "image": "img/worldskills/lyon24/simu.png",
         "video_preview": "img/worldskills/unity/unitysimu_trailer.mp4",
-        "tags": ["Highlights", "Robotics", "Computer Vision", "ROS2", "C++", "C#", "Unity"],
+        "tags": ["AIproject","Robotics", "Computer Vision", "ROS2", "C++", "C#", "Unity"],
         "id": "ws_simunity",
         "date": "December 2023 - September 2024"
     },
@@ -119,7 +128,7 @@ export const projects = [
     //     "description": "An easy-to-use tool for training YOLOX models, using data-augmentation.",
     //     "image": "",
     //     "video_preview": "",
-    //     "tags": ["Computer Vision", "Python", "YOLO", "Machine Learning"],
+    //     "tags": ["Computer Vision", "Python", "Machine Learning"],
     //     "id": "yolox_training",
     //     "date": "May 2025"
     // },

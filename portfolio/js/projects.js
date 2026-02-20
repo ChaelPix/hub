@@ -3,8 +3,9 @@ export const projects = [
         "title": "SARA — 360° Visual Servoing for Mobile Manipulation",
         "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper submitted to ICPR.",
         "image": "img/projects/sara/robot.jpg",
-        "tags": ["Highlights", "Robotics", "Computer Vision", "ROS", "C++", "Python", "Research", "Visp"],
+        "tags": ["Highlights", "Robotics", "Computer Vision", "ROS1", "C++", "Python", "Research", "VISP"],
         "id": "sara_internship",
+        "video_preview": "img/projects/sara/sara_preview.mp4",
         "date": "September 2025 - February 2026",
         "isPortrait": true
     },
@@ -13,7 +14,7 @@ export const projects = [
         "description": "AR Game School Project made with Kotlin and ARCore. Shoot the apple in an AR environment using planets' and moons' gravity. Featuring multiplayer leaderboard, asset delivery, database, and more.",
         "image": "img/projects/orbitvectorar/page.jpg",
         "video_preview": "img/projects/orbitvectorar/demo.mp4",
-        "tags": ["Kotlin", "PHP/SQL", "AR", "Android", "gameProject"],
+        "tags": ["Kotlin", "PHP/SQL", "XR/VR", "Android", "gameProject"],
         "id": "orbitvectorar",
         "date": "May - June 2025",
         "isPortrait": true
@@ -51,7 +52,7 @@ export const projects = [
         "description": "An experiment with AI-powered NPCs able to listen and talk to users.",
         "image": "img/projects/aigallery/aigallery.jpg",
         "video_preview": "img/projects/aigallery/aigallery_trailer.mp4",
-        "tags": ["C#", "VR", "Unity", "MetaXR", "AIproject"],
+        "tags": ["C#", "XR/VR", "Unity", "MetaXR", "AIproject"],
         "id": "aigallery",
         "date": "December 2024"
     },

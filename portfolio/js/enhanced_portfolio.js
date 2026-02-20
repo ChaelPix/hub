@@ -20,15 +20,15 @@ const TAG_CATEGORY_MAP = {
     // Languages
     'C++': 'Language', 'C#': 'Language', 'Python': 'Language', 'PHP/SQL': 'Language', 'Javascript': 'Language', 'Js': 'Language', 'Kotlin': 'Language',
     // Frameworks/Libraries
-    'Unity': 'Framework', 'SFML C++': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
+    'Unity': 'Framework', 'SFML C++': 'Framework', 'Tkinter': 'Framework', 'Tailwind CSS': 'Framework', 'OpenCV': 'Framework', 'VISP': 'Framework', 'YOLO': 'Framework', 'Regex': 'Framework', 'ROS2': 'Framework', 'ROS1': 'Framework', 'Arduino': 'Framework',
     // Platforms
     'Android': 'Platform', 'Linux': 'Platform', 'MetaXR': 'Platform',
     // Types
-    'Game': 'Type', 'VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'PlayStore': 'Competition', 'Web': 'Type', 'Computer Vision': 'Type', 'Machine Learning': 'Type', 'LLM': 'Type',
+    'Game': 'Type', 'XR/VR': 'Type', 'Software': 'Type', 'AI': 'Type', 'Robotics': 'Type', 'Networking': 'Type', 'PlayStore': 'Competition', 'Web': 'Type', 'Computer Vision': 'Type', 'Machine Learning': 'Type', 'LLM': 'Type',
     // Special
     'Highlights': 'Special', 
     // Competition/Events
-    'WorldSkills': 'Competition', 'Competition': 'Competition',
+    'WorldSkills': 'Competition', 'Competition': 'Competition', 'Research': 'Competition',
     // Others
     'Sphink': 'Default', 'Hypercasual MVPs': 'Default', 'School': 'Default', 'WIP': 'Default'
 };

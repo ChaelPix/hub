@@ -3,14 +3,14 @@
 ## Overview
 Six-month research internship at the **CIAD laboratory** (UTBM, France) on the **SARA** project (*See All, Reach All*). I designed and implemented a full pipeline enabling a mobile manipulator (omnidirectional base + 6-DOF arm) to **detect, locate, and grasp objects anywhere around it** using a single 360° camera, no search phase, no LiDAR, just vision.
 
-This work resulted in my **first-author scientific paper** submitted to the ICPR international conference.
+This work resulted in my **first-author scientific paper** accepted to the ICPR international conference 2026!
 
 - **Lab**: CIAD, Connaissance et Intelligence Artificielle Distribuées (UR 7533)
 - **Topic**: Spherical visual servoing for mobile manipulators
 - **Stack**: ROS 2, C++, Python, PyTorch, ViSP, CoppeliaSim
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; border-radius: 8px;">
-    <iframe src="https://www.youtube.com/embed/sxhnpgPlvew" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    <iframe src="https://www.youtube.com/embed/oC3VeolFC7M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
 </div>
 
 
@@ -56,7 +56,7 @@ The arm itself is used as a calibration target: its 3D model is rendered into th
 - Live demos at the CIAD research day and Fête de la Science, zero failures
 
 ## Paper
-This work resulted in a **first-author scientific paper** submitted to the **ICPR** (International Conference on Pattern Recognition) international conference:
+This work resulted in a **first-author scientific paper** submitted and accepted to the **ICPR** (International Conference on Pattern Recognition) international conference 2026:
 
 > *See All Reach All: Spherical Vision-Based Servoing for Full-Surround Mobile Manipulation*
 

@@ -74,7 +74,7 @@ function sortTagsByCategory(tags) {
 // Backend-only tags that shouldn't be displayed as badges
 function isBackendTag(tag) {
     // support multiple spellings just in case
-    const backendTags = new Set(['Highlights', 'highlights', 'hihlights', 'AIproject', 'Aiproject', 'gameProject']);
+    const backendTags = new Set(['Highlights', 'highlights', 'hihlights', 'AIproject', 'Aiproject', 'gameProject', 'softwareProject']);
     return backendTags.has(tag);
 }
 
@@ -82,14 +82,20 @@ function isBackendTag(tag) {
 function categorizeProjects() {
     const isHighlight = (p) => ['Highlights', 'highlights', 'hihlights'].some(t => p.tags.includes(t));
     const isGame = (p) => p.tags.includes('gameProject');
-    const isAI = (p) => p.tags.includes('AIproject') || p.tags.includes('Aiproject');
+    const isRoboticsCV = (p) => p.tags.includes('Robotics') || p.tags.includes('Computer Vision') || p.tags.includes('ROS1') || p.tags.includes('ROS2');
+    const isSoftware = (p) => p.tags.includes('AIproject') || p.tags.includes('Aiproject') || p.tags.includes('softwareProject');
 
     const highlights = projects.filter(isHighlight);
-    const games = projects.filter(p => isGame(p) && !isHighlight(p));
-    // projects container = AI projects section; strictly AI tags only
-    const regularProjects = projects.filter(p => isAI(p) && !isHighlight(p) && !isGame(p));
+    
+    // Priorities if a project has multiple conflicting categories 
+    // (Highlights are now included in their respective categories to maintain a complete timeline)
+    const roboticsProjects = projects.filter(p => isRoboticsCV(p));
+    const games = projects.filter(p => isGame(p) && !isRoboticsCV(p));
+    
+    // Software catches purely software/AI projects, or leftovers to avoid missing any
+    const softwareProjects = projects.filter(p => (isSoftware(p) || (!isRoboticsCV(p) && !isGame(p))) && !roboticsProjects.includes(p) && !games.includes(p));
 
-    return { highlights, games, regularProjects };
+    return { highlights, roboticsProjects, games, softwareProjects };
 }
 
 // Create highlight card (special design)
@@ -291,7 +297,7 @@ function createProjectCard(project, isSmall = false, noClamp = false) {
 
 // Generate all project sections
 function generateProjectSections() {
-    const { highlights, games, regularProjects } = categorizeProjects();
+    const { highlights, roboticsProjects, games, softwareProjects } = categorizeProjects();
 
     // Sort by date
     const sortByDate = (a, b) => {
@@ -301,8 +307,9 @@ function generateProjectSections() {
     };
 
     highlights.sort(sortByDate);
-    regularProjects.sort(sortByDate);
+    roboticsProjects.sort(sortByDate);
     games.sort(sortByDate);
+    softwareProjects.sort(sortByDate);
 
     // Generate highlights
     const highlightsContainer = document.getElementById('highlights-container');
@@ -316,11 +323,11 @@ function generateProjectSections() {
         });
     }
 
-    // Generate AI projects in the projects container using the same layout as games (small cards, no truncation)
+    // Generate Robotics & CV projects in the projects container
     const projectsContainer = document.getElementById('projects-container');
     if (projectsContainer) {
         projectsContainer.innerHTML = '';
-        regularProjects.forEach((project, index) => {
+        roboticsProjects.forEach((project, index) => {
             const card = createProjectCard(project, true, true);
             card.style.animationDelay = `${index * 0.1}s`;
             card.classList.add('animate-fade-in');
@@ -337,6 +344,19 @@ function generateProjectSections() {
             card.style.animationDelay = `${index * 0.1}s`;
             card.classList.add('animate-fade-in');
             gamesContainer.appendChild(card);
+        });
+    }
+    
+    // Generate software projects
+    const softwareContainer = document.getElementById('software-container');
+    if (softwareContainer) {
+        softwareContainer.innerHTML = '';
+        softwareProjects.forEach((project, index) => {
+            // Using small cards layout, true to not clamp title/desc if needed
+            const card = createProjectCard(project, true);
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('animate-fade-in');
+            softwareContainer.appendChild(card);
         });
     }
 }

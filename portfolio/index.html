@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Traïan B. Portfolio</title>
-        <meta name="description" content="Traïan Beaujard — Robotics, AI, and creative engineering projects. WorldSkills finalist. Explore concise, visual stories of selected works." />
+        <meta name="description" content="Traïan Beaujard — Robotics, and creative engineering projects." />
         <meta property="og:title" content="Traïan B. — Portfolio" />
         <meta property="og:description" content="Robotics, AI, Unity, CV. Concise visual project stories." />
         <meta property="og:type" content="website" />
@@ -37,8 +37,9 @@
                 <nav class="hidden md:flex items-center gap-6">
                     <a href="#home" class="nav-link active" data-target="home">Home</a>
                     <a href="#highlights" class="nav-link" data-target="highlights">Featured</a>
-                    <a href="#projects" class="nav-link" data-target="projects">AI Projects</a>
-                    <a href="#games" class="nav-link" data-target="games">Game Projects</a>
+                    <a href="#projects" class="nav-link" data-target="projects">Robotics & CV</a>
+                    <a href="#games" class="nav-link" data-target="games">Games</a>
+                    <a href="#software" class="nav-link" data-target="software">Software Projects</a>
                 </nav>
                 
                 <div class="flex items-center gap-3">
@@ -84,16 +85,21 @@
                     <div class="lg:col-span-7 space-y-8">
                         <div class="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium animate-fade-in">
                             <span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse shadow-lg shadow-green-400/50"></span>
-                            <span class="text-gradient">Autonomous Systems Engineer Student</span>
+                            <span class="text-gradient">Robotics & Computer Vision Researcher Student</span>
                         </div>
                         <div class="space-y-6">
                             <h1 class="typing-title font-display text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
                                 <span class="text-gradient">BEAUJARD</span><br>
                                 <span class="text-white">Traïan</span><span class="typing-cursor">|</span>
                             </h1>
-                            <p class="typing-subtitle max-w-2xl text-xl text-white/80 leading-relaxed font-light">
-                                Crafting autonomous robots and AI-powered apps.
+
+                        <div class="inline-flex items-center rounded-full bg-white backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium animate-fade-in">
+                            <span class="text-white-400">Engineering Student at UTBM, France</span>
+                        </div>
+                            <p class="typing-subtitle max-w-xl pr-4 lg:pr-0 lg:max-w-2xl text-lg sm:text-xl text-white/80 leading-relaxed font-light backdrop-blur-sm bg-black/20 p-2 rounded-lg inline-block">
+                                Specialized in autonomous mobile/manipulator systems.
                             </p>
+                            
                         </div>
                         <div class="typing-button flex flex-wrap items-center gap-4">
                             <a href="#highlights" class="btn-premium text-white smooth-scroll">
@@ -101,10 +107,11 @@
                             </a>
                         </div>
                         <div class="typing-pills flex flex-wrap gap-4">
-                            <div class="stat-pill">🤖 Robotics • ROS2</div>
-                            <div class="stat-pill">🧠 AI • Computer Vision</div>
-                            <div class="stat-pill">🎮 Unity • C# • C++</div>
-                            <div class="stat-pill">🏆 Autonomous Mobile Robotics WorldSkills Champion</div>
+                            <div class="stat-pill"><span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-blue-400 to-emerald-500 animate-pulse shadow-lg shadow-green-400/50"></span> First-Author Paper at ICPR 2026</div>
+                            <div class="stat-pill"><span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse shadow-lg shadow-yellow-400/50"></span> Autonomous Mobile Robotics WorldSkills Champion</div>
+                            <div class="stat-pill">Robotics • ROS1/2 • C++ • Python</div>
+                            <div class="stat-pill">Computer Vision • Visp • OpenCV</div>
+                            <div class="stat-pill">Unity • C# • XR</div>
                         </div>
                     </div>
                     <div class="lg:col-span-5 flex justify-end">
@@ -128,7 +135,7 @@
                     <span class="text-gradient">Featured</span> <span class="text-white">Projects</span>
                 </h2>
                 <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    Showcasing real-world applications of robotics and AI during my International Competition Journey of Worldskills.
+                    Showcasing the most significant projects that represent my skills; the ones I'm most proud of.
                 </p>
             </div>
             <div id="highlights-container" class="space-y-12"></div>
@@ -143,10 +150,10 @@
                     <span class="text-gradient">Technical Portfolio</span>
                 </div> -->
                 <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
-                    <span class="text-white">AI</span> <span class="text-gradient">Projects</span>
+                    <span class="text-gradient">Robotics</span> <span class="text-white">&</span> <span class="text-gradient">Computer Vision</span> <span class="text-white">Projects</span>
                 </h2>
                 <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    Advanced software development, Robotics, AI experimentation, Competitions, and more.
+                    
                 </p>
             </div>
             <div id="projects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
@@ -168,6 +175,24 @@
                 </p>
             </div>
             <div id="games-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+        </section>
+
+        <!-- Software Section -->
+        <section id="software" class="relative mx-auto max-w-screen-2xl px-4 py-16">
+            <div class="text-center mb-12">
+                <hr class="border-white/20 my-4">
+                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
+                    <span class="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
+                    <span class="text-gradient">Interactive Experiences</span>
+                </div> -->
+                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
+                    <span class="text-gradient">Software</span> <span class="text-white">Projects</span>
+                </h2>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+                    Applied software engineering finished projects I made for fun and learning.
+                </p>
+            </div>
+            <div id="software-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
         </section>
 
         <!-- Popup / Modal -->

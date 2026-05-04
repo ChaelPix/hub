@@ -50,10 +50,7 @@ My initial approach to identifying obstacles was to use contour detection. This 
 ### The Challenge
 > This method revealed a critical flaw: the horizon line was often detected as part of an obstacle's contour, causing the bounding boxes to merge incorrectly. This demonstrated that a more sophisticated feature detection method was needed.
 
-## Lessons Learned & Next Steps (WIP)
-This project has been an invaluable exercise in applying CV theory. The failure of the initial contour method was a key learning moment, highlighting the need for more robust feature identifiers that aren't dependent on continuous lines.
+## Building a Strong Foundation
+This project was an invaluable exercise in applying Computer Vision theory. The limitations of naive contour detection highlighted the necessity of understanding exactly *why* and *when* to use more advanced feature identifiers (like Harris Corner Detection) or modern deep learning architectures. 
 
-My next focus is on **Harris Corner Detection** to identify unique points on obstacles, which should be more resilient. The roadmap includes:
-- **Clustering**: Grouping detected corners to form accurate bounding boxes.
-- **Object Classification**: Implementing algorithms from basic **KNN** to simple neural networks to differentiate between boats, islands, and other objects.
-- **Object Localization**: Building the logic to map and avoid obstacles, completing the autonomous navigation loop.
+By hitting the mathematical limits of continuous line detection, I gained a much deeper appreciation for modern SOTA perception pipelines, creating a solid theoretical foundation for my subsequent work in Robotics and Visual Servoing.

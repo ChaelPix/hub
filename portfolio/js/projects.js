@@ -10,6 +10,15 @@ export const projects = [
         "isPortrait": false
     },
     {
+        "title": "ClaviAR - Mixed Reality Piano Calibration",
+        "description": "Meta Quest piano prototype focused on fast automatic keyboard calibration: the demo aligns the virtual overlay to a real piano in about 3 seconds. Built in Unity/C#, then wrapped in a rhythm-game loop to showcase generated exercises, scoring, and progression.",
+        "image": "img/projects/claviar/claviar_gameplay.png",
+        "video_preview": "img/projects/claviar/claviar_preview.mp4",
+        "tags": ["XR/VR", "Unity", "C#", "Computer Vision", "School Project", "gameProject"],
+        "id": "claviar",
+        "date": "February - June 2026"
+    },
+    {
         "title": "Orbit Vector AR",
         "description": "AR Game School Project made with Kotlin and ARCore. Shoot the apple in an AR environment using planets' and moons' gravity. Featuring multiplayer leaderboard, asset delivery, database, and more.",
         "image": "img/projects/orbitvectorar/page.jpg",

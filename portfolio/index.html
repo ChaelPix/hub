@@ -1,213 +1,146 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="custom-night">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Traïan B. Portfolio</title>
-        <meta name="description" content="Traïan Beaujard — Robotics, and creative engineering projects." />
-        <meta property="og:title" content="Traïan B. — Portfolio" />
-        <meta property="og:description" content="Robotics, AI, Unity, CV. Concise visual project stories." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="img/pdp/banner.jpg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
-        <link href="output.css" rel="stylesheet" />
-        <script type="module" src="js/enhanced_portfolio.js" defer></script>
-        <script src="js/theme.js" defer></script>
-    </head>
-    <body class="min-h-screen font-sans text-base-content selection:bg-primary/20 selection:text-primary">
-        <!-- Animated background -->
-        <div class="fixed inset-0 -z-10 overflow-hidden">
-            <div class="absolute inset-0 bg-grid"></div>
-            <!-- <div class="absolute -top-32 -left-32 w-[40rem] h-[40rem] bg-primary/20 rounded-full blur-3xl animate-blob"></div>
-            <div class="absolute top-1/3 -right-40 w-[36rem] h-[36rem] bg-secondary/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-            <div class="absolute bottom-0 left-1/3 w-[44rem] h-[44rem] bg-accent/20 rounded-full blur-3xl animate-blob animation-delay-4000"></div> -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0b0d" />
+  <title>Traïan Beaujard — Robotics & Creative Engineering</title>
+  <meta name="description" content="Portfolio of Traïan Beaujard — robotics, computer vision, research and interactive engineering." />
+  <meta property="og:title" content="Traïan Beaujard — Engineer in motion" />
+  <meta property="og:description" content="Robotics, computer vision, research and playful systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="img/pdp/banner.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="output.css" rel="stylesheet" />
+  <script type="module" src="js/enhanced_portfolio.js" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#home" aria-label="Traïan Beaujard — home">
+      <span class="brand-mark">TB</span>
+      <span class="brand-copy">Traïan<br />Beaujard</span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#work">Selected work</a>
+      <a href="#archive">Project index</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="availability" href="mailto:traian.beaujard@gmail.com">
+      <span></span> Available for opportunities
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#work">Selected work</a>
+      <a href="#archive">Project index</a>
+      <a href="#about">About</a>
+      <a href="mailto:traian.beaujard@gmail.com">Email me</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-gridline" aria-hidden="true"></div>
+      <div class="hero-kicker reveal">ROBOTICS · COMPUTER VISION · CREATIVE ENGINEERING</div>
+      <h1 class="hero-title reveal">
+        I BUILD MACHINES
+        <span class="hero-title-row">THAT <em>SEE</em><span class="hero-dot">●</span></span>
+        <span class="hero-title-row indent">THINK &amp; MOVE.</span>
+      </h1>
+      <div class="hero-bottom reveal">
+        <p class="hero-intro">I’m Traïan, a French engineering student turning research-grade robotics into systems that work in the real world.</p>
+        <a class="round-link" href="#work" aria-label="Explore selected projects">
+          <span>Explore<br />projects</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12M18 6 6 18" /></svg>
+        </a>
+        <div class="hero-meta">
+          <span>Based in France</span>
+          <span>UTBM · Engineering</span>
+          <span>Scroll to explore ↓</span>
         </div>
+      </div>
+    </section>
 
-        <!-- Top Bar -->
-        <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-base-100/60 border-b border-base-200">
-            <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-                <a href="#home" class="flex items-center gap-3 group">
-                    <img src="img/pdp/pdp.jpg" alt="Traïan" class="w-10 h-10 rounded-full ring-2 ring-primary/40" />
-                    <span class="font-display text-lg font-semibold tracking-tight group-hover:text-primary transition-colors">Traïan B.</span>
-                </a>
-                
-                <!-- Navigation -->
-                <nav class="hidden md:flex items-center gap-6">
-                    <a href="#home" class="nav-link active" data-target="home">Home</a>
-                    <a href="#highlights" class="nav-link" data-target="highlights">Featured</a>
-                    <a href="#projects" class="nav-link" data-target="projects">Robotics & CV</a>
-                    <a href="#games" class="nav-link" data-target="games">Games</a>
-                    <a href="#software" class="nav-link" data-target="software">Software Projects</a>
-                </nav>
-                
-                <div class="flex items-center gap-3">
-                    <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" class="icon-btn" aria-label="LinkedIn">
-                        <img src="img/icons/icon_linkedin.png" alt="LinkedIn" class="w-6 h-6" />
-                    </a>
-                    <a href="https://github.com/chaelpix" class="icon-btn" aria-label="GitHub">
-                        <img src="img/icons/icon_github_w.png" alt="GitHub" class="w-6 h-6 invert dark:invert-0" />
-                    </a>
-                    <a href="mailto:traian.beaujard@gmail.com" class="icon-btn" aria-label="Email">
-                        <img src="img/icons/icon_gmail.png" alt="Email" class="w-6 h-6" />
-                    </a>
-                </div>
-            </div>
-        </header>
+    <section class="proof-strip" aria-label="Key achievements">
+      <div><strong>01</strong><span>WorldSkills<br />Champion</span></div>
+      <div><strong>02</strong><span>First-author paper<br />ICPR 2026</span></div>
+      <div><strong>03</strong><span>Robotics · CV<br />XR · Games</span></div>
+      <div class="proof-portrait"><img src="img/pdp/pdp.jpg" alt="Portrait of Traïan Beaujard" /></div>
+    </section>
 
-        <!-- Hero -->
-        <section id="home" class="relative min-h-screen flex items-center">
-            <!-- Victory Banner Background -->
-            <div class="absolute inset-0 overflow-hidden">
-                <div class="absolute inset-0 bg-gradient-to-br from-black/50 via-black/50 to-black/50"></div>
-                <div class="absolute top-1/2 right-0 w-1/2 h-full transform -translate-y-1/2">
-                    <div class="victory-banner-bg h-full relative">
-                        <!-- Code Loading Animation -->
-                        <div class="code-loader">
-                            <div class="text-gray-400 mb-2">// Loading image...</div>
-                            <div class="text-green-400">const banner = new Image();</div>
-                            <div class="text-green-400">banner.src = "img/pdp/banner.jpg";</div>
-                            <div class="text-green-400">banner.load();</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill"></div>
-                            </div>
-                        </div>
-                        <img src="img/pdp/banner.jpg" alt="WorldSkills Victory" 
-                             class="banner-image w-full h-full object-cover object-center" />
-                        <div class="absolute inset-0 bg-gradient-to-l from-transparent"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="relative z-10 mx-auto max-w-7xl px-4 py-12">
-                <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 min-h-[80vh]">
-                    <div class="lg:col-span-7 space-y-8">
-                        <div class="inline-flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium animate-fade-in">
-                            <span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse shadow-lg shadow-green-400/50"></span>
-                            <span class="text-gradient">Robotics & Computer Vision Researcher Student</span>
-                        </div>
-                        <div class="space-y-6">
-                            <h1 class="typing-title font-display text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.9]">
-                                <span class="text-gradient">BEAUJARD</span><br>
-                                <span class="text-white">Traïan</span><span class="typing-cursor">|</span>
-                            </h1>
-
-                        <div class="inline-flex items-center rounded-full bg-gray/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium animate-fade-in">
-                            <span class="text-white-400">Engineering Student at UTBM, France</span>
-                        </div>
-
-                        <p class="typing-subtitle max-w-2xl text-xl text-white/80 leading-relaxed font-light">
-                                Specialized in autonomous mobile/manipulator systems.
-                        </p>
-                            
-                        </div>
-                        <div class="typing-button flex flex-wrap items-center gap-4">
-                            <a href="#highlights" class="btn-premium text-white smooth-scroll">
-                                Explore Projects
-                            </a>
-                        </div>
-                        <div class="typing-pills flex flex-wrap gap-4">
-                            <div class="stat-pill"><span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-blue-400 to-emerald-500 animate-pulse shadow-lg shadow-green-400/50"></span> First-Author Paper at ICPR 2026</div>
-                            <div class="stat-pill"><span class="inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 animate-pulse shadow-lg shadow-yellow-400/50"></span> Autonomous Mobile Robotics WorldSkills Champion</div>
-                            <div class="stat-pill">Robotics • ROS1/2 • C++ • Python</div>
-                            <div class="stat-pill">Computer Vision • Visp • OpenCV</div>
-                            <div class="stat-pill">Unity • C# • XR</div>
-                        </div>
-                    </div>
-                    <div class="lg:col-span-5 flex justify-end">
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Highlights Section -->
-
-        <!-- Highlights Section -->
-        <section id="highlights" class="relative mx-auto max-w-7xl px-4 py-16">
-            <div class="text-center mb-12">
-                <hr class="border-white/20 my-4">
-                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
-                    <span class="w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse"></span>
-                    <span class="text-gradient">Featured Work</span>
-                </div> -->
-                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
-                    <span class="text-gradient">Featured</span> <span class="text-white">Projects</span>
-                </h2>
-                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    Showcasing the most significant projects that represent my skills; the ones I'm most proud of.
-                </p>
-            </div>
-            <div id="highlights-container" class="space-y-12"></div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="relative mx-auto max-w-screen-2xl px-4 py-16">
-            <div class="text-center mb-12">
-                <hr class="border-white/20 my-4">
-                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
-                    <span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full animate-pulse"></span>
-                    <span class="text-gradient">Technical Portfolio</span>
-                </div> -->
-                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
-                    <span class="text-gradient">Robotics</span> <span class="text-white">&</span> <span class="text-gradient">Computer Vision</span> <span class="text-white">Projects</span>
-                </h2>
-                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    
-                </p>
-            </div>
-            <div id="projects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-        </section>
-
-        <!-- Games Section -->
-        <section id="games" class="relative mx-auto max-w-screen-2xl px-4 py-16">
-            <div class="text-center mb-12">
-                <hr class="border-white/20 my-4">
-                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
-                    <span class="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
-                    <span class="text-gradient">Interactive Experiences</span>
-                </div> -->
-                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
-                    <span class="text-gradient">Game</span> <span class="text-white">Projects</span>
-                </h2>
-                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    From small game projects to complete Unity-powered games, professional mobile experiences, and from scratch game engines.
-                </p>
-            </div>
-            <div id="games-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-        </section>
-
-        <!-- Software Section -->
-        <section id="software" class="relative mx-auto max-w-screen-2xl px-4 py-16">
-            <div class="text-center mb-12">
-                <hr class="border-white/20 my-4">
-                <!-- <div class="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 text-sm font-medium mb-4">
-                    <span class="w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
-                    <span class="text-gradient">Interactive Experiences</span>
-                </div> -->
-                <h2 class="font-display text-4xl sm:text-5xl font-black mb-4">
-                    <span class="text-gradient">Software</span> <span class="text-white">Projects</span>
-                </h2>
-                <p class="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
-                    Applied software engineering finished projects I made for fun and learning.
-                </p>
-            </div>
-            <div id="software-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-        </section>
-
-        <!-- Popup / Modal -->
-        <div id="popup" class="fixed inset-0 hidden z-40">
-            <div class="absolute inset-0 bg-base-100/40 backdrop-blur-md"></div>
-            <div class="relative z-10 mx-auto my-8 w-[95vw] max-w-5xl" data-popup-container>
-                <div class="rounded-2xl border border-base-300/70 bg-base-100/90 shadow-2xl overflow-hidden">
-                    <div class="flex items-center justify-between px-4 md:px-6 py-3 border-b border-base-300/70">
-                        <div class="font-semibold" id="project-url">Project</div>
-                        <button class="btn btn-sm btn-ghost" onclick="closePopup()">Close</button>
-                    </div>
-                    <div id="popup-content" class="p-4 md:p-6 max-h-[78vh] overflow-y-auto"></div>
-                </div>
-            </div>
+    <section class="selected-work section-shell" id="work">
+      <header class="section-heading reveal">
+        <div>
+          <span class="eyebrow">01 / SELECTED WORK</span>
+          <h2>Projects with<br /><i>real-world</i> weight.</h2>
         </div>
-    </body>
+        <p>A focused selection spanning research, autonomous robotics and interactive systems. Open any case study for the full process.</p>
+      </header>
+      <div id="featured-projects" class="featured-projects"></div>
+    </section>
+
+    <section class="marquee" aria-hidden="true">
+      <div>ROS2 · C++ · COMPUTER VISION · UNITY · PYTHON · RESEARCH · XR ·&nbsp; ROS2 · C++ · COMPUTER VISION · UNITY · PYTHON · RESEARCH · XR ·&nbsp;</div>
+    </section>
+
+    <section class="archive section-shell" id="archive">
+      <header class="archive-header reveal">
+        <div>
+          <span class="eyebrow">02 / PROJECT INDEX</span>
+          <h2>More things<br />I’ve made.</h2>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filter projects">
+          <button class="filter-button active" data-filter="all" type="button">All</button>
+          <button class="filter-button" data-filter="robotics" type="button">Robotics + CV</button>
+          <button class="filter-button" data-filter="games" type="button">Games</button>
+          <button class="filter-button" data-filter="software" type="button">Software + AI</button>
+        </div>
+      </header>
+      <div id="project-grid" class="project-grid"></div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-image reveal"><img src="img/pdp/banner.jpg" alt="Traïan celebrating at WorldSkills Lyon" /></div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">03 / ABOUT</span>
+        <h2>Precision of a researcher.<br /><i>Energy of a builder.</i></h2>
+        <p>I enjoy the difficult middle ground where algorithms meet hardware: perception pipelines, autonomous navigation, manipulators, simulations and experiences that make complex technology tangible.</p>
+        <div class="about-facts">
+          <div><span>FOCUS</span><strong>Autonomous mobile &amp;<br />manipulator systems</strong></div>
+          <div><span>TOOLKIT</span><strong>C++ · Python · ROS1/2<br />OpenCV · Unity</strong></div>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/chaelpix" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <span class="eyebrow">HAVE A CHALLENGE IN MIND?</span>
+      <h2>Let’s build what<br />doesn’t exist <i>yet.</i></h2>
+      <a href="mailto:traian.beaujard@gmail.com">traian.beaujard@gmail.com <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 TRAÏAN BEAUJARD</span>
+    <span>ENGINEER · RESEARCHER · BUILDER</span>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-shell">
+      <header class="dialog-header">
+        <span id="dialog-index">CASE STUDY</span>
+        <h2 id="dialog-title">Project</h2>
+        <button type="button" data-close-dialog aria-label="Close project">Close ×</button>
+      </header>
+      <div id="dialog-content" class="dialog-content"></div>
+    </div>
+  </dialog>
+</body>
 </html>

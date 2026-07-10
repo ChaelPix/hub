@@ -6,7 +6,6 @@ ClaviAR is a mixed-reality piano prototype built as a two-person UTBM school pro
 In the final demo, the calibration reaches a usable alignment in about **3 seconds** in the filmed conditions. Around that calibration layer, we built a rhythm-game demo with generated piano exercises, score feedback, lives, and reward cards. The roguelike structure was mainly a way to present and stress-test the full pipeline: calibration, virtual keyboard placement, generated music, spatial notation, input judging, and player feedback.
 
 - **Context**: PE01 entrepreneurship project + MV50 technical prototype
-- **Team**: 2 student engineers
 - **Target**: Meta Quest 3 / 3S with a real piano or MIDI keyboard
 - **Stack**: Unity 2022, C#, URP, OpenXR, Meta XR / Interaction SDK
 

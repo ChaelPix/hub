@@ -81,7 +81,7 @@ function renderProjectGrid() {
           ${project.video_preview ? '<span class="preview-label">Hover preview ▶</span>' : ''}
         </div>
         <h3>${escapeHtml(project.title)}</h3>
-        <div class="project-card-bottom"><span>${String(index + 1).padStart(2, '0')} · ${escapeHtml(project.date || 'Personal project')}</span><span>View ↗</span></div>
+        <div class="project-card-bottom"><span>${escapeHtml(project.date || 'Personal project')}</span><span>View ↗</span></div>
       </article>`;
   }).join('');
 }

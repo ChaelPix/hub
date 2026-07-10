@@ -116,7 +116,7 @@ export const projects = [
     },
     {
         "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
-        "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with its environment.",
+        "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with unknown environments.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "video_preview": "img/worldskills/lyon24/pixx_trailer.mp4",
         "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "ROS2", "C++", "Python", "OpenCV"],

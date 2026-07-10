@@ -2,7 +2,7 @@ import { projects } from './projects.js';
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 const INTERNAL_TAGS = new Set(['Highlights', 'highlights', 'hihlights', 'AIproject', 'Aiproject', 'gameProject', 'softwareProject']);
-const FEATURED_IDS = ['sara_internship', 'ws_lyon24', 'claviar'];
+const FEATURED_IDS = ['sara_internship', 'ws_lyon24'];
 
 function escapeHtml(value = '') {
   return String(value).replace(/[&<>'"]/g, char => ({
@@ -27,7 +27,12 @@ function visibleTags(project, limit = 4) {
 
 function dateScore(date = '') {
   const years = date.match(/20\d{2}/g);
-  return years ? Number(years[years.length - 1]) : 0;
+  if (!years) return 0;
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const monthPattern = new RegExp(monthNames.join('|'), 'g');
+  const monthMatches = date.match(monthPattern) || [];
+  const lastMonth = monthNames.indexOf(monthMatches[monthMatches.length - 1]) + 1;
+  return Number(years[years.length - 1]) * 12 + Math.max(lastMonth, 0);
 }
 
 function renderFeatured() {
@@ -40,10 +45,11 @@ function renderFeatured() {
       ? `<video src="${escapeHtml(project.video_preview)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>`
       : '';
     return `
-      <article class="feature-card reveal" data-project-id="${escapeHtml(project.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(project.title)} case study">
+      <article class="feature-card reveal" data-project-id="${escapeHtml(project.id)}" ${project.video_preview ? 'data-preview' : ''} tabindex="0" role="button" aria-label="Open ${escapeHtml(project.title)} case study">
         <div class="feature-media">
           <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" loading="lazy" />
           ${video}
+          ${project.video_preview ? '<span class="preview-label">Hover preview ▶</span>' : ''}
         </div>
         <div class="feature-copy">
           <span class="feature-number">0${index + 1} / ${escapeHtml(categoryLabel(projectCategory(project)))}</span>
@@ -54,31 +60,50 @@ function renderFeatured() {
       </article>`;
   }).join('');
 
-  container.querySelectorAll('.feature-card').forEach(card => {
-    const video = card.querySelector('video');
-    if (video) {
-      card.addEventListener('mouseenter', () => video.play().catch(() => {}));
-      card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-    }
-  });
 }
 
 function renderProjectGrid() {
   const container = document.querySelector('#project-grid');
   const sorted = [...projects].sort((a, b) => dateScore(b.date) - dateScore(a.date));
 
-  container.innerHTML = sorted.map(project => {
+  container.innerHTML = sorted.map((project, index) => {
     const category = projectCategory(project);
+    const video = project.video_preview
+      ? `<video src="${escapeHtml(project.video_preview)}" muted loop playsinline preload="metadata" aria-hidden="true"></video>`
+      : '';
     return `
-      <article class="project-card reveal" data-category="${category}" data-project-id="${escapeHtml(project.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(project.title)} case study">
+      <article class="project-card reveal" data-category="${category}" data-orientation="${project.isPortrait ? 'portrait' : 'landscape'}" data-rank="${index}" data-project-id="${escapeHtml(project.id)}" ${project.video_preview ? 'data-preview' : ''} tabindex="0" role="button" aria-label="Open ${escapeHtml(project.title)} case study">
         <div class="project-media">
           <img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" loading="lazy" />
+          ${video}
           <span class="project-type">${escapeHtml(categoryLabel(category))}</span>
+          ${project.video_preview ? '<span class="preview-label">Hover preview ▶</span>' : ''}
         </div>
         <h3>${escapeHtml(project.title)}</h3>
-        <div class="project-card-bottom"><span>${escapeHtml(project.date || 'Personal project')}</span><span>View ↗</span></div>
+        <div class="project-card-bottom"><span>${String(index + 1).padStart(2, '0')} · ${escapeHtml(project.date || 'Personal project')}</span><span>View ↗</span></div>
       </article>`;
   }).join('');
+}
+
+function layoutProjectGrid() {
+  const grid = document.querySelector('#project-grid');
+  if (!grid) return;
+  const cards = [...grid.querySelectorAll('.project-card')].filter(card => !card.hidden);
+  const width = grid.clientWidth;
+  const gap = 18;
+  const columnCount = width >= 1100 ? 4 : width >= 650 ? 2 : 1;
+  const cardWidth = (width - gap * (columnCount - 1)) / columnCount;
+  const heights = Array(columnCount).fill(0);
+
+  cards.forEach(card => {
+    card.style.width = `${cardWidth}px`;
+    const column = heights.indexOf(Math.min(...heights));
+    card.style.left = `${column * (cardWidth + gap)}px`;
+    card.style.top = `${heights[column]}px`;
+    heights[column] += card.offsetHeight + gap;
+  });
+
+  grid.style.height = `${Math.max(...heights, 0) - (cards.length ? gap : 0)}px`;
 }
 
 function setupFilters() {
@@ -89,7 +114,24 @@ function setupFilters() {
     button.classList.add('active');
     const filter = button.dataset.filter;
     cards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
+    requestAnimationFrame(layoutProjectGrid);
   }));
+}
+
+function setupVideoPreviews() {
+  document.querySelectorAll('[data-preview]').forEach(card => {
+    const video = card.querySelector('video');
+    if (!video) return;
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('previewing');
+      video.play().catch(() => card.classList.remove('previewing'));
+    });
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('previewing');
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
 }
 
 function processMarkdown(container) {
@@ -171,6 +213,26 @@ function setupNavigation() {
   }));
 }
 
+function setupHeroParallax() {
+  const hero = document.querySelector('.hero');
+  if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(pointer: coarse)').matches) return;
+  let frame;
+  hero.addEventListener('pointermove', event => {
+    const bounds = hero.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      hero.style.setProperty('--px', x.toFixed(3));
+      hero.style.setProperty('--py', y.toFixed(3));
+    });
+  });
+  hero.addEventListener('pointerleave', () => {
+    hero.style.setProperty('--px', 0);
+    hero.style.setProperty('--py', 0);
+  });
+}
+
 function setupReveal() {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const elements = document.querySelectorAll('.reveal');
@@ -197,10 +259,16 @@ function openHashProject() {
 renderFeatured();
 renderProjectGrid();
 setupFilters();
+setupVideoPreviews();
 setupProjectInteractions();
 setupNavigation();
+setupHeroParallax();
 setupReveal();
 openHashProject();
+
+requestAnimationFrame(() => requestAnimationFrame(layoutProjectGrid));
+document.fonts?.ready.then(layoutProjectGrid);
+window.addEventListener('resize', layoutProjectGrid);
 
 window.addEventListener('popstate', () => {
   if (location.hash.startsWith('#project-')) openHashProject();

@@ -24,7 +24,7 @@ Optional fields:
 
 - `video_preview`: shown when hovering a featured project.
 - `isPortrait`: retained for compatibility with the existing content.
-- `Highlights`: add this tag for editorial metadata. To feature a project in the three large slots, add its `id` to `FEATURED_IDS` at the top of `js/enhanced_portfolio.js`.
+- `Highlights`: add this tag for editorial metadata. To feature a project in the large selected-work section, add its `id` to `FEATURED_IDS` at the top of `js/enhanced_portfolio.js`.
 
 Category routing is automatic:
 

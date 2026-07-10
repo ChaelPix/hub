@@ -1,4 +1,5 @@
 import { projects } from './projects.js';
+import { setupContactEmail } from './contact.js';
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
 const INTERNAL_TAGS = new Set(['Highlights', 'highlights', 'hihlights', 'AIproject', 'Aiproject', 'gameProject', 'softwareProject']);
@@ -256,6 +257,7 @@ function openHashProject() {
   openProject(location.hash.replace('#project-', ''), false);
 }
 
+setupContactEmail();
 renderFeatured();
 renderProjectGrid();
 setupFilters();

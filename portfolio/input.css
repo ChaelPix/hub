@@ -166,11 +166,10 @@ img, video { display: block; max-width: 100%; }
 .contact-heading h2 { margin: 0; font: 600 clamp(4.2rem, 8vw, 8.5rem)/.78 var(--display); letter-spacing: -.075em; text-transform: uppercase; }
 .contact-heading h2 em { display: inline-block; color: var(--acid); font-family: Georgia, serif; font-weight: 400; text-transform: lowercase; }
 .contact-actions { padding-bottom: .6rem; }
-.contact-email { display: grid; grid-template-columns: 1fr auto; gap: .65rem 1rem; align-items: center; padding: 1.5rem 0; border-block: 1px solid rgba(255,255,255,.22); transition: color .2s, padding .25s; }
-.contact-email:hover { color: var(--acid); padding-inline: .7rem; }
+.contact-email { display: grid; gap: .65rem; padding: 1.5rem 0; border-block: 1px solid rgba(255,255,255,.22); }
+.contact-email:hover { color: var(--acid); }
 .contact-email span { color: #8e969f; text-transform: uppercase; font: 500 .56rem var(--mono); letter-spacing: .11em; }
-.contact-email strong { font: 600 clamp(1rem,1.45vw,1.3rem) var(--display); letter-spacing: -.025em; }
-.contact-email b { grid-column: 2; grid-row: 1 / 3; font: 400 1.7rem var(--display); }
+.contact-email strong { font: 600 clamp(1rem,1.45vw,1.3rem) var(--display); letter-spacing: -.025em; user-select: all; cursor: text; }
 .contact-links { margin-top: 2rem; }
 .contact-links a { display: grid; grid-template-columns: 2rem 1fr 1.5fr auto; gap: 1rem; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid rgba(255,255,255,.14); transition: color .2s, padding .25s; }
 .contact-links a:hover { color: var(--acid); padding-inline: .7rem; }

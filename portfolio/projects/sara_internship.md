@@ -55,8 +55,14 @@ The arm itself is used as a calibration target: its 3D model is rendered into th
 - Direct sim-to-real transfer, same parameters, no retuning
 - Live demos at the CIAD research day and Fête de la Science, zero failures
 
-## Paper
-This work resulted in a **first-author scientific paper** submitted and accepted to the **ICPR** (International Conference on Pattern Recognition) international conference 2026:
+## Paper & Conference
+This work resulted in a **first-author scientific paper** submitted and accepted to **ICPR 2026** (International Conference on Pattern Recognition), Lyon, August 2026:
 
 > *See All Reach All: Spherical Vision-Based Servoing for Full-Surround Mobile Manipulation*
+
+I'll be presenting this work as a **poster session** at the conference; the poster below summarizes the full pipeline, from 360° perception to spherical visual servoing, and the real-world validation on the mobile manipulator.
+
+<div style="display: flex; justify-content: center;">
+    <img src="img/projects/sara/poster_less-verbose-v6.jpg" alt="ICPR 2026 research poster — See All, Reach All" style="width: 100%; min-width: 280px; height: auto; border-radius: 8px;">
+</div>
 

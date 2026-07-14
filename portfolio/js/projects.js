@@ -1,6 +1,6 @@
 export const projects = [
     {
-        "title": "(Published Paper) SARA — 360° Visual Servoing for Mobile Manipulation",
+        "title": "(Published Paper ICPR) SARA - 360° Visual Servoing for Mobile Manipulation",
         "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper accepted to ICPR 2026.",
         "image": "img/projects/sara/robot.jpg",
         "tags": ["Highlights", "Robotics", "Computer Vision", "ROS1", "C++", "Python", "Research", "VISP", "OpenCV"],

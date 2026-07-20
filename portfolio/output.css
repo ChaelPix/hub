@@ -1086,33 +1086,6 @@ html {
   text-decoration-line: underline;
 }
 
-.stack {
-  display: inline-grid;
-  place-items: center;
-  align-items: flex-end;
-}
-
-.stack > * {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  transform: translateY(10%) scale(0.9);
-  z-index: 1;
-  width: 100%;
-  opacity: 0.6;
-}
-
-.stack > *:nth-child(2) {
-  transform: translateY(5%) scale(0.95);
-  z-index: 2;
-  opacity: 0.8;
-}
-
-.stack > *:nth-child(1) {
-  transform: translateY(0) scale(1);
-  z-index: 3;
-  opacity: 1;
-}
-
 .swap {
   position: relative;
   display: inline-grid;
@@ -2803,9 +2776,16 @@ img, video {
 }
 
 .project-card h3 {
-  margin: 1rem 0 .5rem;
+  margin: 1rem 0 .45rem;
   font: 600 clamp(1.25rem, 1.8vw, 1.75rem)/1.08 var(--display);
   letter-spacing: -.035em;
+}
+
+.project-card-desc {
+  margin: 0 0 .85rem;
+  color: #747670;
+  font-size: clamp(.82rem, 1vw, .92rem);
+  line-height: 1.55;
 }
 
 .project-card-bottom {

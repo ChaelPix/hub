@@ -63,6 +63,6 @@ This work resulted in a **first-author scientific paper** submitted and accepted
 I'll be presenting this work as a **poster session** at the conference; the poster below summarizes the full pipeline, from 360° perception to spherical visual servoing, and the real-world validation on the mobile manipulator.
 
 <div style="display: flex; justify-content: center;">
-    <img src="img/projects/sara/poster_less-verbose-v6.jpg" alt="ICPR 2026 research poster — See All, Reach All" style="width: 100%; min-width: 280px; height: auto; border-radius: 8px;">
+    <img src="img/projects/sara/poster_less-verbose-v6.jpg" alt="ICPR 2026 research poster See All, Reach All" style="width: 100%; min-width: 280px; height: auto; border-radius: 8px;">
 </div>
 

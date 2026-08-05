@@ -1,5 +1,14 @@
 export const projects = [
     {
+        "title": "Mayor of Honor",
+        "description": "Made in 3 days for Roblox Inspire 2026. Win an election, turn your voters into abilities, then defend their village through score driven waves.",
+        "image": "img/projects/mayorofhonor/card.jpg",
+        "video_preview": "img/projects/mayorofhonor/preview.mp4",
+        "tags": ["Highlights", "Roblox", "Luau", "Game Jam", "gameProject"],
+        "id": "mayorofhonor",
+        "date": "1st - 3rd August 2026"
+    },
+    {
         "title": "(Published Paper ICPR) SARA - 360° Visual Servoing for Mobile Manipulation",
         "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper accepted to ICPR 2026.",
         "image": "img/projects/sara/robot.jpg",

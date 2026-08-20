@@ -66,7 +66,3 @@ The village map and environment were designed and built by **@KenjiCrafts** duri
 ## Building it in the jam
 
 On Friday, I had never made a Roblox Studio project. By Sunday, the game had a menu, NPC quests, resource collection, cinematics, a personalized ability loadout, server controlled combat, score based waves, Decree shops, crisis modifiers, game over states and a full return to the lobby.
-
-I still tried to avoid putting everything into one script. I separated the systems into Luau modules and shared configuration files while learning how Roblox handles the client, server, UI and replicated data. That structure made it possible to connect all the parts during the jam.
-
-I am happy with how polished and complete the result feels for three days. More importantly, the election and the night are not two disconnected prototypes. One creates the other. The villagers who make you Mayor are the same people who help you protect the village.

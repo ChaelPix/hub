@@ -3086,8 +3086,31 @@ footer {
 .markdown-content img, .markdown-content video {
   width: 100%;
   height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  align-self: flex-start;
   margin: 2rem auto;
   background: #202225;
+}
+
+.markdown-media-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.markdown-content .markdown-media-row img {
+  flex: 1 1 240px;
+  width: auto;
+  max-width: calc(50% - .5rem);
+  height: auto;
+  margin: 0;
+  border-radius: 8px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .markdown-content pre {
@@ -3256,6 +3279,10 @@ footer {
   .project-video-grid {
     grid-template-columns: 1fr;
     gap: .65rem;
+  }
+
+  .markdown-content .markdown-media-row img {
+    max-width: 100%;
   }
 }
 

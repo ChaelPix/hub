@@ -1,10 +1,19 @@
 export const projects = [
     {
+        "title": "Pianu!",
+        "description": "Piano game in Kotlin and Compose. Import a MIDI file, and play it on a USB piano with osu-style timing to learn reading music sheets.",
+        "image": "img/projects/pianu/card.jpg",
+        "video_preview": "img/projects/pianu/preview.mp4",
+        "tags": [ "Kotlin", "Android", "Jetpack Compose", "gameProject"],
+        "id": "pianu",
+        "date": "August 2026"
+    },
+    {
         "title": "Mayor of Honor",
         "description": "Made in 3 days for Roblox Inspire 2026. Win an election, turn your voters into abilities, then defend their village through score driven waves.",
         "image": "img/projects/mayorofhonor/card.jpg",
         "video_preview": "img/projects/mayorofhonor/preview.mp4",
-        "tags": ["Highlights", "Roblox", "Luau", "Game Jam", "gameProject"],
+        "tags": ["Roblox", "Luau", "Game Jam", "gameProject"],
         "id": "mayorofhonor",
         "date": "1st - 3rd August 2026"
     },

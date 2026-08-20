@@ -1,7 +1,7 @@
 # ClaviAR: 3-Second Mixed Reality Piano Calibration
 
 ## Overview
-ClaviAR is a mixed-reality piano prototype built as a two-person UTBM school project with a startup-style business analysis behind it. The core technical goal was simple to state and hard to make reliable: put on a Meta Quest, look at a real piano, and align the virtual keyboard overlay fast enough that the player can start practicing almost immediately.
+ClaviAR is a mixed-reality piano prototype built as a school project with a startup-style business analysis behind it. The core technical goal was simple to state and hard to make reliable: put on a Meta Quest, look at a real piano, and align the virtual keyboard overlay fast enough that the player can start practicing almost immediately.
 
 In the final demo, the calibration reaches a usable alignment in about **3 seconds** in the filmed conditions. Around that calibration layer, we built a rhythm-game demo with generated piano exercises, score feedback, lives, and reward cards. The roguelike structure was mainly a way to present and stress-test the full pipeline: calibration, virtual keyboard placement, generated music, spatial notation, input judging, and player feedback.
 

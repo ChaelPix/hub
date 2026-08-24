@@ -50,7 +50,7 @@ A YOLO detector finds the object in the equirectangular image. A virtual perspec
 - Live demos at the CIAD research day and the [Inouih Festival](https://festival-inouih.fr/)
 
 ## Paper & Conference
-This work resulted in a **first-author scientific paper** submitted and accepted to **ICPR 2026** (International Conference on Pattern Recognition), Lyon, August 2026.
+This work resulted in my **first conference paper** submitted and accepted to **ICPR 2026** (International Conference on Pattern Recognition), Lyon, August 2026.
 I presented this work during a **poster session**!
 
 <div class="markdown-media-row">

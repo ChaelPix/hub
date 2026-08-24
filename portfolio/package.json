@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tailwindcss -i ./input.css -o ./output.css --watch",
     "build:once": "tailwindcss -i ./input.css -o ./output.css",
+    "check": "node enhanced_portfolio-check.mjs",
     "serve": "live-server",
     "dev": "concurrently \"npm run build\" \"npm run serve\""
   },

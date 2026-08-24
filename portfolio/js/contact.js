@@ -6,8 +6,9 @@ export function contactEmail() {
 }
 
 export function setupContactEmail() {
-  const email = contactEmail();
-  document.querySelectorAll('[data-contact-label]').forEach(label => {
-    label.textContent = email;
+  document.querySelectorAll('[data-contact-action="email"]').forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.href = `mailto:${contactEmail()}`;
+    });
   });
 }

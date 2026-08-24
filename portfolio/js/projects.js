@@ -1,12 +1,39 @@
 export const projects = [
     {
+        "title": "SlidePix",
+        "description": "Vscode extension that allows you to create elaborate slide presentations directly inside the IDE",
+        "image": "",
+        "video_preview": "",
+        "tags": [],
+        "id": "slidepix",
+        "date": "August 2026",
+        "sortDate": "2026-08-24",
+        "category": "other",
+        "highlightOrder": null
+    },
+    {
+        "title": "SfxVault",
+        "description": "Website for a sound effects library",
+        "image": "",
+        "video_preview": "",
+        "tags": [],
+        "id": "sfxvault",
+        "date": "22th August 2026",
+        "sortDate": "2026-08-22",
+        "category": "other",
+        "highlightOrder": null
+    },
+    {
         "title": "Pianu!",
-        "description": "Piano game in Kotlin and Compose. Import a MIDI file, and play it on a USB piano with osu-style timing to learn reading music sheets.",
+        "description": "Piano game made in 1 day, in Kotlin and Compose. Import a MIDI file, and play it on a USB piano with osu-style timing to learn reading music sheets.",
         "image": "img/projects/pianu/card.jpg",
         "video_preview": "img/projects/pianu/preview.mp4",
         "tags": [ "Kotlin", "Android", "Jetpack Compose", "gameProject"],
         "id": "pianu",
-        "date": "August 2026"
+        "date": "13th August 2026",
+        "sortDate": "2026-08-13",
+        "category": "games",
+        "highlightOrder": null
     },
     {
         "title": "Mayor of Honor",
@@ -15,16 +42,23 @@ export const projects = [
         "video_preview": "img/projects/mayorofhonor/preview.mp4",
         "tags": ["Roblox", "Luau", "Game Jam", "gameProject"],
         "id": "mayorofhonor",
-        "date": "1st - 3rd August 2026"
+        "date": "1st - 3rd August 2026",
+        "sortDate": "2026-08-03",
+        "category": "games",
+        "highlightOrder": null
     },
     {
         "title": "(Published Paper ICPR) SARA - 360° Visual Servoing for Mobile Manipulation",
+        "displayTitle": "SARA — 360° Visual Servoing",
         "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper accepted to ICPR 2026.",
         "image": "img/projects/sara/robot.jpg",
         "tags": ["Highlights", "Robotics", "Computer Vision", "ROS1", "C++", "Python", "Research", "VISP", "OpenCV"],
         "id": "sara_internship",
         "video_preview": "img/projects/sara/sara_preview.mp4",
         "date": "September 2025 - February 2026",
+        "sortDate": "2026-02-28",
+        "category": "robotics",
+        "highlightOrder": 1,
         "isPortrait": false
     },
     {
@@ -34,7 +68,10 @@ export const projects = [
         "video_preview": "img/projects/claviar/claviar_preview.mp4",
         "tags": ["XR/VR", "Unity", "C#", "Computer Vision", "School Project", "gameProject"],
         "id": "claviar",
-        "date": "February - June 2026"
+        "date": "February - June 2026",
+        "sortDate": "2026-06-30",
+        "category": "robotics",
+        "highlightOrder": null
     },
     {
         "title": "Orbit Vector AR",
@@ -44,6 +81,9 @@ export const projects = [
         "tags": ["Kotlin", "PHP/SQL", "XR/VR", "Android", "gameProject"],
         "id": "orbitvectorar",
         "date": "May - June 2025",
+        "sortDate": "2025-06-30",
+        "category": "games",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -53,7 +93,10 @@ export const projects = [
         "video_preview": "img/projects/autonomousboat/abcv_trailer.mp4",
         "tags": ["Computer Vision", "Python", "OpenCV", "AIproject"],
         "id": "autonomousboat",
-        "date": "April 2025"
+        "date": "April 2025",
+        "sortDate": "2025-04-30",
+        "category": "robotics",
+        "highlightOrder": null
     },
     {
         "title": "AI Neat Bird Flappy",
@@ -62,7 +105,10 @@ export const projects = [
         "video_preview": "img/projects/birdflappy/birdflappy_preview.mp4",
         "tags": ["C++", "Machine Learning", "AIproject"],
         "id": "birdflappy",
-        "date": "February 2025"
+        "date": "February 2025",
+        "sortDate": "2025-02-28",
+        "category": "other",
+        "highlightOrder": null
     },
     {
         "title": "AI Autonomous RPG",
@@ -72,6 +118,9 @@ export const projects = [
         "tags": ["C#", "Python", "gameProject", "Unity"],
         "id": "pmons",
         "date": "August 2025",
+        "sortDate": "2025-08-31",
+        "category": "games",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -81,7 +130,10 @@ export const projects = [
         "video_preview": "img/projects/aigallery/aigallery_trailer.mp4",
         "tags": ["C#", "XR/VR", "Unity", "MetaXR", "AIproject"],
         "id": "aigallery",
-        "date": "December 2024"
+        "date": "December 2024",
+        "sortDate": "2024-12-31",
+        "category": "other",
+        "highlightOrder": null
     },
     {
         "title": "Falling It",
@@ -91,6 +143,9 @@ export const projects = [
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "fallingit",
         "date": "September - December 2021",
+        "sortDate": "2021-12-31",
+        "category": "games",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -101,6 +156,9 @@ export const projects = [
         "tags": ["C#", "Unity", "Android", "PlayStore", "gameProject"],
         "id": "mvps",
         "date": "June - September 2022",
+        "sortDate": "2022-09-30",
+        "category": "games",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -110,7 +168,10 @@ export const projects = [
         "video_preview": "img/projects/valiant/valiant_trailer.mp4",
         "tags": ["C++", "SFML C++", "PHP/SQL", "School Project", "gameProject"],
         "id": "valiant",
-        "date": "December 2023"
+        "date": "December 2023",
+        "sortDate": "2023-12-31",
+        "category": "games",
+        "highlightOrder": null
     },
     {
         "title": "Aissenger",
@@ -120,6 +181,9 @@ export const projects = [
         "tags": ["AI", "Android", "C#", "Python", "Unity", "AIproject"],
         "id": "aissenger",
         "date": "November 2024",
+        "sortDate": "2024-11-30",
+        "category": "other",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -130,6 +194,9 @@ export const projects = [
         "tags": ["AI", "Android", "C#", "PHP/SQL", "Python", "Unity", "AIproject"],
         "id": "iastagram",
         "date": "October 2024",
+        "sortDate": "2024-10-31",
+        "category": "other",
+        "highlightOrder": null,
         "isPortrait": true
     },
     {
@@ -138,9 +205,11 @@ export const projects = [
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "video_preview": "img/worldskills/lyon24/pixx_trailer.mp4",
         "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "ROS2", "C++", "Python", "OpenCV"],
-        "category": "worldskills",
         "id": "ws_lyon24",
-        "date": "December 2023 - September 2024"
+        "date": "December 2023 - September 2024",
+        "sortDate": "2024-09-30",
+        "category": "robotics",
+        "highlightOrder": 2
     },
     {
         "title": "ROS2 x Unity Autonomous Robot Simulation",
@@ -149,7 +218,10 @@ export const projects = [
         "video_preview": "img/worldskills/unity/unitysimu_trailer.mp4",
         "tags": ["AIproject","Robotics", "Computer Vision", "ROS2", "C++", "C#", "Unity"],
         "id": "ws_simunity",
-        "date": "December 2023 - September 2024"
+        "date": "December 2023 - September 2024",
+        "sortDate": "2024-09-29",
+        "category": "robotics",
+        "highlightOrder": null
     },
     // {
     //     "title": "YoloX easy training",
@@ -166,7 +238,10 @@ export const projects = [
         "image": "img/worldskills/austria/robot_austria.jpg",
         "tags": ["Competition", "Robotics", "ROS2", "C++", "AIproject"],
         "id": "ws_austria-skills23",
-        "date": "October 2023 - November 2023"
+        "date": "October 2023 - November 2023",
+        "sortDate": "2023-11-30",
+        "category": "robotics",
+        "highlightOrder": null
     },
     {
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
@@ -174,7 +249,10 @@ export const projects = [
         "image": "img/worldskills/fnat/robot_fnat.jpg",
         "tags": ["Competition", "Robotics", "Computer Vision", "ROS1", "C++", "OpenCV", "AIproject"],
         "id": "ws_fnat23",
-        "date": "January 2023 - September 2023"
+        "date": "January 2023 - September 2023",
+        "sortDate": "2023-09-30",
+        "category": "robotics",
+        "highlightOrder": null
     },
     {
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
@@ -182,6 +260,9 @@ export const projects = [
         "image": "img/worldskills/reg/robot_sand.jpg",
         "tags": ["Competition", "Robotics", "Computer Vision", "C++", "AIproject"],
         "id": "ws_reg",
-        "date": "October 2022"
+        "date": "October 2022",
+        "sortDate": "2022-10-31",
+        "category": "robotics",
+        "highlightOrder": null
     }
 ];

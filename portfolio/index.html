@@ -2,157 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0a0b0d" />
-  <title>Traïan Beaujard Robotics & Creative Engineering</title>
-  <meta name="description" content="Portfolio of Traïan Beaujard robotics, computer vision, research and interactive engineering." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#171a18" />
+  <title>Traïan Beaujard — Robotics & Creative Engineering</title>
+  <meta name="description" content="Traïan Beaujard builds autonomous robots, computer-vision systems, games, and playful software." />
   <meta property="og:title" content="Traïan Beaujard Portfolio" />
-  <meta property="og:description" content="Robotics, computer vision, research and playful systems." />
+  <meta property="og:description" content="Robotics, computer vision, research, games, and playful systems." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="img/pdp/banner.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
   <link href="output.css" rel="stylesheet" />
   <script type="module" src="js/enhanced_portfolio.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
   <div class="noise" aria-hidden="true"></div>
 
-  <header class="site-header" data-header>
-    <a class="brand" href="#home" aria-label="Traïan Beaujard home">
-      <img class="brand-photo" src="img/pdp/pdp.jpg" alt="" />
-      <span class="brand-copy">Traïan<br />Beaujard</span>
-    </a>
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#work">Selected work</a>
-      <a href="#archive">Project index</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav">Menu</button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-      <a href="#work">Selected work</a>
-      <a href="#archive">Project index</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact">Email me</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <figure class="hero-photo">
+  <main class="scene-stack">
+    <section class="scene identity-scene" id="home" data-scene="home" aria-labelledby="identity-title">
+      <figure class="identity-photo" data-parallax="back">
         <img src="img/pdp/banner.jpg" alt="Traïan Beaujard celebrating with the French flag at WorldSkills Lyon" />
       </figure>
-      <div class="hero-vfx" aria-hidden="true">
-        <div class="hero-aurora"></div>
-        <div class="hero-beam hero-beam-a"></div>
-        <div class="hero-beam hero-beam-b"></div>
-        <div class="hero-scan"></div>
-        <div class="hero-crosshair"></div>
+      <div class="identity-light" aria-hidden="true">
+        <span class="identity-aura"></span>
+        <span class="identity-spotlight identity-spotlight-left"></span>
+        <span class="identity-spotlight identity-spotlight-right"></span>
       </div>
-      <div class="hero-name" data-hero-depth="back">
-        <span class="hero-edition">CREATIVE ENGINEER</span>
-        <p>ROBOTICS RESEARCHER <i>×</i> GAME DEVELOPER</p>
-        <br>
-        <h1>
-          <span class="hero-first-name">TRAÏAN</span>
-          <span class="hero-last-name">BEAUJARD</span>
-        </h1>
-      </div>
-      <div class="hero-person-layer" data-hero-depth="front" aria-hidden="true">
+
+      <p class="identity-label" aria-hidden="true">Portfolio</p>
+      <h1 class="identity-name" id="identity-title" data-parallax="name">
+        <span>TRAÏAN</span>
+        <span>BEAUJARD</span>
+      </h1>
+
+      <div class="identity-person" data-parallax="front" aria-hidden="true">
         <img src="img/pdp/banner_foreground.png" alt="" />
       </div>
-      <div class="hero-statement">
-        <span>THE BUILDER</span>
-        <p>I engineer autonomous machines and playable worlds. I have the research precision and the game maker’s instinct.</p>
+
+      <nav class="career-timeline" aria-label="Career milestones">
+        <svg class="timeline-curve" viewBox="0 0 80 620" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M26 0 C68 98 8 205 39 310 C68 410 10 506 54 620" />
+        </svg>
+        <ol id="timeline-list"></ol>
+      </nav>
+
+      <aside class="contact-rail" aria-label="Contact links">
+        <span class="contact-heading">Contact</span>
+        <button type="button" data-contact-action="email" aria-label="Email Traïan" title="Email">
+          <img src="img/icons/icon_mail.png" alt="" />
+        </button>
+        <a href="https://github.com/chaelpix" target="_blank" rel="noopener noreferrer" aria-label="Traïan on GitHub" title="GitHub">
+          <img src="img/icons/icon_github_w.png" alt="" />
+        </a>
+        <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" target="_blank" rel="noopener noreferrer" aria-label="Traïan on LinkedIn" title="LinkedIn">
+          <img src="img/icons/icon_linkedin.png" alt="" />
+        </a>
+      </aside>
+
+      <aside class="mobile-contact-icons" aria-label="Contact links">
+        <span class="contact-heading">Contact</span>
+        <button type="button" data-contact-action="email" aria-label="Email Traïan">
+          <img src="img/icons/icon_mail.png" alt="" />
+        </button>
+        <a href="https://github.com/chaelpix" target="_blank" rel="noopener noreferrer" aria-label="Traïan on GitHub">
+          <img src="img/icons/icon_github_w.png" alt="" />
+        </a>
+        <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" target="_blank" rel="noopener noreferrer" aria-label="Traïan on LinkedIn">
+          <img src="img/icons/icon_linkedin.png" alt="" />
+        </a>
+      </aside>
+
+      <button class="scene-control scene-control-down" type="button" data-go-projects aria-label="Explore projects">
+        <span>Projects</span>
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
+    </section>
+
+    <section class="scene project-scene" id="projects" data-scene="projects" aria-labelledby="project-title">
+      <div class="project-media-stage" id="project-media-stage" aria-hidden="true"></div>
+      <div class="project-stage-shade" aria-hidden="true"></div>
+
+      <button class="scene-control scene-control-up" type="button" data-go-home aria-label="Return to profile">
+        <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
+
+      <article class="project-copy" aria-live="polite">
+        <p class="project-kicker" id="project-kicker">Highlights</p>
+        <h2 id="project-title">Project</h2>
+        <p class="project-description" id="project-description"></p>
+        <div class="project-meta" id="project-tags" aria-label="Project technologies"></div>
+      </article>
+
+      <div class="project-dial" id="project-dial">
+        <div class="project-wheel" id="project-wheel" role="listbox" aria-label="Projects"></div>
       </div>
-      <div class="hero-disciplines" aria-label="Areas of expertise">
-        <span>Autonomous systems</span>
-        <span>Computer vision</span>
-      </div>
-      <a class="hero-launch" href="#work" aria-label="Explore selected projects">
-        <span>Explore the work</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12M18 6 6 18" /></svg>
-      </a>
-    </section>
 
-    <section class="proof-strip" aria-label="Key achievements">
-      <div><strong>01</strong><span>WorldSkills<br />Champion - Best Of Nation Award 🏆</span></div>
-      <div><strong>02</strong><span>First-author paper published at <br />ICPR 2026</span></div>
-      <div><strong>03</strong><span>Robotics engineer<br />× game developer</span></div>
-      <div class="proof-portrait"><img src="img/pdp/pdp.jpg" alt="Portrait of Traïan Beaujard" /></div>
-    </section>
-
-    <section class="selected-work section-shell" id="work">
-      <div class="selected-work-vfx" aria-hidden="true">
-        <div class="selected-work-glow selected-work-glow-a"></div>
-        <div class="selected-work-glow selected-work-glow-b"></div>
-        <div class="selected-work-glow selected-work-glow-c"></div>
-      </div>
-      <header class="section-heading reveal">
-        <div>
-          <span class="eyebrow">01 / SELECTED WORK</span>
-          <h2>Projects with<br /><i>real-world</i> weight.</h2>
+      <aside class="category-orbit" aria-label="Project categories">
+        <p class="dial-label">My projects</p>
+        <div class="category-filter" role="group" aria-label="Filter projects">
+          <button type="button" data-category="all" aria-pressed="false">All</button>
+          <button type="button" data-category="highlights" aria-pressed="true">Highlights</button>
+          <button type="button" data-category="robotics" aria-pressed="false">Robotics / CV</button>
+          <button type="button" data-category="games" aria-pressed="false">Games</button>
+          <button type="button" data-category="xr" aria-pressed="false">XR</button>
+          <button type="button" data-category="other" aria-pressed="false">Other</button>
         </div>
-        <p>From published robotics research and award-winning autonomous systems to games and XR. Open any case study for the full process.</p>
-      </header>
-      <div id="featured-projects" class="featured-projects"></div>
-    </section>
-
-    <section class="marquee" aria-hidden="true">
-      <div>ROBOTICS · RESEARCH · COMPUTER VISION · ROS1 · ROS2 · C++ · PYTHON · OPENCV · VISP · UNITY · C# · XR · VR · ARCORE · META XR · KOTLIN · ANDROID · MACHINE LEARNING · AI · LLM · SFML · PHP · SQL · GAME DEVELOPMENT ·&nbsp; ROBOTICS · RESEARCH · COMPUTER VISION · ROS1 · ROS2 · C++ · PYTHON · OPENCV · VISP · UNITY · C# · XR · VR · ARCORE · META XR · KOTLIN · ANDROID · MACHINE LEARNING · AI · LLM · SFML · PHP · SQL · GAME DEVELOPMENT ·&nbsp;</div>
-    </section>
-
-    <section class="archive section-shell" id="archive">
-      <header class="archive-header reveal">
-        <div>
-          <span class="eyebrow">02 / PROJECT INDEX</span>
-          <h2>More things<br />I’ve made.</h2>
-          <p class="archive-note">Newest first</p>
-        </div>
-        <div class="filter-bar" role="group" aria-label="Filter projects">
-          <button class="filter-button active" data-filter="all" type="button">All projects</button>
-          <button class="filter-button" data-filter="robotics" type="button">Robotics + CV</button>
-          <button class="filter-button" data-filter="games" type="button">Games</button>
-          <button class="filter-button" data-filter="software" type="button">Software + AI</button>
-        </div>
-      </header>
-      <div id="project-grid" class="project-grid"></div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="contact-glow" aria-hidden="true"></div>
-      <header class="contact-topline">
-        <span>03 / CONTACT</span>
-      </header>
-      <div class="contact-layout">
-        <div class="contact-heading">
-          <p>Have an ambitious system, research idea, or playable world in mind?</p>
-          <h2>Let’s make<br /><em>it real.</em></h2>
-        </div>
-        <div class="contact-actions">
-          <div class="contact-email">
-            <span>Start a conversation</span>
-            <strong data-contact-label></strong>
-          </div>
-          <nav class="contact-links" aria-label="Social profiles">
-            <a href="https://github.com/chaelpix" target="_blank" rel="noopener noreferrer">
-              <span>01</span><strong>GitHub</strong><em></em><b>↗</b>
-            </a>
-            <a href="https://www.linkedin.com/in/tra%C3%AFan-beaujard-36839322a/" target="_blank" rel="noopener noreferrer">
-              <span>02</span><strong>LinkedIn</strong><em></em><b>↗</b>
-            </a>
-          </nav>
-        </div>
-      </div>
+      </aside>
     </section>
   </main>
-
-  <footer>
-    <span>© 2026 TRAÏAN BEAUJARD</span>
-    <span>ENGINEER · RESEARCHER · BUILDER</span>
-    <a href="#home">BACK TO TOP ↑</a>
-  </footer>
 
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
     <div class="dialog-shell">

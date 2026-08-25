@@ -71,7 +71,7 @@ export const projects = [
         "date": "February - June 2026",
         "sortDate": "2026-06-30",
         "category": "robotics",
-        "highlightOrder": null
+        "highlightOrder": 7
     },
     {
         "title": "Orbit Vector AR",
@@ -96,7 +96,7 @@ export const projects = [
         "date": "April 2025",
         "sortDate": "2025-04-30",
         "category": "robotics",
-        "highlightOrder": null
+        "highlightOrder": 3
     },
     {
         "title": "AI Neat Bird Flappy",
@@ -241,7 +241,7 @@ export const projects = [
         "date": "October 2023 - November 2023",
         "sortDate": "2023-11-30",
         "category": "robotics",
-        "highlightOrder": null
+        "highlightOrder": 4
     },
     {
         "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
@@ -252,7 +252,7 @@ export const projects = [
         "date": "January 2023 - September 2023",
         "sortDate": "2023-09-30",
         "category": "robotics",
-        "highlightOrder": null
+        "highlightOrder": 5
     },
     {
         "title": "Wordskills Regionals 🥈 - Arduino Robot",
@@ -263,6 +263,6 @@ export const projects = [
         "date": "October 2022",
         "sortDate": "2022-10-31",
         "category": "robotics",
-        "highlightOrder": null
+        "highlightOrder": 6
     }
 ];

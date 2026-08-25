@@ -58,6 +58,9 @@ const projects = projectData
 
 const elements = {
   home: document.querySelector('#home'),
+  highlights: document.querySelector('#highlights'),
+  pathTrack: document.querySelector('#highlight-path-track'),
+  pathList: document.querySelector('#highlight-path-list'),
   projects: document.querySelector('#projects'),
   timeline: document.querySelector('#timeline-list'),
   mediaStage: document.querySelector('#project-media-stage'),
@@ -74,11 +77,13 @@ const elements = {
   dialogContent: document.querySelector('#dialog-content')
 };
 
-let activeCategory = 'highlights';
+let activeCategory = 'all';
 const categoryIndices = new Map(Object.keys(CATEGORY_LABELS).map(category => [category, 0]));
 let mediaRenderToken = 0;
 let activeProjectId = null;
 let sceneTransitionLocked = false;
+let explorerLocked = false;
+let explorerUnlockGuard = false;
 let wheelVisualIndex = 0;
 let wheelTargetIndex = 0;
 let wheelMotionFrame = 0;
@@ -193,6 +198,99 @@ function activeProject() {
   return activeList()[activeIndex()];
 }
 
+function highlightProjects() {
+  return projects
+    .filter(project => project.highlightOrder !== null)
+    .sort((first, second) => first.sortDate.localeCompare(second.sortDate) || first.sourceIndex - second.sourceIndex);
+}
+
+function projectYear(project) {
+  return (project.sortDate || '').slice(0, 4) || (project.date?.match(/20\d{2}/) || [''])[0];
+}
+
+function projectTicketInnerHTML(project, { stamp, includeVideo = false } = {}) {
+  const thumbnail = project.image
+    ? `<img src="${escapeHtml(project.image)}" alt="" loading="${includeVideo ? 'lazy' : 'eager'}" decoding="async" />`
+    : `<span class="wheel-placeholder">No preview yet</span>`;
+  const video = includeVideo && project.video_preview
+    ? `<video src="${escapeHtml(project.video_preview)}" muted loop playsinline preload="metadata"${project.image ? ` poster="${escapeHtml(project.image)}"` : ''}></video>`
+    : '';
+  const crown = project.highlightOrder !== null
+    ? '<span class="wheel-card-crown" aria-hidden="true"><img src="img/icons/icon_crown.png" alt="" /></span>'
+    : '';
+  return `
+    <span class="wheel-ticket">
+      <span class="wheel-card-media">${thumbnail}${video}</span>
+      <span class="wheel-card-action"><strong>View more</strong><small>Open case study ↗</small></span>
+      <span class="wheel-card-stamp">${escapeHtml(stamp)}</span>
+      ${crown}
+      <span class="wheel-card-copy">
+        <small>${escapeHtml(projectCategoryLabel(project))}</small>
+        <strong>${escapeHtml(displayTitle(project))}</strong>
+        <em>${escapeHtml(project.date || '')}</em>
+      </span>
+    </span>`;
+}
+
+const PATH_TILTS = [-3.4, 2.6, -1.9, 3.2, -2.8, 1.6, -3.9, 2.2, -1.3, 2.9];
+const PATH_YEAR_TILTS = [8, -6, 4, -9, 7, -3, 5, -8, 6, -4];
+
+function pathStopStyle(index, total) {
+  const compact = compactWheelQuery.matches;
+  const progress = total <= 1 ? .5 : index / (total - 1);
+  const top = 6 + progress * 78;
+  const left = compact ? 58 + (index % 2 ? 5 : -7) : index % 2 ? 66 : 24;
+  const drift = compact ? 0 : (index % 3 === 0 ? -3 : index % 3 === 1 ? 4 : 1);
+  return `--stop-top:${top.toFixed(2)}%;--stop-x:${left + drift}%;--tilt:${PATH_TILTS[index % 10]}deg;--year-tilt:${PATH_YEAR_TILTS[index % 10]}deg;--stop-index:${index}`;
+}
+
+function bindPathHoverVideo(root) {
+  root.querySelectorAll('.path-ticket').forEach(button => {
+    const video = button.querySelector('video');
+    if (!video) return;
+    const play = () => {
+      if (reduceMotionQuery.matches) return;
+      video.play().catch(() => {});
+      button.classList.add('is-playing');
+    };
+    const pause = () => {
+      video.pause();
+      button.classList.remove('is-playing');
+    };
+    button.addEventListener('pointerenter', play);
+    button.addEventListener('pointerleave', pause);
+    button.addEventListener('focus', play);
+    button.addEventListener('blur', pause);
+  });
+}
+
+function renderHighlightPath() {
+  const list = highlightProjects();
+  if (elements.pathTrack) elements.pathTrack.style.setProperty('--stops', String(Math.max(list.length, 1)));
+  if (!elements.pathList) return;
+  if (!list.length) {
+    elements.pathList.innerHTML = '<li class="path-empty">No selected work yet.</li>';
+    return;
+  }
+
+  elements.pathList.innerHTML = list.map((project, index) => `
+    <li class="path-stop" style="${pathStopStyle(index, list.length)}">
+      <span class="path-year">${escapeHtml(projectYear(project))}</span>
+      <button class="path-ticket is-highlight" type="button" data-project-id="${escapeHtml(project.id)}" aria-label="Open ${escapeHtml(project.title)} case study">
+        ${projectTicketInnerHTML(project, { stamp: String(index + 1).padStart(2, '0'), includeVideo: true })}
+      </button>
+    </li>`).join('');
+
+  elements.pathList.querySelectorAll('[data-project-id]').forEach(button => {
+    button.addEventListener('click', () => {
+      showProjectById(button.dataset.projectId);
+      openProject(button.dataset.projectId);
+    });
+  });
+  bindPathHoverVideo(elements.pathList);
+  list.slice(0, 4).forEach(project => preloadProjectMedia(project, true));
+}
+
 function renderTimeline() {
   const orderedTimeline = [...timeline].reverse();
   elements.timeline.innerHTML = orderedTimeline.map((milestone, index) => {
@@ -213,27 +311,54 @@ function renderTimeline() {
   elements.timeline.querySelectorAll('[data-timeline-project]').forEach(button => {
     button.addEventListener('click', () => {
       showProjectById(button.dataset.timelineProject);
-      goToScene('projects');
-      window.setTimeout(() => openProject(button.dataset.timelineProject), reduceMotionQuery.matches ? 0 : 620);
+      openProject(button.dataset.timelineProject);
     });
   });
 }
 
-function currentScene() {
-  return window.scrollY < window.innerHeight * .5 ? 'home' : 'projects';
+function lockExplorer(updateHash = true) {
+  if (explorerLocked || !elements.projects) return;
+  explorerLocked = true;
+  window.scrollTo({ top: elements.projects.offsetTop, behavior: 'auto' });
+  document.documentElement.classList.add('explorer-locked');
+  document.body.classList.add('explorer-locked');
+  if (updateHash && !elements.dialog.open) history.replaceState({ scene: 'projects' }, '', '#projects');
+}
+
+function unlockExplorer() {
+  if (!explorerLocked) return;
+  explorerLocked = false;
+  explorerUnlockGuard = true;
+  document.documentElement.classList.remove('explorer-locked');
+  document.body.classList.remove('explorer-locked');
+  window.setTimeout(() => { explorerUnlockGuard = false; }, 120);
 }
 
 function goToScene(scene, updateHash = true) {
-  const target = scene === 'home' ? elements.home : elements.projects;
+  const targets = {
+    home: elements.home,
+    highlights: elements.highlights,
+    projects: elements.projects
+  };
+  const target = targets[scene];
   if (!target || sceneTransitionLocked) return;
   sceneTransitionLocked = true;
+  if (scene === 'projects') {
+    target.scrollIntoView({ behavior: reduceMotionQuery.matches ? 'auto' : 'smooth', block: 'start' });
+    window.setTimeout(() => {
+      lockExplorer(updateHash);
+      sceneTransitionLocked = false;
+    }, reduceMotionQuery.matches ? 30 : 420);
+    return;
+  }
+  unlockExplorer();
   target.scrollIntoView({ behavior: reduceMotionQuery.matches ? 'auto' : 'smooth', block: 'start' });
   if (updateHash && !elements.dialog.open) history.replaceState({ scene }, '', `#${scene}`);
-  window.setTimeout(() => { sceneTransitionLocked = false; }, reduceMotionQuery.matches ? 50 : 760);
+  window.setTimeout(() => { sceneTransitionLocked = false; }, reduceMotionQuery.matches ? 50 : 560);
 }
 
 function categoryForProject(project) {
-  return project.highlightOrder !== null ? 'highlights' : project.categories[0];
+  return 'all';
 }
 
 function showProjectById(projectId) {
@@ -424,28 +549,10 @@ function renderWheel() {
   if (renderedWheelCategory !== activeCategory || elements.wheel.children.length !== list.length) {
     cancelWheelMotion();
     renderedWheelCategory = activeCategory;
-    elements.wheel.innerHTML = list.map((project, index) => {
-      const thumbnail = project.image
-        ? `<img src="${escapeHtml(project.image)}" alt="" loading="eager" decoding="async" />`
-        : `<span class="wheel-placeholder">No preview yet</span>`;
-      const crown = project.highlightOrder !== null
-        ? '<span class="wheel-card-crown" aria-hidden="true"><img src="img/icons/icon_crown.png" alt="" /></span>'
-        : '';
-      return `
+    elements.wheel.innerHTML = list.map((project, index) => `
         <button class="wheel-item${project.highlightOrder !== null ? ' is-highlight' : ''}" type="button" role="option" aria-selected="false" aria-label="Select ${escapeHtml(project.title)}" data-project-index="${index}">
-          <span class="wheel-ticket">
-            <span class="wheel-card-media">${thumbnail}</span>
-            <span class="wheel-card-action"><strong>View more</strong><small>Open case study ↗</small></span>
-            <span class="wheel-card-stamp">${String(index + 1).padStart(2, '0')}</span>
-            ${crown}
-            <span class="wheel-card-copy">
-              <small>${escapeHtml(projectCategoryLabel(project))}</small>
-              <strong>${escapeHtml(displayTitle(project))}</strong>
-              <em>${escapeHtml(project.date || '')}</em>
-            </span>
-          </span>
-        </button>`;
-    }).join('');
+          ${projectTicketInnerHTML(project, { stamp: String(index + 1).padStart(2, '0') })}
+        </button>`).join('');
     elements.wheel.querySelectorAll('[data-project-index]').forEach(button => {
       button.addEventListener('click', event => {
         if (Date.now() < suppressWheelClickUntil) {
@@ -672,57 +779,89 @@ function setupProjectGestures() {
     if (!sceneTouchStart || sceneTouchStart.id !== event.pointerId) return;
     const x = event.clientX - sceneTouchStart.x;
     const y = event.clientY - sceneTouchStart.y;
-    if (y > 72 && Math.abs(y) > Math.abs(x) * 1.2) goToScene('home');
+    if (y > 72 && Math.abs(y) > Math.abs(x) * 1.2) goToScene('highlights');
     sceneTouchStart = undefined;
   });
 }
 
+function driveWheelFromDelta(rawDelta, deltaMode) {
+  const deltaScale = deltaMode === WheelEvent.DOM_DELTA_LINE
+    ? 16
+    : deltaMode === WheelEvent.DOM_DELTA_PAGE ? window.innerHeight : 1;
+  const list = activeList();
+  const delta = Math.max(-240, Math.min(240, rawDelta * deltaScale));
+  const wheelStep = Math.sign(delta) * Math.min(.9, Math.sqrt(Math.abs(delta)) / 8);
+  wheelTargetIndex = Math.max(0, Math.min(list.length - 1, wheelTargetIndex + wheelStep));
+  pendingWheelCommit = undefined;
+  preloadAroundIndex(Math.round(wheelTargetIndex), list);
+  startWheelMotion();
+  window.clearTimeout(wheelSettleTimer);
+  wheelSettleTimer = window.setTimeout(() => settleWheelTo(wheelTargetIndex), 110);
+}
+
+function wheelAtStart() {
+  return wheelVisualIndex <= .02 && wheelTargetIndex <= .02;
+}
+
 function setupSceneNavigation() {
+  document.querySelectorAll('[data-go-highlights]').forEach(button => button.addEventListener('click', () => goToScene('highlights')));
   document.querySelectorAll('[data-go-projects]').forEach(button => button.addEventListener('click', () => goToScene('projects')));
   document.querySelectorAll('[data-go-home]').forEach(button => button.addEventListener('click', () => goToScene('home')));
 
   window.addEventListener('wheel', event => {
     if (elements.dialog.open) return;
-    const scene = currentScene();
-    if (scene === 'home') {
-      if (event.deltaY > 18) {
+    const rawDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+
+    if (explorerLocked) {
+      if (rawDelta < 0 && wheelAtStart()) {
         event.preventDefault();
-        goToScene('projects');
+        unlockExplorer();
+        const top = Math.max(0, elements.projects.offsetTop - Math.min(96, window.innerHeight * .14));
+        window.scrollTo({ top, behavior: 'auto' });
+        if (!elements.dialog.open) history.replaceState({ scene: 'highlights' }, '', '#highlights');
+        return;
       }
+      event.preventDefault();
+      if (sceneTransitionLocked) return;
+      driveWheelFromDelta(rawDelta, event.deltaMode);
       return;
     }
 
-    event.preventDefault();
-    if (sceneTransitionLocked) return;
-    const rawDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
-    const deltaScale = event.deltaMode === WheelEvent.DOM_DELTA_LINE
-      ? 16
-      : event.deltaMode === WheelEvent.DOM_DELTA_PAGE ? window.innerHeight : 1;
-    const list = activeList();
-    const delta = Math.max(-240, Math.min(240, rawDelta * deltaScale));
-    const wheelStep = Math.sign(delta) * Math.min(.9, Math.sqrt(Math.abs(delta)) / 8);
-    wheelTargetIndex = Math.max(0, Math.min(list.length - 1, wheelTargetIndex + wheelStep));
-    pendingWheelCommit = undefined;
-    preloadAroundIndex(Math.round(wheelTargetIndex), list);
-    startWheelMotion();
-    window.clearTimeout(wheelSettleTimer);
-    wheelSettleTimer = window.setTimeout(() => settleWheelTo(wheelTargetIndex), 110);
+    const explorerTop = elements.projects.getBoundingClientRect().top;
+    if (rawDelta > 0 && explorerTop <= 4) {
+      event.preventDefault();
+      lockExplorer();
+    }
   }, { passive: false });
+
+  window.addEventListener('scroll', () => {
+    if (explorerLocked || elements.dialog.open || sceneTransitionLocked || explorerUnlockGuard) return;
+    if (elements.projects.getBoundingClientRect().top <= 1) lockExplorer();
+  }, { passive: true });
 
   window.addEventListener('keydown', event => {
     if (elements.dialog.open) return;
-    const scene = currentScene();
-    if (scene === 'home' && (event.key === 'PageDown' || event.key === ' ')) {
+    if (!explorerLocked) {
+      if (event.key === 'Home') {
+        event.preventDefault();
+        goToScene('home');
+      }
+      return;
+    }
+    if (event.key === 'PageUp' || event.key === 'Home') {
       event.preventDefault();
-      goToScene('projects');
-    } else if (scene === 'projects' && (event.key === 'PageUp' || event.key === 'Home')) {
-      event.preventDefault();
-      goToScene('home');
-    } else if (scene === 'projects' && ['ArrowRight', 'ArrowDown'].includes(event.key)) {
+      if (wheelAtStart()) goToScene('highlights');
+      else if (event.key === 'Home') settleWheelTo(0);
+      else moveProject(-1);
+    } else if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(event.key)) {
       event.preventDefault();
       moveProject(1);
-    } else if (scene === 'projects' && ['ArrowLeft', 'ArrowUp'].includes(event.key)) {
+    } else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) {
       event.preventDefault();
+      if (event.key === 'ArrowUp' && wheelAtStart()) {
+        goToScene('highlights');
+        return;
+      }
       moveProject(-1);
     }
   });
@@ -789,9 +928,17 @@ function processMarkdown(container) {
   });
 }
 
+function pausePathVideos() {
+  elements.pathList?.querySelectorAll('video').forEach(video => {
+    video.pause();
+    video.closest('.path-ticket')?.classList.remove('is-playing');
+  });
+}
+
 async function openProject(projectId, updateHash = true) {
   const project = projects.find(item => item.id === projectId);
   if (!project) return;
+  pausePathVideos();
   lastFocusedElement = document.activeElement;
   elements.dialogTitle.textContent = project.title;
   elements.dialogContent.innerHTML = '<p class="dialog-loading">LOADING CASE STUDY…</p>';
@@ -855,6 +1002,10 @@ function openInitialHash() {
     }
   } else if (location.hash === '#projects') {
     requestAnimationFrame(() => goToScene('projects', false));
+  } else if (location.hash === '#highlights') {
+    requestAnimationFrame(() => goToScene('highlights', false));
+  } else if (location.hash === '#home') {
+    requestAnimationFrame(() => goToScene('home', false));
   }
 }
 
@@ -868,7 +1019,9 @@ function setupHistory() {
       return;
     }
     performDialogClose();
-    goToScene(location.hash === '#home' ? 'home' : 'projects', false);
+    if (location.hash === '#home') goToScene('home', false);
+    else if (location.hash === '#projects') goToScene('projects', false);
+    else goToScene('highlights', false);
   });
 }
 
@@ -877,15 +1030,18 @@ function setupResponsiveRendering() {
   window.addEventListener('resize', () => {
     cancelAnimationFrame(resizeFrame);
     resizeFrame = requestAnimationFrame(() => {
+      renderHighlightPath();
       renderWheel();
       fitProjectTitle();
     });
   });
+  compactWheelQuery.addEventListener('change', renderHighlightPath);
   document.fonts?.ready.then(fitProjectTitle);
 }
 
 setupContactEmail();
 renderTimeline();
+renderHighlightPath();
 setupFilters();
 setupProjectGestures();
 setupSceneNavigation();

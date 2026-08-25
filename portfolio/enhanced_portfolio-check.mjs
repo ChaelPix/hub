@@ -44,12 +44,13 @@ timeline.forEach((milestone, index) => {
 });
 
 const html = readFileSync('./index.html', 'utf8');
-const scenes = html.match(/class="scene [^"]+"/g) || [];
-if (scenes.length !== 2) errors.push(`index.html: expected exactly two scene sections, found ${scenes.length}`);
+if (!html.includes('identity-scene') || !html.includes('id="home"')) errors.push('index.html: missing identity banner (#home)');
+if (!html.includes('highlight-path') || !html.includes('id="highlights"')) errors.push('index.html: missing Highlights path (#highlights)');
+if (!html.includes('project-scene') || !html.includes('id="projects"')) errors.push('index.html: missing project explorer (#projects)');
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Project Dial check passed: ${projects.length} projects, ${timeline.length} milestones, 2 scenes.`);
+  console.log(`Project Dial check passed: ${projects.length} projects, ${timeline.length} milestones, banner + path + explorer.`);
 }

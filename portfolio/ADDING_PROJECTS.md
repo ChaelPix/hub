@@ -26,7 +26,7 @@ Required fields:
 - `date`: human-readable display date.
 - `sortDate`: ISO `YYYY-MM-DD` value used for reliable newest-first ordering.
 - `categories`: one or more of `robotics`, `games`, `xr`, or `other`. A project may belong to several filters. Legacy scalar `category` remains supported during migration.
-- `highlightOrder`: `null` for normal projects or a number to include the project in Highlights. Highlighted projects are still shown newest-first by `sortDate`.
+- `highlightOrder`: `null` for normal projects or a unique number to include the project in Highlights. Highlighted projects appear on the `#highlights` path (oldest-first by `sortDate`) and still appear in the wheel archive, including the Highlights filter (newest-first). The path is a shortcut so visitors do not have to browse every project.
 
 Media behavior:
 
@@ -40,6 +40,6 @@ Legacy `isPortrait`, scalar `category`, and internal tags such as `gameProject`,
 
 Robotics and computer vision share the **Robotics / CV** filter. `Computer Vision` and `OpenCV` tags automatically add that membership during migration. Likewise, XR tags automatically add XR membership, so older projects already appear in useful combinations such as Games + XR or Robotics/CV + XR.
 
-The career timeline is independent from the project list. Edit `js/timeline.js` and use an optional `projectId` to make a milestone open the corresponding case study.
+The banner career timeline is independent from the project list. Edit `js/timeline.js` and use an optional `projectId` to make a milestone open the corresponding case study.
 
 Run `npm run build:once` after changing styles, or `npm run build` while developing.

@@ -12,12 +12,12 @@
   <meta property="og:image" content="img/pdp/banner.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@75..150,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
   <link href="output.css" rel="stylesheet" />
   <script type="module" src="js/enhanced_portfolio.js" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#projects">Skip to projects</a>
+  <a class="skip-link" href="#highlights">Skip to selected work</a>
   <div class="noise" aria-hidden="true"></div>
 
   <main class="scene-stack">
@@ -74,9 +74,23 @@
         </a>
       </aside>
 
-      <button class="scene-control scene-control-down" type="button" data-go-projects aria-label="Explore projects">
+      <button class="scene-control scene-control-down" type="button" data-go-highlights aria-label="See selected work">
         <span>Projects</span>
         <i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
+    </section>
+
+    <section class="highlight-path" id="highlights" aria-labelledby="path-heading">
+      <p class="path-heading" id="path-heading">Selected work</p>
+      <div class="path-track" id="highlight-path-track">
+        <svg class="path-snake" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M28 3 C 16 22, 80 28, 72 50 C 64 72, 12 84, 24 108 C 36 132, 86 140, 70 164 C 56 182, 38 188, 50 198" />
+        </svg>
+        <ol id="highlight-path-list"></ol>
+      </div>
+      <button class="path-continue" type="button" data-go-projects aria-label="Open the full project archive">
+        <span>All projects</span>
+        <i aria-hidden="true"></i>
       </button>
     </section>
 
@@ -84,12 +98,12 @@
       <div class="project-media-stage" id="project-media-stage" aria-hidden="true"></div>
       <div class="project-stage-shade" aria-hidden="true"></div>
 
-      <button class="scene-control scene-control-up" type="button" data-go-home aria-label="Return to profile">
+      <button class="scene-control scene-control-up" type="button" data-go-highlights aria-label="Return to selected work">
         <i aria-hidden="true"></i><i aria-hidden="true"></i>
       </button>
 
       <article class="project-copy" aria-live="polite">
-        <p class="project-kicker" id="project-kicker">Highlights</p>
+        <p class="project-kicker" id="project-kicker">All projects</p>
         <h2 id="project-title">Project</h2>
         <p class="project-description" id="project-description"></p>
         <div class="project-meta" id="project-tags" aria-label="Project technologies"></div>
@@ -102,8 +116,8 @@
       <aside class="category-orbit" aria-label="Project categories">
         <p class="dial-label">My projects</p>
         <div class="category-filter" role="group" aria-label="Filter projects">
-          <button type="button" data-category="all" aria-pressed="false">All</button>
-          <button type="button" data-category="highlights" aria-pressed="true">Highlights</button>
+          <button type="button" data-category="all" aria-pressed="true">All</button>
+          <button type="button" data-category="highlights" aria-pressed="false">Highlights</button>
           <button type="button" data-category="robotics" aria-pressed="false">Robotics / CV</button>
           <button type="button" data-category="games" aria-pressed="false">Games</button>
           <button type="button" data-category="xr" aria-pressed="false">XR</button>

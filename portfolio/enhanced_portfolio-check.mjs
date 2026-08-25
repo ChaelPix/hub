@@ -5,9 +5,10 @@ function importSource(path) {
   return import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
 }
 
-const [{ projects }, { timeline }] = await Promise.all([
+const [{ projects }, { timeline }, { publications }] = await Promise.all([
   importSource('./js/projects.js'),
-  importSource('./js/timeline.js')
+  importSource('./js/timeline.js'),
+  importSource('./js/publications.js')
 ]);
 
 const errors = [];
@@ -40,17 +41,32 @@ projects.forEach((project, index) => {
 
 timeline.forEach((milestone, index) => {
   if (!milestone.year || !milestone.title) errors.push(`timeline[${index}]: year and title are required`);
+  if (milestone.section && !['experience', 'competition'].includes(milestone.section)) {
+    errors.push(`timeline[${index}]: section must be experience or competition`);
+  }
+  if (milestone.image && !existsSync(milestone.image)) errors.push(`timeline[${index}]: image does not exist (${milestone.image})`);
   if (milestone.projectId && !ids.has(milestone.projectId)) errors.push(`timeline[${index}]: unknown projectId ${milestone.projectId}`);
 });
 
+publications.forEach((paper, index) => {
+  const location = `publications[${index}]`;
+  if (!paper.title || !paper.venue || !paper.type || !paper.place || !paper.date || !paper.url) {
+    errors.push(`${location}: title, venue, type, place, date, and url are required`);
+  }
+  ['image', 'logo'].forEach(field => {
+    if (paper[field] && !existsSync(paper[field])) errors.push(`${location}: ${field} does not exist (${paper[field]})`);
+  });
+});
+
 const html = readFileSync('./index.html', 'utf8');
-if (!html.includes('identity-scene') || !html.includes('id="home"')) errors.push('index.html: missing identity banner (#home)');
-if (!html.includes('highlight-path') || !html.includes('id="highlights"')) errors.push('index.html: missing Highlights path (#highlights)');
-if (!html.includes('project-scene') || !html.includes('id="projects"')) errors.push('index.html: missing project explorer (#projects)');
+if (!html.includes('id="about"')) errors.push('index.html: missing about landmark (#about)');
+if (!html.includes('id="timeline"')) errors.push('index.html: missing timeline landmark (#timeline)');
+if (!html.includes('id="publications"')) errors.push('index.html: missing publications landmark (#publications)');
+if (!html.includes('id="projects"')) errors.push('index.html: missing projects landmark (#projects)');
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Project Dial check passed: ${projects.length} projects, ${timeline.length} milestones, banner + path + explorer.`);
+  console.log(`Portfolio check passed: ${projects.length} projects, ${timeline.length} milestones, ${publications.length} publications, about + timeline + publications + projects.`);
 }

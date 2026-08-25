@@ -1,5 +1,6 @@
 import { projects as projectData } from './projects.js';
 import { timeline } from './timeline.js';
+import { publications } from './publications.js';
 import { setupContactEmail } from './contact.js';
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js';
 
@@ -8,19 +9,20 @@ const INTERNAL_TAGS = new Set([
   'gameProject', 'softwareProject'
 ]);
 const CATEGORY_LABELS = {
-  all: 'All projects',
-  highlights: 'Highlights',
   robotics: 'Robotics / CV',
   games: 'Games',
   xr: 'XR',
-  other: 'Other'
+  other: 'Engineering'
 };
-const CATEGORY_ORDER = Object.keys(CATEGORY_LABELS);
+const PROJECT_GROUPS = [
+  { id: 'robotics', label: 'Robotics / CV works', match: project => project.categories.includes('robotics') },
+  { id: 'play', label: 'Games / XR works', match: project => project.categories.includes('games') || project.categories.includes('xr') },
+  { id: 'engineering', label: 'Engineering works', match: () => true }
+];
 const CV_TAGS = new Set(['computer vision', 'opencv', 'vision']);
 const XR_TAGS = new Set(['xr/vr', 'metaxr', 'arcore', 'augmented reality', 'mixed reality', 'vr', 'ar']);
 const VALID_CATEGORIES = new Set(['robotics', 'games', 'xr', 'other']);
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-const compactWheelQuery = window.matchMedia('(max-width: 900px)');
 
 const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;'
@@ -57,47 +59,25 @@ const projects = projectData
   .sort((first, second) => second.sortDate.localeCompare(first.sortDate) || first.sourceIndex - second.sourceIndex);
 
 const elements = {
-  home: document.querySelector('#home'),
-  highlights: document.querySelector('#highlights'),
-  pathTrack: document.querySelector('#highlight-path-track'),
-  pathList: document.querySelector('#highlight-path-list'),
-  projects: document.querySelector('#projects'),
-  timeline: document.querySelector('#timeline-list'),
-  mediaStage: document.querySelector('#project-media-stage'),
-  wheel: document.querySelector('#project-wheel'),
-  dial: document.querySelector('#project-dial'),
-  categoryOrbit: document.querySelector('.category-orbit'),
-  kicker: document.querySelector('#project-kicker'),
-  title: document.querySelector('#project-title'),
-  description: document.querySelector('#project-description'),
-  tags: document.querySelector('#project-tags'),
-  copy: document.querySelector('.project-copy'),
+  aboutFigure: document.querySelector('#about-figure'),
+  timelineRoot: document.querySelector('#timeline-root'),
+  publicationRoot: document.querySelector('#publication-root'),
+  projectLists: document.querySelector('#project-lists'),
+  sidebar: document.querySelector('#site-sidebar'),
+  sidebarToggle: document.querySelector('[data-sidebar-toggle]'),
+  sidebarBackdrop: document.querySelector('[data-sidebar-close]'),
   dialog: document.querySelector('#project-dialog'),
   dialogTitle: document.querySelector('#dialog-title'),
   dialogContent: document.querySelector('#dialog-content')
 };
 
-let activeCategory = 'all';
-const categoryIndices = new Map(Object.keys(CATEGORY_LABELS).map(category => [category, 0]));
-let mediaRenderToken = 0;
-let activeProjectId = null;
-let sceneTransitionLocked = false;
-let explorerLocked = false;
-let explorerUnlockGuard = false;
-let wheelVisualIndex = 0;
-let wheelTargetIndex = 0;
-let wheelMotionFrame = 0;
-let wheelMotionTime = 0;
-let wheelSettleTimer;
-let pendingWheelCommit;
-let suppressWheelClickUntil = 0;
-let copyTransitionToken = 0;
 let markdownVideoObserver;
 let lastFocusedElement;
-const previewPreloadCache = new Map();
-let renderedWheelCategory;
+let dialogClosing = false;
+let dialogMotionToken = 0;
+const DIALOG_CLOSE_MS = 280;
 
-function visibleTags(project, limit = 4) {
+function visibleTags(project, limit = 5) {
   return (project.tags || []).filter(tag => !INTERNAL_TAGS.has(tag)).slice(0, limit);
 }
 
@@ -105,156 +85,157 @@ function displayTitle(project) {
   return project.displayTitle || project.title;
 }
 
-function projectCategoryLabel(project) {
-  return project.categories
-    .slice(0, 2)
-    .map(category => CATEGORY_LABELS[category] || category)
-    .join(' + ');
+function groupedProjects() {
+  const used = new Set();
+  return PROJECT_GROUPS.map(group => {
+    const items = projects.filter(project => !used.has(project.id) && group.match(project));
+    items.forEach(project => used.add(project.id));
+    return { ...group, items };
+  }).filter(group => group.items.length);
 }
 
-function projectBadgeLabel(project) {
-  return visibleTags(project, 1)[0] || projectCategoryLabel(project);
+function renderTimeline() {
+  const items = timeline.slice().reverse();
+  let lastYear;
+  elements.timelineRoot.innerHTML = `
+    <ol class="timeline-list">
+      ${items.map(item => {
+        const interactive = Boolean(item.projectId);
+        const position = item.imagePosition ? ` style="object-position: ${escapeHtml(item.imagePosition)}"` : '';
+        const fit = item.imageFit === 'contain' ? ' is-logo' : '';
+        const avatar = item.image
+          ? `<span class="timeline-avatar${fit}"><img src="${escapeHtml(item.image)}" alt="" loading="lazy"${position} /></span>`
+          : '';
+        const yearSpine = item.year !== lastYear
+          ? `<span class="timeline-year-spine">${escapeHtml(item.year)}</span>`
+          : '';
+        lastYear = item.year;
+        const when = item.date || item.year;
+        const inner = `
+          ${avatar}
+          <span class="timeline-copy">
+            <b>${escapeHtml(item.title)}</b>
+            <span>${escapeHtml(item.detail || '')}</span>
+          </span>
+          <em class="timeline-year">${escapeHtml(when)}</em>`;
+        return interactive
+          ? `<li>${yearSpine}<button class="timeline-row" type="button" data-timeline-project="${escapeHtml(item.projectId)}">${inner}</button></li>`
+          : `<li>${yearSpine}<div class="timeline-row">${inner}</div></li>`;
+      }).join('')}
+    </ol>`;
+
+  elements.timelineRoot.querySelectorAll('[data-timeline-project]').forEach(button => {
+    button.addEventListener('click', () => openProject(button.dataset.timelineProject));
+  });
 }
 
-function fitProjectTitle() {
-  const title = elements.title;
-  title.style.removeProperty('font-size');
-  const minimumSize = window.innerWidth <= 600 ? 17 : window.innerWidth <= 900 ? 22 : 27;
-  let size = Number.parseFloat(getComputedStyle(title).fontSize);
-  let attempts = 0;
-  while (attempts < 48 && size > minimumSize) {
-    const style = getComputedStyle(title);
-    const lineHeight = Number.parseFloat(style.lineHeight);
-    const padding = Number.parseFloat(style.paddingTop) + Number.parseFloat(style.paddingBottom);
-    if (title.scrollHeight <= lineHeight * 2 + padding + 2) break;
-    size -= 1;
-    title.style.fontSize = `${size}px`;
-    attempts += 1;
-  }
-}
-
-function populateProjectCopy(project) {
-  const shortTitle = displayTitle(project);
-  elements.copy.classList.toggle('has-long-title', shortTitle.length > 34);
-  elements.copy.classList.toggle('has-very-long-title', shortTitle.length > 55);
-  elements.kicker.textContent = projectBadgeLabel(project);
-  elements.title.textContent = shortTitle;
-  elements.description.textContent = project.description;
-  const tags = visibleTags(project, 4);
-  const tagLabels = tags.length ? tags : project.categories.map(category => CATEGORY_LABELS[category]);
-  elements.tags.innerHTML = tagLabels.map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
-  elements.tags.setAttribute('aria-label', tagLabels.join(', '));
-  fitProjectTitle();
-}
-
-function transitionProjectCopy(project, direction, animate) {
-  const token = ++copyTransitionToken;
-  elements.copy.dataset.direction = String(Math.sign(direction));
-  const enter = () => {
-    if (token !== copyTransitionToken) return;
-    populateProjectCopy(project);
-    elements.copy.classList.remove('is-leaving');
-    elements.copy.classList.remove('is-entering');
-    void elements.copy.offsetWidth;
-    elements.copy.classList.add('is-entering');
-    window.setTimeout(() => {
-      if (token === copyTransitionToken) elements.copy.classList.remove('is-entering');
-    }, 520);
-  };
-
-  if (!animate || reduceMotionQuery.matches) {
-    elements.copy.classList.remove('is-leaving', 'is-entering');
-    populateProjectCopy(project);
+function renderPublications() {
+  if (!elements.publicationRoot) return;
+  if (!publications.length) {
+    elements.publicationRoot.innerHTML = '<p class="project-empty">No publications yet.</p>';
     return;
   }
-
-  elements.copy.classList.remove('is-entering');
-  elements.copy.classList.add('is-leaving');
-  window.setTimeout(enter, 225);
+  elements.publicationRoot.innerHTML = `
+    <ul class="publication-grid">
+      ${publications.map(paper => {
+        const image = paper.image
+          ? `<span class="publication-frame">
+              <span class="project-tape" aria-hidden="true"></span>
+              <span class="publication-figure"><img src="${escapeHtml(paper.image)}" alt="" loading="lazy" /></span>
+            </span>`
+          : '<span class="publication-frame"><span class="publication-figure is-empty">—</span></span>';
+        const logo = paper.logo
+          ? `<img class="publication-logo" src="${escapeHtml(paper.logo)}" alt="" />`
+          : '';
+        const meta = [paper.venue, paper.type, paper.place, paper.date].filter(Boolean).join(', ');
+        return `
+          <li>
+            <a class="publication-card" href="${escapeHtml(paper.url)}" target="_blank" rel="noopener noreferrer">
+              ${image}
+              <span class="publication-meta">${escapeHtml(meta)}</span>
+              <span class="publication-head">
+                ${logo}
+                <strong class="publication-title">${escapeHtml(paper.title)}</strong>
+              </span>
+            </a>
+          </li>`;
+      }).join('')}
+    </ul>`;
 }
 
-function projectsFor(category = activeCategory) {
-  if (category === 'highlights') {
-    return projects.filter(project => project.highlightOrder !== null);
+function isHighlight(project) {
+  if (Number.isFinite(project.highlightOrder)) return true;
+  return (project.tags || []).some(tag => {
+    const label = String(tag).toLowerCase();
+    return label === 'highlights' || label === 'hihlights';
+  });
+}
+
+function projectThumbHTML(project) {
+  if (!project.image && !project.video_preview) {
+    return '<span class="project-frame"><span class="project-thumb is-empty">—</span></span>';
   }
-  if (category === 'all') return projects;
-  return projects.filter(project => project.categories.includes(category));
-}
-
-function clampIndex(index, length) {
-  return length ? Math.max(0, Math.min(length - 1, index)) : 0;
-}
-
-function activeList() {
-  return projectsFor(activeCategory);
-}
-
-function activeIndex() {
-  const list = activeList();
-  return clampIndex(categoryIndices.get(activeCategory) || 0, list.length);
-}
-
-function activeProject() {
-  return activeList()[activeIndex()];
-}
-
-function highlightProjects() {
-  return projects
-    .filter(project => project.highlightOrder !== null)
-    .sort((first, second) => first.sortDate.localeCompare(second.sortDate) || first.sourceIndex - second.sourceIndex);
+  const image = project.image
+    ? `<img src="${escapeHtml(project.image)}" alt="" loading="lazy" />`
+    : '';
+  const video = project.video_preview
+    ? `<video src="${escapeHtml(project.video_preview)}" muted loop playsinline preload="metadata"${project.image ? ` poster="${escapeHtml(project.image)}"` : ''}></video>`
+    : '';
+  const sparkles = isHighlight(project)
+    ? '<span class="project-spark"></span><span class="project-spark"></span><span class="project-spark"></span><span class="project-spark"></span>'
+    : '';
+  const tape = isHighlight(project)
+    ? '<span class="project-tape" aria-hidden="true"></span><span class="project-tape" aria-hidden="true"></span><span class="project-tape" aria-hidden="true"></span><span class="project-tape" aria-hidden="true"></span>'
+    : '<span class="project-tape" aria-hidden="true"></span>';
+  return `<span class="project-frame">
+    ${tape}${sparkles}
+    <span class="project-thumb">${image}${video}</span>
+  </span>`;
 }
 
 function projectYear(project) {
-  return (project.sortDate || '').slice(0, 4) || (project.date?.match(/20\d{2}/) || [''])[0];
+  if (/^\d{4}/.test(project.sortDate || '')) return project.sortDate.slice(0, 4);
+  const years = project.date?.match(/20\d{2}/g);
+  return years?.at(-1) || '';
 }
 
-function projectTicketInnerHTML(project, { stamp, includeVideo = false } = {}) {
-  const thumbnail = project.image
-    ? `<img src="${escapeHtml(project.image)}" alt="" loading="${includeVideo ? 'lazy' : 'eager'}" decoding="async" />`
-    : `<span class="wheel-placeholder">No preview yet</span>`;
-  const video = includeVideo && project.video_preview
-    ? `<video src="${escapeHtml(project.video_preview)}" muted loop playsinline preload="metadata"${project.image ? ` poster="${escapeHtml(project.image)}"` : ''}></video>`
-    : '';
-  const crown = project.highlightOrder !== null
-    ? '<span class="wheel-card-crown" aria-hidden="true"><img src="img/icons/icon_crown.png" alt="" /></span>'
+function projectRowHTML(project, yearSpine = '') {
+  const tags = visibleTags(project);
+  const tagLabels = tags.length ? tags : project.categories.map(category => CATEGORY_LABELS[category]);
+  const portrait = project.isPortrait ? ' is-portrait' : '';
+  const highlight = isHighlight(project) ? ' is-highlight' : '';
+  const spine = yearSpine
+    ? `<span class="timeline-year-spine">${escapeHtml(yearSpine)}</span>`
     : '';
   return `
-    <span class="wheel-ticket">
-      <span class="wheel-card-media">${thumbnail}${video}</span>
-      <span class="wheel-card-action"><strong>View more</strong><small>Open case study ↗</small></span>
-      <span class="wheel-card-stamp">${escapeHtml(stamp)}</span>
-      ${crown}
-      <span class="wheel-card-copy">
-        <small>${escapeHtml(projectCategoryLabel(project))}</small>
-        <strong>${escapeHtml(displayTitle(project))}</strong>
-        <em>${escapeHtml(project.date || '')}</em>
-      </span>
-    </span>`;
+    <li>
+      ${spine}
+      <button class="project-row${portrait}${highlight}" type="button" data-project-id="${escapeHtml(project.id)}">
+        ${projectThumbHTML(project)}
+        <span class="project-row-main">
+          <span class="project-row-head">
+            <strong class="project-row-title">${escapeHtml(displayTitle(project))}</strong>
+            <em class="project-row-date">${escapeHtml(project.date || '')}</em>
+          </span>
+          <span class="project-row-copy">${escapeHtml(project.description)}</span>
+          <span class="project-row-tags">${tagLabels.map(tag => `<span>${escapeHtml(tag)}</span>`).join('')}</span>
+        </span>
+      </button>
+    </li>`;
 }
 
-const PATH_TILTS = [-3.4, 2.6, -1.9, 3.2, -2.8, 1.6, -3.9, 2.2, -1.3, 2.9];
-const PATH_YEAR_TILTS = [8, -6, 4, -9, 7, -3, 5, -8, 6, -4];
-
-function pathStopStyle(index, total) {
-  const compact = compactWheelQuery.matches;
-  const progress = total <= 1 ? .5 : index / (total - 1);
-  const top = 6 + progress * 78;
-  const left = compact ? 58 + (index % 2 ? 5 : -7) : index % 2 ? 66 : 24;
-  const drift = compact ? 0 : (index % 3 === 0 ? -3 : index % 3 === 1 ? 4 : 1);
-  return `--stop-top:${top.toFixed(2)}%;--stop-x:${left + drift}%;--tilt:${PATH_TILTS[index % 10]}deg;--year-tilt:${PATH_YEAR_TILTS[index % 10]}deg;--stop-index:${index}`;
-}
-
-function bindPathHoverVideo(root) {
-  root.querySelectorAll('.path-ticket').forEach(button => {
+function bindHoverVideo(root) {
+  if (reduceMotionQuery.matches) return;
+  root.querySelectorAll('.project-row').forEach(button => {
     const video = button.querySelector('video');
     if (!video) return;
     const play = () => {
-      if (reduceMotionQuery.matches) return;
       video.play().catch(() => {});
       button.classList.add('is-playing');
     };
     const pause = () => {
       video.pause();
+      video.currentTime = 0;
       button.classList.remove('is-playing');
     };
     button.addEventListener('pointerenter', play);
@@ -264,625 +245,79 @@ function bindPathHoverVideo(root) {
   });
 }
 
-function renderHighlightPath() {
-  const list = highlightProjects();
-  if (elements.pathTrack) elements.pathTrack.style.setProperty('--stops', String(Math.max(list.length, 1)));
-  if (!elements.pathList) return;
-  if (!list.length) {
-    elements.pathList.innerHTML = '<li class="path-empty">No selected work yet.</li>';
+function pauseProjectVideos() {
+  elements.projectLists?.querySelectorAll('video').forEach(video => {
+    video.pause();
+    video.closest('.project-row')?.classList.remove('is-playing');
+  });
+}
+
+function renderProjects() {
+  const groups = groupedProjects();
+  if (!groups.length) {
+    elements.projectLists.innerHTML = '<p class="project-empty">No projects yet.</p>';
     return;
   }
 
-  elements.pathList.innerHTML = list.map((project, index) => `
-    <li class="path-stop" style="${pathStopStyle(index, list.length)}">
-      <span class="path-year">${escapeHtml(projectYear(project))}</span>
-      <button class="path-ticket is-highlight" type="button" data-project-id="${escapeHtml(project.id)}" aria-label="Open ${escapeHtml(project.title)} case study">
-        ${projectTicketInnerHTML(project, { stamp: String(index + 1).padStart(2, '0'), includeVideo: true })}
-      </button>
-    </li>`).join('');
-
-  elements.pathList.querySelectorAll('[data-project-id]').forEach(button => {
-    button.addEventListener('click', () => {
-      showProjectById(button.dataset.projectId);
-      openProject(button.dataset.projectId);
-    });
-  });
-  bindPathHoverVideo(elements.pathList);
-  list.slice(0, 4).forEach(project => preloadProjectMedia(project, true));
-}
-
-function renderTimeline() {
-  const orderedTimeline = [...timeline].reverse();
-  elements.timeline.innerHTML = orderedTimeline.map((milestone, index) => {
-    const progress = (index + .5) / orderedTimeline.length;
-    const content = `
-      <span class="timeline-dot" aria-hidden="true"></span>
-      <span class="timeline-copy">
-        <strong>${escapeHtml(milestone.year)}</strong>
-        <b>${escapeHtml(milestone.title)}</b>
-        <em>${escapeHtml(milestone.detail || '')}</em>
-      </span>`;
-    const interactive = milestone.projectId
-      ? `<button type="button" data-timeline-project="${escapeHtml(milestone.projectId)}" aria-label="Open ${escapeHtml(milestone.title)} project">${content}</button>`
-      : `<div>${content}</div>`;
-    return `<li style="--timeline-top:${(progress * 100).toFixed(2)}%;--timeline-left:${index % 2 ? 11 : 0}px;--timeline-index:${index}">${interactive}</li>`;
+  elements.projectLists.innerHTML = groups.map(group => {
+    let lastYear;
+    const rows = group.items.map(project => {
+      const year = projectYear(project);
+      const yearSpine = year && year !== lastYear ? year : '';
+      if (year) lastYear = year;
+      return projectRowHTML(project, yearSpine);
+    }).join('');
+    return `
+    <div class="project-group" id="works-${escapeHtml(group.id)}">
+      <h3>${escapeHtml(group.label)}</h3>
+      <ul class="project-list">${rows}</ul>
+    </div>`;
   }).join('');
-
-  elements.timeline.querySelectorAll('[data-timeline-project]').forEach(button => {
-    button.addEventListener('click', () => {
-      showProjectById(button.dataset.timelineProject);
-      openProject(button.dataset.timelineProject);
-    });
+  elements.projectLists.querySelectorAll('[data-project-id]').forEach(button => {
+    button.addEventListener('click', () => openProject(button.dataset.projectId));
   });
+  bindHoverVideo(elements.projectLists);
 }
 
-function lockExplorer(updateHash = true) {
-  if (explorerLocked || !elements.projects) return;
-  explorerLocked = true;
-  window.scrollTo({ top: elements.projects.offsetTop, behavior: 'auto' });
-  document.documentElement.classList.add('explorer-locked');
-  document.body.classList.add('explorer-locked');
-  if (updateHash && !elements.dialog.open) history.replaceState({ scene: 'projects' }, '', '#projects');
-}
-
-function unlockExplorer() {
-  if (!explorerLocked) return;
-  explorerLocked = false;
-  explorerUnlockGuard = true;
-  document.documentElement.classList.remove('explorer-locked');
-  document.body.classList.remove('explorer-locked');
-  window.setTimeout(() => { explorerUnlockGuard = false; }, 120);
-}
-
-function goToScene(scene, updateHash = true) {
-  const targets = {
-    home: elements.home,
-    highlights: elements.highlights,
-    projects: elements.projects
+function setupSidebar() {
+  if (!elements.sidebar || !elements.sidebarToggle) return;
+  const setOpen = open => {
+    elements.sidebar.classList.toggle('is-open', open);
+    elements.sidebarToggle.setAttribute('aria-expanded', String(open));
+    elements.sidebarToggle.textContent = open ? 'Close' : 'Menu';
+    if (elements.sidebarBackdrop) elements.sidebarBackdrop.hidden = !open;
   };
-  const target = targets[scene];
-  if (!target || sceneTransitionLocked) return;
-  sceneTransitionLocked = true;
-  if (scene === 'projects') {
-    target.scrollIntoView({ behavior: reduceMotionQuery.matches ? 'auto' : 'smooth', block: 'start' });
-    window.setTimeout(() => {
-      lockExplorer(updateHash);
-      sceneTransitionLocked = false;
-    }, reduceMotionQuery.matches ? 30 : 420);
-    return;
-  }
-  unlockExplorer();
-  target.scrollIntoView({ behavior: reduceMotionQuery.matches ? 'auto' : 'smooth', block: 'start' });
-  if (updateHash && !elements.dialog.open) history.replaceState({ scene }, '', `#${scene}`);
-  window.setTimeout(() => { sceneTransitionLocked = false; }, reduceMotionQuery.matches ? 50 : 560);
-}
-
-function categoryForProject(project) {
-  return 'all';
-}
-
-function showProjectById(projectId) {
-  const project = projects.find(item => item.id === projectId);
-  if (!project) return false;
-  const category = categoryForProject(project);
-  activeCategory = category;
-  const list = projectsFor(category);
-  categoryIndices.set(category, list.findIndex(item => item.id === projectId));
-  updateCategoryControls();
-  renderProject(0);
-  return true;
-}
-
-function updateCategoryControls() {
-  document.querySelectorAll('[data-category]').forEach(button => {
-    button.setAttribute('aria-pressed', String(button.dataset.category === activeCategory));
+  elements.sidebarToggle.addEventListener('click', () => {
+    setOpen(!elements.sidebar.classList.contains('is-open'));
+  });
+  elements.sidebarBackdrop?.addEventListener('click', () => setOpen(false));
+  elements.sidebar.querySelectorAll('a, [data-contact-action]').forEach(link => {
+    link.addEventListener('click', () => setOpen(false));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && elements.sidebar.classList.contains('is-open')) setOpen(false);
+  });
+  window.matchMedia('(max-width: 980px)').addEventListener('change', event => {
+    if (!event.matches) setOpen(false);
   });
 }
 
-function selectCategory(category) {
-  if (!CATEGORY_LABELS[category] || category === activeCategory) return;
-  activeCategory = category;
-  updateCategoryControls();
-  renderProject(0);
-}
-
-function moveProject(step) {
-  const list = activeList();
-  if (list.length < 2) return;
-  settleWheelTo(activeIndex() + step);
-}
-
-function selectProjectAt(index) {
-  const list = activeList();
-  if (!list.length) return;
-  settleWheelTo(clampIndex(index, list.length));
-}
-
-function renderProject(direction = 0, { skipWheel = false } = {}) {
-  const list = activeList();
-  const project = activeProject();
-  if (!project) {
-    elements.title.textContent = 'No projects yet';
-    elements.description.textContent = 'This category is ready for its first project.';
-    elements.tags.innerHTML = '';
-    elements.wheel.innerHTML = '';
-    renderProjectMedia(null);
-    return;
-  }
-
-  const previousProjectId = activeProjectId;
-  activeProjectId = project.id;
-  transitionProjectCopy(project, direction, Boolean(previousProjectId && previousProjectId !== project.id));
-
-  if (!skipWheel) renderWheel();
-  preloadAdjacentMedia();
-  renderProjectMedia(project);
-}
-
-function interpolateWheelStop(distance, center, neighbor, outer) {
-  if (distance <= 1) return center + (neighbor - center) * distance;
-  return neighbor + (outer - neighbor) * Math.min(1, distance - 1);
-}
-
-function wheelTransform(delta, listLength, position) {
-  const compact = compactWheelQuery.matches;
-  const direction = Math.sign(delta);
-  const distance = Math.abs(delta);
-  if (compact) {
-    if (distance > 2) {
-      const sideLength = Math.max(3, direction > 0 ? listLength - 1 - position : position);
-      const progress = Math.max(0, Math.min(1, (distance - 2) / (sideLength - 2)));
-      return [
-        direction * (42 + 5 * progress),
-        62 + 14 * progress,
-        direction * (13 + 6 * progress),
-        .5 - .1 * progress
-      ];
-    }
-    return [
-      direction * interpolateWheelStop(distance, 0, 27, 42),
-      interpolateWheelStop(distance, 6, 30, 62),
-      direction * interpolateWheelStop(distance, -1, 6, 13),
-      interpolateWheelStop(distance, 1, .76, .5)
-    ];
-  }
-  if (distance > 2) {
-    const sideLength = Math.max(3, direction > 0 ? listLength - 1 - position : position);
-    const progress = Math.max(0, Math.min(1, (distance - 2) / (sideLength - 2)));
-    return [
-      direction * (28 + 19 * progress),
-      56 + 18 * progress,
-      direction * (9 + 8 * progress),
-      .62 - .18 * progress
-    ];
-  }
-  return [
-    direction * interpolateWheelStop(distance, 0, 15, 28),
-    interpolateWheelStop(distance, 8, 32, 56),
-    direction * interpolateWheelStop(distance, -1, 5, 9),
-    interpolateWheelStop(distance, 1, .83, .62)
-  ];
-}
-
-function cancelWheelMotion() {
-  cancelAnimationFrame(wheelMotionFrame);
-  wheelMotionFrame = 0;
-  wheelMotionTime = 0;
-}
-
-function layoutWheel(position = wheelVisualIndex) {
-  const list = activeList();
-  if (!list.length) return;
-  wheelVisualIndex = Math.max(0, Math.min(list.length - 1, position));
-
-  elements.dial.classList.toggle('is-at-start', wheelVisualIndex <= .015);
-  elements.dial.classList.toggle('is-at-end', wheelVisualIndex >= list.length - 1.015);
-  const visualFocusIndex = Math.round(wheelVisualIndex);
-  elements.wheel.querySelectorAll('[data-project-index]').forEach(button => {
-    const index = Number(button.dataset.projectIndex);
-    const delta = index - wheelVisualIndex;
-    const distance = Math.abs(delta);
-    const interactive = distance <= (compactWheelQuery.matches ? 1.7 : 2.35);
-    const selected = index === activeIndex();
-    const visualFocus = index === visualFocusIndex;
-    const [x, y, rotation, scale] = wheelTransform(delta, list.length, wheelVisualIndex);
-    button.classList.toggle('is-stacked', !interactive);
-    button.classList.toggle('is-deep-stack', distance > (compactWheelQuery.matches ? 3 : 4));
-    button.classList.toggle('is-wheel-focus', visualFocus);
-    button.setAttribute('aria-selected', String(selected));
-    button.setAttribute('aria-hidden', String(!interactive));
-    button.tabIndex = selected && interactive ? 0 : -1;
-    button.dataset.slot = delta.toFixed(3);
-    const depth = visualFocus ? 10000 : Math.max(1, 8000 - Math.round(distance * 200) + (delta > 0 ? 1 : 0));
-    button.style.cssText = `--slot-x:${x}vw;--slot-y:${y}px;--slot-rotation:${rotation}deg;--slot-scale:${scale};z-index:${depth};pointer-events:${interactive ? 'auto' : 'none'}`;
-  });
-}
-
-function commitWheelIndex(index) {
-  const list = activeList();
-  const next = clampIndex(index, list.length);
-  const previous = activeIndex();
-  pendingWheelCommit = undefined;
-  wheelVisualIndex = next;
-  wheelTargetIndex = next;
-  if (next !== previous) {
-    categoryIndices.set(activeCategory, next);
-    renderProject(Math.sign(next - previous), { skipWheel: true });
-  }
-  layoutWheel(next);
-}
-
-function animateWheel(timestamp) {
-  const elapsed = wheelMotionTime ? Math.min(40, timestamp - wheelMotionTime) : 16;
-  wheelMotionTime = timestamp;
-  const difference = wheelTargetIndex - wheelVisualIndex;
-  const blend = reduceMotionQuery.matches ? 1 : 1 - Math.exp(-elapsed / 72);
-  wheelVisualIndex += difference * blend;
-  if (Math.abs(difference) < .002) wheelVisualIndex = wheelTargetIndex;
-  layoutWheel(wheelVisualIndex);
-  if (wheelVisualIndex !== wheelTargetIndex) {
-    wheelMotionFrame = requestAnimationFrame(animateWheel);
-    return;
-  }
-  wheelMotionFrame = 0;
-  wheelMotionTime = 0;
-  if (pendingWheelCommit !== undefined) commitWheelIndex(pendingWheelCommit);
-}
-
-function startWheelMotion() {
-  cancelAnimationFrame(wheelMotionFrame);
-  wheelMotionTime = 0;
-  wheelMotionFrame = requestAnimationFrame(animateWheel);
-}
-
-function settleWheelTo(index) {
-  const list = activeList();
-  if (!list.length) return;
-  wheelTargetIndex = clampIndex(Math.round(index), list.length);
-  pendingWheelCommit = wheelTargetIndex;
-  startWheelMotion();
-}
-
-function renderWheel() {
-  const list = activeList();
-
-  if (renderedWheelCategory !== activeCategory || elements.wheel.children.length !== list.length) {
-    cancelWheelMotion();
-    renderedWheelCategory = activeCategory;
-    elements.wheel.innerHTML = list.map((project, index) => `
-        <button class="wheel-item${project.highlightOrder !== null ? ' is-highlight' : ''}" type="button" role="option" aria-selected="false" aria-label="Select ${escapeHtml(project.title)}" data-project-index="${index}">
-          ${projectTicketInnerHTML(project, { stamp: String(index + 1).padStart(2, '0') })}
-        </button>`).join('');
-    elements.wheel.querySelectorAll('[data-project-index]').forEach(button => {
-      button.addEventListener('click', event => {
-        if (Date.now() < suppressWheelClickUntil) {
-          event.preventDefault();
-          return;
-        }
-        const index = Number(button.dataset.projectIndex);
-        if (index === activeIndex() && Math.abs(wheelVisualIndex - index) < .025) {
-          openProject(activeList()[index].id);
-          return;
-        }
-        selectProjectAt(index);
-      });
-    });
-  }
-
-  wheelVisualIndex = activeIndex();
-  wheelTargetIndex = wheelVisualIndex;
-  pendingWheelCommit = undefined;
-  layoutWheel(wheelVisualIndex);
-}
-
-function placeholderMedia(project) {
-  const placeholder = document.createElement('div');
-  placeholder.className = 'stage-media stage-placeholder';
-  placeholder.innerHTML = project
-    ? `<span>${escapeHtml(projectCategoryLabel(project))}</span><strong>${escapeHtml(project.title)}</strong>`
-    : '<strong>No projects yet</strong>';
-  return placeholder;
-}
-
-function mediaElement(project, preferVideo = true) {
-  if (preferVideo && project.video_preview) {
-    const video = document.createElement('video');
-    video.className = 'stage-media';
-    video.src = project.video_preview;
-    video.muted = true;
-    video.defaultMuted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = 'auto';
-    return video;
-  }
-  if (project.image) {
-    const image = document.createElement('img');
-    image.className = 'stage-media';
-    image.src = project.image;
-    image.alt = '';
-    return image;
-  }
-  return placeholderMedia(project);
-}
-
-function renderProjectMedia(project, preferVideo = true) {
-  const token = ++mediaRenderToken;
-  const next = project ? mediaElement(project, preferVideo) : placeholderMedia(null);
-  elements.mediaStage.append(next);
-
-  const reveal = () => {
-    if (token !== mediaRenderToken) {
-      if (next instanceof HTMLVideoElement) next.pause();
-      next.remove();
-      return;
-    }
-    requestAnimationFrame(() => next.classList.add('is-active'));
-    if (next instanceof HTMLVideoElement && !reduceMotionQuery.matches) next.play().catch(() => {});
-    window.setTimeout(() => {
-      if (token !== mediaRenderToken) return;
-      elements.mediaStage.querySelectorAll('.stage-media').forEach(item => {
-        if (item === next) return;
-        if (item instanceof HTMLVideoElement) item.pause();
-        item.remove();
-      });
-    }, reduceMotionQuery.matches ? 0 : 580);
-  };
-
-  const fallback = () => {
-    if (token !== mediaRenderToken) return;
-    next.remove();
-    if (project && preferVideo) renderProjectMedia(project, false);
-    else {
-      const placeholder = placeholderMedia(project);
-      elements.mediaStage.append(placeholder);
-      requestAnimationFrame(() => placeholder.classList.add('is-active'));
-    }
-  };
-
-  if (next instanceof HTMLVideoElement) {
-    next.addEventListener('loadeddata', reveal, { once: true });
-    next.addEventListener('error', fallback, { once: true });
-    if (next.readyState >= 2) reveal();
-  } else if (next instanceof HTMLImageElement) {
-    next.addEventListener('load', reveal, { once: true });
-    next.addEventListener('error', fallback, { once: true });
-    if (next.complete && next.naturalWidth) reveal();
-  } else {
-    reveal();
-  }
-}
-
-function preloadProjectMedia(project, eagerVideo = false) {
-  if (!project) return;
-  if (project.image && !previewPreloadCache.has(project.image)) {
-    const image = new Image();
-    image.decoding = 'async';
-    image.src = project.image;
-    previewPreloadCache.set(project.image, image);
-  }
-  if (!project.video_preview) return;
-  const cached = previewPreloadCache.get(project.video_preview);
-  if (cached instanceof HTMLVideoElement) {
-    if (eagerVideo && cached.preload !== 'auto') {
-      cached.preload = 'auto';
-      cached.load();
-    }
-    return;
-  }
-  const video = document.createElement('video');
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-  video.preload = eagerVideo ? 'auto' : 'metadata';
-  video.src = project.video_preview;
-  video.load();
-  previewPreloadCache.set(project.video_preview, video);
-}
-
-function preloadAdjacentMedia() {
-  const list = activeList();
-  if (!list.length) return;
-  preloadAroundIndex(activeIndex(), list);
-}
-
-function preloadAroundIndex(index, list = activeList()) {
-  const indices = new Set([-2, -1, 0, 1, 2]
-    .map(offset => index + offset)
-    .filter(candidate => candidate >= 0 && candidate < list.length));
-  indices.forEach(candidate => preloadProjectMedia(list[candidate], true));
-}
-
-function warmCategoryEntrances() {
-  const warm = () => {
-    projects.forEach(project => preloadProjectMedia(project, false));
-    Object.keys(CATEGORY_LABELS).forEach(category => preloadProjectMedia(projectsFor(category)[0], true));
-  };
-  if ('requestIdleCallback' in window) window.requestIdleCallback(warm, { timeout: 1800 });
-  else window.setTimeout(warm, 700);
-}
-
-function setupFilters() {
-  let categoryWheelLocked = false;
-  document.querySelectorAll('[data-category]').forEach(button => {
-    button.addEventListener('pointerdown', event => event.stopPropagation());
-    button.addEventListener('click', event => {
-      event.stopPropagation();
-      selectCategory(button.dataset.category);
-    });
-  });
-
-  elements.categoryOrbit?.addEventListener('wheel', event => {
-    event.preventDefault();
-    event.stopPropagation();
-    if (categoryWheelLocked || Math.abs(event.deltaY) < 4) return;
-    const current = CATEGORY_ORDER.indexOf(activeCategory);
-    const direction = Math.sign(event.deltaY);
-    const next = (current + direction + CATEGORY_ORDER.length) % CATEGORY_ORDER.length;
-    categoryWheelLocked = true;
-    selectCategory(CATEGORY_ORDER[next]);
-    window.setTimeout(() => { categoryWheelLocked = false; }, 260);
-  }, { passive: false });
-}
-
-function setupProjectGestures() {
-  let pointer;
-
-  elements.dial.addEventListener('pointerdown', event => {
-    if (event.button !== 0 || event.target.closest('.category-filter, .dial-label')) return;
-    window.clearTimeout(wheelSettleTimer);
-    cancelWheelMotion();
-    pointer = {
-      id: event.pointerId,
-      startX: event.clientX,
-      startPosition: wheelVisualIndex,
-      moved: false
-    };
-  });
-  elements.dial.addEventListener('pointermove', event => {
-    if (!pointer || pointer.id !== event.pointerId) return;
-    const distance = event.clientX - pointer.startX;
-    if (Math.abs(distance) > 7 && !pointer.moved) {
-      pointer.moved = true;
-      elements.dial.setPointerCapture?.(event.pointerId);
-      elements.dial.classList.add('is-dragging');
-    }
-    if (!pointer.moved) return;
-    const pixelsPerProject = compactWheelQuery.matches ? 126 : 180;
-    const list = activeList();
-    wheelVisualIndex = Math.max(0, Math.min(list.length - 1, pointer.startPosition - distance / pixelsPerProject));
-    wheelTargetIndex = wheelVisualIndex;
-    layoutWheel(wheelVisualIndex);
-    preloadAroundIndex(Math.round(wheelVisualIndex), list);
-    event.preventDefault();
-  });
-  const finishDialDrag = event => {
-    if (!pointer || (event?.pointerId !== undefined && pointer.id !== event.pointerId)) return;
-    elements.dial.classList.remove('is-dragging');
-    if (pointer.moved) suppressWheelClickUntil = Date.now() + 420;
-    settleWheelTo(wheelVisualIndex);
-    pointer = undefined;
-  };
-  elements.dial.addEventListener('pointerup', finishDialDrag);
-  elements.dial.addEventListener('pointercancel', finishDialDrag);
-  elements.dial.addEventListener('lostpointercapture', finishDialDrag);
-  window.addEventListener('pointerup', finishDialDrag);
-  window.addEventListener('pointercancel', finishDialDrag);
-  window.addEventListener('blur', () => finishDialDrag());
-
-  let sceneTouchStart;
-  elements.projects.addEventListener('pointerdown', event => {
-    if (!compactWheelQuery.matches || event.target.closest('button, a, .project-dial')) return;
-    sceneTouchStart = { x: event.clientX, y: event.clientY, id: event.pointerId };
-  });
-  elements.projects.addEventListener('pointerup', event => {
-    if (!sceneTouchStart || sceneTouchStart.id !== event.pointerId) return;
-    const x = event.clientX - sceneTouchStart.x;
-    const y = event.clientY - sceneTouchStart.y;
-    if (y > 72 && Math.abs(y) > Math.abs(x) * 1.2) goToScene('highlights');
-    sceneTouchStart = undefined;
-  });
-}
-
-function driveWheelFromDelta(rawDelta, deltaMode) {
-  const deltaScale = deltaMode === WheelEvent.DOM_DELTA_LINE
-    ? 16
-    : deltaMode === WheelEvent.DOM_DELTA_PAGE ? window.innerHeight : 1;
-  const list = activeList();
-  const delta = Math.max(-240, Math.min(240, rawDelta * deltaScale));
-  const wheelStep = Math.sign(delta) * Math.min(.9, Math.sqrt(Math.abs(delta)) / 8);
-  wheelTargetIndex = Math.max(0, Math.min(list.length - 1, wheelTargetIndex + wheelStep));
-  pendingWheelCommit = undefined;
-  preloadAroundIndex(Math.round(wheelTargetIndex), list);
-  startWheelMotion();
-  window.clearTimeout(wheelSettleTimer);
-  wheelSettleTimer = window.setTimeout(() => settleWheelTo(wheelTargetIndex), 110);
-}
-
-function wheelAtStart() {
-  return wheelVisualIndex <= .02 && wheelTargetIndex <= .02;
-}
-
-function setupSceneNavigation() {
-  document.querySelectorAll('[data-go-highlights]').forEach(button => button.addEventListener('click', () => goToScene('highlights')));
-  document.querySelectorAll('[data-go-projects]').forEach(button => button.addEventListener('click', () => goToScene('projects')));
-  document.querySelectorAll('[data-go-home]').forEach(button => button.addEventListener('click', () => goToScene('home')));
-
-  window.addEventListener('wheel', event => {
-    if (elements.dialog.open) return;
-    const rawDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
-
-    if (explorerLocked) {
-      if (rawDelta < 0 && wheelAtStart()) {
-        event.preventDefault();
-        unlockExplorer();
-        const top = Math.max(0, elements.projects.offsetTop - Math.min(96, window.innerHeight * .14));
-        window.scrollTo({ top, behavior: 'auto' });
-        if (!elements.dialog.open) history.replaceState({ scene: 'highlights' }, '', '#highlights');
-        return;
-      }
-      event.preventDefault();
-      if (sceneTransitionLocked) return;
-      driveWheelFromDelta(rawDelta, event.deltaMode);
-      return;
-    }
-
-    const explorerTop = elements.projects.getBoundingClientRect().top;
-    if (rawDelta > 0 && explorerTop <= 4) {
-      event.preventDefault();
-      lockExplorer();
-    }
-  }, { passive: false });
-
-  window.addEventListener('scroll', () => {
-    if (explorerLocked || elements.dialog.open || sceneTransitionLocked || explorerUnlockGuard) return;
-    if (elements.projects.getBoundingClientRect().top <= 1) lockExplorer();
-  }, { passive: true });
-
-  window.addEventListener('keydown', event => {
-    if (elements.dialog.open) return;
-    if (!explorerLocked) {
-      if (event.key === 'Home') {
-        event.preventDefault();
-        goToScene('home');
-      }
-      return;
-    }
-    if (event.key === 'PageUp' || event.key === 'Home') {
-      event.preventDefault();
-      if (wheelAtStart()) goToScene('highlights');
-      else if (event.key === 'Home') settleWheelTo(0);
-      else moveProject(-1);
-    } else if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(event.key)) {
-      event.preventDefault();
-      moveProject(1);
-    } else if (['ArrowLeft', 'ArrowUp'].includes(event.key)) {
-      event.preventDefault();
-      if (event.key === 'ArrowUp' && wheelAtStart()) {
-        goToScene('highlights');
-        return;
-      }
-      moveProject(-1);
-    }
-  });
-}
-
-function setupHeroParallax() {
-  if (reduceMotionQuery.matches || window.matchMedia('(pointer: coarse)').matches) return;
+function setupAboutParallax() {
+  if (!elements.aboutFigure || reduceMotionQuery.matches || window.matchMedia('(pointer: coarse)').matches) return;
   let frame;
-  elements.home.addEventListener('pointermove', event => {
-    const bounds = elements.home.getBoundingClientRect();
+  elements.aboutFigure.addEventListener('pointermove', event => {
+    const bounds = elements.aboutFigure.getBoundingClientRect();
     const x = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
     const y = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
     cancelAnimationFrame(frame);
     frame = requestAnimationFrame(() => {
-      elements.home.style.setProperty('--pointer-x', x.toFixed(3));
-      elements.home.style.setProperty('--pointer-y', y.toFixed(3));
+      elements.aboutFigure.style.setProperty('--pointer-x', x.toFixed(3));
+      elements.aboutFigure.style.setProperty('--pointer-y', y.toFixed(3));
     });
   });
-  elements.home.addEventListener('pointerleave', () => {
-    elements.home.style.setProperty('--pointer-x', 0);
-    elements.home.style.setProperty('--pointer-y', 0);
+  elements.aboutFigure.addEventListener('pointerleave', () => {
+    elements.aboutFigure.style.setProperty('--pointer-x', 0);
+    elements.aboutFigure.style.setProperty('--pointer-y', 0);
   });
 }
 
@@ -928,20 +363,16 @@ function processMarkdown(container) {
   });
 }
 
-function pausePathVideos() {
-  elements.pathList?.querySelectorAll('video').forEach(video => {
-    video.pause();
-    video.closest('.path-ticket')?.classList.remove('is-playing');
-  });
-}
-
 async function openProject(projectId, updateHash = true) {
   const project = projects.find(item => item.id === projectId);
   if (!project) return;
-  pausePathVideos();
+  pauseProjectVideos();
   lastFocusedElement = document.activeElement;
   elements.dialogTitle.textContent = project.title;
-  elements.dialogContent.innerHTML = '<p class="dialog-loading">LOADING CASE STUDY…</p>';
+  elements.dialogContent.innerHTML = '<p class="dialog-loading">Loading case study…</p>';
+  dialogClosing = false;
+  dialogMotionToken += 1;
+  elements.dialog.classList.remove('is-leaving');
   if (!elements.dialog.open) elements.dialog.showModal();
   document.body.classList.add('dialog-open');
   if (updateHash) history.pushState({ projectId }, '', `#project-${projectId}`);
@@ -957,19 +388,44 @@ async function openProject(projectId, updateHash = true) {
     elements.dialogContent.innerHTML = `
       <div class="markdown-error">
         <strong>Case study coming soon.</strong>
-        <p>${escapeHtml(error.message)}. The project preview remains available in the dial.</p>
+        <p>${escapeHtml(error.message)}</p>
       </div>`;
   }
 }
 
-function performDialogClose() {
-  if (!elements.dialog.open) return;
+function finishDialogClose() {
+  dialogClosing = false;
+  elements.dialog.classList.remove('is-leaving');
   markdownVideoObserver?.disconnect();
   markdownVideoObserver = undefined;
   elements.dialog.querySelectorAll('video').forEach(video => video.pause());
-  elements.dialog.close();
+  if (elements.dialog.open) elements.dialog.close();
   document.body.classList.remove('dialog-open');
   lastFocusedElement?.focus?.();
+}
+
+function performDialogClose() {
+  if (!elements.dialog.open || dialogClosing) return;
+  if (reduceMotionQuery.matches) {
+    finishDialogClose();
+    return;
+  }
+  dialogClosing = true;
+  const token = ++dialogMotionToken;
+  elements.dialog.classList.add('is-leaving');
+  let settled = false;
+  const settle = () => {
+    if (settled || token !== dialogMotionToken) return;
+    settled = true;
+    elements.dialog.removeEventListener('animationend', onAnimationEnd);
+    finishDialogClose();
+  };
+  const onAnimationEnd = event => {
+    if (event.target !== elements.dialog || event.animationName !== 'dialog-out') return;
+    settle();
+  };
+  elements.dialog.addEventListener('animationend', onAnimationEnd);
+  window.setTimeout(settle, DIALOG_CLOSE_MS);
 }
 
 function closeProject(updateHash = true) {
@@ -994,61 +450,26 @@ function setupProjectDialog() {
 function openInitialHash() {
   if (location.hash.startsWith('#project-')) {
     const projectId = location.hash.replace('#project-', '');
-    if (showProjectById(projectId)) {
-      history.replaceState({ scene: 'projects' }, '', '#projects');
-      goToScene('projects', false);
-      history.pushState({ projectId }, '', `#project-${projectId}`);
-      openProject(projectId, false);
-    }
-  } else if (location.hash === '#projects') {
-    requestAnimationFrame(() => goToScene('projects', false));
-  } else if (location.hash === '#highlights') {
-    requestAnimationFrame(() => goToScene('highlights', false));
-  } else if (location.hash === '#home') {
-    requestAnimationFrame(() => goToScene('home', false));
+    if (projects.some(project => project.id === projectId)) openProject(projectId, false);
   }
 }
 
 function setupHistory() {
   window.addEventListener('popstate', () => {
     if (location.hash.startsWith('#project-')) {
-      const projectId = location.hash.replace('#project-', '');
-      showProjectById(projectId);
-      goToScene('projects', false);
-      openProject(projectId, false);
+      openProject(location.hash.replace('#project-', ''), false);
       return;
     }
     performDialogClose();
-    if (location.hash === '#home') goToScene('home', false);
-    else if (location.hash === '#projects') goToScene('projects', false);
-    else goToScene('highlights', false);
   });
-}
-
-function setupResponsiveRendering() {
-  let resizeFrame;
-  window.addEventListener('resize', () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(() => {
-      renderHighlightPath();
-      renderWheel();
-      fitProjectTitle();
-    });
-  });
-  compactWheelQuery.addEventListener('change', renderHighlightPath);
-  document.fonts?.ready.then(fitProjectTitle);
 }
 
 setupContactEmail();
+setupSidebar();
 renderTimeline();
-renderHighlightPath();
-setupFilters();
-setupProjectGestures();
-setupSceneNavigation();
-setupHeroParallax();
+renderPublications();
+renderProjects();
+setupAboutParallax();
 setupProjectDialog();
 setupHistory();
-setupResponsiveRendering();
-renderProject();
-warmCategoryEntrances();
 openInitialHash();

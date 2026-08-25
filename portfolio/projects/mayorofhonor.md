@@ -15,8 +15,8 @@ Theme: **“Victory is just the beginning.”** [Read the Roblox Inspire 2026 ch
 ## Watch the game
 
 <div class="project-video-grid project-video-grid-youtube">
-    <figure class="project-video-card"><div class="youtube-embed"><iframe src="https://www.youtube-nocookie.com/embed/YpVH1wIxFgk?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Mayor of Honor condensed gameplay" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><figcaption>Condensed gameplay · 1 min 20</figcaption></figure>
-    <figure class="project-video-card"><div class="youtube-embed"><iframe src="https://www.youtube-nocookie.com/embed/BfA_7XX9yYs?rel=0" title="Mayor of Honor full gameplay run" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><figcaption>Complete run · 6 min</figcaption></figure>
+    <figure class="project-video-card"><div class="youtube-embed"><iframe src="https://www.youtube-nocookie.com/embed/YpVH1wIxFgk?autoplay=1&amp;mute=1&amp;playsinline=1&amp;rel=0" title="Mayor of Honor condensed gameplay" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><figcaption>Condensed gameplay, 1 min 20</figcaption></figure>
+    <figure class="project-video-card"><div class="youtube-embed"><iframe src="https://www.youtube-nocookie.com/embed/BfA_7XX9yYs?rel=0" title="Mayor of Honor full gameplay run" loading="lazy" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><figcaption>Complete run, 6 min</figcaption></figure>
 </div>
 
 ## The election is also your loadout

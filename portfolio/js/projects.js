@@ -1,17 +1,5 @@
 export const projects = [
-    {
-        "title": "SlidePix",
-        "description": "Vscode extension that allows you to create elaborate slide presentations directly inside the IDE",
-        "image": "",
-        "video_preview": "",
-        "tags": [],
-        "id": "slidepix",
-        "date": "August 2026",
-        "sortDate": "2026-08-24",
-        "category": "other",
-        "highlightOrder": null
-    },
-    {
+/*     {
         "title": "SfxVault",
         "description": "Website for a sound effects library",
         "image": "",
@@ -22,7 +10,7 @@ export const projects = [
         "sortDate": "2026-08-22",
         "category": "other",
         "highlightOrder": null
-    },
+    }, */
     {
         "title": "Pianu!",
         "description": "Piano game made in 1 day, in Kotlin and Compose. Import a MIDI file, and play it on a USB piano with osu-style timing to learn reading music sheets.",

@@ -24,7 +24,7 @@ Required fields:
 - `title` and `description`: the short copy shown in the list. The full `title` is used by the case-study dialog.
 - `displayTitle`: optional shorter editorial title for the list.
 - `date`: human-readable display date.
-- `sortDate`: ISO `YYYY-MM-DD` value used for newest-first ordering inside each group. Its year also appears vertically left of the group rail when the year changes.
+- `sortDate`: ISO `YYYY-MM-DD` value used for newest-first ordering inside each group. The left rail year is the parsed **end** year of `sortDate` or `date` (`September 2025 - February 2026` → `2026`), placed on the oldest row of that year.
 - `categories`: one or more of `robotics`, `games`, `xr`, or `other`. Legacy scalar `category` remains supported during migration.
 - `highlightOrder`: optional; a number marks the row as a highlight (four diagonal glitter tapes) and orders it inside Highlight works. A `Highlights` tag also counts. Highlighted projects appear in that group and again in their category group.
 
@@ -39,7 +39,7 @@ Legacy `isPortrait`, scalar `category`, and internal tags such as `gameProject`,
 
 The page shows **Highlight works** first (duplicates of highlighted projects), then three exclusive groups: **Robotics / CV**, then **Games / XR**, then **Engineering**. `Computer Vision` and `OpenCV` tags add Robotics/CV membership during migration. XR tags add Games/XR membership.
 
-The timeline is independent from the project list. Edit `js/timeline.js`. An optional `projectId` opens the corresponding case study. Optional `image` (and `imagePosition`, e.g. `'72% 18%'`) draws a circular portrait between the rail and the title; the white dots stay. Use `imageFit: 'contain'` for logos so the full image fits in that same circle. `year` is written vertically to the left of the rail when it changes. Optional `date` is the right-hand label (months); if omitted, `year` is shown there.
+The timeline is independent from the project list. Edit `js/timeline.js`. An optional `projectId` opens the corresponding case study. Optional `image` (and `imagePosition`, e.g. `'72% 18%'`) draws a circular portrait between the rail and the title; the white dots stay. Use `imageFit: 'contain'` for logos so the full image fits in that same circle. `section: 'education'` shows a mortarboard icon instead of a photo. The left year is the parsed end year of `date` or `year` (`2022-24` → `2024`); consecutive rows that share it get one label on the oldest row of that year. Optional `date` is the right-hand label (months or ranges); if omitted, `year` is shown there.
 
 Publications live in `js/publications.js`. Each entry needs `title`, `venue`, `type`, `place`, `date`, and `url`. Optional `image` is the poster; optional `logo` sits to the left of the title. The page renders them as a grid between Timeline and Projects.
 

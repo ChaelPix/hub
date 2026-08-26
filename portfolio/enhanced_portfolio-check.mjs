@@ -41,8 +41,8 @@ projects.forEach((project, index) => {
 
 timeline.forEach((milestone, index) => {
   if (!milestone.year || !milestone.title) errors.push(`timeline[${index}]: year and title are required`);
-  if (milestone.section && !['experience', 'competition'].includes(milestone.section)) {
-    errors.push(`timeline[${index}]: section must be experience or competition`);
+  if (milestone.section && !['experience', 'competition', 'education'].includes(milestone.section)) {
+    errors.push(`timeline[${index}]: section must be experience, competition, or education`);
   }
   if (milestone.image && !existsSync(milestone.image)) errors.push(`timeline[${index}]: image does not exist (${milestone.image})`);
   if (milestone.projectId && !ids.has(milestone.projectId)) errors.push(`timeline[${index}]: unknown projectId ${milestone.projectId}`);

@@ -113,34 +113,58 @@ function groupedProjects() {
     : rest;
 }
 
+function endYear(value) {
+  const text = String(value || '');
+  if (/^\d{4}-\d{2}-\d{2}/.test(text)) return text.slice(0, 4);
+  const years = [];
+  const pattern = /20(\d{2})(?:\s*[-–—\/]\s*(?:20)?(\d{2})(?!\d))?/g;
+  let match;
+  while ((match = pattern.exec(text))) {
+    years.push(match[2] ? `20${match[2]}` : `20${match[1]}`);
+  }
+  return years.at(-1) || '';
+}
+
+function yearMark(items, index, yearOf) {
+  const year = yearOf(items[index]);
+  if (!year) return '';
+  const next = items[index + 1];
+  return year !== (next ? yearOf(next) : '') ? year : '';
+}
+
+function timelineEventHTML(item, yearSpine = '') {
+  const education = item.section === 'education';
+  const interactive = Boolean(item.projectId);
+  const position = item.imagePosition ? ` style="object-position: ${escapeHtml(item.imagePosition)}"` : '';
+  const fit = item.imageFit === 'contain' ? ' is-logo' : '';
+  const avatar = education
+    ? '<span class="timeline-avatar is-education" aria-hidden="true"><img src="img/icons/education.svg" alt="" /></span>'
+    : item.image
+      ? `<span class="timeline-avatar${fit}"><img src="${escapeHtml(item.image)}" alt="" loading="lazy"${position} /></span>`
+      : '';
+  const when = item.date || item.year;
+  const rowClass = `timeline-row${education ? ' is-education' : ''}`;
+  const spine = yearSpine
+    ? `<span class="timeline-year-spine">${escapeHtml(yearSpine)}</span>`
+    : '';
+  const inner = `
+    ${avatar}
+    <span class="timeline-copy">
+      <b>${escapeHtml(item.title)}</b>
+      <span>${escapeHtml(item.detail || '')}</span>
+    </span>
+    <em class="timeline-year">${escapeHtml(when)}</em>`;
+  return interactive
+    ? `<li>${spine}<button class="${rowClass}" type="button" data-timeline-project="${escapeHtml(item.projectId)}">${inner}</button></li>`
+    : `<li>${spine}<div class="${rowClass}">${inner}</div></li>`;
+}
+
 function renderTimeline() {
   const items = timeline.slice().reverse();
-  let lastYear;
+  const yearOf = item => endYear(item.date || item.year);
   elements.timelineRoot.innerHTML = `
     <ol class="timeline-list">
-      ${items.map(item => {
-        const interactive = Boolean(item.projectId);
-        const position = item.imagePosition ? ` style="object-position: ${escapeHtml(item.imagePosition)}"` : '';
-        const fit = item.imageFit === 'contain' ? ' is-logo' : '';
-        const avatar = item.image
-          ? `<span class="timeline-avatar${fit}"><img src="${escapeHtml(item.image)}" alt="" loading="lazy"${position} /></span>`
-          : '';
-        const yearSpine = item.year !== lastYear
-          ? `<span class="timeline-year-spine">${escapeHtml(item.year)}</span>`
-          : '';
-        lastYear = item.year;
-        const when = item.date || item.year;
-        const inner = `
-          ${avatar}
-          <span class="timeline-copy">
-            <b>${escapeHtml(item.title)}</b>
-            <span>${escapeHtml(item.detail || '')}</span>
-          </span>
-          <em class="timeline-year">${escapeHtml(when)}</em>`;
-        return interactive
-          ? `<li>${yearSpine}<button class="timeline-row" type="button" data-timeline-project="${escapeHtml(item.projectId)}">${inner}</button></li>`
-          : `<li>${yearSpine}<div class="timeline-row">${inner}</div></li>`;
-      }).join('')}
+      ${items.map((item, index) => timelineEventHTML(item, yearMark(items, index, yearOf))).join('')}
     </ol>`;
 
   elements.timelineRoot.querySelectorAll('[data-timeline-project]').forEach(button => {
@@ -205,9 +229,7 @@ function projectThumbHTML(project) {
 }
 
 function projectYear(project) {
-  if (/^\d{4}/.test(project.sortDate || '')) return project.sortDate.slice(0, 4);
-  const years = project.date?.match(/20\d{2}/g);
-  return years?.at(-1) || '';
+  return endYear(project.sortDate) || endYear(project.date);
 }
 
 function projectRowHTML(project, yearSpine = '') {
@@ -271,13 +293,9 @@ function renderProjects() {
   }
 
   elements.projectLists.innerHTML = groups.map(group => {
-    let lastYear;
-    const rows = group.items.map(project => {
-      const year = projectYear(project);
-      const yearSpine = year && year !== lastYear ? year : '';
-      if (year) lastYear = year;
-      return projectRowHTML(project, yearSpine);
-    }).join('');
+    const rows = group.items.map((project, index) => (
+      projectRowHTML(project, yearMark(group.items, index, projectYear))
+    )).join('');
     return `
     <div class="project-group" id="works-${escapeHtml(group.id)}">
       <h3>${escapeHtml(group.label)}</h3>

@@ -36,9 +36,8 @@ export const projects = [
         "highlightOrder": null
     },
     {
-        "title": "(Published Paper ICPR) SARA - 360° Visual Servoing for Mobile Manipulation",
-        "displayTitle": "SARA — 360° Visual Servoing",
-        "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper accepted to ICPR 2026.",
+        "title": "360° Visual Servoing for Mobile Manipulation",
+        "description": "6-month research internship at CIAD lab. Built a full perception + control pipeline for a mobile manipulator using a single 360° camera, exploring camera and workspace spheres relationships. PBVS controller, 6D pose estimation, extrinsic calibration. First-author paper accepted to ICPR 2026.",
         "image": "img/projects/sara/robot.jpg",
         "tags": ["Highlights", "Robotics", "Computer Vision", "ROS1", "C++", "Python", "Research", "VISP", "OpenCV"],
         "id": "sara_internship",
@@ -50,8 +49,8 @@ export const projects = [
         "isPortrait": false
     },
     {
-        "title": "ClaviAR - Mixed Reality Piano Calibration",
-        "description": "Meta Quest piano prototype that aligns virtual keys to a real keyboard in ~3 seconds. Unity/C# CV wrapped in a rhythm-game showcase.",
+        "title": "ClaviAR, Mixed Reality Piano Calibration",
+        "description": "Meta Quest piano prototype that aligns virtual keys to a real keyboard in  about 3 seconds using computer vision algorithmsn, wrapped in a rhythm-game to showcase.",
         "image": "img/projects/claviar/claviar_gameplay.png",
         "video_preview": "img/projects/claviar/claviar_preview.mp4",
         "tags": ["XR/VR", "Unity", "C#", "Computer Vision", "School Project", "gameProject"],
@@ -188,8 +187,8 @@ export const projects = [
         "isPortrait": true
     },
     {
-        "title": "WORLDSKILLS LYON24 🏅 - ROS2 Autonomous Robot",
-        "description": "Built a robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with unknown environments.",
+        "title": "WORLDSKILLS LYON24 🏅 ROS2 Autonomous Robot",
+        "description": "Built and programmed a mobile manipulation robot for Worldskills 2024, an International Competition 🏆, capable of navigating and interacting with unknown environments.",
         "image": "img/worldskills/lyon24/pict_pixx_profil.jpg",
         "video_preview": "img/worldskills/lyon24/pixx_trailer.mp4",
         "tags": ["Competition", "Highlights", "Robotics", "Computer Vision", "ROS2", "C++", "Python", "OpenCV"],
@@ -221,8 +220,8 @@ export const projects = [
     //     "date": "May 2025"
     // },
     {
-        "title": "AustriaSkills23 🇦🇹 - ROS2 Autonomous Robot",
-        "description": "Compact autonomous robot designed for AustriaSkills 2023 national competition.",
+        "title": "AustriaSkills23 🇦🇹, ROS2 Autonomous Robot",
+        "description": "One week to learn and build a ROS2 robot for the AustriaSkills 2023 national competition.",
         "image": "img/worldskills/austria/robot_austria.jpg",
         "tags": ["Competition", "Robotics", "ROS2", "C++", "AIproject"],
         "id": "ws_austria-skills23",
@@ -232,8 +231,8 @@ export const projects = [
         "highlightOrder": false
     },
     {
-        "title": "Wordskills FNAT 23 🥈 - ROS1 Autonomous Robot",
-        "description": "ROS1 robot built for the French national Worldskills competition.",
+        "title": "Wordskills FNAT 23 🥈, ROS1 Autonomous Robot",
+        "description": "Built and programmed a ROS1 robot for the French national Worldskills competition.",
         "image": "img/worldskills/fnat/robot_fnat.jpg",
         "tags": ["Competition", "Robotics", "Computer Vision", "ROS1", "C++", "OpenCV", "AIproject"],
         "id": "ws_fnat23",
@@ -243,7 +242,7 @@ export const projects = [
         "highlightOrder": false
     },
     {
-        "title": "Wordskills Regionals 🥈 - Arduino Robot",
+        "title": "Wordskills Regionals 🥈, Arduino Robot",
         "description": "Arduino robot programmed for regional Worldskills challenges.",
         "image": "img/worldskills/reg/robot_sand.jpg",
         "tags": ["Competition", "Robotics", "Computer Vision", "C++", "AIproject"],

@@ -33,7 +33,7 @@ Native document scroll. No scene snap, wheel, or highlight path.
 2. `#about` — **About me** with the research-poster portrait, short justified copy, and the podium figure (landscape, taped). Pointer parallax moves only the foreground cutout.
 3. `#timeline` — one newest-first list with a persistent rail and white dots. `year` is written vertically on the left of the rail (bottom to top) when it changes. Optional `date` (else `year`) sits on the right so months can be specified. Optional `image` sits between the rail and the title. `imageFit: 'contain'` shows a full logo inside the same circular size. Hover animates the row; a click opens the case study when `projectId` is set.
 4. `#publications` — a grid of papers. Each card is a taped poster, then venue, type, place, date, then optional venue logo beside the title. It opens the external URL.
-5. `#projects` — **Project works**, grouped as Robotics / CV works, Games / XR works, then Engineering works. Each group has a left rail and white dots, filling on hover like the timeline. When the year changes inside a group, a vertical year sits left of the rail (same as the timeline); the date on the right of the row stays. Landscape stills are the larger row thumbnails, with a small tape strip on top; hover plays `video_preview`. Date sits in a reserved column beside the title, never in the description flow. Rows with `highlightOrder` or a Highlights tag get four diagonal corner tapes with glitter. A row click opens the case study.
+5. `#projects` — **Project works**, grouped as Highlight works, then Robotics / CV, Games / XR, then Engineering. Highlights are duplicated: they appear in Highlight works and again in their category group. Each group has a left rail and white dots, filling on hover like the timeline. When the year changes inside a group, a vertical year sits left of the rail (same as the timeline); the date on the right of the row stays. Landscape stills are the larger row thumbnails, with a small tape strip on top; hover plays `video_preview`. Date sits in a reserved column beside the title, never in the description flow. Rows with `highlightOrder` or a Highlights tag get four diagonal corner tapes with glitter. A row click opens the case study.
 
 A left sidebar holds a circular WorldSkills portrait beside the name, in-page links (plain nested project groups), and icon-only Email / GitHub / LinkedIn. On compact widths it becomes a Menu drawer.
 
@@ -43,7 +43,7 @@ A left sidebar holds a circular WorldSkills portrait beside the name, in-page li
 
 Every project needs `id`, `title`, `description`, `date`, `sortDate`, `categories`, and `highlightOrder`. `displayTitle` is optional. A legacy scalar `category` is still normalized during migration.
 
-`categories` is an array containing one or more of `robotics`, `games`, `xr`, and `other`. The page groups work as Robotics / CV, then Games / XR, then Engineering. A project appears in the first matching group only.
+`categories` is an array containing one or more of `robotics`, `games`, `xr`, and `other`. After Highlight works, the page groups remaining work as Robotics / CV, then Games / XR, then Engineering. A project appears in the first matching category group only; highlights are also listed in Highlight works.
 
 - Robotics and computer vision share **Robotics / CV**.
 - Games and XR share **Games / XR**.

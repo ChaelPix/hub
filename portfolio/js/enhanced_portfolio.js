@@ -85,13 +85,32 @@ function displayTitle(project) {
   return project.displayTitle || project.title;
 }
 
+function isHighlight(project) {
+  if (Number.isFinite(project.highlightOrder)) return true;
+  return (project.tags || []).some(tag => {
+    const label = String(tag).toLowerCase();
+    return label === 'highlights' || label === 'hihlights';
+  });
+}
+
 function groupedProjects() {
+  const highlightItems = projects
+    .filter(isHighlight)
+    .slice()
+    .sort((first, second) => {
+      const firstRank = Number.isFinite(first.highlightOrder) ? first.highlightOrder : Number.POSITIVE_INFINITY;
+      const secondRank = Number.isFinite(second.highlightOrder) ? second.highlightOrder : Number.POSITIVE_INFINITY;
+      return firstRank - secondRank || second.sortDate.localeCompare(first.sortDate) || first.sourceIndex - second.sourceIndex;
+    });
   const used = new Set();
-  return PROJECT_GROUPS.map(group => {
+  const rest = PROJECT_GROUPS.map(group => {
     const items = projects.filter(project => !used.has(project.id) && group.match(project));
     items.forEach(project => used.add(project.id));
     return { ...group, items };
   }).filter(group => group.items.length);
+  return highlightItems.length
+    ? [{ id: 'highlights', label: 'Highlight works', items: highlightItems }, ...rest]
+    : rest;
 }
 
 function renderTimeline() {
@@ -161,14 +180,6 @@ function renderPublications() {
           </li>`;
       }).join('')}
     </ul>`;
-}
-
-function isHighlight(project) {
-  if (Number.isFinite(project.highlightOrder)) return true;
-  return (project.tags || []).some(tag => {
-    const label = String(tag).toLowerCase();
-    return label === 'highlights' || label === 'hihlights';
-  });
 }
 
 function projectThumbHTML(project) {

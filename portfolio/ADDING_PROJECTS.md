@@ -26,7 +26,7 @@ Required fields:
 - `date`: human-readable display date.
 - `sortDate`: ISO `YYYY-MM-DD` value used for newest-first ordering inside each group. Its year also appears vertically left of the group rail when the year changes.
 - `categories`: one or more of `robotics`, `games`, `xr`, or `other`. Legacy scalar `category` remains supported during migration.
-- `highlightOrder`: optional; a number still marks the row as a highlight (four diagonal glitter tapes). It is not used for grouping.
+- `highlightOrder`: optional; a number marks the row as a highlight (four diagonal glitter tapes) and orders it inside Highlight works. A `Highlights` tag also counts. Highlighted projects appear in that group and again in their category group.
 
 Media behavior:
 
@@ -37,7 +37,7 @@ Media behavior:
 
 Legacy `isPortrait`, scalar `category`, and internal tags such as `gameProject`, `AIproject`, and `Highlights` remain readable during migration. New projects should use the explicit `categories` array.
 
-The page shows three groups, first match only: **Robotics / CV**, then **Games / XR**, then **Engineering**. `Computer Vision` and `OpenCV` tags add Robotics/CV membership during migration. XR tags add Games/XR membership.
+The page shows **Highlight works** first (duplicates of highlighted projects), then three exclusive groups: **Robotics / CV**, then **Games / XR**, then **Engineering**. `Computer Vision` and `OpenCV` tags add Robotics/CV membership during migration. XR tags add Games/XR membership.
 
 The timeline is independent from the project list. Edit `js/timeline.js`. An optional `projectId` opens the corresponding case study. Optional `image` (and `imagePosition`, e.g. `'72% 18%'`) draws a circular portrait between the rail and the title; the white dots stay. Use `imageFit: 'contain'` for logos so the full image fits in that same circle. `year` is written vertically to the left of the rail when it changes. Optional `date` is the right-hand label (months); if omitted, `year` is shown there.
 

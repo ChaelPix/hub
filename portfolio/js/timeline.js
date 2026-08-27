@@ -58,7 +58,7 @@ export const timeline = [
   },
   {
     year: '2024-27',
-    title: '(Upcoming) Engineering degree in Computer Science - UTBM, Belfort',
+    title: '(In progress) Engineering degree in Computer Science - UTBM, Belfort',
     detail: 'Robotics, AI and Virtual reality, equivalent to a master’s degree',
     section: 'education'
   },

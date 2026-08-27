@@ -23,6 +23,7 @@ const CV_TAGS = new Set(['computer vision', 'opencv', 'vision']);
 const XR_TAGS = new Set(['xr/vr', 'metaxr', 'arcore', 'augmented reality', 'mixed reality', 'vr', 'ar']);
 const VALID_CATEGORIES = new Set(['robotics', 'games', 'xr', 'other']);
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+const hoverPreviewQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#039;', '"': '&quot;'
@@ -72,6 +73,7 @@ const elements = {
 };
 
 let markdownVideoObserver;
+let previewVideoObserver;
 let lastFocusedElement;
 let dialogClosing = false;
 let dialogMotionToken = 0;
@@ -257,31 +259,60 @@ function projectRowHTML(project, yearSpine = '') {
     </li>`;
 }
 
-function bindHoverVideo(root) {
+function setPreviewPlaying(button, playing) {
+  const video = button.querySelector('video');
+  if (!video) return;
+  if (playing) {
+    video.play().catch(() => {});
+    button.classList.add('is-playing');
+    return;
+  }
+  video.pause();
+  video.currentTime = 0;
+  button.classList.remove('is-playing');
+}
+
+function bindPreviewVideo(root) {
+  previewVideoObserver?.disconnect();
+  previewVideoObserver = undefined;
   if (reduceMotionQuery.matches) return;
+
+  if (!hoverPreviewQuery.matches && 'IntersectionObserver' in window) {
+    previewVideoObserver = new IntersectionObserver(entries => {
+      if (document.body.classList.contains('dialog-open')) return;
+      entries.forEach(entry => {
+        const button = entry.target.closest('.project-row');
+        if (button) setPreviewPlaying(button, entry.isIntersecting);
+      });
+    }, { threshold: 0.55, rootMargin: '-8% 0px' });
+    root.querySelectorAll('.project-row video').forEach(video => {
+      previewVideoObserver.observe(video.closest('.project-thumb') || video);
+    });
+    return;
+  }
+
   root.querySelectorAll('.project-row').forEach(button => {
-    const video = button.querySelector('video');
-    if (!video) return;
-    const play = () => {
-      video.play().catch(() => {});
-      button.classList.add('is-playing');
-    };
-    const pause = () => {
-      video.pause();
-      video.currentTime = 0;
-      button.classList.remove('is-playing');
-    };
-    button.addEventListener('pointerenter', play);
-    button.addEventListener('pointerleave', pause);
-    button.addEventListener('focus', play);
-    button.addEventListener('blur', pause);
+    if (!button.querySelector('video')) return;
+    button.addEventListener('pointerenter', () => setPreviewPlaying(button, true));
+    button.addEventListener('pointerleave', () => setPreviewPlaying(button, false));
+    button.addEventListener('focus', () => setPreviewPlaying(button, true));
+    button.addEventListener('blur', () => setPreviewPlaying(button, false));
   });
 }
 
 function pauseProjectVideos() {
-  elements.projectLists?.querySelectorAll('video').forEach(video => {
-    video.pause();
-    video.closest('.project-row')?.classList.remove('is-playing');
+  elements.projectLists?.querySelectorAll('.project-row').forEach(button => setPreviewPlaying(button, false));
+}
+
+function resumePreviewVideos() {
+  if (reduceMotionQuery.matches || hoverPreviewQuery.matches) return;
+  elements.projectLists?.querySelectorAll('.project-row').forEach(button => {
+    const thumb = button.querySelector('.project-thumb');
+    if (!thumb || !button.querySelector('video')) return;
+    const rect = thumb.getBoundingClientRect();
+    const view = rect.height * 0.55;
+    const visible = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    setPreviewPlaying(button, visible >= view);
   });
 }
 
@@ -305,7 +336,7 @@ function renderProjects() {
   elements.projectLists.querySelectorAll('[data-project-id]').forEach(button => {
     button.addEventListener('click', () => openProject(button.dataset.projectId));
   });
-  bindHoverVideo(elements.projectLists);
+  bindPreviewVideo(elements.projectLists);
 }
 
 function setupSidebar() {
@@ -430,6 +461,7 @@ function finishDialogClose() {
   elements.dialog.querySelectorAll('video').forEach(video => video.pause());
   if (elements.dialog.open) elements.dialog.close();
   document.body.classList.remove('dialog-open');
+  resumePreviewVideos();
   lastFocusedElement?.focus?.();
 }
 

@@ -31,7 +31,7 @@ Required fields:
 Media behavior:
 
 1. `image` is the card thumbnail when present.
-2. `video_preview` plays over the still on card hover (and in the Markdown case study when referenced there).
+2. `video_preview` plays over the still on card hover when the pointer can hover, and while the thumbnail is on screen on touch. It also plays in the Markdown case study when referenced there.
 3. `isPortrait` keeps a taller thumbnail and contain-fit for phone-shot previews.
 4. If both image and video are empty, the card shows an empty plate.
 

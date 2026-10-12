@@ -491,8 +491,13 @@ function performDialogClose() {
 
 function closeProject(updateHash = true) {
   if (updateHash && location.hash.startsWith('#project-')) {
-    history.back();
-    return;
+    if (history.state?.projectId) {
+      history.back();
+      return;
+    }
+    // Pasted #project- links have no in-page entry behind them. Drop the
+    // fragment in place so Close stays on the portfolio instead of leaving.
+    history.replaceState({ portfolioRoot: true }, '', `${location.pathname}${location.search}`);
   }
   performDialogClose();
 }
@@ -509,10 +514,14 @@ function setupProjectDialog() {
 }
 
 function openInitialHash() {
-  if (location.hash.startsWith('#project-')) {
-    const projectId = location.hash.replace('#project-', '');
-    if (projects.some(project => project.id === projectId)) openProject(projectId, false);
-  }
+  if (!location.hash.startsWith('#project-')) return;
+  const projectId = location.hash.replace('#project-', '');
+  if (!projects.some(project => project.id === projectId)) return;
+  // Put the main page under this entry so Close and Back return here.
+  const hash = `#project-${projectId}`;
+  history.replaceState({ portfolioRoot: true }, '', `${location.pathname}${location.search}`);
+  history.pushState({ projectId }, '', hash);
+  openProject(projectId, false);
 }
 
 function setupHistory() {

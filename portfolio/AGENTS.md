@@ -37,7 +37,7 @@ Native document scroll. No scene snap, wheel, or highlight path.
 
 A left sidebar holds a circular WorldSkills portrait beside the name, in-page links (plain nested project groups), and icon-only Email / GitHub / LinkedIn. On compact widths it becomes a Menu drawer.
 
-`#project-<id>` must open the matching Markdown dialog. Closing uses browser history.
+`#project-<id>` must open the matching Markdown dialog. Closing uses browser history. A visit that lands directly on that hash keeps a main-page history entry underneath, so Close and Back stay on the portfolio.
 
 ## Project data and filters
 

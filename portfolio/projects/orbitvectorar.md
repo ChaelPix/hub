@@ -29,7 +29,7 @@ As the sole developer of the client application, I engineered several complex sy
 
 ### 1. The Physics Engine: Simulating a Solar System
 The heart of the game is a custom physics engine I built to handle all celestial mechanics.
-- **Real-time Newtonian Gravity**: I implemented the `F = G * (m1*m2)/r²` gravitational formula to realistically simulate the pull of every planet and moon on the arrow, including protection against singularities.
+- **Real-time Newtonian Gravity**: I implemented the gravitational formula to realistically simulate the pull of every planet and moon on the arrow, including protection against singularities.
 - **Predictive Trajectory Simulation**: Before firing, the game simulates and displays the arrow's future path in real-time, allowing players to visualize the complex gravitational effects and aim their shots strategically.
 - **"Forgiving" Collision System**: I designed a smart collision system where the physical collision radius of objects differs from their visual radius, allowing for more exciting and fair "close-call" shots.
 
